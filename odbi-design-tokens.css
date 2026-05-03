@@ -1,0 +1,97 @@
+/* ============================================
+   ODBI — Design Tokens
+   Stratège du facteur humain en haute intensité
+   ============================================ */
+
+:root {
+
+  /* ---- COULEURS PRIMAIRES ---- */
+  --color-asparagus: #86A43F;        /* Vert principal — visuels formels, bannières */
+  --color-apple-green: #B1BC4B;      /* Vert secondaire — accents, icônes, CTA subtils */
+
+  /* ---- COULEURS SECONDAIRES ---- */
+  --color-indigo-dye: #114C6A;       /* Bleu — CTA forts, contenus backstage */
+  --color-jet: #4D4D4D;              /* Gris foncé — texte principal, titres */
+  --color-french-grey: #A4A4A7;      /* Gris clair — fonds minimalistes */
+  --color-alabaster: #F0EEE6;        /* Beige blanc — fond général, textes blancs */
+
+  /* ---- ALIAS SÉMANTIQUES ---- */
+  --color-primary: var(--color-asparagus);
+  --color-secondary: var(--color-apple-green);
+  --color-accent: var(--color-indigo-dye);
+  --color-text-dark: var(--color-jet);
+  --color-text-light: #FFFFFF;
+  --color-background: var(--color-alabaster);
+  --color-neutral: var(--color-french-grey);
+
+  /* ---- CATÉGORIES ---- */
+  --color-category-business: #86A43F;
+  --color-category-sport: #114C6A;
+  --color-category-life: #B1BC4B;
+
+  /* ---- TYPOGRAPHIE ---- */
+  --font-title: 'Roboto', sans-serif;           /* Titres & en-têtes */
+  --font-body: 'Roboto Mono', monospace;        /* Corps de texte & paragraphes */
+  --font-caption: 'Raleway', sans-serif;        /* Légendes & citations */
+
+  /* ---- TAILLES DE TEXTE ---- */
+  --text-xs: 10px;
+  --text-sm: 12px;
+  --text-base: 14px;
+  --text-md: 16px;
+  --text-lg: 20px;
+  --text-xl: 24px;
+  --text-2xl: 28px;
+  --text-3xl: 36px;
+
+  /* ---- GRAISSES ---- */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* ---- INTERLIGNES ---- */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+  --line-height-loose: 1.9;
+
+  /* ---- ESPACEMENTS ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ---- BORDER RADIUS ---- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* ---- OMBRES ---- */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  /* ---- BORDURES ---- */
+  --border-default: 1px solid rgba(74, 74, 74, 0.15);
+  --border-strong: 1px solid rgba(74, 74, 74, 0.30);
+
+  /* ---- TRANSITIONS ---- */
+  --transition-fast: 100ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 350ms ease;
+
+  /* ---- BREAKPOINTS (à utiliser en media queries) ----
+     --bp-mobile:  480px
+     --bp-tablet:  768px
+     --bp-desktop: 1200px
+  ---- */
+}

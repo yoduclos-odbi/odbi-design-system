@@ -1,0 +1,79 @@
+{
+  "name": "ODBI",
+  "description": "Stratège du facteur humain en haute intensité",
+  "version": "1.0.0",
+  "colors": {
+    "primary": {
+      "asparagus": { "value": "#86A43F", "description": "Vert principal — visuels formels, bannières, mission ODBI" },
+      "apple-green": { "value": "#B1BC4B", "description": "Vert secondaire — accents, icônes, CTA subtils" }
+    },
+    "secondary": {
+      "indigo-dye": { "value": "#114C6A", "description": "Bleu — CTA forts, contenus inspirants et backstage" },
+      "jet": { "value": "#4D4D4D", "description": "Gris foncé — texte principal, titres, fonds techniques" },
+      "french-grey": { "value": "#A4A4A7", "description": "Gris clair — fonds minimalistes, visuels quotidiens" },
+      "alabaster": { "value": "#F0EEE6", "description": "Beige blanc — fond général, base des textes blancs" }
+    },
+    "categories": {
+      "business": { "value": "#86A43F", "description": "Collaboration, partenariats, relations professionnelles" },
+      "sport": { "value": "#114C6A", "description": "Effort, discipline, performance, gestion du temps" },
+      "life": { "value": "#B1BC4B", "description": "Soutien, épanouissement, croissance personnelle" }
+    }
+  },
+  "typography": {
+    "fonts": {
+      "title": {
+        "family": "Roboto",
+        "fallback": "sans-serif",
+        "usage": "Titres et en-têtes",
+        "weights": [400, 500, 700]
+      },
+      "body": {
+        "family": "Roboto Mono",
+        "fallback": "monospace",
+        "usage": "Corps de texte, sous-titres, paragraphes",
+        "weights": [400, 500]
+      },
+      "caption": {
+        "family": "Raleway",
+        "fallback": "sans-serif",
+        "usage": "Légendes, citations, labels",
+        "weights": [300, 400, 500],
+        "styles": ["normal", "italic"]
+      }
+    },
+    "scale": {
+      "xs":   { "value": "10px" },
+      "sm":   { "value": "12px" },
+      "base": { "value": "14px" },
+      "md":   { "value": "16px" },
+      "lg":   { "value": "20px" },
+      "xl":   { "value": "24px" },
+      "2xl":  { "value": "28px" },
+      "3xl":  { "value": "36px" }
+    }
+  },
+  "spacing": {
+    "1":  "4px",
+    "2":  "8px",
+    "3":  "12px",
+    "4":  "16px",
+    "5":  "20px",
+    "6":  "24px",
+    "8":  "32px",
+    "10": "40px",
+    "12": "48px",
+    "16": "64px"
+  },
+  "borderRadius": {
+    "sm":   "4px",
+    "md":   "8px",
+    "lg":   "12px",
+    "xl":   "16px",
+    "full": "9999px"
+  },
+  "breakpoints": {
+    "mobile":  "480px",
+    "tablet":  "768px",
+    "desktop": "1200px"
+  }
+}
