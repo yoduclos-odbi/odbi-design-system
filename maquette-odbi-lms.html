@@ -38,8 +38,7 @@ a{color:inherit;text-decoration:none}
 .btn-ghost{background:transparent;color:var(--color-text-dark);border:1px solid rgba(74,74,74,.25)}
 .btn-ghost:hover{background:rgba(74,74,74,.06)}
 .btn-block{width:100%;justify-content:center}
-.badge{display:inline-block;padding:3px 10px;border-radius:var(--radius-full);font-size:11px;font-family:var(--font-title);font-weight:500;color:#fff}
-.tag-business{background:var(--cat-business)}.tag-sport{background:var(--cat-sport)}.tag-life{background:var(--cat-life)}
+.badge{display:inline-block;padding:3px 10px;border-radius:var(--radius-full);font-size:11px;font-family:var(--font-title);font-weight:500;color:#fff;background:var(--color-primary)}
 
 /* ---------- Auth ---------- */
 .auth-wrap{min-height:100vh;display:flex}
@@ -91,8 +90,8 @@ a{color:inherit;text-decoration:none}
 .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
 .course-card{cursor:pointer}
 .course-thumb{height:130px;background:linear-gradient(135deg,var(--color-asparagus),var(--color-apple-green));position:relative;display:flex;align-items:flex-end;padding:var(--space-3)}
-.course-thumb.sport{background:linear-gradient(135deg,var(--color-indigo-dye),#1d6b94)}
-.course-thumb.life{background:linear-gradient(135deg,var(--color-apple-green),#cdd66e)}
+.course-thumb.alt1{background:linear-gradient(135deg,var(--color-indigo-dye),#1d6b94)}
+.course-thumb.alt2{background:linear-gradient(135deg,var(--color-jet),#6f6f6f)}
 .course-thumb .badge{position:absolute;top:12px;left:12px}
 .course-body{padding:var(--space-4)}
 .course-body h3{font-size:17px;margin-bottom:6px}
@@ -163,6 +162,33 @@ a{color:inherit;text-decoration:none}
 .suggest{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 .suggest button{background:var(--color-background);padding:7px 13px;border-radius:var(--radius-full);font-size:12px;color:var(--color-jet)}
 
+/* ---------- Gamification ---------- */
+.game-hero{background:linear-gradient(120deg,var(--color-indigo-dye),var(--color-asparagus));color:#fff;border-radius:var(--radius-xl);padding:var(--space-8);display:flex;align-items:center;gap:var(--space-8);margin-bottom:var(--space-6)}
+.level-ring{width:120px;height:120px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:conic-gradient(var(--color-apple-green) 0% 65%,rgba(255,255,255,.25) 65% 100%)}
+.level-ring .inner{width:96px;height:96px;border-radius:50%;background:var(--color-indigo-dye);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.level-ring .inner .lv{font-family:var(--font-title);font-weight:700;font-size:30px;line-height:1}
+.level-ring .inner small{font-size:10px;opacity:.85;letter-spacing:1px}
+.game-hero .hgrow h2{font-size:24px;margin-bottom:6px}
+.game-hero .hgrow p{font-family:var(--font-caption);font-weight:300;opacity:.95;margin-bottom:var(--space-4)}
+.hbar{height:9px;background:rgba(255,255,255,.25);border-radius:var(--radius-full);max-width:420px;overflow:hidden}
+.hbar span{display:block;height:100%;background:var(--color-apple-green);border-radius:var(--radius-full)}
+.streak{display:flex;gap:var(--space-6);margin-top:var(--space-5)}
+.streak div b{font-family:var(--font-title);font-size:22px}
+.streak div small{display:block;opacity:.85;font-size:12px}
+.badges{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)}
+.badge-card{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:var(--space-5);text-align:center}
+.badge-card .ic{width:60px;height:60px;border-radius:50%;margin:0 auto var(--space-3);display:flex;align-items:center;justify-content:center;font-size:28px;background:linear-gradient(135deg,var(--color-asparagus),var(--color-apple-green));color:#fff}
+.badge-card.locked{opacity:.45}.badge-card.locked .ic{background:var(--color-neutral)}
+.badge-card h4{font-size:14px;margin-bottom:4px}
+.badge-card p{font-size:11px;color:var(--color-neutral)}
+.lb-row{display:flex;align-items:center;gap:14px;padding:13px var(--space-5);border-top:1px solid rgba(74,74,74,.08)}
+.lb-row.me{background:rgba(134,164,63,.1)}
+.lb-rank{width:30px;font-family:var(--font-title);font-weight:700;font-size:16px;text-align:center;color:var(--color-neutral)}
+.lb-rank.top{color:var(--color-asparagus)}
+.lb-row .avatar{width:34px;height:34px;font-size:13px}
+.lb-name{flex:1;font-family:var(--font-title);font-weight:500}
+.lb-pts{font-family:var(--font-title);font-weight:700;color:var(--color-accent)}
+
 /* ---------- Admin ---------- */
 .table{width:100%;background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);border-collapse:collapse;overflow:hidden}
 .table th{text-align:left;padding:14px var(--space-5);font-family:var(--font-title);font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--color-neutral);background:var(--color-background)}
@@ -189,8 +215,8 @@ a{color:inherit;text-decoration:none}
   <div class="auth-side">
     <div class="logo" style="color:#fff;margin-bottom:auto"><span class="dot"></span> ODBI ACADEMY</div>
     <h1>Développez votre potentiel<br>en haute intensité.</h1>
-    <p>La plateforme de formation ODBI : cours structurés, visioconférences en direct et un assistant IA disponible 24/7 pour vous accompagner.</p>
-    <div class="pill"><span>📚 Cours & parcours</span><span>🎥 Visios live (BBB)</span><span>🤖 Assistant IA</span><span>🏆 Progression</span></div>
+    <p>La plateforme de formation ODBI : cours structurés, visioconférences en direct et YoDalf, votre mentor IA disponible 24/7 pour vous accompagner.</p>
+    <div class="pill"><span>📚 Cours & parcours</span><span>🎥 Visios live (BBB)</span><span>🧙 YoDalf (IA)</span><span>🏆 Progression</span></div>
   </div>
   <div class="auth-form">
     <div class="auth-card">
@@ -234,7 +260,8 @@ a{color:inherit;text-decoration:none}
     <div class="nav-item active" data-page="dash" onclick="go(this)"><span class="ico">🏠</span> Tableau de bord</div>
     <div class="nav-item" data-page="catalog" onclick="go(this)"><span class="ico">📚</span> Mes cours</div>
     <div class="nav-item" data-page="visio" onclick="go(this)"><span class="ico">🎥</span> Visios live</div>
-    <div class="nav-item" data-page="ai" onclick="go(this)"><span class="ico">🤖</span> Assistant IA</div>
+    <div class="nav-item" data-page="ai" onclick="go(this)"><span class="ico">🧙</span> YoDalf</div>
+    <div class="nav-item" data-page="game" onclick="go(this)"><span class="ico">🏆</span> Progression</div>
     <div class="nav-item" data-page="agenda" onclick="go(this)"><span class="ico">📅</span> Agenda</div>
     <div class="nav-sep"></div>
     <div class="nav-label">Administration</div>
@@ -261,15 +288,15 @@ a{color:inherit;text-decoration:none}
       <h3 style="margin-bottom:var(--space-4)">Reprendre où vous en étiez</h3>
       <div class="grid grid-3">
         <div class="card course-card" onclick="goTo('course')">
-          <div class="course-thumb"><span class="badge tag-business">Business</span></div>
+          <div class="course-thumb"></div>
           <div class="course-body"><h3>Leadership en haute intensité</h3><div class="meta">📖 6 modules · ⏱ 4h</div><div class="progress"><span style="width:72%"></span></div></div>
         </div>
         <div class="card course-card" onclick="goTo('course')">
-          <div class="course-thumb sport"><span class="badge tag-sport">Sport</span></div>
+          <div class="course-thumb alt1"></div>
           <div class="course-body"><h3>Discipline & performance</h3><div class="meta">📖 5 modules · ⏱ 3h30</div><div class="progress"><span style="width:45%"></span></div></div>
         </div>
         <div class="card course-card" onclick="goTo('course')">
-          <div class="course-thumb life"><span class="badge tag-life">Life</span></div>
+          <div class="course-thumb alt2"></div>
           <div class="course-body"><h3>Équilibre & croissance perso</h3><div class="meta">📖 4 modules · ⏱ 2h45</div><div class="progress"><span style="width:90%"></span></div></div>
         </div>
       </div>
@@ -278,17 +305,13 @@ a{color:inherit;text-decoration:none}
     <!-- CATALOG -->
     <section id="page-catalog" class="page">
       <div class="page-head"><h1>Mes cours</h1><p>Tous vos parcours de formation ODBI</p></div>
-      <div class="suggest mb6">
-        <button style="background:var(--color-primary);color:#fff">Tous</button>
-        <button>Business</button><button>Sport</button><button>Life</button>
-      </div>
       <div class="grid grid-3">
-        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb"><span class="badge tag-business">Business</span></div><div class="course-body"><h3>Leadership en haute intensité</h3><div class="meta">📖 6 modules · ⏱ 4h</div><div class="progress"><span style="width:72%"></span></div></div></div>
-        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb sport"><span class="badge tag-sport">Sport</span></div><div class="course-body"><h3>Discipline & performance</h3><div class="meta">📖 5 modules · ⏱ 3h30</div><div class="progress"><span style="width:45%"></span></div></div></div>
-        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb life"><span class="badge tag-life">Life</span></div><div class="course-body"><h3>Équilibre & croissance perso</h3><div class="meta">📖 4 modules · ⏱ 2h45</div><div class="progress"><span style="width:90%"></span></div></div></div>
-        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb sport"><span class="badge tag-sport">Sport</span></div><div class="course-body"><h3>Préparation mentale</h3><div class="meta">📖 7 modules · ⏱ 5h</div><div class="progress"><span style="width:12%"></span></div></div></div>
-        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb"><span class="badge tag-business">Business</span></div><div class="course-body"><h3>Négociation à fort enjeu</h3><div class="meta">📖 5 modules · ⏱ 3h</div><div class="progress"><span style="width:0%"></span></div></div></div>
-        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb life"><span class="badge tag-life">Life</span></div><div class="course-body"><h3>Gestion du stress intense</h3><div class="meta">📖 4 modules · ⏱ 2h</div><div class="progress"><span style="width:0%"></span></div></div></div>
+        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb"></div><div class="course-body"><h3>Leadership en haute intensité</h3><div class="meta">📖 6 modules · ⏱ 4h</div><div class="progress"><span style="width:72%"></span></div></div></div>
+        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb alt1"></div><div class="course-body"><h3>Discipline & performance</h3><div class="meta">📖 5 modules · ⏱ 3h30</div><div class="progress"><span style="width:45%"></span></div></div></div>
+        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb alt2"></div><div class="course-body"><h3>Équilibre & croissance perso</h3><div class="meta">📖 4 modules · ⏱ 2h45</div><div class="progress"><span style="width:90%"></span></div></div></div>
+        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb alt1"></div><div class="course-body"><h3>Préparation mentale</h3><div class="meta">📖 7 modules · ⏱ 5h</div><div class="progress"><span style="width:12%"></span></div></div></div>
+        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb"></div><div class="course-body"><h3>Négociation à fort enjeu</h3><div class="meta">📖 5 modules · ⏱ 3h</div><div class="progress"><span style="width:0%"></span></div></div></div>
+        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb alt2"></div><div class="course-body"><h3>Gestion du stress intense</h3><div class="meta">📖 4 modules · ⏱ 2h</div><div class="progress"><span style="width:0%"></span></div></div></div>
       </div>
     </section>
 
@@ -296,7 +319,7 @@ a{color:inherit;text-decoration:none}
     <section id="page-course" class="page">
       <div class="breadcrumb" onclick="goTo('catalog')">Mes cours / <b>Leadership en haute intensité</b></div>
       <div class="flex-between mb6">
-        <div><span class="badge tag-business">Business</span><h1 style="margin-top:10px">Leadership en haute intensité</h1><p style="color:var(--color-neutral);margin-top:6px">6 modules · 24 leçons · 4h de contenu · animé par Yohann D.</p></div>
+        <div><h1>Leadership en haute intensité</h1><p style="color:var(--color-neutral);margin-top:6px">6 modules · 24 leçons · 4h de contenu · animé par Yohann D.</p></div>
         <button class="btn btn-primary" onclick="goTo('lesson')">Reprendre ▶</button>
       </div>
       <div class="progress mb6" style="height:10px"><span style="width:72%"></span></div>
@@ -332,7 +355,7 @@ a{color:inherit;text-decoration:none}
             <p>Téléchargez la fiche pratique et réalisez l'exercice proposé avant la prochaine visio live.</p>
             <div style="display:flex;gap:12px;margin-top:var(--space-5)">
               <button class="btn btn-ghost">📎 Fiche PDF</button>
-              <button class="btn btn-accent" onclick="goTo('ai')">🤖 Poser une question à l'IA</button>
+              <button class="btn btn-accent" onclick="goTo('ai')">🧙 Demander à YoDalf</button>
               <button class="btn btn-primary">Marquer comme terminé ✓</button>
             </div>
           </div>
@@ -374,11 +397,11 @@ a{color:inherit;text-decoration:none}
 
     <!-- AI ASSISTANT -->
     <section id="page-ai" class="page">
-      <div class="page-head"><h1>Assistant IA ODBI</h1><p>Votre coach IA, formé sur le contenu des cours — disponible 24/7</p></div>
+      <div class="page-head"><h1>YoDalf — votre assistant IA</h1><p>Le mentor IA d'ODBI, formé sur le contenu des cours — disponible 24/7</p></div>
       <div class="chat">
-        <div class="chat-head"><div class="ai-ava">🤖</div><div><h3 style="font-size:15px">Coach ODBI</h3><div style="font-size:12px;color:var(--color-primary)">● En ligne</div></div></div>
+        <div class="chat-head"><div class="ai-ava">🧙</div><div><h3 style="font-size:15px">YoDalf</h3><div style="font-size:12px;color:var(--color-primary)">● En ligne</div></div></div>
         <div class="chat-body" id="chatBody">
-          <div class="msg ai">Bonjour Jean 👋 Je suis votre coach IA ODBI. Je connais tous vos cours et je peux vous aider à réviser, résumer une leçon ou répondre à vos questions. Que puis-je faire pour vous ?</div>
+          <div class="msg ai">Bonjour Jean 👋 Je suis <b>YoDalf</b>, votre mentor IA ODBI. Je connais tous vos cours et je peux vous aider à réviser, résumer une leçon ou répondre à vos questions. Que puis-je faire pour vous ?</div>
           <div class="msg me">Peux-tu me résumer la leçon sur le feedback à haute intensité ?</div>
           <div class="msg ai">Bien sûr ! La leçon "2.2 — Feedback à haute intensité" repose sur 3 piliers :<br>① <b>Clarté du fait</b> — décrire le comportement observé sans jugement.<br>② <b>Impact mesuré</b> — expliquer la conséquence concrète.<br>③ <b>Engagement vers l'action</b> — co-construire la prochaine étape.<br><br>Voulez-vous que je vous propose un exercice pratique avant la visio de demain ?</div>
         </div>
@@ -390,6 +413,61 @@ a{color:inherit;text-decoration:none}
           </div>
         </div>
         <div class="chat-input"><input id="chatInput" placeholder="Posez votre question…" onkeydown="if(event.key==='Enter')sendMsg()"><button class="btn btn-primary" onclick="sendMsg()">Envoyer</button></div>
+      </div>
+    </section>
+
+    <!-- GAMIFICATION -->
+    <section id="page-game" class="page">
+      <div class="page-head"><h1>Progression</h1><p>Vos points, votre niveau et le classement de la communauté ODBI</p></div>
+
+      <div class="game-hero">
+        <div class="level-ring"><div class="inner"><span class="lv">7</span><small>NIVEAU</small></div></div>
+        <div class="hgrow">
+          <h2>Stratège confirmé</h2>
+          <p>Plus que <b>360 points</b> pour atteindre le niveau 8 — « Stratège d'élite »</p>
+          <div class="hbar"><span style="width:65%"></span></div>
+          <div class="streak">
+            <div><b>1 240</b><small>Points ODBI</small></div>
+            <div><b>12 🔥</b><small>Jours d'affilée</small></div>
+            <div><b>#4</b><small>Classement</small></div>
+            <div><b>9</b><small>Badges obtenus</small></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-2">
+        <div>
+          <div class="section-title" style="margin-top:0">Classement de la semaine</div>
+          <div class="card" style="padding:var(--space-2) 0">
+            <div class="lb-row"><div class="lb-rank top">1</div><div class="avatar" style="background:var(--color-asparagus)">ML</div><div class="lb-name">Marie Lambert</div><div class="lb-pts">2 980 pts</div></div>
+            <div class="lb-row"><div class="lb-rank top">2</div><div class="avatar" style="background:var(--color-indigo-dye)">TP</div><div class="lb-name">Thomas Petit</div><div class="lb-pts">2 410 pts</div></div>
+            <div class="lb-row"><div class="lb-rank top">3</div><div class="avatar" style="background:var(--color-apple-green)">SR</div><div class="lb-name">Sophie Roux</div><div class="lb-pts">1 870 pts</div></div>
+            <div class="lb-row me"><div class="lb-rank">4</div><div class="avatar">JD</div><div class="lb-name">Vous</div><div class="lb-pts">1 240 pts</div></div>
+            <div class="lb-row"><div class="lb-rank">5</div><div class="avatar" style="background:#888">LC</div><div class="lb-name">Lucas Chen</div><div class="lb-pts">1 090 pts</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="section-title" style="margin-top:0">Comment gagner des points</div>
+          <div class="card" style="padding:var(--space-5)">
+            <div class="flex-between" style="padding:8px 0"><span>✅ Terminer une leçon</span><b style="color:var(--color-primary)">+50 pts</b></div>
+            <div class="flex-between" style="padding:8px 0;border-top:1px solid rgba(74,74,74,.08)"><span>🎯 Compléter un module</span><b style="color:var(--color-primary)">+200 pts</b></div>
+            <div class="flex-between" style="padding:8px 0;border-top:1px solid rgba(74,74,74,.08)"><span>🎥 Participer à une visio live</span><b style="color:var(--color-primary)">+150 pts</b></div>
+            <div class="flex-between" style="padding:8px 0;border-top:1px solid rgba(74,74,74,.08)"><span>🔥 Connexion quotidienne</span><b style="color:var(--color-primary)">+20 pts</b></div>
+            <div class="flex-between" style="padding:8px 0;border-top:1px solid rgba(74,74,74,.08)"><span>🏁 Finir un cours complet</span><b style="color:var(--color-primary)">+500 pts</b></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title">Badges & accomplissements</div>
+      <div class="badges">
+        <div class="badge-card"><div class="ic">🚀</div><h4>Premiers pas</h4><p>1ʳᵉ leçon terminée</p></div>
+        <div class="badge-card"><div class="ic">🔥</div><h4>Régularité</h4><p>7 jours d'affilée</p></div>
+        <div class="badge-card"><div class="ic">🎓</div><h4>Module maîtrisé</h4><p>1ᵉʳ module complété</p></div>
+        <div class="badge-card"><div class="ic">🎤</div><h4>Présent en live</h4><p>5 visios suivies</p></div>
+        <div class="badge-card locked"><div class="ic">🏆</div><h4>Cours expert</h4><p>Finir un cours complet</p></div>
+        <div class="badge-card locked"><div class="ic">⚡</div><h4>Haute intensité</h4><p>30 jours d'affilée</p></div>
+        <div class="badge-card locked"><div class="ic">👑</div><h4>Top 3</h4><p>Podium hebdomadaire</p></div>
+        <div class="badge-card locked"><div class="ic">🧙</div><h4>Disciple de YoDalf</h4><p>50 questions à l'IA</p></div>
       </div>
     </section>
 
@@ -427,17 +505,17 @@ a{color:inherit;text-decoration:none}
       <div id="admin-courses" class="hidden">
         <div class="flex-between mb6"><h3>6 cours publiés</h3><button class="btn btn-primary">+ Créer un cours</button></div>
         <table class="table">
-          <tr><th>Cours</th><th>Catégorie</th><th>Modules</th><th>Inscrits</th><th>Statut</th><th></th></tr>
-          <tr><td>Leadership en haute intensité</td><td><span class="badge tag-business">Business</span></td><td>6</td><td>180</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
-          <tr><td>Discipline & performance</td><td><span class="badge tag-sport">Sport</span></td><td>5</td><td>142</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
-          <tr><td>Équilibre & croissance perso</td><td><span class="badge tag-life">Life</span></td><td>4</td><td>96</td><td>Brouillon</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
+          <tr><th>Cours</th><th>Modules</th><th>Inscrits</th><th>Statut</th><th></th></tr>
+          <tr><td>Leadership en haute intensité</td><td>6</td><td>180</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
+          <tr><td>Discipline & performance</td><td>5</td><td>142</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
+          <tr><td>Équilibre & croissance perso</td><td>4</td><td>96</td><td>Brouillon</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
         </table>
       </div>
 
       <div id="admin-integ" class="hidden">
         <div class="grid grid-2">
           <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">🎥 BigBlueButton</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Visioconférences live</p></div><span class="badge" style="background:var(--color-primary)">Connecté</span></div><div class="field" style="margin-top:var(--space-5)"><label>URL serveur BBB</label><input value="https://bbb.odbi.fr/bigbluebutton/"></div></div>
-          <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">🤖 Assistant IA (Claude)</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Coach IA sur le contenu des cours</p></div><span class="badge" style="background:var(--color-primary)">Connecté</span></div><div class="field" style="margin-top:var(--space-5)"><label>Modèle</label><input value="claude-opus-4-8"></div></div>
+          <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">🧙 YoDalf — IA (Claude)</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Mentor IA sur le contenu des cours</p></div><span class="badge" style="background:var(--color-primary)">Connecté</span></div><div class="field" style="margin-top:var(--space-5)"><label>Modèle</label><input value="claude-opus-4-8"></div></div>
           <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">💳 Stripe</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Paiements & abonnements</p></div><span class="badge" style="background:var(--color-neutral)">À configurer</span></div></div>
           <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">💬 WhatsApp</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Communauté (externe)</p></div><span class="badge" style="background:var(--color-primary)">Lien externe</span></div><div class="field" style="margin-top:var(--space-5)"><label>Lien du groupe</label><input value="https://chat.whatsapp.com/..."></div></div>
         </div>
@@ -464,7 +542,7 @@ function adminTab(el,t){document.querySelectorAll('.tab').forEach(x=>x.classList
   document.getElementById('admin-'+t).classList.remove('hidden')}
 function sendMsg(){const i=document.getElementById('chatInput');if(!i.value.trim())return;const b=document.getElementById('chatBody');
   b.innerHTML+='<div class="msg me">'+i.value+'</div>';const q=i.value;i.value='';
-  setTimeout(()=>{b.innerHTML+='<div class="msg ai">💡 (Réponse IA simulée) Dans la version réelle, je m\'appuierais sur le contenu de vos cours ODBI pour répondre précisément à : « '+q+' »</div>';b.scrollTop=b.scrollHeight},500);b.scrollTop=b.scrollHeight}
+  setTimeout(()=>{b.innerHTML+='<div class="msg ai">💡 (Réponse YoDalf simulée) Dans la version réelle, je m\'appuierais sur le contenu de vos cours ODBI pour répondre précisément à : « '+q+' »</div>';b.scrollTop=b.scrollHeight},500);b.scrollTop=b.scrollHeight}
 function quickAsk(el){document.getElementById('chatInput').value=el.textContent;sendMsg()}
 </script>
 </body>
