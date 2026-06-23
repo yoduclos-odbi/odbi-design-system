@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ODBI Academy — Maquette LMS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Raleway:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --color-asparagus:#86A43F; --color-apple-green:#B1BC4B; --color-indigo-dye:#114C6A;
+  --color-jet:#4D4D4D; --color-french-grey:#A4A4A7; --color-alabaster:#F0EEE6;
+  --color-primary:var(--color-asparagus); --color-secondary:var(--color-apple-green);
+  --color-accent:var(--color-indigo-dye); --color-text-dark:var(--color-jet);
+  --color-text-light:#FFFFFF; --color-background:var(--color-alabaster);
+  --color-neutral:var(--color-french-grey);
+  --cat-business:#86A43F; --cat-sport:#114C6A; --cat-life:#B1BC4B;
+  --font-title:'Roboto',sans-serif; --font-body:'Roboto Mono',monospace; --font-caption:'Raleway',sans-serif;
+  --space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--space-10:40px;--space-12:48px;
+  --radius-sm:4px;--radius-md:8px;--radius-lg:12px;--radius-xl:16px;--radius-full:9999px;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.08);--shadow-md:0 4px 12px rgba(0,0,0,.10);--shadow-lg:0 8px 24px rgba(0,0,0,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-body);background:var(--color-background);color:var(--color-text-dark);font-size:14px;line-height:1.5}
+h1,h2,h3,h4,h5{font-family:var(--font-title);line-height:1.2;font-weight:700}
+.caption{font-family:var(--font-caption)}
+button{font-family:var(--font-title);cursor:pointer;border:none;font-weight:500}
+a{color:inherit;text-decoration:none}
+.hidden{display:none!important}
+
+/* ---------- Boutons ---------- */
+.btn{padding:10px 18px;border-radius:var(--radius-md);font-size:14px;transition:all .2s ease;display:inline-flex;align-items:center;gap:8px}
+.btn-primary{background:var(--color-primary);color:#fff}
+.btn-primary:hover{background:#75922f}
+.btn-accent{background:var(--color-accent);color:#fff}
+.btn-accent:hover{background:#0d3a52}
+.btn-ghost{background:transparent;color:var(--color-text-dark);border:1px solid rgba(74,74,74,.25)}
+.btn-ghost:hover{background:rgba(74,74,74,.06)}
+.btn-block{width:100%;justify-content:center}
+.badge{display:inline-block;padding:3px 10px;border-radius:var(--radius-full);font-size:11px;font-family:var(--font-title);font-weight:500;color:#fff}
+.tag-business{background:var(--cat-business)}.tag-sport{background:var(--cat-sport)}.tag-life{background:var(--cat-life)}
+
+/* ---------- Auth ---------- */
+.auth-wrap{min-height:100vh;display:flex}
+.auth-side{flex:1;background:linear-gradient(135deg,var(--color-asparagus),var(--color-indigo-dye));color:#fff;padding:var(--space-12);display:flex;flex-direction:column;justify-content:center}
+.auth-side h1{font-size:40px;margin-bottom:var(--space-4)}
+.auth-side p{font-family:var(--font-caption);font-size:18px;font-weight:300;max-width:420px;line-height:1.7}
+.auth-side .pill{margin-top:var(--space-8);display:flex;gap:12px;flex-wrap:wrap}
+.auth-side .pill span{background:rgba(255,255,255,.18);padding:8px 14px;border-radius:var(--radius-full);font-size:13px;font-family:var(--font-title)}
+.auth-form{flex:1;display:flex;align-items:center;justify-content:center;padding:var(--space-8)}
+.auth-card{width:100%;max-width:380px}
+.auth-card h2{font-size:26px;margin-bottom:var(--space-2)}
+.auth-card .sub{color:var(--color-neutral);margin-bottom:var(--space-6);font-size:13px}
+.field{margin-bottom:var(--space-4)}
+.field label{display:block;font-family:var(--font-title);font-size:12px;font-weight:500;margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;padding:11px 13px;border:1px solid rgba(74,74,74,.2);border-radius:var(--radius-md);font-family:var(--font-body);font-size:14px;background:#fff}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--color-primary)}
+.auth-switch{text-align:center;margin-top:var(--space-5);font-size:13px;color:var(--color-neutral)}
+.auth-switch a{color:var(--color-accent);font-weight:500;cursor:pointer}
+.logo{font-family:var(--font-title);font-weight:700;font-size:22px;letter-spacing:1px;display:flex;align-items:center;gap:10px}
+.logo .dot{width:14px;height:14px;background:var(--color-apple-green);border-radius:3px;display:inline-block;transform:rotate(45deg)}
+
+/* ---------- App layout ---------- */
+.app{display:none;min-height:100vh;grid-template-columns:248px 1fr;grid-template-rows:auto 1fr}
+.app.active{display:grid}
+.topbar{grid-column:1/3;background:#fff;border-bottom:1px solid rgba(74,74,74,.1);display:flex;align-items:center;justify-content:space-between;padding:0 var(--space-6);height:62px;position:sticky;top:0;z-index:10}
+.topbar .logo{color:var(--color-jet)}
+.topbar-right{display:flex;align-items:center;gap:var(--space-4)}
+.search{background:var(--color-background);border-radius:var(--radius-full);padding:8px 16px;width:280px;border:none;font-family:var(--font-body)}
+.avatar{width:38px;height:38px;border-radius:50%;background:var(--color-indigo-dye);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-title);font-weight:700}
+.sidebar{background:#fff;border-right:1px solid rgba(74,74,74,.1);padding:var(--space-5) var(--space-3);display:flex;flex-direction:column;gap:4px}
+.nav-item{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:var(--radius-md);font-family:var(--font-title);font-size:14px;font-weight:500;color:var(--color-jet);cursor:pointer;transition:all .15s}
+.nav-item:hover{background:var(--color-background)}
+.nav-item.active{background:var(--color-primary);color:#fff}
+.nav-item .ico{font-size:18px;width:22px;text-align:center}
+.nav-sep{height:1px;background:rgba(74,74,74,.1);margin:var(--space-4) 8px}
+.nav-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--color-neutral);padding:0 14px;margin-bottom:6px;font-family:var(--font-title);font-weight:700}
+.main{padding:var(--space-8);overflow-y:auto;max-height:calc(100vh - 62px)}
+.page{display:none}.page.active{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.page-head{margin-bottom:var(--space-6)}
+.page-head h1{font-size:28px}
+.page-head p{color:var(--color-neutral);margin-top:4px}
+
+/* ---------- Cards / grid ---------- */
+.grid{display:grid;gap:var(--space-5)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.card{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);overflow:hidden;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.course-card{cursor:pointer}
+.course-thumb{height:130px;background:linear-gradient(135deg,var(--color-asparagus),var(--color-apple-green));position:relative;display:flex;align-items:flex-end;padding:var(--space-3)}
+.course-thumb.sport{background:linear-gradient(135deg,var(--color-indigo-dye),#1d6b94)}
+.course-thumb.life{background:linear-gradient(135deg,var(--color-apple-green),#cdd66e)}
+.course-thumb .badge{position:absolute;top:12px;left:12px}
+.course-body{padding:var(--space-4)}
+.course-body h3{font-size:17px;margin-bottom:6px}
+.course-body .meta{font-size:12px;color:var(--color-neutral);display:flex;gap:14px;margin-top:10px}
+.progress{height:7px;background:var(--color-background);border-radius:var(--radius-full);margin-top:12px;overflow:hidden}
+.progress span{display:block;height:100%;background:var(--color-primary);border-radius:var(--radius-full)}
+
+/* stat cards */
+.stat{background:#fff;border-radius:var(--radius-lg);padding:var(--space-5);box-shadow:var(--shadow-sm)}
+.stat .num{font-family:var(--font-title);font-size:30px;font-weight:700;color:var(--color-accent)}
+.stat .lbl{color:var(--color-neutral);font-size:12px;margin-top:4px}
+.stat .num.green{color:var(--color-primary)}
+
+/* banner */
+.banner{background:linear-gradient(120deg,var(--color-indigo-dye),var(--color-asparagus));color:#fff;border-radius:var(--radius-xl);padding:var(--space-8);margin-bottom:var(--space-6);display:flex;justify-content:space-between;align-items:center}
+.banner h2{font-size:24px;margin-bottom:8px}
+.banner p{font-family:var(--font-caption);font-weight:300;opacity:.95}
+
+/* ---------- Course detail ---------- */
+.breadcrumb{font-size:12px;color:var(--color-neutral);margin-bottom:var(--space-4);cursor:pointer}
+.breadcrumb b{color:var(--color-accent)}
+.module{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);margin-bottom:var(--space-4);overflow:hidden}
+.module-head{padding:var(--space-4) var(--space-5);display:flex;justify-content:space-between;align-items:center;cursor:pointer;border-left:4px solid var(--color-primary)}
+.module-head h3{font-size:16px}
+.module-head .sub{font-size:12px;color:var(--color-neutral);margin-top:3px}
+.lesson{padding:13px var(--space-5);border-top:1px solid rgba(74,74,74,.08);display:flex;align-items:center;gap:14px;cursor:pointer}
+.lesson:hover{background:var(--color-background)}
+.lesson .check{width:24px;height:24px;border-radius:50%;border:2px solid var(--color-neutral);display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff;flex-shrink:0}
+.lesson.done .check{background:var(--color-primary);border-color:var(--color-primary)}
+.lesson .lk-title{flex:1;font-size:14px}
+.lesson .lk-dur{font-size:12px;color:var(--color-neutral)}
+.lesson.locked{opacity:.5}
+
+/* ---------- Lesson player ---------- */
+.player{background:#000;border-radius:var(--radius-lg);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;color:#fff;position:relative;margin-bottom:var(--space-5)}
+.player .play{width:74px;height:74px;border-radius:50%;background:rgba(255,255,255,.18);border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:26px;backdrop-filter:blur(4px)}
+.player .tag{position:absolute;top:14px;left:14px;font-size:11px;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:var(--radius-full)}
+.lesson-layout{display:grid;grid-template-columns:1fr 320px;gap:var(--space-6)}
+.lesson-content h2{font-size:22px;margin-bottom:var(--space-3)}
+.lesson-content p{margin-bottom:var(--space-4);line-height:1.7}
+.side-list{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:var(--space-4)}
+.side-list h4{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--color-neutral);margin-bottom:var(--space-3)}
+
+/* ---------- Visio ---------- */
+.visio-stage{background:#1a1a1a;border-radius:var(--radius-lg);aspect-ratio:16/9;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:8px;padding:8px;margin-bottom:var(--space-5)}
+.vtile{background:linear-gradient(135deg,#2a2a2a,#3a3a3a);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;position:relative;color:#fff;font-family:var(--font-title)}
+.vtile .who{position:absolute;bottom:8px;left:10px;font-size:12px;background:rgba(0,0,0,.5);padding:3px 9px;border-radius:4px}
+.vtile .pic{width:56px;height:56px;border-radius:50%;background:var(--color-asparagus);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700}
+.vtile.host{outline:2px solid var(--color-apple-green)}
+.visio-controls{display:flex;gap:12px;justify-content:center}
+.vctrl{width:50px;height:50px;border-radius:50%;background:#fff;box-shadow:var(--shadow-sm);font-size:20px;display:flex;align-items:center;justify-content:center}
+.vctrl.end{background:#d64545;color:#fff}
+.visio-info{background:#fff;border-radius:var(--radius-lg);padding:var(--space-5);box-shadow:var(--shadow-sm);margin-bottom:var(--space-5);display:flex;justify-content:space-between;align-items:center}
+.live{color:#d64545;font-family:var(--font-title);font-weight:700;display:flex;align-items:center;gap:7px;font-size:13px}
+.live .blink{width:9px;height:9px;background:#d64545;border-radius:50%;animation:blink 1.2s infinite}
+@keyframes blink{50%{opacity:.3}}
+
+/* ---------- AI assistant ---------- */
+.chat{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;height:calc(100vh - 200px)}
+.chat-head{padding:var(--space-4) var(--space-5);border-bottom:1px solid rgba(74,74,74,.1);display:flex;align-items:center;gap:12px}
+.chat-head .ai-ava{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--color-asparagus),var(--color-indigo-dye));display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px}
+.chat-body{flex:1;overflow-y:auto;padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-4)}
+.msg{max-width:74%;padding:13px 16px;border-radius:var(--radius-lg);line-height:1.6;font-size:13px}
+.msg.ai{background:var(--color-background);align-self:flex-start;border-bottom-left-radius:4px}
+.msg.me{background:var(--color-accent);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.chat-input{padding:var(--space-4);border-top:1px solid rgba(74,74,74,.1);display:flex;gap:10px}
+.chat-input input{flex:1;padding:12px 16px;border:1px solid rgba(74,74,74,.2);border-radius:var(--radius-full);font-family:var(--font-body)}
+.suggest{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.suggest button{background:var(--color-background);padding:7px 13px;border-radius:var(--radius-full);font-size:12px;color:var(--color-jet)}
+
+/* ---------- Admin ---------- */
+.table{width:100%;background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);border-collapse:collapse;overflow:hidden}
+.table th{text-align:left;padding:14px var(--space-5);font-family:var(--font-title);font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--color-neutral);background:var(--color-background)}
+.table td{padding:14px var(--space-5);border-top:1px solid rgba(74,74,74,.08);font-size:13px}
+.role{font-size:11px;padding:3px 10px;border-radius:var(--radius-full);font-family:var(--font-title)}
+.role.admin{background:var(--color-indigo-dye);color:#fff}
+.role.member{background:var(--color-background);color:var(--color-jet)}
+.role.coach{background:var(--color-asparagus);color:#fff}
+.toggle{width:42px;height:24px;background:var(--color-primary);border-radius:var(--radius-full);position:relative;cursor:pointer}
+.toggle::after{content:"";position:absolute;width:18px;height:18px;background:#fff;border-radius:50%;top:3px;right:3px}
+.toggle.off{background:var(--color-neutral)}.toggle.off::after{left:3px;right:auto}
+.tabs{display:flex;gap:4px;margin-bottom:var(--space-6);border-bottom:1px solid rgba(74,74,74,.12)}
+.tab{padding:11px 18px;font-family:var(--font-title);font-weight:500;font-size:14px;color:var(--color-neutral);cursor:pointer;border-bottom:2px solid transparent}
+.tab.active{color:var(--color-accent);border-color:var(--color-accent)}
+.section-title{font-size:14px;font-family:var(--font-title);font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--color-neutral);margin:var(--space-8) 0 var(--space-4)}
+.mb6{margin-bottom:var(--space-6)}
+.flex-between{display:flex;justify-content:space-between;align-items:center}
+</style>
+</head>
+<body>
+
+<!-- ============ AUTH ============ -->
+<div id="auth" class="auth-wrap">
+  <div class="auth-side">
+    <div class="logo" style="color:#fff;margin-bottom:auto"><span class="dot"></span> ODBI ACADEMY</div>
+    <h1>Développez votre potentiel<br>en haute intensité.</h1>
+    <p>La plateforme de formation ODBI : cours structurés, visioconférences en direct et un assistant IA disponible 24/7 pour vous accompagner.</p>
+    <div class="pill"><span>📚 Cours & parcours</span><span>🎥 Visios live (BBB)</span><span>🤖 Assistant IA</span><span>🏆 Progression</span></div>
+  </div>
+  <div class="auth-form">
+    <div class="auth-card">
+      <!-- LOGIN -->
+      <div id="login-view">
+        <h2>Connexion</h2>
+        <p class="sub">Accédez à votre espace de formation</p>
+        <div class="field"><label>Adresse e-mail</label><input type="email" value="membre@odbi.fr"></div>
+        <div class="field"><label>Mot de passe</label><input type="password" value="••••••••"></div>
+        <button class="btn btn-primary btn-block" onclick="enterApp()">Se connecter</button>
+        <p class="auth-switch">Pas encore membre ? <a onclick="showSignup()">Créer un compte</a></p>
+      </div>
+      <!-- SIGNUP -->
+      <div id="signup-view" class="hidden">
+        <h2>Inscription</h2>
+        <p class="sub">Rejoignez l'académie ODBI</p>
+        <div class="field"><label>Nom complet</label><input type="text" placeholder="Jean Dupont"></div>
+        <div class="field"><label>Adresse e-mail</label><input type="email" placeholder="vous@email.fr"></div>
+        <div class="field"><label>Mot de passe</label><input type="password" placeholder="Choisissez un mot de passe"></div>
+        <div class="field"><label>Code d'accès / parcours</label><input type="text" placeholder="(optionnel) code d'invitation"></div>
+        <button class="btn btn-primary btn-block" onclick="enterApp()">Créer mon compte</button>
+        <p class="auth-switch">Déjà membre ? <a onclick="showLogin()">Se connecter</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="app" class="app">
+  <div class="topbar">
+    <div class="logo"><span class="dot"></span> ODBI ACADEMY</div>
+    <div class="topbar-right">
+      <input class="search" placeholder="Rechercher un cours, une leçon…">
+      <div style="position:relative">🔔</div>
+      <div class="avatar">JD</div>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="nav-label">Espace membre</div>
+    <div class="nav-item active" data-page="dash" onclick="go(this)"><span class="ico">🏠</span> Tableau de bord</div>
+    <div class="nav-item" data-page="catalog" onclick="go(this)"><span class="ico">📚</span> Mes cours</div>
+    <div class="nav-item" data-page="visio" onclick="go(this)"><span class="ico">🎥</span> Visios live</div>
+    <div class="nav-item" data-page="ai" onclick="go(this)"><span class="ico">🤖</span> Assistant IA</div>
+    <div class="nav-item" data-page="agenda" onclick="go(this)"><span class="ico">📅</span> Agenda</div>
+    <div class="nav-sep"></div>
+    <div class="nav-label">Administration</div>
+    <div class="nav-item" data-page="admin" onclick="go(this)"><span class="ico">⚙️</span> Back-office</div>
+    <div class="nav-sep"></div>
+    <div class="nav-item" onclick="logout()"><span class="ico">↩️</span> Déconnexion</div>
+  </aside>
+
+  <main class="main">
+    <!-- DASHBOARD -->
+    <section id="page-dash" class="page active">
+      <div class="banner">
+        <div>
+          <h2>Bienvenue, Jean 👋</h2>
+          <p>Vous avez 2 leçons en cours et une visio "Mental & Performance" aujourd'hui à 18h.</p>
+        </div>
+        <button class="btn" style="background:#fff;color:var(--color-accent)" onclick="goTo('visio')">Rejoindre la visio</button>
+      </div>
+      <div class="grid grid-3 mb6">
+        <div class="stat"><div class="num green">68%</div><div class="lbl">Progression globale</div></div>
+        <div class="stat"><div class="num">3</div><div class="lbl">Cours actifs</div></div>
+        <div class="stat"><div class="num">1 240</div><div class="lbl">Points ODBI</div></div>
+      </div>
+      <h3 style="margin-bottom:var(--space-4)">Reprendre où vous en étiez</h3>
+      <div class="grid grid-3">
+        <div class="card course-card" onclick="goTo('course')">
+          <div class="course-thumb"><span class="badge tag-business">Business</span></div>
+          <div class="course-body"><h3>Leadership en haute intensité</h3><div class="meta">📖 6 modules · ⏱ 4h</div><div class="progress"><span style="width:72%"></span></div></div>
+        </div>
+        <div class="card course-card" onclick="goTo('course')">
+          <div class="course-thumb sport"><span class="badge tag-sport">Sport</span></div>
+          <div class="course-body"><h3>Discipline & performance</h3><div class="meta">📖 5 modules · ⏱ 3h30</div><div class="progress"><span style="width:45%"></span></div></div>
+        </div>
+        <div class="card course-card" onclick="goTo('course')">
+          <div class="course-thumb life"><span class="badge tag-life">Life</span></div>
+          <div class="course-body"><h3>Équilibre & croissance perso</h3><div class="meta">📖 4 modules · ⏱ 2h45</div><div class="progress"><span style="width:90%"></span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATALOG -->
+    <section id="page-catalog" class="page">
+      <div class="page-head"><h1>Mes cours</h1><p>Tous vos parcours de formation ODBI</p></div>
+      <div class="suggest mb6">
+        <button style="background:var(--color-primary);color:#fff">Tous</button>
+        <button>Business</button><button>Sport</button><button>Life</button>
+      </div>
+      <div class="grid grid-3">
+        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb"><span class="badge tag-business">Business</span></div><div class="course-body"><h3>Leadership en haute intensité</h3><div class="meta">📖 6 modules · ⏱ 4h</div><div class="progress"><span style="width:72%"></span></div></div></div>
+        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb sport"><span class="badge tag-sport">Sport</span></div><div class="course-body"><h3>Discipline & performance</h3><div class="meta">📖 5 modules · ⏱ 3h30</div><div class="progress"><span style="width:45%"></span></div></div></div>
+        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb life"><span class="badge tag-life">Life</span></div><div class="course-body"><h3>Équilibre & croissance perso</h3><div class="meta">📖 4 modules · ⏱ 2h45</div><div class="progress"><span style="width:90%"></span></div></div></div>
+        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb sport"><span class="badge tag-sport">Sport</span></div><div class="course-body"><h3>Préparation mentale</h3><div class="meta">📖 7 modules · ⏱ 5h</div><div class="progress"><span style="width:12%"></span></div></div></div>
+        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb"><span class="badge tag-business">Business</span></div><div class="course-body"><h3>Négociation à fort enjeu</h3><div class="meta">📖 5 modules · ⏱ 3h</div><div class="progress"><span style="width:0%"></span></div></div></div>
+        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb life"><span class="badge tag-life">Life</span></div><div class="course-body"><h3>Gestion du stress intense</h3><div class="meta">📖 4 modules · ⏱ 2h</div><div class="progress"><span style="width:0%"></span></div></div></div>
+      </div>
+    </section>
+
+    <!-- COURSE DETAIL -->
+    <section id="page-course" class="page">
+      <div class="breadcrumb" onclick="goTo('catalog')">Mes cours / <b>Leadership en haute intensité</b></div>
+      <div class="flex-between mb6">
+        <div><span class="badge tag-business">Business</span><h1 style="margin-top:10px">Leadership en haute intensité</h1><p style="color:var(--color-neutral);margin-top:6px">6 modules · 24 leçons · 4h de contenu · animé par Yohann D.</p></div>
+        <button class="btn btn-primary" onclick="goTo('lesson')">Reprendre ▶</button>
+      </div>
+      <div class="progress mb6" style="height:10px"><span style="width:72%"></span></div>
+
+      <div class="module">
+        <div class="module-head"><div><h3>Module 1 — Fondamentaux du leadership</h3><div class="sub">4 leçons · terminé</div></div><span>▾</span></div>
+        <div class="lesson done" onclick="goTo('lesson')"><div class="check">✓</div><div class="lk-title">1.1 — Posture et présence</div><div class="lk-dur">12 min</div></div>
+        <div class="lesson done" onclick="goTo('lesson')"><div class="check">✓</div><div class="lk-title">1.2 — Décider sous pression</div><div class="lk-dur">18 min</div></div>
+        <div class="lesson done" onclick="goTo('lesson')"><div class="check">✓</div><div class="lk-title">1.3 — Communiquer une vision</div><div class="lk-dur">15 min</div></div>
+        <div class="lesson done" onclick="goTo('lesson')"><div class="check">✓</div><div class="lk-title">1.4 — Atelier pratique</div><div class="lk-dur">25 min</div></div>
+      </div>
+      <div class="module">
+        <div class="module-head"><div><h3>Module 2 — Mobiliser une équipe</h3><div class="sub">4 leçons · en cours</div></div><span>▾</span></div>
+        <div class="lesson done" onclick="goTo('lesson')"><div class="check">✓</div><div class="lk-title">2.1 — Créer l'engagement</div><div class="lk-dur">14 min</div></div>
+        <div class="lesson" onclick="goTo('lesson')"><div class="check"></div><div class="lk-title">2.2 — Feedback à haute intensité</div><div class="lk-dur">20 min</div></div>
+        <div class="lesson locked"><div class="check">🔒</div><div class="lk-title">2.3 — Gérer les conflits</div><div class="lk-dur">17 min</div></div>
+        <div class="lesson locked"><div class="check">🔒</div><div class="lk-title">2.4 — Visio live : cas réels</div><div class="lk-dur">60 min</div></div>
+      </div>
+      <div class="module">
+        <div class="module-head"><div><h3>Module 3 — Leadership de soi</h3><div class="sub">4 leçons · verrouillé</div></div><span>▸</span></div>
+      </div>
+    </section>
+
+    <!-- LESSON PLAYER -->
+    <section id="page-lesson" class="page">
+      <div class="breadcrumb" onclick="goTo('course')">Leadership / Module 2 / <b>2.2 Feedback à haute intensité</b></div>
+      <div class="lesson-layout">
+        <div>
+          <div class="player"><span class="tag">🎬 Vidéo — Mux / Vimeo</span><div class="play">▶</div></div>
+          <div class="lesson-content">
+            <h2>2.2 — Le feedback à haute intensité</h2>
+            <p>Dans cette leçon, vous apprenez à délivrer un feedback exigeant tout en préservant la relation. Le feedback ODBI repose sur trois piliers : la clarté du fait, l'impact mesuré, et l'engagement vers l'action.</p>
+            <p>Téléchargez la fiche pratique et réalisez l'exercice proposé avant la prochaine visio live.</p>
+            <div style="display:flex;gap:12px;margin-top:var(--space-5)">
+              <button class="btn btn-ghost">📎 Fiche PDF</button>
+              <button class="btn btn-accent" onclick="goTo('ai')">🤖 Poser une question à l'IA</button>
+              <button class="btn btn-primary">Marquer comme terminé ✓</button>
+            </div>
+          </div>
+        </div>
+        <div class="side-list">
+          <h4>Dans ce module</h4>
+          <div class="lesson done" style="padding:10px 0"><div class="check">✓</div><div class="lk-title">2.1 Créer l'engagement</div></div>
+          <div class="lesson" style="padding:10px 0;background:var(--color-background);border-radius:8px"><div class="check"></div><div class="lk-title">2.2 Feedback intensité</div></div>
+          <div class="lesson locked" style="padding:10px 0"><div class="check">🔒</div><div class="lk-title">2.3 Gérer les conflits</div></div>
+          <div class="lesson locked" style="padding:10px 0"><div class="check">🔒</div><div class="lk-title">2.4 Visio live</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISIO -->
+    <section id="page-visio" class="page">
+      <div class="page-head"><h1>Visios live</h1><p>Sessions en direct propulsées par BigBlueButton</p></div>
+      <div class="visio-info">
+        <div><div class="live"><span class="blink"></span> EN DIRECT</div><h3 style="margin-top:8px">Mental & Performance — Session live</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:4px">Animée par Yohann D. · 14 participants</p></div>
+        <button class="btn btn-primary">Rejoindre la salle BBB</button>
+      </div>
+      <div class="visio-stage">
+        <div class="vtile host"><div class="pic">YD</div><span class="who">Yohann (animateur)</span></div>
+        <div class="vtile"><div class="pic" style="background:var(--color-indigo-dye)">JD</div><span class="who">Vous</span></div>
+        <div class="vtile"><div class="pic" style="background:var(--color-apple-green)">ML</div><span class="who">Marie L.</span></div>
+        <div class="vtile"><div class="pic" style="background:#888">TP</div><span class="who">Thomas P.</span></div>
+        <div class="vtile"><div class="pic" style="background:var(--color-indigo-dye)">SR</div><span class="who">Sophie R.</span></div>
+        <div class="vtile" style="background:#222;color:var(--color-neutral)"><span>+9 participants</span></div>
+      </div>
+      <div class="visio-controls">
+        <div class="vctrl">🎤</div><div class="vctrl">📹</div><div class="vctrl">🖥️</div><div class="vctrl">✋</div><div class="vctrl">💬</div><div class="vctrl end">📞</div>
+      </div>
+      <div class="section-title">Prochaines sessions</div>
+      <div class="grid grid-2">
+        <div class="card" style="padding:var(--space-5)"><div class="flex-between"><div><h3 style="font-size:16px">Leadership : cas réels</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Demain · 18h00 — 1h</p></div><button class="btn btn-ghost">S'inscrire</button></div></div>
+        <div class="card" style="padding:var(--space-5)"><div class="flex-between"><div><h3 style="font-size:16px">Q&R Discipline & sport</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Vendredi · 12h30 — 45 min</p></div><button class="btn btn-ghost">S'inscrire</button></div></div>
+      </div>
+    </section>
+
+    <!-- AI ASSISTANT -->
+    <section id="page-ai" class="page">
+      <div class="page-head"><h1>Assistant IA ODBI</h1><p>Votre coach IA, formé sur le contenu des cours — disponible 24/7</p></div>
+      <div class="chat">
+        <div class="chat-head"><div class="ai-ava">🤖</div><div><h3 style="font-size:15px">Coach ODBI</h3><div style="font-size:12px;color:var(--color-primary)">● En ligne</div></div></div>
+        <div class="chat-body" id="chatBody">
+          <div class="msg ai">Bonjour Jean 👋 Je suis votre coach IA ODBI. Je connais tous vos cours et je peux vous aider à réviser, résumer une leçon ou répondre à vos questions. Que puis-je faire pour vous ?</div>
+          <div class="msg me">Peux-tu me résumer la leçon sur le feedback à haute intensité ?</div>
+          <div class="msg ai">Bien sûr ! La leçon "2.2 — Feedback à haute intensité" repose sur 3 piliers :<br>① <b>Clarté du fait</b> — décrire le comportement observé sans jugement.<br>② <b>Impact mesuré</b> — expliquer la conséquence concrète.<br>③ <b>Engagement vers l'action</b> — co-construire la prochaine étape.<br><br>Voulez-vous que je vous propose un exercice pratique avant la visio de demain ?</div>
+        </div>
+        <div style="padding:0 var(--space-4)">
+          <div class="suggest">
+            <button onclick="quickAsk(this)">Crée-moi un quiz sur ce module</button>
+            <button onclick="quickAsk(this)">Résume mon prochain cours</button>
+            <button onclick="quickAsk(this)">Donne-moi un plan d'action</button>
+          </div>
+        </div>
+        <div class="chat-input"><input id="chatInput" placeholder="Posez votre question…" onkeydown="if(event.key==='Enter')sendMsg()"><button class="btn btn-primary" onclick="sendMsg()">Envoyer</button></div>
+      </div>
+    </section>
+
+    <!-- AGENDA -->
+    <section id="page-agenda" class="page">
+      <div class="page-head"><h1>Agenda</h1><p>Vos visios, échéances et événements ODBI</p></div>
+      <div class="grid grid-2">
+        <div class="card" style="padding:var(--space-5)"><div class="live"><span class="blink"></span> Aujourd'hui</div><h3 style="font-size:16px;margin-top:8px">Mental & Performance — Visio live</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">18h00 · BigBlueButton</p></div>
+        <div class="card" style="padding:var(--space-5)"><div style="color:var(--color-primary);font-family:var(--font-title);font-weight:700;font-size:13px">Demain</div><h3 style="font-size:16px;margin-top:8px">Leadership : cas réels</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">18h00 · BigBlueButton</p></div>
+        <div class="card" style="padding:var(--space-5)"><div style="color:var(--color-neutral);font-family:var(--font-title);font-weight:700;font-size:13px">Vendredi</div><h3 style="font-size:16px;margin-top:8px">Échéance : exercice feedback</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">À rendre avant 12h</p></div>
+        <div class="card" style="padding:var(--space-5)"><div style="color:var(--color-neutral);font-family:var(--font-title);font-weight:700;font-size:13px">Lundi</div><h3 style="font-size:16px;margin-top:8px">Q&R Discipline & sport</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">12h30 · BigBlueButton</p></div>
+      </div>
+    </section>
+
+    <!-- ADMIN -->
+    <section id="page-admin" class="page">
+      <div class="page-head"><h1>Back-office</h1><p>Gérez les cours, les membres et les accès</p></div>
+      <div class="tabs">
+        <div class="tab active" onclick="adminTab(this,'members')">Membres & accès</div>
+        <div class="tab" onclick="adminTab(this,'courses')">Cours</div>
+        <div class="tab" onclick="adminTab(this,'integ')">Intégrations</div>
+      </div>
+
+      <div id="admin-members">
+        <div class="flex-between mb6"><h3>247 membres inscrits</h3><button class="btn btn-primary">+ Inviter un membre</button></div>
+        <table class="table">
+          <tr><th>Membre</th><th>E-mail</th><th>Rôle</th><th>Accès cours</th><th>Actif</th></tr>
+          <tr><td>Jean Dupont</td><td>membre@odbi.fr</td><td><span class="role member">Membre</span></td><td>3 cours</td><td><div class="toggle"></div></td></tr>
+          <tr><td>Marie Lambert</td><td>marie@odbi.fr</td><td><span class="role coach">Coach</span></td><td>Tous</td><td><div class="toggle"></div></td></tr>
+          <tr><td>Yohann Duclos</td><td>yo@odbi.fr</td><td><span class="role admin">Admin</span></td><td>Tous</td><td><div class="toggle"></div></td></tr>
+          <tr><td>Thomas Petit</td><td>thomas@email.fr</td><td><span class="role member">Membre</span></td><td>1 cours</td><td><div class="toggle off"></div></td></tr>
+        </table>
+      </div>
+
+      <div id="admin-courses" class="hidden">
+        <div class="flex-between mb6"><h3>6 cours publiés</h3><button class="btn btn-primary">+ Créer un cours</button></div>
+        <table class="table">
+          <tr><th>Cours</th><th>Catégorie</th><th>Modules</th><th>Inscrits</th><th>Statut</th><th></th></tr>
+          <tr><td>Leadership en haute intensité</td><td><span class="badge tag-business">Business</span></td><td>6</td><td>180</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
+          <tr><td>Discipline & performance</td><td><span class="badge tag-sport">Sport</span></td><td>5</td><td>142</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
+          <tr><td>Équilibre & croissance perso</td><td><span class="badge tag-life">Life</span></td><td>4</td><td>96</td><td>Brouillon</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
+        </table>
+      </div>
+
+      <div id="admin-integ" class="hidden">
+        <div class="grid grid-2">
+          <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">🎥 BigBlueButton</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Visioconférences live</p></div><span class="badge" style="background:var(--color-primary)">Connecté</span></div><div class="field" style="margin-top:var(--space-5)"><label>URL serveur BBB</label><input value="https://bbb.odbi.fr/bigbluebutton/"></div></div>
+          <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">🤖 Assistant IA (Claude)</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Coach IA sur le contenu des cours</p></div><span class="badge" style="background:var(--color-primary)">Connecté</span></div><div class="field" style="margin-top:var(--space-5)"><label>Modèle</label><input value="claude-opus-4-8"></div></div>
+          <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">💳 Stripe</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Paiements & abonnements</p></div><span class="badge" style="background:var(--color-neutral)">À configurer</span></div></div>
+          <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">💬 WhatsApp</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Communauté (externe)</p></div><span class="badge" style="background:var(--color-primary)">Lien externe</span></div><div class="field" style="margin-top:var(--space-5)"><label>Lien du groupe</label><input value="https://chat.whatsapp.com/..."></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+function showSignup(){document.getElementById('login-view').classList.add('hidden');document.getElementById('signup-view').classList.remove('hidden')}
+function showLogin(){document.getElementById('signup-view').classList.add('hidden');document.getElementById('login-view').classList.remove('hidden')}
+function enterApp(){document.getElementById('auth').style.display='none';document.getElementById('app').classList.add('active')}
+function logout(){document.getElementById('app').classList.remove('active');document.getElementById('auth').style.display='flex';showLogin()}
+function goTo(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  const nav=document.querySelector('.nav-item[data-page="'+page+'"]');if(nav)nav.classList.add('active');
+  document.querySelector('.main').scrollTo(0,0);
+}
+function go(el){goTo(el.dataset.page)}
+function adminTab(el,t){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
+  ['members','courses','integ'].forEach(x=>document.getElementById('admin-'+x).classList.add('hidden'));
+  document.getElementById('admin-'+t).classList.remove('hidden')}
+function sendMsg(){const i=document.getElementById('chatInput');if(!i.value.trim())return;const b=document.getElementById('chatBody');
+  b.innerHTML+='<div class="msg me">'+i.value+'</div>';const q=i.value;i.value='';
+  setTimeout(()=>{b.innerHTML+='<div class="msg ai">💡 (Réponse IA simulée) Dans la version réelle, je m\'appuierais sur le contenu de vos cours ODBI pour répondre précisément à : « '+q+' »</div>';b.scrollTop=b.scrollHeight},500);b.scrollTop=b.scrollHeight}
+function quickAsk(el){document.getElementById('chatInput').value=el.textContent;sendMsg()}
+</script>
+</body>
+</html>
