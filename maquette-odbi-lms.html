@@ -10,7 +10,7 @@
 <style>
 :root{
   --color-asparagus:#86A43F; --color-apple-green:#B1BC4B; --color-indigo-dye:#114C6A;
-  --color-jet:#4D4D4D; --color-french-grey:#A4A4A7; --color-alabaster:#F0EEE6;
+  --color-jet:#4D4D4D; --color-black:#1A1A1A; --color-french-grey:#A4A4A7; --color-alabaster:#F0EEE6;
   --color-primary:var(--color-asparagus); --color-secondary:var(--color-apple-green);
   --color-accent:var(--color-indigo-dye); --color-text-dark:var(--color-jet);
   --color-text-light:#FFFFFF; --color-background:var(--color-alabaster);
@@ -89,10 +89,25 @@ a{color:inherit;text-decoration:none}
 .card{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);overflow:hidden;transition:transform .2s,box-shadow .2s}
 .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
 .course-card{cursor:pointer}
-.course-thumb{height:130px;background:linear-gradient(135deg,var(--color-asparagus),var(--color-apple-green));position:relative;display:flex;align-items:flex-end;padding:var(--space-3)}
-.course-thumb.alt1{background:linear-gradient(135deg,var(--color-indigo-dye),#1d6b94)}
-.course-thumb.alt2{background:linear-gradient(135deg,var(--color-jet),#6f6f6f)}
+.course-thumb{height:130px;position:relative;display:flex;align-items:flex-end;padding:var(--space-3)}
+.thumb-voie{background:linear-gradient(135deg,var(--color-indigo-dye),var(--color-asparagus))}
+.thumb-ecole{background:linear-gradient(135deg,var(--color-black),var(--color-asparagus))}
 .course-thumb .badge{position:absolute;top:12px;left:12px}
+.course-thumb .uni{position:absolute;top:12px;left:12px;font-size:10px;font-family:var(--font-title);font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.25);padding:4px 9px;border-radius:var(--radius-full)}
+/* En-tête d'univers */
+.universe{display:flex;align-items:center;gap:14px;margin:var(--space-8) 0 var(--space-5)}
+.universe:first-child{margin-top:0}
+.uni-chip{width:8px;height:38px;border-radius:var(--radius-full)}
+.uni-chip.voie{background:linear-gradient(var(--color-indigo-dye),var(--color-asparagus))}
+.uni-chip.ecole{background:linear-gradient(var(--color-black),var(--color-asparagus))}
+.universe h2{font-size:22px}
+.universe .desc{color:var(--color-neutral);font-size:13px;margin-top:2px}
+/* Bouton WhatsApp */
+.btn-wa{background:#25D366;color:#fff}
+.btn-wa:hover{background:#1eb858}
+.wa-card{display:flex;align-items:center;gap:14px;background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:var(--space-4) var(--space-5);border-left:4px solid #25D366}
+.wa-card .wa-ic{width:40px;height:40px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.course-tag{font-size:11px;color:var(--color-accent);font-family:var(--font-title);font-weight:500;background:rgba(17,76,106,.08);padding:3px 10px;border-radius:var(--radius-full);display:inline-block}
 .course-body{padding:var(--space-4)}
 .course-body h3{font-size:17px;margin-bottom:6px}
 .course-body .meta{font-size:12px;color:var(--color-neutral);display:flex;gap:14px;margin-top:10px}
@@ -277,7 +292,7 @@ a{color:inherit;text-decoration:none}
       <div class="banner">
         <div>
           <h2>Bienvenue, Jean 👋</h2>
-          <p>Vous avez 2 leçons en cours et une visio "Mental & Performance" aujourd'hui à 18h.</p>
+          <p>Vous avez 2 leçons en cours et une visio « La Voie des managers » aujourd'hui à 18h.</p>
         </div>
         <button class="btn" style="background:#fff;color:var(--color-accent)" onclick="goTo('visio')">Rejoindre la visio</button>
       </div>
@@ -289,41 +304,57 @@ a{color:inherit;text-decoration:none}
       <h3 style="margin-bottom:var(--space-4)">Reprendre où vous en étiez</h3>
       <div class="grid grid-3">
         <div class="card course-card" onclick="goTo('course')">
-          <div class="course-thumb"></div>
-          <div class="course-body"><h3>Leadership en haute intensité</h3><div class="meta">📖 6 modules · ⏱ 4h</div><div class="progress"><span style="width:72%"></span></div></div>
+          <div class="course-thumb thumb-voie"><span class="uni">La Voie</span></div>
+          <div class="course-body"><h3>La Voie des managers</h3><div class="meta">📖 6 modules · ⏱ 4h</div><div class="progress"><span style="width:72%"></span></div></div>
         </div>
         <div class="card course-card" onclick="goTo('course')">
-          <div class="course-thumb alt1"></div>
-          <div class="course-body"><h3>Discipline & performance</h3><div class="meta">📖 5 modules · ⏱ 3h30</div><div class="progress"><span style="width:45%"></span></div></div>
+          <div class="course-thumb thumb-ecole"><span class="uni">École · BTC</span></div>
+          <div class="course-body"><h3>Born To Coach — Module 2</h3><div class="meta">📖 3 modules · ⏱ 3h30</div><div class="progress"><span style="width:45%"></span></div></div>
         </div>
         <div class="card course-card" onclick="goTo('course')">
-          <div class="course-thumb alt2"></div>
-          <div class="course-body"><h3>Équilibre & croissance perso</h3><div class="meta">📖 4 modules · ⏱ 2h45</div><div class="progress"><span style="width:90%"></span></div></div>
+          <div class="course-thumb thumb-voie"><span class="uni">La Voie</span></div>
+          <div class="course-body"><h3>Vous En Paix</h3><div class="meta">📖 4 modules · ⏱ 2h45</div><div class="progress"><span style="width:90%"></span></div></div>
         </div>
       </div>
     </section>
 
     <!-- CATALOG -->
     <section id="page-catalog" class="page">
-      <div class="page-head"><h1>Mes cours</h1><p>Tous vos parcours de formation ODBI</p></div>
+      <div class="page-head"><h1>Mes programmes</h1><p>Vos parcours ODBI, organisés par univers</p></div>
+
+      <!-- Univers La Voie -->
+      <div class="universe"><div class="uni-chip voie"></div><div><h2>La Voie</h2><div class="desc">Programmes de transformation — dominante bleu + vert</div></div></div>
       <div class="grid grid-3">
-        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb"></div><div class="course-body"><h3>Leadership en haute intensité</h3><div class="meta">📖 6 modules · ⏱ 4h</div><div class="progress"><span style="width:72%"></span></div></div></div>
-        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb alt1"></div><div class="course-body"><h3>Discipline & performance</h3><div class="meta">📖 5 modules · ⏱ 3h30</div><div class="progress"><span style="width:45%"></span></div></div></div>
-        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb alt2"></div><div class="course-body"><h3>Équilibre & croissance perso</h3><div class="meta">📖 4 modules · ⏱ 2h45</div><div class="progress"><span style="width:90%"></span></div></div></div>
-        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb alt1"></div><div class="course-body"><h3>Préparation mentale</h3><div class="meta">📖 7 modules · ⏱ 5h</div><div class="progress"><span style="width:12%"></span></div></div></div>
-        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb"></div><div class="course-body"><h3>Négociation à fort enjeu</h3><div class="meta">📖 5 modules · ⏱ 3h</div><div class="progress"><span style="width:0%"></span></div></div></div>
-        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb alt2"></div><div class="course-body"><h3>Gestion du stress intense</h3><div class="meta">📖 4 modules · ⏱ 2h</div><div class="progress"><span style="width:0%"></span></div></div></div>
+        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb thumb-voie"><span class="uni">Programme</span></div><div class="course-body"><h3>La Voie</h3><div class="meta">📖 6 modules · ⏱ 5h</div><div class="progress"><span style="width:30%"></span></div></div></div>
+        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb thumb-voie"><span class="uni">Programme long</span></div><div class="course-body"><h3>La Voie des managers</h3><div class="meta">📖 6 modules · ⏱ 4h</div><div class="progress"><span style="width:72%"></span></div></div></div>
+        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb thumb-voie"><span class="uni">Programme long</span></div><div class="course-body"><h3>La Voie des artisans</h3><div class="meta">📖 6 modules · ⏱ 4h</div><div class="progress"><span style="width:0%"></span></div></div></div>
+        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb thumb-voie"><span class="uni">Prolongement</span></div><div class="course-body"><h3>Vous En Mieux</h3><div class="meta">📖 4 modules · ⏱ 2h</div><div class="progress"><span style="width:50%"></span></div></div></div>
+        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb thumb-voie"><span class="uni">Prolongement</span></div><div class="course-body"><h3>Vous En Paix</h3><div class="meta">📖 4 modules · ⏱ 2h45</div><div class="progress"><span style="width:90%"></span></div></div></div>
+        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb thumb-voie"><span class="uni">Prolongement</span></div><div class="course-body"><h3>Vous Au Top</h3><div class="meta">📖 4 modules · ⏱ 2h</div><div class="progress"><span style="width:0%"></span></div></div></div>
+        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb thumb-voie"><span class="uni">Prolongement</span></div><div class="course-body"><h3>Vous En Lien</h3><div class="meta">📖 4 modules · ⏱ 2h</div><div class="progress"><span style="width:0%"></span></div></div></div>
+      </div>
+
+      <!-- Univers L'École -->
+      <div class="universe"><div class="uni-chip ecole"></div><div><h2>L'École</h2><div class="desc">Certifications par niveaux — dominante noir + vert</div></div></div>
+      <div class="grid grid-3">
+        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb thumb-ecole"><span class="uni">BTC</span></div><div class="course-body"><h3>Born To Coach</h3><div class="meta">📖 3 modules · ⏱ 12h</div><div class="progress"><span style="width:45%"></span></div></div></div>
+        <div class="card course-card" onclick="goTo('course')"><div class="course-thumb thumb-ecole"><span class="uni">IC</span></div><div class="course-body"><h3>Intelligence Collective</h3><div class="meta">📖 3 modules · ⏱ 12h</div><div class="progress"><span style="width:0%"></span></div></div></div>
       </div>
     </section>
 
     <!-- COURSE DETAIL -->
     <section id="page-course" class="page">
-      <div class="breadcrumb" onclick="goTo('catalog')">Mes cours / <b>Leadership en haute intensité</b></div>
+      <div class="breadcrumb" onclick="goTo('catalog')">Mes programmes / La Voie / <b>La Voie des managers</b></div>
       <div class="flex-between mb6">
-        <div><h1>Leadership en haute intensité</h1><p style="color:var(--color-neutral);margin-top:6px">6 modules · 24 leçons · 4h de contenu · animé par Yohann D.</p></div>
-        <button class="btn btn-primary" onclick="goTo('lesson')">Reprendre ▶</button>
+        <div><h1>La Voie des managers</h1><p style="color:var(--color-neutral);margin-top:6px">6 modules · 24 leçons · 4h de contenu · animé par Yohann D.</p></div>
+        <button class="btn btn-accent" onclick="goTo('lesson')">Reprendre ▶</button>
       </div>
       <div class="progress mb6" style="height:10px"><span style="width:72%"></span></div>
+      <div class="wa-card mb6">
+        <div class="wa-ic">💬</div>
+        <div style="flex:1"><h3 style="font-size:15px">Groupe WhatsApp du programme</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:2px">Échangez avec les autres membres de « La Voie des managers » — 42 participants</p></div>
+        <button class="btn btn-wa">Rejoindre le groupe</button>
+      </div>
 
       <div class="module">
         <div class="module-head"><div><h3>Module 1 — Fondamentaux du leadership</h3><div class="sub">4 leçons · terminé</div></div><span>▾</span></div>
@@ -346,7 +377,7 @@ a{color:inherit;text-decoration:none}
 
     <!-- LESSON PLAYER -->
     <section id="page-lesson" class="page">
-      <div class="breadcrumb" onclick="goTo('course')">Leadership / Module 2 / <b>2.2 Feedback à haute intensité</b></div>
+      <div class="breadcrumb" onclick="goTo('course')">La Voie des managers / Module 2 / <b>2.2 Feedback à haute intensité</b></div>
       <div class="lesson-layout">
         <div>
           <div class="player"><span class="tag">🎬 Vidéo — Mux / Vimeo</span><div class="play">▶</div></div>
@@ -373,10 +404,10 @@ a{color:inherit;text-decoration:none}
 
     <!-- VISIO -->
     <section id="page-visio" class="page">
-      <div class="page-head"><h1>Visios live</h1><p>Sessions en direct propulsées par BigBlueButton</p></div>
+      <div class="page-head"><h1>Visios live</h1><p>Vos sessions BigBlueButton — uniquement les programmes auxquels vous êtes inscrit</p></div>
       <div class="visio-info">
-        <div><div class="live"><span class="blink"></span> EN DIRECT</div><h3 style="margin-top:8px">Mental & Performance — Session live</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:4px">Animée par Yohann D. · 14 participants</p></div>
-        <button class="btn btn-primary">Rejoindre la salle BBB</button>
+        <div><div class="live"><span class="blink"></span> EN DIRECT</div><span class="course-tag" style="margin-top:8px">📘 La Voie des managers · Module 2</span><h3 style="margin-top:8px">Feedback à haute intensité — cas réels</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:4px">Animée par Yohann D. · 14 participants</p></div>
+        <button class="btn btn-accent">Rejoindre la salle BBB</button>
       </div>
       <div class="visio-stage">
         <div class="vtile host"><div class="pic">YD</div><span class="who">Yohann (animateur)</span></div>
@@ -389,10 +420,16 @@ a{color:inherit;text-decoration:none}
       <div class="visio-controls">
         <div class="vctrl">🎤</div><div class="vctrl">📹</div><div class="vctrl">🖥️</div><div class="vctrl">✋</div><div class="vctrl">💬</div><div class="vctrl end">📞</div>
       </div>
-      <div class="section-title">Prochaines sessions</div>
+      <div class="section-title">Vos prochaines sessions</div>
       <div class="grid grid-2">
-        <div class="card" style="padding:var(--space-5)"><div class="flex-between"><div><h3 style="font-size:16px">Leadership : cas réels</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Demain · 18h00 — 1h</p></div><button class="btn btn-ghost">S'inscrire</button></div></div>
-        <div class="card" style="padding:var(--space-5)"><div class="flex-between"><div><h3 style="font-size:16px">Q&R Discipline & sport</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Vendredi · 12h30 — 45 min</p></div><button class="btn btn-ghost">S'inscrire</button></div></div>
+        <div class="card" style="padding:var(--space-5)"><span class="course-tag">📘 La Voie des managers</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Mobiliser une équipe : Q&R</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Demain · 18h00 — 1h</p></div><button class="btn btn-ghost">S'inscrire</button></div></div>
+        <div class="card" style="padding:var(--space-5)"><span class="course-tag" style="color:var(--color-asparagus);background:rgba(134,164,63,.12)">🎓 Born To Coach · BTC 2</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Pratique du coaching live</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Vendredi · 12h30 — 45 min</p></div><button class="btn btn-ghost">S'inscrire</button></div></div>
+      </div>
+
+      <div class="section-title">Replays & comptes-rendus</div>
+      <div class="grid grid-2">
+        <div class="card" style="padding:var(--space-5)"><span class="course-tag">📘 La Voie des managers</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Créer l'engagement (Module 2.1)</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📝 Transcription Notta · 🌐 FR / EN · 12 mars</p></div><button class="btn btn-ghost">Voir le replay</button></div></div>
+        <div class="card" style="padding:var(--space-5)"><span class="course-tag" style="color:var(--color-asparagus);background:rgba(134,164,63,.12)">🎓 Born To Coach · BTC 1</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Posture du coach</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📝 Transcription Notta · 🌐 FR / EN / ES · 5 mars</p></div><button class="btn btn-ghost">Voir le replay</button></div></div>
       </div>
     </section>
 
@@ -476,10 +513,10 @@ a{color:inherit;text-decoration:none}
     <section id="page-agenda" class="page">
       <div class="page-head"><h1>Agenda</h1><p>Vos visios, échéances et événements ODBI</p></div>
       <div class="grid grid-2">
-        <div class="card" style="padding:var(--space-5)"><div class="live"><span class="blink"></span> Aujourd'hui</div><h3 style="font-size:16px;margin-top:8px">Mental & Performance — Visio live</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">18h00 · BigBlueButton</p></div>
-        <div class="card" style="padding:var(--space-5)"><div style="color:var(--color-primary);font-family:var(--font-title);font-weight:700;font-size:13px">Demain</div><h3 style="font-size:16px;margin-top:8px">Leadership : cas réels</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">18h00 · BigBlueButton</p></div>
-        <div class="card" style="padding:var(--space-5)"><div style="color:var(--color-neutral);font-family:var(--font-title);font-weight:700;font-size:13px">Vendredi</div><h3 style="font-size:16px;margin-top:8px">Échéance : exercice feedback</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">À rendre avant 12h</p></div>
-        <div class="card" style="padding:var(--space-5)"><div style="color:var(--color-neutral);font-family:var(--font-title);font-weight:700;font-size:13px">Lundi</div><h3 style="font-size:16px;margin-top:8px">Q&R Discipline & sport</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">12h30 · BigBlueButton</p></div>
+        <div class="card" style="padding:var(--space-5)"><div class="live"><span class="blink"></span> Aujourd'hui</div><span class="course-tag" style="margin-top:8px">📘 La Voie des managers</span><h3 style="font-size:16px;margin-top:8px">Feedback à haute intensité — Visio live</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">18h00 · BigBlueButton</p></div>
+        <div class="card" style="padding:var(--space-5)"><div style="color:var(--color-primary);font-family:var(--font-title);font-weight:700;font-size:13px">Demain</div><span class="course-tag" style="margin-top:8px">📘 La Voie des managers</span><h3 style="font-size:16px;margin-top:8px">Mobiliser une équipe : Q&R</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">18h00 · BigBlueButton</p></div>
+        <div class="card" style="padding:var(--space-5)"><div style="color:var(--color-neutral);font-family:var(--font-title);font-weight:700;font-size:13px">Vendredi</div><span class="course-tag" style="margin-top:8px;color:var(--color-asparagus);background:rgba(134,164,63,.12)">🎓 Born To Coach · BTC 2</span><h3 style="font-size:16px;margin-top:8px">Pratique du coaching live</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">12h30 · BigBlueButton</p></div>
+        <div class="card" style="padding:var(--space-5)"><div style="color:var(--color-neutral);font-family:var(--font-title);font-weight:700;font-size:13px">Lundi</div><span class="course-tag" style="margin-top:8px">📘 Vous En Paix</span><h3 style="font-size:16px;margin-top:8px">Échéance : exercice de la semaine</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">À rendre avant 12h</p></div>
       </div>
     </section>
 
@@ -504,12 +541,14 @@ a{color:inherit;text-decoration:none}
       </div>
 
       <div id="admin-courses" class="hidden">
-        <div class="flex-between mb6"><h3>6 cours publiés</h3><button class="btn btn-primary">+ Créer un cours</button></div>
+        <div class="flex-between mb6"><h3>9 programmes</h3><button class="btn btn-primary">+ Créer un programme</button></div>
         <table class="table">
-          <tr><th>Cours</th><th>Modules</th><th>Inscrits</th><th>Statut</th><th></th></tr>
-          <tr><td>Leadership en haute intensité</td><td>6</td><td>180</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
-          <tr><td>Discipline & performance</td><td>5</td><td>142</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
-          <tr><td>Équilibre & croissance perso</td><td>4</td><td>96</td><td>Brouillon</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
+          <tr><th>Programme</th><th>Univers</th><th>Modules</th><th>Inscrits</th><th>WhatsApp</th><th>Statut</th><th></th></tr>
+          <tr><td>La Voie</td><td><span class="badge" style="background:var(--color-indigo-dye)">La Voie</span></td><td>6</td><td>210</td><td>💬 Lié</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
+          <tr><td>La Voie des managers</td><td><span class="badge" style="background:var(--color-indigo-dye)">La Voie</span></td><td>6</td><td>180</td><td>💬 Lié</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
+          <tr><td>Vous En Paix</td><td><span class="badge" style="background:var(--color-indigo-dye)">La Voie</span></td><td>4</td><td>96</td><td>💬 Lié</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
+          <tr><td>Born To Coach</td><td><span class="badge" style="background:var(--color-black)">École</span></td><td>3</td><td>64</td><td>💬 Lié</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
+          <tr><td>Intelligence Collective</td><td><span class="badge" style="background:var(--color-black)">École</span></td><td>3</td><td>38</td><td>➕ À lier</td><td>Brouillon</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
         </table>
       </div>
 
@@ -518,7 +557,9 @@ a{color:inherit;text-decoration:none}
           <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">🎥 BigBlueButton</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Visioconférences live</p></div><span class="badge" style="background:var(--color-primary)">Connecté</span></div><div class="field" style="margin-top:var(--space-5)"><label>URL serveur BBB</label><input value="https://bbb.odbi.fr/bigbluebutton/"></div></div>
           <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">🧙 YoDalf — IA (Claude)</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Mentor IA sur le contenu des cours</p></div><span class="badge" style="background:var(--color-primary)">Connecté</span></div><div class="field" style="margin-top:var(--space-5)"><label>Modèle</label><input value="claude-opus-4-8"></div></div>
           <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">💳 Stripe</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Paiements & abonnements</p></div><span class="badge" style="background:var(--color-neutral)">À configurer</span></div></div>
-          <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">💬 WhatsApp</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Communauté (externe)</p></div><span class="badge" style="background:var(--color-primary)">Lien externe</span></div><div class="field" style="margin-top:var(--space-5)"><label>Lien du groupe</label><input value="https://chat.whatsapp.com/..."></div></div>
+          <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">💬 WhatsApp</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Un groupe par programme (lien externe)</p></div><span class="badge" style="background:var(--color-primary)">5 / 9 liés</span></div><p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-4)">Chaque programme a son propre groupe WhatsApp, configuré dans l'onglet « Cours ». Les membres y accèdent depuis la page du programme.</p></div>
+          <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">📝 Notta</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Transcription & traduction des visios</p></div><span class="badge" style="background:var(--color-primary)">Connecté</span></div><p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-4)">Chaque visio BigBlueButton est automatiquement transcrite et traduite par Notta. Le compte-rendu est rattaché à la leçon correspondante.</p></div>
+          <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">🗂️ Notion (CRM)</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Synchro membres ↔ CRM ODBI</p></div><span class="badge" style="background:var(--color-primary)">Connecté</span></div><div class="field" style="margin-top:var(--space-5)"><label>Base Notion (CRM)</label><input value="CRM ODBI — Membres & prospects"></div></div>
         </div>
       </div>
     </section>
