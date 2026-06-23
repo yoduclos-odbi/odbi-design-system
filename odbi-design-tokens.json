@@ -10,6 +10,7 @@
     "secondary": {
       "indigo-dye": { "value": "#114C6A", "description": "Bleu — CTA forts, contenus inspirants et backstage" },
       "jet": { "value": "#4D4D4D", "description": "Gris foncé — texte principal, titres, fonds techniques" },
+      "black": { "value": "#1A1A1A", "description": "Noir — univers École (BTC/IC), contrastes forts" },
       "french-grey": { "value": "#A4A4A7", "description": "Gris clair — fonds minimalistes, visuels quotidiens" },
       "alabaster": { "value": "#F0EEE6", "description": "Beige blanc — fond général, base des textes blancs" }
     },
@@ -17,6 +18,12 @@
       "business": { "value": "#86A43F", "description": "Collaboration, partenariats, relations professionnelles" },
       "sport": { "value": "#114C6A", "description": "Effort, discipline, performance, gestion du temps" },
       "life": { "value": "#B1BC4B", "description": "Soutien, épanouissement, croissance personnelle" }
+    },
+    "collections": {
+      "voie-primary": { "value": "#114C6A", "description": "La Voie — bleu (dominante bleu + vert)" },
+      "voie-accent": { "value": "#86A43F", "description": "La Voie — vert d'accompagnement" },
+      "ecole-primary": { "value": "#1A1A1A", "description": "L'École BTC/IC — noir (dominante noir + vert)" },
+      "ecole-accent": { "value": "#86A43F", "description": "L'École BTC/IC — vert d'accompagnement" }
     }
   },
   "typography": {

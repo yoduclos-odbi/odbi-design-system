@@ -12,6 +12,7 @@
   /* ---- COULEURS SECONDAIRES ---- */
   --color-indigo-dye: #114C6A;       /* Bleu — CTA forts, contenus backstage */
   --color-jet: #4D4D4D;              /* Gris foncé — texte principal, titres */
+  --color-black: #1A1A1A;            /* Noir — univers École (BTC/IC), contrastes forts */
   --color-french-grey: #A4A4A7;      /* Gris clair — fonds minimalistes */
   --color-alabaster: #F0EEE6;        /* Beige blanc — fond général, textes blancs */
 
@@ -28,6 +29,14 @@
   --color-category-business: #86A43F;
   --color-category-sport: #114C6A;
   --color-category-life: #B1BC4B;
+
+  /* ---- UNIVERS / COLLECTIONS LMS ----
+     La Voie  → dominante bleu + vert
+     L'École  → dominante noir + vert  */
+  --color-voie-primary: var(--color-indigo-dye);   /* Bleu */
+  --color-voie-accent: var(--color-asparagus);     /* Vert */
+  --color-ecole-primary: var(--color-black);       /* Noir */
+  --color-ecole-accent: var(--color-asparagus);    /* Vert */
 
   /* ---- TYPOGRAPHIE ---- */
   --font-title: 'Roboto', sans-serif;           /* Titres & en-têtes */
