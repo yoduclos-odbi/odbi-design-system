@@ -91,8 +91,9 @@ Chaque **formation/programme** est un cours autonome (modules/sessions,
 progression, promotions, groupe WhatsApp, visios propres).
 
 ### Catalogue & modèle d'accès (freemium)
-- Menu : **« Les cours »** (catalogue complet) placé **au-dessus du Tableau de bord**
-  (le tableau de bord garde « reprendre mes cours » → on évite le doublon « Mes cours »).
+- Menu : **« Les programmes »** (catalogue complet) placé **au-dessus du Tableau de bord**
+  (le tableau de bord garde « reprendre mes programmes » → on évite le doublon).
+- Le **Livret d'accueil** est placé **au-dessus des programmes** dans le menu.
 - **Tous les cours sont visibles** par tout participant connecté (pas de verrou sur les cartes).
 - **Freemium** : sur un cours où le participant **n'est pas inscrit**, une partie du
   contenu est **gratuite** (pour donner envie) ; le **reste est réservé aux inscrits**.
@@ -418,8 +419,9 @@ Le profil affiche aussi :
   défaut masqués ; prénom/nom/ville/rôle restent visibles.
 
 ### Livret d'accueil
-- Lien dans le **menu de gauche** vers le **Livret d'Accueil Client ODBI** (page Notion) :
-  https://www.notion.so/odbi/Livret-d-Accueil-Client-ODBI-13d94934418a80cb843dfaebb32328ef
+- **Intégré dans la plateforme** (page interne avec **iframe Notion**), pas un lien externe.
+- Accessible depuis le **menu de gauche**, **au-dessus des programmes**.
+- Source : Livret d'Accueil Client ODBI (Notion) — embed `https://odbi.notion.site/ebd//13d94934418a80cb843dfaebb32328ef`
 
 ### Agenda
 - Présenté comme un **vrai calendrier** (vue mensuelle), filtré sur les promos du membre.
