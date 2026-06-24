@@ -150,6 +150,37 @@ a{color:inherit;text-decoration:none}
 .side-list{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:var(--space-4)}
 .side-list h4{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--color-neutral);margin-bottom:var(--space-3)}
 
+/* ---------- Session : contenus ---------- */
+.vid-main{margin-bottom:var(--space-4)}
+.vid-list{display:flex;flex-direction:column;gap:10px}
+.vid-item{display:flex;align-items:center;gap:14px;background:#fff;border-radius:var(--radius-md);box-shadow:var(--shadow-sm);padding:12px 14px;cursor:pointer}
+.vid-item:hover{background:var(--color-background)}
+.vid-item.active{outline:2px solid var(--color-accent)}
+.vid-thumb{width:64px;height:40px;border-radius:6px;background:linear-gradient(135deg,var(--color-indigo-dye),var(--color-asparagus));display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;flex-shrink:0}
+.vid-item .t{flex:1;font-size:13px;font-family:var(--font-title);font-weight:500}
+.vid-item .d{font-size:12px;color:var(--color-neutral)}
+.res-item{display:flex;align-items:center;gap:14px;background:#fff;border-radius:var(--radius-md);box-shadow:var(--shadow-sm);padding:14px;margin-bottom:10px}
+.res-ic{width:42px;height:42px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;flex-shrink:0}
+.res-ic.pdf{background:#d64545}.res-ic.audio{background:var(--color-asparagus)}.res-ic.doc{background:var(--color-accent)}
+.res-item .t{flex:1}.res-item .t b{font-family:var(--font-title);font-size:14px;display:block}.res-item .t small{color:var(--color-neutral);font-size:12px}
+.quiz-type{display:inline-block;font-size:11px;font-family:var(--font-title);font-weight:500;color:var(--color-accent);background:rgba(17,76,106,.08);padding:3px 10px;border-radius:var(--radius-full);margin-bottom:10px}
+.quiz-q{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:var(--space-5);margin-bottom:var(--space-4)}
+.quiz-q h4{font-size:15px;margin-bottom:var(--space-3)}
+.q-opt{display:flex;align-items:center;gap:12px;padding:11px 14px;border:1px solid rgba(74,74,74,.18);border-radius:var(--radius-md);margin-bottom:8px;cursor:pointer}
+.q-opt:hover{border-color:var(--color-primary);background:var(--color-background)}
+.q-opt .box{width:20px;height:20px;border-radius:50%;border:2px solid var(--color-neutral);flex-shrink:0}
+.q-opt.sel{border-color:var(--color-primary)}.q-opt.sel .box{background:var(--color-primary);border-color:var(--color-primary)}
+.q-match{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.q-match .col div{background:var(--color-background);border-radius:var(--radius-md);padding:11px 14px;margin-bottom:8px;font-size:13px}
+.ref-item{display:flex;gap:14px;background:#fff;border-radius:var(--radius-md);box-shadow:var(--shadow-sm);padding:14px;margin-bottom:10px}
+.ref-type{font-size:11px;font-family:var(--font-title);font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:4px 9px;border-radius:var(--radius-full);color:#fff;height:fit-content;flex-shrink:0}
+.ref-type.video{background:#d64545}.ref-type.livre{background:var(--color-asparagus)}.ref-type.article{background:var(--color-accent)}
+.ref-item .t b{font-family:var(--font-title);font-size:14px;display:block}.ref-item .t small{color:var(--color-neutral);font-size:12px}
+.lex-item{background:#fff;border-radius:var(--radius-md);box-shadow:var(--shadow-sm);padding:14px 18px;margin-bottom:10px;border-left:3px solid var(--color-asparagus)}
+.lex-item dt{font-family:var(--font-title);font-weight:700;font-size:14px;margin-bottom:4px}
+.lex-item dd{color:var(--color-jet);font-size:13px;line-height:1.6}
+.session-row .check.video{background:transparent;border:none;font-size:18px;color:var(--color-neutral)}
+
 /* ---------- Visio ---------- */
 .visio-stage{background:#1a1a1a;border-radius:var(--radius-lg);aspect-ratio:16/9;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:8px;padding:8px;margin-bottom:var(--space-5)}
 .vtile{background:linear-gradient(135deg,#2a2a2a,#3a3a3a);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;position:relative;color:#fff;font-family:var(--font-title)}
@@ -376,49 +407,118 @@ a{color:inherit;text-decoration:none}
         <button class="btn btn-wa">Rejoindre le groupe</button>
       </div>
 
+      <h3 style="margin-bottom:var(--space-4)">Sessions du cours</h3>
       <div class="module">
-        <div class="module-head"><div><h3>Module 1 — Fondamentaux du leadership</h3><div class="sub">4 leçons · terminé</div></div><span>▾</span></div>
-        <div class="lesson done" onclick="goTo('lesson')"><div class="check">✓</div><div class="lk-title">1.1 — Posture et présence</div><div class="lk-dur">12 min</div></div>
-        <div class="lesson done" onclick="goTo('lesson')"><div class="check">✓</div><div class="lk-title">1.2 — Décider sous pression</div><div class="lk-dur">18 min</div></div>
-        <div class="lesson done" onclick="goTo('lesson')"><div class="check">✓</div><div class="lk-title">1.3 — Communiquer une vision</div><div class="lk-dur">15 min</div></div>
-        <div class="lesson done" onclick="goTo('lesson')"><div class="check">✓</div><div class="lk-title">1.4 — Atelier pratique</div><div class="lk-dur">25 min</div></div>
+        <div class="module-head" onclick="goTo('lesson')"><div class="lesson done" style="padding:0;border:none"><div class="check">✓</div><div><h3>Session 1 — Fondamentaux du leadership</h3><div class="sub">🎬 3 vidéos · 🎧 1 audio · 📄 2 PDF · ✅ quiz · terminé</div></div></div><button class="btn btn-ghost" style="padding:6px 14px">Revoir</button></div>
       </div>
       <div class="module">
-        <div class="module-head"><div><h3>Module 2 — Mobiliser une équipe</h3><div class="sub">4 leçons · en cours</div></div><span>▾</span></div>
-        <div class="lesson done" onclick="goTo('lesson')"><div class="check">✓</div><div class="lk-title">2.1 — Créer l'engagement</div><div class="lk-dur">14 min</div></div>
-        <div class="lesson" onclick="goTo('lesson')"><div class="check"></div><div class="lk-title">2.2 — Feedback à haute intensité</div><div class="lk-dur">20 min</div></div>
-        <div class="lesson locked"><div class="check">🔒</div><div class="lk-title">2.3 — Gérer les conflits</div><div class="lk-dur">17 min</div></div>
-        <div class="lesson locked"><div class="check">🔒</div><div class="lk-title">2.4 — Visio live : cas réels</div><div class="lk-dur">60 min</div></div>
+        <div class="module-head" onclick="goTo('lesson')"><div class="lesson" style="padding:0;border:none"><div class="check" style="border-color:var(--color-accent)"></div><div><h3>Session 2 — Mobiliser une équipe</h3><div class="sub">🎬 4 vidéos · 🎧 2 audios · 📄 1 PDF · ✅ quiz · 🎥 1 visio · en cours</div></div></div><button class="btn btn-accent" style="padding:6px 14px">Continuer ▶</button></div>
       </div>
       <div class="module">
-        <div class="module-head"><div><h3>Module 3 — Leadership de soi</h3><div class="sub">4 leçons · verrouillé</div></div><span>▸</span></div>
+        <div class="module-head" style="opacity:.55;border-left-color:var(--color-neutral)"><div class="lesson" style="padding:0;border:none"><div class="check">🔒</div><div><h3>Session 3 — Leadership de soi</h3><div class="sub">🎬 3 vidéos · 📄 2 PDF · ✅ quiz · verrouillé</div></div></div></div>
+      </div>
+      <div class="module">
+        <div class="module-head" style="opacity:.55;border-left-color:var(--color-neutral)"><div class="lesson" style="padding:0;border:none"><div class="check">🔒</div><div><h3>Session 4 — Décider en incertitude</h3><div class="sub">🎬 2 vidéos · 🎧 1 audio · ✅ quiz · 🎥 1 visio · verrouillé</div></div></div></div>
       </div>
     </section>
 
-    <!-- LESSON PLAYER -->
+    <!-- SESSION -->
     <section id="page-lesson" class="page">
-      <div class="breadcrumb" onclick="goTo('course')">La Voie des managers / Module 2 / <b>2.2 Feedback à haute intensité</b></div>
-      <div class="lesson-layout">
-        <div>
-          <div class="player"><span class="tag">🎬 Vidéo — Mux / Vimeo</span><div class="play">▶</div></div>
-          <div class="lesson-content">
-            <h2>2.2 — Le feedback à haute intensité</h2>
-            <p>Dans cette leçon, vous apprenez à délivrer un feedback exigeant tout en préservant la relation. Le feedback ODBI repose sur trois piliers : la clarté du fait, l'impact mesuré, et l'engagement vers l'action.</p>
-            <p>Téléchargez la fiche pratique et réalisez l'exercice proposé avant la prochaine visio live.</p>
-            <div style="display:flex;gap:12px;margin-top:var(--space-5)">
-              <button class="btn btn-ghost">📎 Fiche PDF</button>
-              <button class="btn btn-accent" onclick="goTo('ai')">🧙 Demander à YoDalf</button>
-              <button class="btn btn-primary">Marquer comme terminé ✓</button>
+      <div class="breadcrumb" onclick="goTo('course')">La Voie des managers / <b>Session 2 — Mobiliser une équipe</b></div>
+      <div class="flex-between mb6">
+        <div><h1>Session 2 — Mobiliser une équipe</h1><p style="color:var(--color-neutral);margin-top:6px">Cours : La Voie des managers · animé par Yohann D.</p></div>
+        <button class="btn btn-accent" onclick="goTo('ai')">🧙 Demander à YoDalf</button>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active" onclick="sessTab(this,'video')">🎬 Vidéos</div>
+        <div class="tab" onclick="sessTab(this,'res')">🎧 Ressources</div>
+        <div class="tab" onclick="sessTab(this,'quiz')">✅ Quiz</div>
+        <div class="tab" onclick="sessTab(this,'ref')">📚 Références</div>
+        <div class="tab" onclick="sessTab(this,'lex')">📖 Lexique</div>
+      </div>
+
+      <!-- Vidéos -->
+      <div id="sess-video">
+        <div class="lesson-layout">
+          <div>
+            <div class="player vid-main"><span class="tag">🎬 Vidéo 1/4 — Mux / Vimeo</span><div class="play">▶</div></div>
+            <div class="lesson-content">
+              <h2>Créer l'engagement collectif</h2>
+              <p>Première vidéo de la session : comment fédérer une équipe autour d'un objectif commun en contexte de haute intensité. Les vidéos suivantes approfondissent chaque levier.</p>
+              <button class="btn btn-primary">Marquer la session comme terminée ✓</button>
+            </div>
+          </div>
+          <div class="side-list">
+            <h4>Vidéos de la session (4)</h4>
+            <div class="vid-list">
+              <div class="vid-item active"><div class="vid-thumb">▶</div><div class="t">1 · Créer l'engagement</div><div class="d">14 min</div></div>
+              <div class="vid-item"><div class="vid-thumb">▶</div><div class="t">2 · Feedback à haute intensité</div><div class="d">20 min</div></div>
+              <div class="vid-item"><div class="vid-thumb">▶</div><div class="t">3 · Gérer les tensions</div><div class="d">17 min</div></div>
+              <div class="vid-item"><div class="vid-thumb">▶</div><div class="t">4 · Synthèse & passage à l'action</div><div class="d">9 min</div></div>
             </div>
           </div>
         </div>
-        <div class="side-list">
-          <h4>Dans ce module</h4>
-          <div class="lesson done" style="padding:10px 0"><div class="check">✓</div><div class="lk-title">2.1 Créer l'engagement</div></div>
-          <div class="lesson" style="padding:10px 0;background:var(--color-background);border-radius:8px"><div class="check"></div><div class="lk-title">2.2 Feedback intensité</div></div>
-          <div class="lesson locked" style="padding:10px 0"><div class="check">🔒</div><div class="lk-title">2.3 Gérer les conflits</div></div>
-          <div class="lesson locked" style="padding:10px 0"><div class="check">🔒</div><div class="lk-title">2.4 Visio live</div></div>
+      </div>
+
+      <!-- Ressources -->
+      <div id="sess-res" class="hidden">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Audios à écouter et documents à télécharger pour cette session.</p>
+        <div class="res-item"><div class="res-ic audio">🎧</div><div class="t"><b>Méditation guidée — ancrage du leader</b><small>Audio · 11 min</small></div><button class="btn btn-ghost">▶ Écouter</button></div>
+        <div class="res-item"><div class="res-ic audio">🎧</div><div class="t"><b>Podcast — retour d'expérience manager</b><small>Audio · 24 min</small></div><button class="btn btn-ghost">▶ Écouter</button></div>
+        <div class="res-item"><div class="res-ic pdf">📄</div><div class="t"><b>Fiche pratique — les 3 piliers du feedback</b><small>PDF · 2 pages</small></div><button class="btn btn-ghost">⬇ Télécharger</button></div>
+        <div class="res-item"><div class="res-ic doc">📑</div><div class="t"><b>Support de la session (slides)</b><small>PDF · 18 pages</small></div><button class="btn btn-ghost">⬇ Télécharger</button></div>
+      </div>
+
+      <!-- Quiz -->
+      <div id="sess-quiz" class="hidden">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Quiz de la session — plusieurs formes de questions.</p>
+        <div class="quiz-q">
+          <span class="quiz-type">Choix multiple (QCM)</span>
+          <h4>1. Quels sont les piliers du feedback ODBI ?</h4>
+          <div class="q-opt sel"><div class="box"></div> Clarté du fait</div>
+          <div class="q-opt sel"><div class="box"></div> Impact mesuré</div>
+          <div class="q-opt"><div class="box"></div> Autorité hiérarchique</div>
+          <div class="q-opt sel"><div class="box"></div> Engagement vers l'action</div>
         </div>
+        <div class="quiz-q">
+          <span class="quiz-type">Vrai / Faux</span>
+          <h4>2. Un bon feedback commence par un jugement de valeur.</h4>
+          <div class="q-opt"><div class="box"></div> Vrai</div>
+          <div class="q-opt sel"><div class="box"></div> Faux</div>
+        </div>
+        <div class="quiz-q">
+          <span class="quiz-type">Association</span>
+          <h4>3. Reliez chaque pilier à sa description.</h4>
+          <div class="q-match">
+            <div class="col"><div>Clarté du fait</div><div>Impact mesuré</div><div>Engagement</div></div>
+            <div class="col"><div>Décrire la conséquence concrète</div><div>Co-construire la suite</div><div>Décrire le comportement observé</div></div>
+          </div>
+        </div>
+        <div class="quiz-q">
+          <span class="quiz-type">Réponse libre</span>
+          <h4>4. Décrivez une situation où vous appliquerez ce feedback cette semaine.</h4>
+          <textarea class="field" rows="3" placeholder="Votre réponse…" style="width:100%"></textarea>
+        </div>
+        <button class="btn btn-primary">Valider le quiz</button>
+      </div>
+
+      <!-- Références -->
+      <div id="sess-ref" class="hidden">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Pour aller plus loin : vidéos, livres et articles recommandés.</p>
+        <div class="ref-item"><span class="ref-type livre">Livre</span><div class="t"><b>L'art du management — collectif ODBI</b><small>Chapitres 3 et 5 · mobiliser une équipe</small></div></div>
+        <div class="ref-item"><span class="ref-type video">Vidéo</span><div class="t"><b>Conférence : leadership en haute intensité</b><small>Lien externe · 22 min</small></div></div>
+        <div class="ref-item"><span class="ref-type article">Article</span><div class="t"><b>Étude : engagement et performance d'équipe</b><small>Lien externe · 8 min de lecture</small></div></div>
+      </div>
+
+      <!-- Lexique -->
+      <div id="sess-lex" class="hidden">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Les termes clés de cette session.</p>
+        <dl>
+          <div class="lex-item"><dt>Haute intensité</dt><dd>Contexte exigeant où la pression, l'enjeu et le rythme sont élevés ; cadre de référence des programmes ODBI.</dd></div>
+          <div class="lex-item"><dt>Feedback</dt><dd>Retour structuré sur un comportement observé, visant l'amélioration sans dégrader la relation.</dd></div>
+          <div class="lex-item"><dt>Engagement collectif</dt><dd>Adhésion active des membres d'une équipe à un objectif commun et aux moyens de l'atteindre.</dd></div>
+        </dl>
       </div>
     </section>
 
@@ -599,9 +699,12 @@ function goTo(page){
   document.querySelector('.main').scrollTo(0,0);
 }
 function go(el){goTo(el.dataset.page)}
-function adminTab(el,t){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
+function adminTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
   ['members','courses','integ'].forEach(x=>document.getElementById('admin-'+x).classList.add('hidden'));
   document.getElementById('admin-'+t).classList.remove('hidden')}
+function sessTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
+  ['video','res','quiz','ref','lex'].forEach(x=>document.getElementById('sess-'+x).classList.add('hidden'));
+  document.getElementById('sess-'+t).classList.remove('hidden')}
 function sendMsg(){const i=document.getElementById('chatInput');if(!i.value.trim())return;const b=document.getElementById('chatBody');
   b.innerHTML+='<div class="msg me">'+i.value+'</div>';const q=i.value;i.value='';
   setTimeout(()=>{b.innerHTML+='<div class="msg ai">💡 (Réponse YoDalf simulée) Dans la version réelle, je m\'appuierais sur le contenu de vos cours ODBI pour répondre précisément à : « '+q+' »</div>';b.scrollTop=b.scrollHeight},500);b.scrollTop=b.scrollHeight}
