@@ -998,6 +998,19 @@ a.ref-item:hover{background:var(--color-background)}
           <tr><td>BTC — 2ème génération</td><td>Born To Coach</td><td>24</td><td>Janv. 2026</td><td>12 visios</td><td>4</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Gérer</button></td></tr>
           <tr><td>IC — Cohésion #1</td><td>IC : Cohésion de groupe</td><td>16</td><td>Oct. 2026</td><td>6 visios</td><td>2</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Gérer</button></td></tr>
         </table>
+
+        <h3 class="section-title">🎥 Planning des visios (par promotion)</h3>
+        <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">C'est ici qu'on <b>programme les visios</b> : une date par semaine, rattachée à une promotion. La salle BigBlueButton est créée automatiquement.</p>
+        <div style="display:flex;gap:10px;margin-bottom:var(--space-4);flex-wrap:wrap">
+          <select class="promo-select"><option>La Voie des managers · Promo 2026 — Automne</option><option>Born To Coach · 2e gén.</option></select>
+          <button class="btn btn-primary">+ Programmer une visio</button>
+        </div>
+        <table class="table">
+          <tr><th>Semaine / séquence</th><th>Date</th><th>Heure</th><th>Durée</th><th>Animateur</th><th>Salle BBB</th><th></th></tr>
+          <tr><td>Semaine 1 — Créer l'engagement</td><td>12 mars 2026</td><td>18h00</td><td>1h</td><td>Yohann D.</td><td>✅ Créée</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Modifier</button></td></tr>
+          <tr><td>Semaine 2 — Le feedback</td><td>19 mars 2026</td><td>18h00</td><td>1h</td><td>Yohann D.</td><td>✅ Créée</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Modifier</button></td></tr>
+          <tr><td>Semaine 3 — Gérer les tensions</td><td>26 mars 2026</td><td>18h00</td><td>1h</td><td>Yohann D.</td><td>➕ À créer</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Modifier</button></td></tr>
+        </table>
       </div>
 
       <div id="admin-suivi" class="hidden">
@@ -1116,6 +1129,14 @@ a.ref-item:hover{background:var(--color-background)}
         </div>
       </div>
 
+      <h3 class="section-title" style="margin-top:0">🗓️ Séquences (semaines) de la session</h3>
+      <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">Découpez la session en semaines. Chaque semaine a son contenu et, si besoin, sa visio. <b>Les dates des visios sont fixées par promotion</b> (onglet Promotions → Planning des visios).</p>
+      <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>Semaine 1 — Créer l'engagement</b><small>📝 1 exo · 🎬 3 vidéos · 🎧 2 ressources · ✅ quiz · 🎥 visio prévue</small></div><button class="icon-btn">✏️ Contenu</button><button class="icon-btn" onclick="goTo('admin')">🎥 Visio</button><button class="icon-btn">🗑️</button></div>
+      <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>Semaine 2 — Le feedback en pratique</b><small>📝 1 exo · 🎬 1 vidéo · 🎧 1 ressource · ✅ quiz · 🎥 visio prévue</small></div><button class="icon-btn">✏️ Contenu</button><button class="icon-btn" onclick="goTo('admin')">🎥 Visio</button><button class="icon-btn">🗑️</button></div>
+      <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>Semaine 3 — Gérer les tensions</b><small>📝 1 exo · 🎬 2 vidéos · ✅ quiz · 🎥 visio prévue</small></div><button class="icon-btn">✏️ Contenu</button><button class="icon-btn" onclick="goTo('admin')">🎥 Visio</button><button class="icon-btn">🗑️</button></div>
+      <button class="add-btn" style="margin-bottom:var(--space-8)">+ Ajouter une semaine</button>
+
+      <h3 class="section-title" style="margin-top:0">Contenu de la séquence — <span style="color:var(--color-accent)">Semaine 1</span></h3>
       <div class="tabs">
         <div class="tab active" onclick="esTab(this,'ex')">📝 Exercices</div>
         <div class="tab" onclick="esTab(this,'video')">🎬 Vidéos</div>

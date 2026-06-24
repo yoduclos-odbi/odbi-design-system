@@ -309,6 +309,8 @@ Onglets :
     aussi par programme dans l'éditeur.
 - **Cours** — création/édition des cours, sessions, contenus, WhatsApp par cours
 - **Promotions** — cohortes par programme, membres, dates, classes, présentiels
+  - **Planning des visios** : programmation des visios par promotion (semaine → date/heure/
+    durée/animateur), création automatique de la salle BBB.
 - **Suivi pédagogique (animateur)** — accès aux **restitutions des participants** :
   exercices rendus (fichiers téléchargeables), **résultats de quiz** (score, tentatives),
   vidéos vues, statut. Filtrable par cours / promo / séquence. Export CSV + Notion (BPF).
@@ -323,7 +325,16 @@ Doit être **ergonomique** (rechargement manuel des contenus depuis Moodle).
 
 **Éditeur de session** :
 - Titre, règle d'accès (verrouillage), **toggle « pédagogie inversée »** (gating exercices, activable par session — non bloquant)
-- Onglets d'édition : **Exercices** (titre, consigne, fiche PDF), **Vidéos** (ID/URL Vimeo, titre, durée), **Ressources** (upload audios/PDF par glisser-déposer), **Quiz** (constructeur : type par question — QCM / Vrai-Faux / Association / Réponse libre — options et bonne réponse)
+- **Découpage en séquences (semaines)** : ajout / réordonnancement / suppression des semaines ;
+  chaque semaine a son contenu et, le cas échéant, sa visio.
+- Édition du **contenu de la séquence sélectionnée** : **Exercices** (titre, consigne, fiche PDF),
+  **Vidéos** (ID/URL Vimeo, titre, durée — plusieurs), **Ressources** (upload audios/PDF, plusieurs),
+  **Quiz** (constructeur : type par question — QCM / Vrai-Faux / Association / Réponse libre — ~5 questions)
+
+### Programmation des visios
+- Les visios se **programment par promotion** : back-office → **Promotions → Planning des visios**.
+- Pour chaque **semaine/séquence** : date, heure, durée, animateur → **création automatique de la salle BBB**.
+- La session définit l'**ossature** (quelles semaines ont une visio) ; la promotion fixe les **dates réelles**.
 
 ---
 
