@@ -90,6 +90,16 @@ ODBI Academy
 Chaque **formation/programme** est un cours autonome (modules/sessions,
 progression, promotions, groupe WhatsApp, visios propres).
 
+### Catalogue & modèle d'accès (freemium)
+- Menu : **« Les cours »** (catalogue complet) placé **au-dessus du Tableau de bord**
+  (le tableau de bord garde « reprendre mes cours » → on évite le doublon « Mes cours »).
+- **Tous les cours sont visibles** par tout participant connecté (pas de verrou sur les cartes).
+- **Freemium** : sur un cours où le participant **n'est pas inscrit**, une partie du
+  contenu est **gratuite** (pour donner envie) ; le **reste est réservé aux inscrits**.
+- Sur un cours où il **est inscrit** : accès complet + progression.
+- Dans le catalogue : cours inscrits = barre de progression ; cours non inscrits =
+  mention « 🎁 Contenu gratuit · reste réservé aux inscrits ».
+
 ---
 
 ## 6. Promotions (point structurant : async vs synchrone)
