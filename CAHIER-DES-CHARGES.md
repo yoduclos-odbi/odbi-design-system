@@ -144,7 +144,11 @@ Page session = **5 onglets** (ordre = pédagogie inversée) :
    - Le membre **coche « j'ai réalisé l'exercice »** → **débloque** vidéos / audios / PDF
    - **NON obligatoire** : option « Voir quand même » pour ne jamais bloquer durement
    - Fiche d'exercice téléchargeable
-2. **🎬 Vidéos** — plusieurs vidéos par session (playlist) — hébergement type Mux/Vimeo
+2. **🎬 Vidéos** — plusieurs vidéos par session (playlist) — **hébergées sur Vimeo**
+   - **Reprise de lecture** : le participant reprend **là où il s'est arrêté**
+   - Géré **par la plateforme** (pas par Vimeo) via le **Vimeo Player SDK** :
+     position enregistrée par **membre × vidéo**, multi-appareils
+   - Alimente aussi la **progression** (% vu) et l'**assiduité** (Qualiopi/BPF)
 3. **🎧 Ressources** — un ou plusieurs audios + PDF (écoute / téléchargement)
 4. **✅ Quiz** — voir §9
 5. **🎥 Replay** — la visio live de la session, **propre à la promo du membre** :
@@ -253,7 +257,7 @@ Onglets :
 
 - **Front + back** : Next.js (React)
 - **Base de données + Auth + Stockage** : Supabase (PostgreSQL)
-- **Vidéo** : Mux ou Vimeo (hébergement/streaming)
+- **Vidéo** : **Vimeo** (hébergement/streaming) + **Player SDK** (reprise de lecture, suivi de progression)
 - **Visio** : BigBlueButton (API)
 - **IA** : API Claude (Anthropic)
 - **Paiement** : Stripe
@@ -338,6 +342,7 @@ formation/promotion, etc. (volet financier = à coupler avec Stripe).
 - [ ] Lexique : uniquement par cours, ou aussi un lexique global plateforme ?
 - [x] Sens de la synchro Notion : **bidirectionnel** — Notion→LMS (inscriptions + envoi des accès), LMS→Notion (CRM + BPF)
 - [ ] Service d'**e-mailing transactionnel** à choisir (envoi des accès, notifications)
+- [ ] **Plan Vimeo** adapté (Pro/Business+) requis pour Player SDK + confidentialité par domaine
 - [ ] Contenu exact de l'**e-mail d'onboarding** (identifiants vs lien magique d'activation ?)
 - [ ] Modèle d'abonnement / tarification (Stripe) : à définir
 - [ ] Langues de l'interface (FR seul, ou multilingue ?)
