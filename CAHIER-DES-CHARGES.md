@@ -295,10 +295,12 @@ deux modes possibles côté BBB :
   (pour récupérer les replays)
 
 ### Migration depuis Moodle
-- Moodle ne sert qu'à **lancer** les salles BBB → rien à migrer côté visio,
-  on rebranche simplement l'API BBB sur la nouvelle plateforme.
-- À voir séparément : faut-il migrer des **contenus de cours** existants depuis
-  Moodle ? (point à clarifier)
+- Moodle sert à **lancer les salles BBB** ET à **héberger des contenus de cours**.
+- **Pas de migration automatique** : ODBI **rechargera manuellement** les contenus
+  dans la nouvelle plateforme. → Aucun import Moodle à développer.
+- Côté visio : on rebranche simplement l'API BBB sur la nouvelle plateforme.
+- Implique un **back-office d'upload de contenus** ergonomique (vidéos, audios, PDF,
+  exercices, quiz) pour faciliter ce rechargement manuel.
 
 ---
 
@@ -340,7 +342,7 @@ formation/promotion, etc. (volet financier = à coupler avec Stripe).
 - [ ] Modèle d'abonnement / tarification (Stripe) : à définir
 - [ ] Langues de l'interface (FR seul, ou multilingue ?)
 - [ ] BBB : mode **redirection** (reco) ou **embarqué (iframe)** dans la plateforme ?
-- [ ] Migration de **contenus de cours** depuis Moodle : nécessaire ou non ?
+- [x] Migration contenus Moodle : **non** — rechargement manuel par ODBI (back-office d'upload à soigner)
 - [ ] BPF/Qualiopi : **champs exacts** à exporter vers Notion + durée de conservation des traces
 - [ ] Émargement : signature électronique requise, ou trace de connexion suffisante ?
 
