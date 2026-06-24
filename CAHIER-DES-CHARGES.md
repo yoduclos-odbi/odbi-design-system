@@ -54,11 +54,20 @@ S'appuie sur le **design system ODBI** (`odbi-design-tokens.css` / `.json`).
 | Rôle | Description |
 |------|-------------|
 | **Membre** | Suit les cours, participe aux visios/présentiels de sa promo |
-| **Coach / Animateur** | Anime les visios, suit une ou plusieurs promotions |
+| **Coach / Animateur** | Anime les visios, suit les promotions des programmes qu'il anime |
 | **Admin** | Gère contenu, membres, accès, promotions, intégrations |
 
-Accès **éditable** : un admin peut définir qui a accès à quel programme /
-promotion (accès par membre).
+### Modèle de droits (rôle × périmètre)
+- **Participant** : accès **uniquement à sa promo** (programmes où il est inscrit).
+- **Coach / Animateur** : **affecté à un ou plusieurs programmes** (table d'association
+  *animateur ↔ programmes animés*). Il a accès à **toutes les promos de ces programmes**
+  (suivi pédagogique, visios, présentiels) et **à rien** sur les programmes qu'il n'anime pas.
+- **Admin** : accès à **tout**.
+- Le **périmètre d'animation** d'un coach se gère dans le back-office (Membres → Périmètre :
+  cases à cocher des programmes animés). Les vues du coach (Suivi, Promotions, Planning visios)
+  sont **filtrées** sur ses programmes.
+
+Accès **éditable** : un admin peut définir qui a accès à quel programme / promotion.
 
 ---
 

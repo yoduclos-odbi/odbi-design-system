@@ -979,13 +979,23 @@ a.ref-item:hover{background:var(--color-background)}
           <div class="field"><label>Sessions accessibles</label><select><option>Toutes les sessions</option><option>Sessions sélectionnées…</option><option>1ère session (découverte gratuite)</option></select></div>
           <button class="btn btn-primary">Créer & envoyer les accès</button>
         </div>
+        <div class="note" style="background:rgba(134,164,63,.08);border-left:4px solid var(--color-asparagus);border-radius:8px;padding:12px 16px;margin-bottom:var(--space-5);font-size:13px">🔐 <b>Droits d'accès</b> — <b>Participant</b> : uniquement sa promo. <b>Coach/Animateur</b> : toutes les promos des <b>seuls programmes qu'il anime</b> (rien sur les autres). <b>Admin</b> : tout.</div>
         <table class="table">
-          <tr><th>Membre</th><th>E-mail</th><th>Rôle</th><th>Accès cours</th><th>Actif</th></tr>
-          <tr><td>Jean Dupont</td><td>membre@odbi.fr</td><td><span class="role member">Membre</span></td><td>3 cours</td><td><div class="toggle"></div></td></tr>
-          <tr><td>Marie Lambert</td><td>marie@odbi.fr</td><td><span class="role coach">Coach</span></td><td>Tous</td><td><div class="toggle"></div></td></tr>
-          <tr><td>Yohann Duclos</td><td>yo@odbi.fr</td><td><span class="role admin">Admin</span></td><td>Tous</td><td><div class="toggle"></div></td></tr>
-          <tr><td>Thomas Petit</td><td>thomas@email.fr</td><td><span class="role member">Membre</span></td><td>1 cours</td><td><div class="toggle off"></div></td></tr>
+          <tr><th>Membre</th><th>E-mail</th><th>Rôle</th><th>Périmètre d'accès</th><th>Actif</th></tr>
+          <tr><td>Jean Dupont</td><td>membre@odbi.fr</td><td><span class="role member">Membre</span></td><td>3 programmes (ses promos)</td><td><div class="toggle"></div></td></tr>
+          <tr><td>Marie Lambert</td><td>marie@odbi.fr</td><td><span class="role coach">Coach</span></td><td>Anime : La Voie des managers, Vous En Paix <button class="icon-btn" style="margin-left:6px">⚙️ Périmètre</button></td><td><div class="toggle"></div></td></tr>
+          <tr><td>Yohann Duclos</td><td>yo@odbi.fr</td><td><span class="role admin">Admin</span></td><td>Tous les programmes</td><td><div class="toggle"></div></td></tr>
+          <tr><td>Thomas Petit</td><td>thomas@email.fr</td><td><span class="role member">Membre</span></td><td>1 programme (sa promo)</td><td><div class="toggle off"></div></td></tr>
         </table>
+        <div class="edit-card" style="margin-top:var(--space-5)">
+          <h3>⚙️ Périmètre d'animation — Marie Lambert (Coach)</h3>
+          <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">Cochez les programmes qu'elle anime. Elle aura accès à <b>toutes les promos de ces programmes</b> (suivi, visios), et à <b>rien</b> sur les autres.</p>
+          <label style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><input type="checkbox" checked> La Voie des managers</label>
+          <label style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><input type="checkbox" checked> Vous En Paix</label>
+          <label style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><input type="checkbox"> Born To Coach — 2e gén.</label>
+          <label style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><input type="checkbox"> Intelligence Collective — Cohésion</label>
+          <button class="btn btn-primary" style="margin-top:var(--space-3)">💾 Enregistrer le périmètre</button>
+        </div>
       </div>
 
       <div id="admin-courses" class="hidden">
