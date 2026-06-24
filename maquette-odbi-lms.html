@@ -247,6 +247,7 @@ a{color:inherit;text-decoration:none}
 .person .pa{width:54px;height:54px;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-title);font-weight:700;font-size:18px}
 .person b{font-family:var(--font-title);font-size:14px;display:block}
 .person small{color:var(--color-neutral);font-size:12px}
+.pmini{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;color:#fff;font-family:var(--font-title);font-weight:700;font-size:11px;margin-right:8px;vertical-align:middle}
 /* Agenda calendrier */
 .cal{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);overflow:hidden}
 .cal-head{display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) var(--space-5);border-bottom:1px solid rgba(74,74,74,.1)}
@@ -578,16 +579,15 @@ a{color:inherit;text-decoration:none}
       <!-- Participants (de la promo) -->
       <div id="crs-participants" class="hidden">
         <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">👥 Participants de votre promotion — <b>Promo 2026 — Automne</b> · 42 membres.</p>
-        <div class="people">
-          <div class="person"><div class="pa" style="background:var(--color-indigo-dye)">JD</div><b>Jean Dupont</b><small>Lyon</small></div>
-          <div class="person"><div class="pa" style="background:var(--color-asparagus)">ML</div><b>Marie Lambert</b><small>Paris</small></div>
-          <div class="person"><div class="pa" style="background:var(--color-apple-green)">TP</div><b>Thomas Petit</b><small>Lyon</small></div>
-          <div class="person"><div class="pa" style="background:#888">SR</div><b>Sophie Roux</b><small>Marseille</small></div>
-          <div class="person"><div class="pa" style="background:var(--color-indigo-dye)">LC</div><b>Lucas Chen</b><small>Lyon</small></div>
-          <div class="person"><div class="pa" style="background:var(--color-asparagus)">AB</div><b>Amélie Blanc</b><small>Bordeaux</small></div>
-          <div class="person"><div class="pa" style="background:#888">KN</div><b>Karim Nadir</b><small>Lyon</small></div>
-          <div class="person"><div class="pa" style="background:var(--color-apple-green)">EG</div><b>Emma Girard</b><small>Annecy</small></div>
-        </div>
+        <table class="table">
+          <tr><th>Participant</th><th>Rôle</th><th>Ville</th><th>Email</th><th>WhatsApp</th></tr>
+          <tr><td><span class="pmini" style="background:var(--color-asparagus)">YD</span> Yohann Duclos</td><td><span class="role coach">Coach</span></td><td>Lyon</td><td>yo@odbi.fr</td><td>+33 6 11 22 33 44</td></tr>
+          <tr><td><span class="pmini" style="background:var(--color-indigo-dye)">JD</span> Jean Dupont</td><td><span class="role member">Membre</span></td><td>Lyon</td><td>jean.dupont@email.fr</td><td>+33 6 12 34 56 78</td></tr>
+          <tr><td><span class="pmini" style="background:var(--color-apple-green)">ML</span> Marie Lambert</td><td><span class="role member">Membre</span></td><td>Paris</td><td>marie.l@email.fr</td><td>+33 6 23 45 67 89</td></tr>
+          <tr><td><span class="pmini" style="background:#888">TP</span> Thomas Petit</td><td><span class="role member">Membre</span></td><td>Marseille</td><td>thomas.p@email.fr</td><td>+33 6 34 56 78 90</td></tr>
+          <tr><td><span class="pmini" style="background:var(--color-indigo-dye)">SR</span> Sophie Roux</td><td><span class="role member">Membre</span></td><td>Bordeaux</td><td>sophie.r@email.fr</td><td>+33 6 45 67 89 01</td></tr>
+          <tr><td><span class="pmini" style="background:var(--color-asparagus)">KN</span> Karim Nadir</td><td><span class="role member">Membre</span></td><td>Annecy</td><td>karim.n@email.fr</td><td>+33 6 56 78 90 12</td></tr>
+        </table>
       </div>
 
       <!-- WhatsApp (de la promo) -->
@@ -1137,11 +1137,26 @@ a{color:inherit;text-decoration:none}
         <button class="btn btn-primary" style="margin-top:var(--space-4)">💾 Enregistrer</button>
       </div>
 
+      <div class="edit-card" style="max-width:700px">
+        <div class="flex-between"><h3 style="margin:0">🏆 Points & badges</h3><a onclick="goTo('game')" style="color:var(--color-accent);cursor:pointer;font-size:13px;font-family:var(--font-title);font-weight:500">Voir ma progression →</a></div>
+        <div style="display:flex;align-items:center;gap:var(--space-8);margin-top:var(--space-5);flex-wrap:wrap">
+          <div><div style="font-family:var(--font-title);font-weight:700;font-size:28px;color:var(--color-primary)">1 240</div><small style="color:var(--color-neutral)">points · Niveau 7 — Stratège confirmé</small></div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <span class="pmini" style="background:linear-gradient(135deg,var(--color-asparagus),var(--color-apple-green));width:38px;height:38px;font-size:16px" title="Premiers pas">🚀</span>
+            <span class="pmini" style="background:linear-gradient(135deg,var(--color-asparagus),var(--color-apple-green));width:38px;height:38px;font-size:16px" title="Régularité">🔥</span>
+            <span class="pmini" style="background:linear-gradient(135deg,var(--color-asparagus),var(--color-apple-green));width:38px;height:38px;font-size:16px" title="Module maîtrisé">🎓</span>
+            <span class="pmini" style="background:linear-gradient(135deg,var(--color-asparagus),var(--color-apple-green));width:38px;height:38px;font-size:16px" title="Présent en live">🎤</span>
+            <span class="pmini" style="background:var(--color-neutral);width:38px;height:38px;font-size:16px;opacity:.5" title="Verrouillé">🏆</span>
+          </div>
+          <div style="font-size:12px;color:var(--color-neutral)">9 badges obtenus · 12 🔥 jours d'affilée</div>
+        </div>
+      </div>
+
       <h3 style="margin:var(--space-8) 0 var(--space-4)">Mes cours & progression</h3>
       <div class="grid grid-2">
-        <div class="card" style="padding:var(--space-5)"><span class="course-tag">📘 La Voie des managers · Promo 2026 — Automne</span><h3 style="font-size:15px;margin-top:10px">La Voie des managers</h3><div class="progress" style="margin-top:10px"><span style="width:72%"></span></div><p style="font-size:12px;color:var(--color-neutral);margin-top:6px">72% — Session 2 / 4</p></div>
-        <div class="card" style="padding:var(--space-5)"><span class="course-tag" style="color:var(--color-asparagus);background:rgba(134,164,63,.12)">🎓 BTC : 2ème génération</span><h3 style="font-size:15px;margin-top:10px">Born To Coach</h3><div class="progress" style="margin-top:10px"><span style="width:45%"></span></div><p style="font-size:12px;color:var(--color-neutral);margin-top:6px">45% — en cours</p></div>
-        <div class="card" style="padding:var(--space-5)"><span class="course-tag">📘 Vous En Paix · Promo 2026 — Automne</span><h3 style="font-size:15px;margin-top:10px">Vous En Paix</h3><div class="progress" style="margin-top:10px"><span style="width:90%"></span></div><p style="font-size:12px;color:var(--color-neutral);margin-top:6px">90% — bientôt terminé</p></div>
+        <div class="card course-card" onclick="goTo('course')" style="padding:var(--space-5)"><span class="course-tag">📘 La Voie des managers · Promo 2026 — Automne</span><h3 style="font-size:15px;margin-top:10px">La Voie des managers</h3><div class="progress" style="margin-top:10px"><span style="width:72%"></span></div><p style="font-size:12px;color:var(--color-neutral);margin-top:6px">72% — Session 2 / 4</p></div>
+        <div class="card course-card" onclick="goTo('course')" style="padding:var(--space-5)"><span class="course-tag" style="color:var(--color-asparagus);background:rgba(134,164,63,.12)">🎓 BTC : 2ème génération</span><h3 style="font-size:15px;margin-top:10px">Born To Coach</h3><div class="progress" style="margin-top:10px"><span style="width:45%"></span></div><p style="font-size:12px;color:var(--color-neutral);margin-top:6px">45% — en cours</p></div>
+        <div class="card course-card" onclick="goTo('course')" style="padding:var(--space-5)"><span class="course-tag">📘 Vous En Paix · Promo 2026 — Automne</span><h3 style="font-size:15px;margin-top:10px">Vous En Paix</h3><div class="progress" style="margin-top:10px"><span style="width:90%"></span></div><p style="font-size:12px;color:var(--color-neutral);margin-top:6px">90% — bientôt terminé</p></div>
       </div>
     </section>
 

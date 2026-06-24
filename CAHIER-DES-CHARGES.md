@@ -360,13 +360,15 @@ Champs :
 > Principe : l'identité d'inscription vient de Notion ; les compléments de profil
 > sont éditables sur le LMS.
 
-Le profil affiche aussi : **les cours auxquels le membre est inscrit** + sa
-**progression** (par cours, avec promotion).
+Le profil affiche aussi :
+- **Points & badges acquis** (total points, niveau, badges, série) + lien vers la progression
+- **Les cours auxquels le membre est inscrit** + sa **progression** — **cartes cliquables** (ouvrent le cours)
 
 ### Annuaire des participants
 - **Onglet « Participants »** de la page cours (au même niveau que Lexique/Références)
-- Liste les **participants de la promotion** (photo, nom, ville)
+- Champs affichés : **prénom, nom, ville, rôle, e-mail, numéro WhatsApp**
 - Le **groupe WhatsApp** de la promo est lui aussi un **onglet du cours**
+- ⚠️ Affichage e-mail + WhatsApp entre participants → à cadrer RGPD (consentement / opt-in ?)
 
 ### Agenda
 - Présenté comme un **vrai calendrier** (vue mensuelle), événements color-codés :
