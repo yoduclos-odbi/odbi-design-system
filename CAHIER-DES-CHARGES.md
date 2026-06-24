@@ -137,9 +137,11 @@ les accès de connexion** par e-mail (cf. §13, flux Notion → LMS).
 
 Page cours = **6 onglets** :
 1. **Sessions** — liste des sessions (contenu asynchrone)
-2. **Présentiels** — dates + lieux + horaires (par promotion)
+2. **Présentiels** — dates + lieux + horaires (par promotion), **affichés les uns sous les autres**,
+   avec un volet **« Détails pratiques & documents »** par présentiel : accès/transport, hébergement
+   (se loger), règlement intérieur, fiche de l'établissement (liens/documents)
 3. **Lexique** — termes clés (niveau cours), avec **index alphabétique** (A–Z) pour filtrer/aller à un terme
-4. **Références** — livres, vidéos, articles recommandés (niveau cours)
+4. **Références** — livres, vidéos, articles recommandés (niveau cours), **avec liens cliquables**
 5. **Participants** — annuaire des membres de la promotion (photo, nom, ville)
 6. **WhatsApp** — accès au groupe WhatsApp de la promotion
 
@@ -414,6 +416,10 @@ Le profil affiche aussi :
 - **RGPD — opt-in** : l'e-mail et le numéro WhatsApp ne sont visibles par les autres
   participants **que si le membre y a consenti** (réglage dans son profil). Par
   défaut masqués ; prénom/nom/ville/rôle restent visibles.
+
+### Livret d'accueil
+- Lien dans le **menu de gauche** vers le **Livret d'Accueil Client ODBI** (page Notion) :
+  https://www.notion.so/odbi/Livret-d-Accueil-Client-ODBI-13d94934418a80cb843dfaebb32328ef
 
 ### Agenda
 - Présenté comme un **vrai calendrier** (vue mensuelle), filtré sur les promos du membre.

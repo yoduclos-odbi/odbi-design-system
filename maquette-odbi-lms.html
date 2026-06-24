@@ -182,6 +182,13 @@ a{color:inherit;text-decoration:none}
 .ref-type{font-size:11px;font-family:var(--font-title);font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:4px 9px;border-radius:var(--radius-full);color:#fff;height:fit-content;flex-shrink:0}
 .ref-type.video{background:#d64545}.ref-type.livre{background:var(--color-asparagus)}.ref-type.article{background:var(--color-accent)}
 .ref-item .t b{font-family:var(--font-title);font-size:14px;display:block}.ref-item .t small{color:var(--color-neutral);font-size:12px}
+a.ref-item{color:inherit;text-decoration:none;align-items:center;transition:background .15s}
+a.ref-item:hover{background:var(--color-background)}
+.pres-details{margin-top:12px;border-top:1px solid rgba(74,74,74,.1);padding-top:12px}
+.pres-details summary{cursor:pointer;font-family:var(--font-title);font-weight:500;font-size:13px;color:var(--color-accent)}
+.pres-details .links{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.pres-details .links a{color:var(--color-accent);font-size:13px;text-decoration:none}
+.pres-details .links a:hover{text-decoration:underline}
 .lex-item{background:#fff;border-radius:var(--radius-md);box-shadow:var(--shadow-sm);padding:14px 18px;margin-bottom:10px;border-left:3px solid var(--color-asparagus)}
 .lex-item dt{font-family:var(--font-title);font-weight:700;font-size:14px;margin-bottom:4px}
 .lex-item dd{color:var(--color-jet);font-size:13px;line-height:1.6}
@@ -434,6 +441,7 @@ a{color:inherit;text-decoration:none}
     <div class="nav-item" data-page="ai" onclick="go(this)"><span class="ico">🧙</span> YoDalf</div>
     <div class="nav-item" data-page="game" onclick="go(this)"><span class="ico">🏆</span> Progression</div>
     <div class="nav-item" data-page="agenda" onclick="go(this)"><span class="ico">📅</span> Agenda</div>
+    <a class="nav-item" href="https://www.notion.so/odbi/Livret-d-Accueil-Client-ODBI-13d94934418a80cb843dfaebb32328ef" target="_blank"><span class="ico">📒</span> Livret d'accueil</a>
     <div class="nav-sep"></div>
     <div class="nav-label">🎥 Visios du jour</div>
     <div class="side-visio islive" onclick="goTo('visio')">
@@ -585,7 +593,7 @@ a{color:inherit;text-decoration:none}
       <!-- Présentiels (par promotion, pilotés par le dérouleur) -->
       <div id="crs-presentiel" class="hidden">
         <p id="pres-intro" style="color:var(--color-neutral);margin-bottom:var(--space-5)"></p>
-        <div id="pres-list" class="grid grid-2"></div>
+        <div id="pres-list"></div>
       </div>
 
       <!-- Lexique (niveau cours) -->
@@ -622,10 +630,10 @@ a{color:inherit;text-decoration:none}
       <!-- Références (niveau cours) -->
       <div id="crs-references" class="hidden">
         <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">🔖 Pour aller plus loin : vidéos, livres et articles recommandés pour ce cours.</p>
-        <div class="ref-item"><span class="ref-type livre">Livre</span><div class="t"><b>L'art du management — collectif ODBI</b><small>Chapitres 3 et 5 · mobiliser une équipe</small></div></div>
-        <div class="ref-item"><span class="ref-type video">Vidéo</span><div class="t"><b>Conférence : leadership en haute intensité</b><small>Lien externe · 22 min</small></div></div>
-        <div class="ref-item"><span class="ref-type article">Article</span><div class="t"><b>Étude : engagement et performance d'équipe</b><small>Lien externe · 8 min de lecture</small></div></div>
-        <div class="ref-item"><span class="ref-type livre">Livre</span><div class="t"><b>Décider sous pression</b><small>Ouvrage de référence</small></div></div>
+        <a class="ref-item" href="https://odbi.fr" target="_blank"><span class="ref-type livre">Livre</span><div class="t"><b>L'art du management — collectif ODBI</b><small>Chapitres 3 et 5 · mobiliser une équipe</small></div><span style="margin-left:auto;color:var(--color-accent)">🔗</span></a>
+        <a class="ref-item" href="https://vimeo.com" target="_blank"><span class="ref-type video">Vidéo</span><div class="t"><b>Conférence : leadership en haute intensité</b><small>Lien externe · 22 min</small></div><span style="margin-left:auto;color:var(--color-accent)">🔗</span></a>
+        <a class="ref-item" href="https://odbi.fr" target="_blank"><span class="ref-type article">Article</span><div class="t"><b>Étude : engagement et performance d'équipe</b><small>Lien externe · 8 min de lecture</small></div><span style="margin-left:auto;color:var(--color-accent)">🔗</span></a>
+        <a class="ref-item" href="https://odbi.fr" target="_blank"><span class="ref-type livre">Livre</span><div class="t"><b>Décider sous pression</b><small>Ouvrage de référence</small></div><span style="margin-left:auto;color:var(--color-accent)">🔗</span></a>
       </div>
 
       <!-- Participants (de la promo) -->
@@ -1244,7 +1252,17 @@ function switchPromo(key){
   var p = PROMOS[key]; if(!p) return;
   document.getElementById('pres-intro').innerHTML = '📍 Rencontres physiques de votre promotion — <b>'+p.nom+'</b>.';
   document.getElementById('pres-list').innerHTML = p.pres.map(function(e){
-    return '<div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 '+e.d+'</span><h3 style="font-size:16px;margin-top:10px">'+e.t+'</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 '+e.l+'</p></div>';
+    return '<div class="card" style="padding:var(--space-5);margin-bottom:var(--space-4)">'+
+      '<span class="course-tag">📅 '+e.d+'</span>'+
+      '<h3 style="font-size:16px;margin-top:10px">'+e.t+'</h3>'+
+      '<p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 '+e.l+'</p>'+
+      '<details class="pres-details"><summary>Détails pratiques & documents</summary><div class="links">'+
+        '<a href="#" target="_blank">🚗 S\'y rendre — accès & transport</a>'+
+        '<a href="#" target="_blank">🏨 Se loger — hébergements à proximité</a>'+
+        '<a href="#" target="_blank">📋 Règlement intérieur</a>'+
+        '<a href="#" target="_blank">🏢 Fiche de l\'établissement</a>'+
+      '</div></details>'+
+    '</div>';
   }).join('');
   document.getElementById('wa-promo').textContent = p.nom+' · « La Voie des managers » — '+p.wa+' participants';
 }
