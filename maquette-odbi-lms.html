@@ -235,6 +235,18 @@ a{color:inherit;text-decoration:none}
 .add-btn{background:transparent;border:2px dashed rgba(74,74,74,.25);border-radius:var(--radius-md);padding:11px;width:100%;color:var(--color-accent);font-family:var(--font-title);font-weight:500;cursor:pointer}
 .add-btn:hover{border-color:var(--color-accent);background:rgba(17,76,106,.04)}
 .gate-toggle{display:flex;align-items:center;gap:14px;background:rgba(134,164,63,.08);border-radius:var(--radius-md);padding:14px 16px}
+/* Profil & participants */
+.profile-head{display:flex;align-items:center;gap:var(--space-5);margin-bottom:var(--space-6)}
+.profile-photo{width:88px;height:88px;border-radius:50%;background:var(--color-indigo-dye);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-title);font-weight:700;font-size:30px;flex-shrink:0}
+.src{font-size:10px;font-family:var(--font-title);font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:2px 7px;border-radius:999px;margin-left:6px}
+.src.notion{background:rgba(17,76,106,.1);color:var(--color-accent)}
+.src.lms{background:rgba(134,164,63,.16);color:#5e7a1f}
+.field input[readonly]{background:var(--color-background);color:var(--color-neutral)}
+.people{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.person{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:var(--space-5) var(--space-4);text-align:center}
+.person .pa{width:54px;height:54px;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-title);font-weight:700;font-size:18px}
+.person b{font-family:var(--font-title);font-size:14px;display:block}
+.person small{color:var(--color-neutral);font-size:12px}
 
 /* ---------- Visio ---------- */
 .visio-stage{background:#1a1a1a;border-radius:var(--radius-lg);aspect-ratio:16/9;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:8px;padding:8px;margin-bottom:var(--space-5)}
@@ -358,7 +370,7 @@ a{color:inherit;text-decoration:none}
     <div class="topbar-right">
       <input class="search" placeholder="Rechercher un cours, une leçon…">
       <div style="position:relative">🔔</div>
-      <div class="avatar">JD</div>
+      <div class="avatar" onclick="goTo('profile')" style="cursor:pointer" title="Mon profil">JD</div>
     </div>
   </div>
 
@@ -487,7 +499,7 @@ a{color:inherit;text-decoration:none}
             </select>
           </div>
         </div>
-        <button class="btn btn-accent" onclick="goTo('lesson')">Reprendre ▶</button>
+        <div style="display:flex;gap:10px"><button class="btn btn-ghost" onclick="goTo('participants')">👥 Participants</button><button class="btn btn-accent" onclick="goTo('lesson')">Reprendre ▶</button></div>
       </div>
       <div class="progress mb6" style="height:10px"><span style="width:72%"></span></div>
       <div class="wa-card mb6">
@@ -1008,6 +1020,57 @@ a{color:inherit;text-decoration:none}
           <div style="display:flex;gap:10px"><span class="badge" style="background:var(--color-neutral)">Vrai</span><span class="badge" style="background:var(--color-primary)">Faux ✓</span></div>
         </div>
         <button class="add-btn">+ Ajouter une question</button>
+      </div>
+    </section>
+
+    <!-- ===== PROFIL ===== -->
+    <section id="page-profile" class="page">
+      <div class="page-head"><h1>Mon profil</h1><p>Gérez vos informations personnelles</p></div>
+      <div class="profile-head">
+        <div class="profile-photo">JD</div>
+        <div><h2 style="font-size:22px">Jean Dupont</h2><p style="color:var(--color-neutral);margin-top:4px">Membre ODBI · 3 cours en cours · 1 240 points</p></div>
+      </div>
+
+      <div class="edit-card" style="max-width:700px">
+        <h3>Informations</h3>
+        <div class="field"><label>Photo <span class="src lms">Éditable ici</span></label><div class="upload-zone"><span class="big">📷</span>Changer la photo de profil</div></div>
+        <div class="row2">
+          <div class="field"><label>Prénom <span class="src notion">Depuis Notion</span></label><input value="Jean" readonly></div>
+          <div class="field"><label>Nom <span class="src notion">Depuis Notion</span></label><input value="Dupont" readonly></div>
+        </div>
+        <div class="field"><label>Email <span class="src notion">Depuis Notion</span></label><input value="membre@odbi.fr" readonly></div>
+        <div class="row2">
+          <div class="field"><label>Téléphone <span class="src lms">Éditable ici</span></label><input value="06 12 34 56 78"></div>
+          <div class="field"><label>Ville <span class="src lms">Éditable ici</span></label><input value="Lyon"></div>
+        </div>
+        <p style="font-size:12px;color:var(--color-neutral)">🔄 Prénom, nom et e-mail proviennent de la base <b>Notion</b> (inscription) — non modifiables ici. Téléphone, ville et photo sont gérés sur le <b>LMS</b>.</p>
+        <button class="btn btn-primary" style="margin-top:var(--space-4)">💾 Enregistrer</button>
+      </div>
+
+      <h3 style="margin:var(--space-8) 0 var(--space-4)">Mes cours & progression</h3>
+      <div class="grid grid-2">
+        <div class="card" style="padding:var(--space-5)"><span class="course-tag">📘 La Voie des managers · Promo 2026 — Automne</span><h3 style="font-size:15px;margin-top:10px">La Voie des managers</h3><div class="progress" style="margin-top:10px"><span style="width:72%"></span></div><p style="font-size:12px;color:var(--color-neutral);margin-top:6px">72% — Session 2 / 4</p></div>
+        <div class="card" style="padding:var(--space-5)"><span class="course-tag" style="color:var(--color-asparagus);background:rgba(134,164,63,.12)">🎓 BTC : 2ème génération</span><h3 style="font-size:15px;margin-top:10px">Born To Coach</h3><div class="progress" style="margin-top:10px"><span style="width:45%"></span></div><p style="font-size:12px;color:var(--color-neutral);margin-top:6px">45% — en cours</p></div>
+        <div class="card" style="padding:var(--space-5)"><span class="course-tag">📘 Vous En Paix · Promo 2026 — Automne</span><h3 style="font-size:15px;margin-top:10px">Vous En Paix</h3><div class="progress" style="margin-top:10px"><span style="width:90%"></span></div><p style="font-size:12px;color:var(--color-neutral);margin-top:6px">90% — bientôt terminé</p></div>
+      </div>
+    </section>
+
+    <!-- ===== PARTICIPANTS DU COURS ===== -->
+    <section id="page-participants" class="page">
+      <div class="breadcrumb" onclick="goTo('course')">La Voie des managers / <b>Participants</b></div>
+      <div class="flex-between mb6">
+        <div><h1>Participants</h1><p style="color:var(--color-neutral);margin-top:4px">La Voie des managers · Promo 2026 — Automne · 42 membres</p></div>
+        <button class="btn btn-wa">💬 Groupe WhatsApp</button>
+      </div>
+      <div class="people">
+        <div class="person"><div class="pa" style="background:var(--color-indigo-dye)">JD</div><b>Jean Dupont</b><small>Lyon</small></div>
+        <div class="person"><div class="pa" style="background:var(--color-asparagus)">ML</div><b>Marie Lambert</b><small>Paris</small></div>
+        <div class="person"><div class="pa" style="background:var(--color-apple-green)">TP</div><b>Thomas Petit</b><small>Lyon</small></div>
+        <div class="person"><div class="pa" style="background:#888">SR</div><b>Sophie Roux</b><small>Marseille</small></div>
+        <div class="person"><div class="pa" style="background:var(--color-indigo-dye)">LC</div><b>Lucas Chen</b><small>Lyon</small></div>
+        <div class="person"><div class="pa" style="background:var(--color-asparagus)">AB</div><b>Amélie Blanc</b><small>Bordeaux</small></div>
+        <div class="person"><div class="pa" style="background:#888">KN</div><b>Karim Nadir</b><small>Lyon</small></div>
+        <div class="person"><div class="pa" style="background:var(--color-apple-green)">EG</div><b>Emma Girard</b><small>Annecy</small></div>
       </div>
     </section>
   </main>

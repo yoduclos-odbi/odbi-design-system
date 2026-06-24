@@ -346,7 +346,29 @@ formation/promotion, etc. (volet financier = à coupler avec Stripe).
 
 ---
 
-## 18. Points en suspens / à décider
+## 18. Espace membre — Profil & annuaire
+
+### Profil (accès via l'avatar en haut à droite)
+Champs :
+- **Photo** — éditable sur le LMS (upload)
+- **Prénom**, **Nom**, **Email** — **synchronisés depuis Notion** (inscription), non modifiables sur le LMS
+- **Téléphone**, **Ville** — éditables sur le LMS
+
+> Répartition Notion (synchronisé) vs LMS (éditable) à confirmer champ par champ.
+> Principe : l'identité d'inscription vient de Notion ; les compléments de profil
+> sont éditables sur le LMS.
+
+Le profil affiche aussi : **les cours auxquels le membre est inscrit** + sa
+**progression** (par cours, avec promotion).
+
+### Annuaire des participants
+- Accessible depuis la page d'un cours (bouton « 👥 Participants »)
+- Liste les **participants du cours / de la promotion** (photo, nom, ville)
+- Accès au **groupe WhatsApp** de la promo
+
+---
+
+## 19. Points en suspens / à décider
 
 - [ ] Groupe WhatsApp : **par promotion** (hypothèse retenue) ou par programme ?
 - [x] Gating exercices : **configurable par session** (toggle « pédagogie inversée » dans l'éditeur)
@@ -355,6 +377,8 @@ formation/promotion, etc. (volet financier = à coupler avec Stripe).
 - [ ] Service d'**e-mailing transactionnel** à choisir (envoi des accès, notifications)
 - [ ] **Plan Vimeo** adapté (Pro/Business+) requis pour Player SDK + confidentialité par domaine
 - [ ] Contenu exact de l'**e-mail d'onboarding** (identifiants vs lien magique d'activation ?)
+- [ ] Profil : répartition exacte des champs **Notion (synchro)** vs **LMS (éditable)**
+- [ ] Annuaire : quelles infos sont visibles entre participants (ville, contact… RGPD) ?
 - [ ] Modèle d'abonnement / tarification (Stripe) : à définir
 - [ ] Langues de l'interface (FR seul, ou multilingue ?)
 - [ ] BBB : mode **redirection** (reco) ou **embarqué (iframe)** dans la plateforme ?
