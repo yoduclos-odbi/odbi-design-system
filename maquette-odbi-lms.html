@@ -185,6 +185,20 @@ a{color:inherit;text-decoration:none}
 .lex-item dd{color:var(--color-jet);font-size:13px;line-height:1.6}
 .session-row .check.video{background:transparent;border:none;font-size:18px;color:var(--color-neutral)}
 
+/* ---------- Exercices / pédagogie inversée ---------- */
+.exo{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:var(--space-5);margin-bottom:var(--space-4);border-left:4px solid var(--color-apple-green)}
+.exo h4{font-size:15px;margin-bottom:8px}
+.exo p{font-size:13px;line-height:1.7;margin-bottom:10px}
+.exo-check{display:flex;align-items:center;gap:12px;background:var(--color-background);border-radius:var(--radius-md);padding:14px 16px;cursor:pointer;font-family:var(--font-title);font-weight:500;font-size:14px;margin-top:var(--space-2)}
+.exo-check .box{width:24px;height:24px;border-radius:6px;border:2px solid var(--color-neutral);display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;font-size:14px}
+.exo-check.done{background:rgba(134,164,63,.14)}
+.exo-check.done .box{background:var(--color-primary);border-color:var(--color-primary)}
+.lock-banner{display:flex;align-items:center;gap:16px;background:#fff;border:1px dashed var(--color-neutral);border-radius:var(--radius-lg);padding:var(--space-5);margin-bottom:var(--space-5)}
+.lock-banner .lk-ic{font-size:26px}
+.lock-banner .lk-txt{flex:1;font-size:13px;line-height:1.6}
+.lock-banner .lk-txt b{font-family:var(--font-title)}
+.lock-banner .lk-txt a{color:var(--color-accent);cursor:pointer;text-decoration:underline;font-size:12px}
+
 /* ---------- Visio ---------- */
 .visio-stage{background:#1a1a1a;border-radius:var(--radius-lg);aspect-ratio:16/9;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:8px;padding:8px;margin-bottom:var(--space-5)}
 .vtile{background:linear-gradient(135deg,#2a2a2a,#3a3a3a);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;position:relative;color:#fff;font-family:var(--font-title)}
@@ -431,10 +445,10 @@ a{color:inherit;text-decoration:none}
       <div id="crs-sessions">
         <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">📦 Contenu en autonomie (asynchrone) — identique pour toutes les promotions.</p>
         <div class="module">
-          <div class="module-head" onclick="goTo('lesson')"><div class="lesson done" style="padding:0;border:none"><div class="check">✓</div><div><h3>Session 1 — Fondamentaux du leadership</h3><div class="sub">🎬 3 vidéos · 🎧 1 audio · 📄 2 PDF · ✅ quiz · terminé</div></div></div><button class="btn btn-ghost" style="padding:6px 14px">Revoir</button></div>
+          <div class="module-head" onclick="goTo('lesson')"><div class="lesson done" style="padding:0;border:none"><div class="check">✓</div><div><h3>Session 1 — Fondamentaux du leadership</h3><div class="sub">📝 1 exercice · 🎬 3 vidéos · 🎧 1 audio · 📄 2 PDF · ✅ quiz · terminé</div></div></div><button class="btn btn-ghost" style="padding:6px 14px">Revoir</button></div>
         </div>
         <div class="module">
-          <div class="module-head" onclick="goTo('lesson')"><div class="lesson" style="padding:0;border:none"><div class="check" style="border-color:var(--color-accent)"></div><div><h3>Session 2 — Mobiliser une équipe</h3><div class="sub">🎬 4 vidéos · 🎧 2 audios · 📄 1 PDF · ✅ quiz · en cours</div></div></div><button class="btn btn-accent" style="padding:6px 14px">Continuer ▶</button></div>
+          <div class="module-head" onclick="goTo('lesson')"><div class="lesson" style="padding:0;border:none"><div class="check" style="border-color:var(--color-accent)"></div><div><h3>Session 2 — Mobiliser une équipe</h3><div class="sub">📝 2 exercices · 🎬 4 vidéos · 🎧 2 audios · 📄 1 PDF · ✅ quiz · en cours</div></div></div><button class="btn btn-accent" style="padding:6px 14px">Continuer ▶</button></div>
         </div>
         <div class="module">
           <div class="module-head" style="opacity:.55;border-left-color:var(--color-neutral)"><div class="lesson" style="padding:0;border:none"><div class="check">🔒</div><div><h3>Session 3 — Leadership de soi</h3><div class="sub">🎬 3 vidéos · 📄 2 PDF · ✅ quiz · verrouillé</div></div></div></div>
@@ -484,29 +498,55 @@ a{color:inherit;text-decoration:none}
       </div>
 
       <div class="tabs">
-        <div class="tab active" onclick="sessTab(this,'video')">🎬 Vidéos</div>
+        <div class="tab active" onclick="sessTab(this,'ex')">📝 Exercices</div>
+        <div class="tab" onclick="sessTab(this,'video')">🎬 Vidéos</div>
         <div class="tab" onclick="sessTab(this,'res')">🎧 Ressources</div>
         <div class="tab" onclick="sessTab(this,'quiz')">✅ Quiz</div>
       </div>
 
+      <!-- Exercices (pédagogie inversée) -->
+      <div id="sess-ex">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">🔄 <b>Pédagogie inversée</b> — réalisez d'abord les exercices, puis cochez pour débloquer les vidéos et documents. <i>(Recommandé, non obligatoire.)</i></p>
+        <div class="exo">
+          <h4>📝 Exercice 1 — Diagnostic de votre posture managériale</h4>
+          <p>Avant de visionner les vidéos, prenez 15 minutes pour observer votre dernière réunion d'équipe : qu'avez-vous délégué ? qu'avez-vous gardé ? Notez 3 situations concrètes dans votre carnet.</p>
+          <button class="btn btn-ghost">📄 Télécharger la fiche d'exercice</button>
+        </div>
+        <div class="exo">
+          <h4>📝 Exercice 2 — Préparer un feedback</h4>
+          <p>Choisissez une personne de votre équipe à qui vous devez un retour. Rédigez-le selon les 3 piliers (fait · impact · engagement) — vous le confronterez à la méthode dans les vidéos.</p>
+          <button class="btn btn-ghost">📄 Télécharger la fiche d'exercice</button>
+        </div>
+        <div class="exo-check" id="exoCheck" onclick="unlockSession()">
+          <div class="box">✓</div> J'ai réalisé les exercices de cette session — débloquer les vidéos et documents
+        </div>
+      </div>
+
       <!-- Vidéos -->
-      <div id="sess-video">
-        <div class="lesson-layout">
-          <div>
-            <div class="player vid-main"><span class="tag">🎬 Vidéo 1/4 — Mux / Vimeo</span><div class="play">▶</div></div>
-            <div class="lesson-content">
-              <h2>Créer l'engagement collectif</h2>
-              <p>Première vidéo de la session : comment fédérer une équipe autour d'un objectif commun en contexte de haute intensité. Les vidéos suivantes approfondissent chaque levier.</p>
-              <button class="btn btn-primary">Marquer la session comme terminée ✓</button>
+      <div id="sess-video" class="hidden">
+        <div class="lock-banner" id="lock-video">
+          <div class="lk-ic">🔒</div>
+          <div class="lk-txt"><b>Pédagogie inversée</b> — réalisez d'abord les exercices de la session pour débloquer ces vidéos.<br><a onclick="unlockSession()">Voir quand même (sans cocher)</a></div>
+          <button class="btn btn-primary" onclick="unlockSession()">J'ai fait les exercices ✓</button>
+        </div>
+        <div id="content-video" class="hidden">
+          <div class="lesson-layout">
+            <div>
+              <div class="player vid-main"><span class="tag">🎬 Vidéo 1/4 — Mux / Vimeo</span><div class="play">▶</div></div>
+              <div class="lesson-content">
+                <h2>Créer l'engagement collectif</h2>
+                <p>Première vidéo de la session : comment fédérer une équipe autour d'un objectif commun en contexte de haute intensité. Les vidéos suivantes approfondissent chaque levier.</p>
+                <button class="btn btn-primary">Marquer la session comme terminée ✓</button>
+              </div>
             </div>
-          </div>
-          <div class="side-list">
-            <h4>Vidéos de la session (4)</h4>
-            <div class="vid-list">
-              <div class="vid-item active"><div class="vid-thumb">▶</div><div class="t">1 · Créer l'engagement</div><div class="d">14 min</div></div>
-              <div class="vid-item"><div class="vid-thumb">▶</div><div class="t">2 · Feedback à haute intensité</div><div class="d">20 min</div></div>
-              <div class="vid-item"><div class="vid-thumb">▶</div><div class="t">3 · Gérer les tensions</div><div class="d">17 min</div></div>
-              <div class="vid-item"><div class="vid-thumb">▶</div><div class="t">4 · Synthèse & passage à l'action</div><div class="d">9 min</div></div>
+            <div class="side-list">
+              <h4>Vidéos de la session (4)</h4>
+              <div class="vid-list">
+                <div class="vid-item active"><div class="vid-thumb">▶</div><div class="t">1 · Créer l'engagement</div><div class="d">14 min</div></div>
+                <div class="vid-item"><div class="vid-thumb">▶</div><div class="t">2 · Feedback à haute intensité</div><div class="d">20 min</div></div>
+                <div class="vid-item"><div class="vid-thumb">▶</div><div class="t">3 · Gérer les tensions</div><div class="d">17 min</div></div>
+                <div class="vid-item"><div class="vid-thumb">▶</div><div class="t">4 · Synthèse & passage à l'action</div><div class="d">9 min</div></div>
+              </div>
             </div>
           </div>
         </div>
@@ -514,11 +554,18 @@ a{color:inherit;text-decoration:none}
 
       <!-- Ressources -->
       <div id="sess-res" class="hidden">
-        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Audios à écouter et documents à télécharger pour cette session.</p>
-        <div class="res-item"><div class="res-ic audio">🎧</div><div class="t"><b>Méditation guidée — ancrage du leader</b><small>Audio · 11 min</small></div><button class="btn btn-ghost">▶ Écouter</button></div>
-        <div class="res-item"><div class="res-ic audio">🎧</div><div class="t"><b>Podcast — retour d'expérience manager</b><small>Audio · 24 min</small></div><button class="btn btn-ghost">▶ Écouter</button></div>
-        <div class="res-item"><div class="res-ic pdf">📄</div><div class="t"><b>Fiche pratique — les 3 piliers du feedback</b><small>PDF · 2 pages</small></div><button class="btn btn-ghost">⬇ Télécharger</button></div>
-        <div class="res-item"><div class="res-ic doc">📑</div><div class="t"><b>Support de la session (slides)</b><small>PDF · 18 pages</small></div><button class="btn btn-ghost">⬇ Télécharger</button></div>
+        <div class="lock-banner" id="lock-res">
+          <div class="lk-ic">🔒</div>
+          <div class="lk-txt"><b>Pédagogie inversée</b> — réalisez d'abord les exercices de la session pour débloquer ces documents.<br><a onclick="unlockSession()">Voir quand même (sans cocher)</a></div>
+          <button class="btn btn-primary" onclick="unlockSession()">J'ai fait les exercices ✓</button>
+        </div>
+        <div id="content-res" class="hidden">
+          <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Audios à écouter et documents à télécharger pour cette session.</p>
+          <div class="res-item"><div class="res-ic audio">🎧</div><div class="t"><b>Méditation guidée — ancrage du leader</b><small>Audio · 11 min</small></div><button class="btn btn-ghost">▶ Écouter</button></div>
+          <div class="res-item"><div class="res-ic audio">🎧</div><div class="t"><b>Podcast — retour d'expérience manager</b><small>Audio · 24 min</small></div><button class="btn btn-ghost">▶ Écouter</button></div>
+          <div class="res-item"><div class="res-ic pdf">📄</div><div class="t"><b>Fiche pratique — les 3 piliers du feedback</b><small>PDF · 2 pages</small></div><button class="btn btn-ghost">⬇ Télécharger</button></div>
+          <div class="res-item"><div class="res-ic doc">📑</div><div class="t"><b>Support de la session (slides)</b><small>PDF · 18 pages</small></div><button class="btn btn-ghost">⬇ Télécharger</button></div>
+        </div>
       </div>
 
       <!-- Quiz -->
@@ -782,8 +829,15 @@ function adminTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.clas
   ['members','courses','promos','integ'].forEach(x=>document.getElementById('admin-'+x).classList.add('hidden'));
   document.getElementById('admin-'+t).classList.remove('hidden')}
 function sessTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
-  ['video','res','quiz'].forEach(x=>document.getElementById('sess-'+x).classList.add('hidden'));
+  ['ex','video','res','quiz'].forEach(x=>document.getElementById('sess-'+x).classList.add('hidden'));
   document.getElementById('sess-'+t).classList.remove('hidden')}
+function unlockSession(){
+  var c=document.getElementById('exoCheck');if(c)c.classList.add('done');
+  ['video','res'].forEach(x=>{
+    var l=document.getElementById('lock-'+x);if(l)l.classList.add('hidden');
+    var ct=document.getElementById('content-'+x);if(ct)ct.classList.remove('hidden');
+  });
+}
 function courseTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
   ['sessions','presentiel','lexique','references'].forEach(x=>document.getElementById('crs-'+x).classList.add('hidden'));
   document.getElementById('crs-'+t).classList.remove('hidden')}
