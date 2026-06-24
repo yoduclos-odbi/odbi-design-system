@@ -316,6 +316,22 @@ Flux : `Visio BBB → enregistrement BBB → Notta (transcription + chapitrage +
 
 ## 14. Back-office d'administration
 
+### Accès au back-office par rôle
+| Section BO | Admin | Coach / Animateur |
+|---|---|---|
+| **Suivi pédagogique** | tout | ✅ ses programmes uniquement |
+| **Promotions** (membres promo, planning visios) | tout | ✅ promos de ses programmes |
+| **Programmes** (contenu, sessions, visios) | tout | ✅ ses programmes (édition) |
+| **Membres & accès** (global, rôles, comptes) | ✅ | ❌ |
+| **Intégrations** (BBB, Notta, Notion, Stripe…) | ✅ | ❌ |
+| Créer / supprimer un programme | ✅ | ❌ |
+
+- Le coach ne voit dans le BO **que** : Programmes (les siens), Promotions (les siennes),
+  Suivi pédagogique (les siens). Les onglets Membres & Intégrations lui sont masqués.
+- Toutes les données sont **filtrées sur son périmètre d'animation** (cf. §4).
+- Filtrage à appliquer **côté serveur** (sécurité), pas seulement masquage UI.
+- *(À valider : le coach peut-il éditer le contenu de ses programmes, ou lecture seule ?)*
+
 Onglets :
 - **Membres & accès** — comptes, rôles, accès aux cours (éditable), activation
   - **Pas d'auto-inscription** : les comptes sont créés **via Notion** (inscription) **ou
@@ -497,6 +513,7 @@ Le profil affiche aussi :
 - [ ] Service d'**e-mailing transactionnel** à choisir (envoi des accès, notifications)
 - [ ] **Plan Vimeo** adapté (Pro/Business+) requis pour Player SDK + confidentialité par domaine
 - [ ] Contenu exact de l'**e-mail d'onboarding** (identifiants vs lien magique d'activation ?)
+- [ ] Coach : peut-il **éditer le contenu** de ses programmes, ou **lecture seule** (suivi + visios) ?
 - [ ] Profil : répartition exacte des champs **Notion (synchro)** vs **LMS (éditable)**
 - [x] Annuaire RGPD : **opt-in** — e-mail & WhatsApp visibles seulement si le membre consent
 - [ ] Modèle d'abonnement / tarification (Stripe) : à définir

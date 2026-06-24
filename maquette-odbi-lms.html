@@ -960,12 +960,18 @@ a.ref-item:hover{background:var(--color-background)}
     <!-- ADMIN -->
     <section id="page-admin" class="page">
       <div class="page-head"><h1>Back-office</h1><p>Gérez les cours, les membres et les accès</p></div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:var(--space-4);flex-wrap:wrap">
+        <span style="font-size:12px;color:var(--color-neutral)">👁️ Vue (démo) :</span>
+        <button id="boAdmin" class="promo-pick active" onclick="setBoRole('admin')">Admin</button>
+        <button id="boCoach" class="promo-pick" onclick="setBoRole('coach')">Coach / Animateur</button>
+      </div>
+      <div id="boCoachNote" class="hidden note" style="background:rgba(134,164,63,.08);border-left:4px solid var(--color-asparagus);border-radius:8px;padding:12px 16px;margin-bottom:var(--space-5);font-size:13px">👤 <b>Vue coach</b> — limitée aux programmes que vous animez (La Voie des managers, Vous En Paix). Données filtrées sur vos promos. Pas d'accès à la gestion globale des membres, ni aux intégrations, ni à la création de programmes.</div>
       <div class="tabs">
-        <div class="tab active" onclick="adminTab(this,'members')">Membres & accès</div>
-        <div class="tab" onclick="adminTab(this,'courses')">Programmes</div>
-        <div class="tab" onclick="adminTab(this,'promos')">Promotions</div>
-        <div class="tab" onclick="adminTab(this,'suivi')">Suivi pédagogique</div>
-        <div class="tab" onclick="adminTab(this,'integ')">Intégrations</div>
+        <div class="tab active" id="tab-members" onclick="adminTab(this,'members')">Membres & accès</div>
+        <div class="tab" id="tab-courses" onclick="adminTab(this,'courses')">Programmes</div>
+        <div class="tab" id="tab-promos" onclick="adminTab(this,'promos')">Promotions</div>
+        <div class="tab" id="tab-suivi" onclick="adminTab(this,'suivi')">Suivi pédagogique</div>
+        <div class="tab" id="tab-integ" onclick="adminTab(this,'integ')">Intégrations</div>
       </div>
 
       <div id="admin-members">
@@ -1417,6 +1423,16 @@ function lexFilter(l,el){
   document.querySelectorAll('#lexList .lex-item').forEach(it=>{
     it.style.display=(l==='all'||it.getAttribute('data-letter')===l)?'':'none';
   });
+}
+function setBoRole(r){
+  document.getElementById('boAdmin').classList.toggle('active',r==='admin');
+  document.getElementById('boCoach').classList.toggle('active',r==='coach');
+  document.getElementById('boCoachNote').classList.toggle('hidden',r!=='coach');
+  var coachHidden=r==='coach';
+  document.getElementById('tab-members').style.display=coachHidden?'none':'';
+  document.getElementById('tab-integ').style.display=coachHidden?'none':'';
+  if(coachHidden) adminTab(document.getElementById('tab-suivi'),'suivi');
+  else adminTab(document.getElementById('tab-members'),'members');
 }
 function suiviScope(v){
   document.getElementById('suivi-all').classList.toggle('hidden',v!=='all');
