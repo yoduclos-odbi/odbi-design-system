@@ -337,6 +337,7 @@ Doit être **ergonomique** (rechargement manuel des contenus depuis Moodle).
 ### Programmation des visios
 - La **visio se crée dans l'éditeur de session** (onglet **Visio** de la séquence), au même
   titre qu'un exercice ou une ressource — **pas** dans Promotions.
+- Une séquence (semaine) peut avoir **une ou plusieurs visios** (donc plusieurs replays côté membre).
 - On y définit : titre, animateur, **date complète via calendrier (jour/mois/année)**, heure, durée ;
   la **salle BBB est créée automatiquement**.
 - La date se (re)définit pour la promotion concernée.

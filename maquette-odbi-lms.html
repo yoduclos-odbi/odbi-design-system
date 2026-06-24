@@ -721,9 +721,12 @@ a.ref-item:hover{background:var(--color-background)}
             <button class="btn btn-primary">Valider le quiz</button>
           </div>
           <div class="seq-part p-replay">
-            <h4>🎥 ÉTAPE 5 · Replay de la classe (visio)</h4>
-            <span class="course-tag" style="color:#d64545;background:rgba(214,69,69,.1)">Visio du 12 mars · 58 min · Promo 2026 Automne</span>
-            <div class="summary-box" style="margin-top:10px"><b>Résumé Notta :</b> clarifier l'objectif avant de déléguer, ritualiser le feedback, traiter les tensions tôt. <b>Chapitres :</b> 00:00 Intro · 06:20 Engagement · 18:45 Feedback · 32:10 Tensions.</div>
+            <h4>🎥 ÉTAPE 5 · Replays de la semaine (2)</h4>
+            <span class="course-tag" style="color:#d64545;background:rgba(214,69,69,.1)">Visio 1 · 12 mars · 58 min · Promo 2026 Automne</span>
+            <div class="summary-box" style="margin-top:10px"><b>Résumé Notta :</b> clarifier l'objectif avant de déléguer, ritualiser le feedback, traiter les tensions tôt. <b>Chapitres :</b> 00:00 Intro · 06:20 Engagement · 18:45 Feedback.</div>
+            <div class="replay-actions"><button class="btn btn-accent">▶ Revoir (BBB)</button><button class="btn btn-ghost">📝 Transcription</button><button class="btn btn-ghost">📄 Résumé</button><button class="btn btn-ghost" onclick="goTo('ai')">🧙 YoDalf</button><span class="lang-flags">🌐 FR · EN</span></div>
+            <span class="course-tag" style="color:#d64545;background:rgba(214,69,69,.1);margin-top:var(--space-5);display:inline-block">Visio 2 · 14 mars · 1h30 · atelier pratique</span>
+            <div class="summary-box" style="margin-top:10px"><b>Résumé Notta :</b> mises en situation, jeux de rôle de feedback, débrief collectif. <b>Chapitres :</b> 00:00 Consignes · 12:00 Ateliers · 58:00 Débrief.</div>
             <div class="replay-actions"><button class="btn btn-accent">▶ Revoir (BBB)</button><button class="btn btn-ghost">📝 Transcription</button><button class="btn btn-ghost">📄 Résumé</button><button class="btn btn-ghost" onclick="goTo('ai')">🧙 YoDalf</button><span class="lang-flags">🌐 FR · EN</span></div>
           </div>
         </div>
@@ -1196,21 +1199,35 @@ a.ref-item:hover{background:var(--color-background)}
 
       <!-- Visio -->
       <div id="es-visio" class="hidden">
-        <p style="color:var(--color-neutral);margin-bottom:var(--space-4)">Créez la visio de cette séquence. La salle <b>BigBlueButton</b> est générée automatiquement. Les <b>dates sont précisées par promotion</b> à la programmation.</p>
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-4)">Une séquence peut avoir <b>une ou plusieurs visios</b>. La salle <b>BigBlueButton</b> est générée automatiquement. Date complète choisie au calendrier (jour/mois/année).</p>
         <div class="edit-card">
-          <div class="gate-toggle" style="margin-bottom:var(--space-4)"><div class="toggle"></div><div><b style="font-family:var(--font-title)">Visio prévue pour cette séquence</b><div style="font-size:12px;color:var(--color-neutral)">Activez pour qu'une classe live soit programmée chaque semaine pour les promotions.</div></div></div>
+          <div class="flex-between mb6"><h3 style="margin:0">Visio 1</h3><button class="icon-btn">🗑️</button></div>
           <div class="row2">
             <div class="field"><label>Titre de la visio</label><input value="Créer l'engagement — Q&R"></div>
             <div class="field"><label>Animateur</label><input value="Yohann Duclos"></div>
           </div>
           <div class="row3">
-            <div class="field"><label>📅 Date de la visio</label><input type="date" value="2026-03-12"></div>
+            <div class="field"><label>📅 Date</label><input type="date" value="2026-03-12"></div>
             <div class="field"><label>Heure</label><input type="time" value="18:00"></div>
             <div class="field"><label>Durée</label><input value="1h"></div>
           </div>
-          <div class="field"><label>Salle BigBlueButton</label><input value="Créée automatiquement à l'enregistrement (classe-virtuelle.com)" readonly></div>
-          <p style="font-size:12px;color:var(--color-neutral)">📅 Choisissez la date complète (jour / mois / année) via le calendrier. Pour une autre promotion, la date se redéfinit ici pour la promo concernée.</p>
+          <div class="field"><label>Salle BigBlueButton</label><input value="Créée automatiquement (classe-virtuelle.com)" readonly></div>
         </div>
+        <div class="edit-card">
+          <div class="flex-between mb6"><h3 style="margin:0">Visio 2</h3><button class="icon-btn">🗑️</button></div>
+          <div class="row2">
+            <div class="field"><label>Titre de la visio</label><input value="Atelier pratique — mise en situation"></div>
+            <div class="field"><label>Animateur</label><input value="Marie Lambert"></div>
+          </div>
+          <div class="row3">
+            <div class="field"><label>📅 Date</label><input type="date" value="2026-03-14"></div>
+            <div class="field"><label>Heure</label><input type="time" value="10:00"></div>
+            <div class="field"><label>Durée</label><input value="1h30"></div>
+          </div>
+          <div class="field"><label>Salle BigBlueButton</label><input value="Créée automatiquement (classe-virtuelle.com)" readonly></div>
+        </div>
+        <button class="add-btn">+ Ajouter une visio à cette séquence</button>
+        <p style="font-size:12px;color:var(--color-neutral);margin-top:var(--space-3)">📅 Pour une autre promotion, les dates se redéfinissent pour la promo concernée.</p>
       </div>
     </section>
 
