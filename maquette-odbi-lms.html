@@ -284,7 +284,9 @@ a{color:inherit;text-decoration:none}
 .ev{display:block;border-radius:5px;padding:3px 6px;margin-top:4px;font-size:10px;font-family:var(--font-title);font-weight:500;color:#fff;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;cursor:pointer}
 .ev.visio{background:#d64545}
 .ev.pres{background:var(--color-indigo-dye)}
-.ev.ech{background:var(--color-asparagus)}
+.ev.exo{background:var(--color-asparagus)}
+.ev.quiz{background:var(--color-apple-green);color:var(--color-jet)}
+.ev.res{background:var(--color-jet)}
 .cal-legend{display:flex;gap:18px;margin-top:var(--space-4);font-size:12px;color:var(--color-neutral);flex-wrap:wrap}
 .cal-legend span{display:flex;align-items:center;gap:6px}
 .cal-legend i{width:12px;height:12px;border-radius:3px;display:inline-block}
@@ -622,12 +624,12 @@ a{color:inherit;text-decoration:none}
         <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">👥 Participants de votre promotion — <b>Promo 2026 — Automne</b> · 42 membres.</p>
         <table class="table">
           <tr><th>Participant</th><th>Rôle</th><th>Ville</th><th>Email</th><th>WhatsApp</th></tr>
-          <tr><td><span class="pmini" style="background:var(--color-asparagus)">YD</span> Yohann Duclos</td><td><span class="role coach">Coach</span></td><td>Lyon</td><td>yo@odbi.fr</td><td>+33 6 11 22 33 44</td></tr>
-          <tr><td><span class="pmini" style="background:var(--color-indigo-dye)">JD</span> Jean Dupont</td><td><span class="role member">Membre</span></td><td>Lyon</td><td>jean.dupont@email.fr</td><td>+33 6 12 34 56 78</td></tr>
-          <tr><td><span class="pmini" style="background:var(--color-apple-green)">ML</span> Marie Lambert</td><td><span class="role member">Membre</span></td><td>Paris</td><td>marie.l@email.fr</td><td>+33 6 23 45 67 89</td></tr>
-          <tr><td><span class="pmini" style="background:#888">TP</span> Thomas Petit</td><td><span class="role member">Membre</span></td><td>Marseille</td><td>thomas.p@email.fr</td><td>+33 6 34 56 78 90</td></tr>
-          <tr><td><span class="pmini" style="background:var(--color-indigo-dye)">SR</span> Sophie Roux</td><td><span class="role member">Membre</span></td><td>Bordeaux</td><td>sophie.r@email.fr</td><td>+33 6 45 67 89 01</td></tr>
-          <tr><td><span class="pmini" style="background:var(--color-asparagus)">KN</span> Karim Nadir</td><td><span class="role member">Membre</span></td><td>Annecy</td><td>karim.n@email.fr</td><td>+33 6 56 78 90 12</td></tr>
+          <tr><td><span class="pmini" style="background:var(--color-asparagus)">YD</span> Yohann Duclos</td><td><span class="role coach">Coach</span></td><td>Lyon</td><td><a href="mailto:yo@odbi.fr" style="color:var(--color-accent)">✉️ yo@odbi.fr</a></td><td><a href="https://wa.me/33611223344" target="_blank" style="color:#25D366">💬 +33 6 11 22 33 44</a></td></tr>
+          <tr><td><span class="pmini" style="background:var(--color-indigo-dye)">JD</span> Jean Dupont</td><td><span class="role member">Membre</span></td><td>Lyon</td><td><a href="mailto:jean.dupont@email.fr" style="color:var(--color-accent)">✉️ jean.dupont@email.fr</a></td><td><a href="https://wa.me/33612345678" target="_blank" style="color:#25D366">💬 +33 6 12 34 56 78</a></td></tr>
+          <tr><td><span class="pmini" style="background:var(--color-apple-green)">ML</span> Marie Lambert</td><td><span class="role member">Membre</span></td><td>Paris</td><td><a href="mailto:marie.l@email.fr" style="color:var(--color-accent)">✉️ marie.l@email.fr</a></td><td><a href="https://wa.me/33623456789" target="_blank" style="color:#25D366">💬 +33 6 23 45 67 89</a></td></tr>
+          <tr><td><span class="pmini" style="background:#888">TP</span> Thomas Petit</td><td><span class="role member">Membre</span></td><td>Marseille</td><td><a href="mailto:thomas.p@email.fr" style="color:var(--color-accent)">✉️ thomas.p@email.fr</a></td><td><a href="https://wa.me/33634567890" target="_blank" style="color:#25D366">💬 +33 6 34 56 78 90</a></td></tr>
+          <tr><td><span class="pmini" style="background:var(--color-indigo-dye)">SR</span> Sophie Roux</td><td><span class="role member">Membre</span></td><td>Bordeaux</td><td><a href="mailto:sophie.r@email.fr" style="color:var(--color-accent)">✉️ sophie.r@email.fr</a></td><td><a href="https://wa.me/33645678901" target="_blank" style="color:#25D366">💬 +33 6 45 67 89 01</a></td></tr>
+          <tr><td><span class="pmini" style="background:var(--color-asparagus)">KN</span> Karim Nadir</td><td><span class="role member">Membre</span></td><td>Annecy</td><td><a href="mailto:karim.n@email.fr" style="color:var(--color-accent)">✉️ karim.n@email.fr</a></td><td><a href="https://wa.me/33656789012" target="_blank" style="color:#25D366">💬 +33 6 56 78 90 12</a></td></tr>
         </table>
       </div>
 
@@ -713,24 +715,21 @@ a{color:inherit;text-decoration:none}
         <div class="seq-body"><p style="color:var(--color-neutral)">Cette séquence s'ouvrira automatiquement la semaine prochaine pour votre promotion.</p></div>
       </div>
 
-      <!-- Classe en direct / Replay -->
-      <div class="seq">
-        <div class="seq-head" onclick="toggleSeq(this)" style="border-left-color:#d64545"><div><div class="wk" style="color:#d64545">Classe en direct</div><h3>🎥 Replay de la visio — Promo 2026 Automne</h3><div class="st">BBB · 58 min · transcription, chapitrage & résumé Notta</div></div><span class="chev">▸</span></div>
+      <!-- Replays de la session (plusieurs visios) -->
+      <div class="seq open">
+        <div class="seq-head" onclick="toggleSeq(this)" style="border-left-color:#d64545"><div><div class="wk" style="color:#d64545">Classes en direct</div><h3>🎥 Replays de la session — Promo 2026 Automne</h3><div class="st">1 visio / semaine · enregistrement BBB + transcription, chapitrage & résumé Notta</div></div><span class="chev">▾</span></div>
         <div class="seq-body">
-          <div class="lesson-layout">
-            <div>
-              <div class="player vid-main"><span class="tag">🎥 Replay BBB · 58 min · 12 mars</span><div class="play">▶</div></div>
-              <div style="display:flex;gap:10px;margin:var(--space-4) 0;flex-wrap:wrap"><button class="btn btn-ghost">📝 Transcription (Notta)</button><button class="btn btn-accent" onclick="goTo('ai')">🧙 Questions à YoDalf</button><span class="lang-flags" style="margin-left:auto">🌐 FR · EN</span></div>
-              <h4 style="font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--color-neutral);margin-bottom:10px">Résumé (Notta)</h4>
-              <div class="summary-box">Leviers d'engagement d'une équipe : (1) clarifier l'objectif avant de déléguer, (2) ritualiser le feedback, (3) traiter les tensions tôt.</div>
-            </div>
-            <div class="side-list">
-              <h4>Chapitres (Notta)</h4>
-              <div class="chapter"><span class="ts">00:00</span><span class="ct">Introduction & objectifs</span></div>
-              <div class="chapter"><span class="ts">06:20</span><span class="ct">Créer l'engagement</span></div>
-              <div class="chapter"><span class="ts">18:45</span><span class="ct">Le feedback en pratique</span></div>
-              <div class="chapter"><span class="ts">32:10</span><span class="ct">Gérer les tensions</span></div>
-            </div>
+          <div class="card" style="padding:var(--space-5);margin-bottom:var(--space-4)">
+            <span class="course-tag">Semaine 1 · 12 mars · 58 min</span>
+            <h3 style="font-size:16px;margin-top:10px">Créer l'engagement — Q&R</h3>
+            <div class="summary-box" style="margin-top:10px"><b>Résumé Notta :</b> clarifier l'objectif avant de déléguer, ritualiser le feedback, traiter les tensions tôt. <b>Chapitres :</b> 00:00 Intro · 06:20 Engagement · 18:45 Feedback · 32:10 Tensions.</div>
+            <div class="replay-actions"><button class="btn btn-accent">▶ Revoir (BBB)</button><button class="btn btn-ghost">📝 Transcription</button><button class="btn btn-ghost">📄 Résumé</button><button class="btn btn-ghost" onclick="goTo('ai')">🧙 YoDalf</button><span class="lang-flags">🌐 FR · EN</span></div>
+          </div>
+          <div class="card" style="padding:var(--space-5)">
+            <span class="course-tag">Semaine 2 · 19 mars · 1h04</span>
+            <h3 style="font-size:16px;margin-top:10px">Le feedback en pratique — cas réels</h3>
+            <div class="summary-box" style="margin-top:10px"><b>Résumé Notta :</b> mises en situation de feedback, gestion des réactions, plan d'action individuel. <b>Chapitres :</b> 00:00 Rappel · 04:10 Jeux de rôle · 27:30 Débrief · 51:00 Q&R.</div>
+            <div class="replay-actions"><button class="btn btn-accent">▶ Revoir (BBB)</button><button class="btn btn-ghost">📝 Transcription</button><button class="btn btn-ghost">📄 Résumé</button><button class="btn btn-ghost" onclick="goTo('ai')">🧙 YoDalf</button><span class="lang-flags">🌐 FR · EN</span></div>
           </div>
         </div>
       </div>
@@ -852,40 +851,40 @@ a{color:inherit;text-decoration:none}
         <div class="cal-grid">
           <div class="cal-dow">Lun</div><div class="cal-dow">Mar</div><div class="cal-dow">Mer</div><div class="cal-dow">Jeu</div><div class="cal-dow">Ven</div><div class="cal-dow">Sam</div><div class="cal-dow">Dim</div>
           <!-- Semaine 1 -->
-          <div class="cal-cell"><div class="num">1</div></div>
-          <div class="cal-cell"><div class="num">2</div></div>
-          <div class="cal-cell"><div class="num">3</div><span class="ev visio">18h · Visio La Voie</span></div>
-          <div class="cal-cell"><div class="num">4</div></div>
-          <div class="cal-cell"><div class="num">5</div><span class="ev visio">12h30 · BTC live</span></div>
+          <div class="cal-cell"><div class="num">1</div><span class="ev exo" onclick="goTo('lesson')">📝 Exercice S1</span></div>
+          <div class="cal-cell"><div class="num">2</div><span class="ev res" onclick="goTo('lesson')">🎧 Ressources S1</span></div>
+          <div class="cal-cell"><div class="num">3</div><span class="ev visio" onclick="goTo('visio')">18h · Visio La Voie</span></div>
+          <div class="cal-cell"><div class="num">4</div><span class="ev quiz" onclick="goTo('lesson')">✅ Quiz S1</span></div>
+          <div class="cal-cell"><div class="num">5</div><span class="ev visio" onclick="goTo('visio')">12h30 · BTC live</span></div>
           <div class="cal-cell"><div class="num">6</div></div>
           <div class="cal-cell"><div class="num">7</div></div>
           <!-- Semaine 2 -->
-          <div class="cal-cell"><div class="num">8</div></div>
+          <div class="cal-cell"><div class="num">8</div><span class="ev exo" onclick="goTo('lesson')">📝 Exercice S2</span></div>
           <div class="cal-cell"><div class="num">9</div></div>
-          <div class="cal-cell"><div class="num">10</div><span class="ev visio">18h · Visio La Voie</span></div>
-          <div class="cal-cell"><div class="num">11</div></div>
-          <div class="cal-cell"><div class="num">12</div><span class="ev visio">12h30 · BTC live</span></div>
-          <div class="cal-cell"><div class="num">13</div><span class="ev pres">Présentiel — Lyon</span></div>
+          <div class="cal-cell"><div class="num">10</div><span class="ev visio" onclick="goTo('visio')">18h · Visio La Voie</span></div>
+          <div class="cal-cell"><div class="num">11</div><span class="ev res" onclick="goTo('lesson')">🎧 Ressources S2</span></div>
+          <div class="cal-cell"><div class="num">12</div><span class="ev visio" onclick="goTo('visio')">12h30 · BTC live</span></div>
+          <div class="cal-cell"><div class="num">13</div><span class="ev pres" onclick="goTo('course')">📍 Présentiel — Lyon</span></div>
           <div class="cal-cell"><div class="num">14</div></div>
           <!-- Semaine 3 -->
-          <div class="cal-cell"><div class="num">15</div></div>
-          <div class="cal-cell"><div class="num">16</div><span class="ev ech">Échéance exercice</span></div>
-          <div class="cal-cell"><div class="num">17</div><span class="ev visio">18h · Visio La Voie</span></div>
+          <div class="cal-cell"><div class="num">15</div><span class="ev quiz" onclick="goTo('lesson')">✅ Quiz S2</span></div>
+          <div class="cal-cell"><div class="num">16</div><span class="ev exo" onclick="goTo('lesson')">📝 Exercice S3</span></div>
+          <div class="cal-cell"><div class="num">17</div><span class="ev visio" onclick="goTo('visio')">18h · Visio La Voie</span></div>
           <div class="cal-cell"><div class="num">18</div></div>
-          <div class="cal-cell"><div class="num">19</div><span class="ev visio">12h30 · BTC live</span></div>
+          <div class="cal-cell"><div class="num">19</div><span class="ev visio" onclick="goTo('visio')">12h30 · BTC live</span></div>
           <div class="cal-cell"><div class="num">20</div></div>
           <div class="cal-cell"><div class="num">21</div></div>
           <!-- Semaine 4 -->
-          <div class="cal-cell"><div class="num">22</div></div>
+          <div class="cal-cell"><div class="num">22</div><span class="ev res" onclick="goTo('lesson')">🎧 Ressources S3</span></div>
           <div class="cal-cell"><div class="num">23</div></div>
-          <div class="cal-cell today"><div class="num">24</div><span class="ev visio">18h · Visio La Voie</span><span class="ev ech">Exercice à rendre</span></div>
-          <div class="cal-cell"><div class="num">25</div><span class="ev visio">20h30 · BTC live</span></div>
-          <div class="cal-cell"><div class="num">26</div><span class="ev visio">12h30 · BTC live</span></div>
+          <div class="cal-cell today"><div class="num">24</div><span class="ev visio" onclick="goTo('visio')">18h · Visio La Voie</span><span class="ev quiz" onclick="goTo('lesson')">✅ Quiz S3</span></div>
+          <div class="cal-cell"><div class="num">25</div><span class="ev visio" onclick="goTo('visio')">20h30 · BTC live</span></div>
+          <div class="cal-cell"><div class="num">26</div><span class="ev visio" onclick="goTo('visio')">12h30 · BTC live</span></div>
           <div class="cal-cell"><div class="num">27</div></div>
           <div class="cal-cell"><div class="num">28</div></div>
           <!-- Semaine 5 -->
-          <div class="cal-cell"><div class="num">29</div></div>
-          <div class="cal-cell"><div class="num">30</div><span class="ev visio">18h · Visio La Voie</span></div>
+          <div class="cal-cell"><div class="num">29</div><span class="ev exo" onclick="goTo('lesson')">📝 Exercice S4</span></div>
+          <div class="cal-cell"><div class="num">30</div><span class="ev visio" onclick="goTo('visio')">18h · Visio La Voie</span></div>
           <div class="cal-cell out"><div class="num">1</div></div>
           <div class="cal-cell out"><div class="num">2</div></div>
           <div class="cal-cell out"><div class="num">3</div></div>
@@ -896,8 +895,11 @@ a{color:inherit;text-decoration:none}
       <div class="cal-legend">
         <span><i style="background:#d64545"></i> Visio live (BBB)</span>
         <span><i style="background:var(--color-indigo-dye)"></i> Présentiel</span>
-        <span><i style="background:var(--color-asparagus)"></i> Échéance</span>
+        <span><i style="background:var(--color-asparagus)"></i> Exercice</span>
+        <span><i style="background:var(--color-jet)"></i> Ressources à consulter</span>
+        <span><i style="background:var(--color-apple-green)"></i> Quiz</span>
       </div>
+      <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-3)">💡 Cliquez sur un événement pour aller directement au contenu concerné.</p>
     </section>
 
     <!-- ADMIN -->
@@ -1199,7 +1201,7 @@ function switchPromo(key){
   var p = PROMOS[key]; if(!p) return;
   document.getElementById('pres-intro').innerHTML = '📍 Rencontres physiques de votre promotion — <b>'+p.nom+'</b>.';
   document.getElementById('pres-list').innerHTML = p.pres.map(function(e){
-    return '<div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 '+e.d+'</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">'+e.t+'</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 '+e.l+'</p></div><button class="btn btn-ghost">Détails</button></div></div>';
+    return '<div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 '+e.d+'</span><h3 style="font-size:16px;margin-top:10px">'+e.t+'</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 '+e.l+'</p></div>';
   }).join('');
   document.getElementById('wa-promo').textContent = p.nom+' · « La Voie des managers » — '+p.wa+' participants';
 }

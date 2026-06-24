@@ -172,8 +172,11 @@ et peut **s'étaler sur plusieurs semaines** (adaptation pédagogique).
   (Vimeo Player SDK, position par membre × vidéo, multi-appareils) ; alimente
   progression + assiduité.
 
-### Quiz
-- Un quiz **par séquence** (et/ou de session). Voir §9.
+### Quiz & replays — multiples par session
+- **Plusieurs quiz** par session (au moins un par séquence).
+- **Plusieurs replays** par session (≈ 1 visio/semaine) — chacun avec son
+  enregistrement BBB + transcription/chapitrage/résumé Notta.
+- Voir §9 pour les formes de quiz.
 
 ### Replay de la classe (visio live)
 - La visio live de la session est accessible **dans la session** (bloc « Classe en direct / Replay »),
@@ -388,14 +391,16 @@ Le profil affiche aussi :
 ### Annuaire des participants
 - **Onglet « Participants »** de la page cours (au même niveau que Lexique/Références)
 - Champs affichés : **prénom, nom, ville, rôle, e-mail, numéro WhatsApp**
+- **E-mail cliquable** (mailto) et **numéro cliquable vers WhatsApp** (wa.me)
 - Le **groupe WhatsApp** de la promo est lui aussi un **onglet du cours**
 - **RGPD — opt-in** : l'e-mail et le numéro WhatsApp ne sont visibles par les autres
   participants **que si le membre y a consenti** (réglage dans son profil). Par
   défaut masqués ; prénom/nom/ville/rôle restent visibles.
 
 ### Agenda
-- Présenté comme un **vrai calendrier** (vue mensuelle), événements color-codés :
-  visios (BBB), présentiels, échéances — filtré sur les promos du membre.
+- Présenté comme un **vrai calendrier** (vue mensuelle), filtré sur les promos du membre.
+- Événements color-codés et **cliquables** (renvoient au contenu concerné) :
+  **Visios (BBB), Présentiels, Exercices, Ressources à consulter, Quiz**.
 
 ---
 
