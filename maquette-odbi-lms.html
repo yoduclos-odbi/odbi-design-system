@@ -199,6 +199,11 @@ a{color:inherit;text-decoration:none}
 .live .blink{width:9px;height:9px;background:#d64545;border-radius:50%;animation:blink 1.2s infinite}
 @keyframes blink{50%{opacity:.3}}
 
+/* ---------- Replays ---------- */
+.replay-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--space-4);padding-top:var(--space-4);border-top:1px solid rgba(74,74,74,.08)}
+.replay-actions .btn{padding:7px 12px;font-size:12px}
+.lang-flags{font-size:12px;color:var(--color-neutral);display:flex;align-items:center;gap:6px;margin-left:auto}
+
 /* ---------- AI assistant ---------- */
 .chat{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;height:calc(100vh - 200px)}
 .chat-head{padding:var(--space-4) var(--space-5);border-bottom:1px solid rgba(74,74,74,.1);display:flex;align-items:center;gap:12px}
@@ -580,10 +585,35 @@ a{color:inherit;text-decoration:none}
         <div class="card" style="padding:var(--space-5)"><span class="course-tag" style="color:var(--color-asparagus);background:rgba(134,164,63,.12)">🎓 BTC : 2ème génération</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Pratique du coaching live</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Vendredi · 12h30 — 45 min</p></div><button class="btn btn-ghost">S'inscrire</button></div></div>
       </div>
 
-      <div class="section-title">Replays & comptes-rendus</div>
+      <div class="section-title">Replays & comptes-rendus de vos promotions</div>
+      <div class="suggest mb6">
+        <button style="background:var(--color-primary);color:#fff">Toutes mes promos</button>
+        <button>👥 La Voie des managers · Promo 2026 — Automne</button>
+        <button>🎓 BTC : 2ème génération</button>
+      </div>
       <div class="grid grid-2">
-        <div class="card" style="padding:var(--space-5)"><span class="course-tag">📘 La Voie des managers</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Créer l'engagement (Module 2.1)</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📝 Transcription Notta · 🌐 FR / EN · 12 mars</p></div><button class="btn btn-ghost">Voir le replay</button></div></div>
-        <div class="card" style="padding:var(--space-5)"><span class="course-tag" style="color:var(--color-asparagus);background:rgba(134,164,63,.12)">🎓 BTC : 1ère génération</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Posture du coach</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📝 Transcription Notta · 🌐 FR / EN / ES · 5 mars</p></div><button class="btn btn-ghost">Voir le replay</button></div></div>
+        <div class="card" style="padding:var(--space-5)">
+          <span class="course-tag">📘 La Voie des managers · 👥 Promo 2026 — Automne</span>
+          <h3 style="font-size:16px;margin-top:10px">Créer l'engagement collectif</h3>
+          <p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Session 2 · enregistrée le 12 mars · 58 min</p>
+          <div class="replay-actions">
+            <button class="btn btn-accent">▶ Revoir (BBB)</button>
+            <button class="btn btn-ghost">📝 Transcription</button>
+            <button class="btn btn-ghost">📄 Résumé IA</button>
+            <span class="lang-flags">🌐 FR · EN</span>
+          </div>
+        </div>
+        <div class="card" style="padding:var(--space-5)">
+          <span class="course-tag" style="color:var(--color-asparagus);background:rgba(134,164,63,.12)">🎓 BTC : 2ème génération</span>
+          <h3 style="font-size:16px;margin-top:10px">Posture du coach</h3>
+          <p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Session 1 · enregistrée le 5 mars · 1h12</p>
+          <div class="replay-actions">
+            <button class="btn btn-accent">▶ Revoir (BBB)</button>
+            <button class="btn btn-ghost">📝 Transcription</button>
+            <button class="btn btn-ghost">📄 Résumé IA</button>
+            <span class="lang-flags">🌐 FR · EN · ES</span>
+          </div>
+        </div>
       </div>
     </section>
 
