@@ -154,12 +154,20 @@ et peut **s'étaler sur plusieurs semaines** (adaptation pédagogique).
 
 ### Une session = une suite de séquences
 - Une session contient **plusieurs vidéos** → **une séquence par vidéo** (≈ une semaine).
-- Chaque séquence regroupe, **synchronisés avec sa vidéo** :
-  - 1+ **exercice(s)** préparatoire(s)
-  - 1+ **ressource(s)** (audios / PDF)
-  - un **quiz** de séquence
-- Affichage : **accordéon** de séquences (déroulables), avec libellé de semaine
-  et déverrouillage progressif des séquences au fil des semaines.
+- Chaque séquence est une **suite de blocs séparés et color-codés** (cartes distinctes) :
+  1. 📝 **Exercice(s)** préparatoire(s)
+  2. 🎬 **Vidéo** (Vimeo)
+  3. 🎧 **Ressource(s)** synchronisées (audios / PDF)
+  4. ✅ **Quiz** de la séquence
+  5. 🎥 **Replay** de la visio de la semaine (BBB + transcription/chapitrage/résumé Notta, par promo)
+- Affichage : **accordéon** de séquences, avec libellé de semaine et déverrouillage progressif.
+- Le **replay est rangé à la fin du bloc de la semaine** (pas dans une liste séparée).
+
+### Mapping session / semaine / thème (flexible)
+- **Cas standard : 1 session = 1 semaine.**
+- Mais le modèle doit rester **souple** : on peut avoir p. ex. **3 sessions et 12 thèmes**.
+  → Ne pas figer « 1 session = 1 semaine » dans le modèle de données ; prévoir un
+  découpage configurable (session → séquences/semaines/thèmes).
 
 ### Pédagogie inversée (par séquence)
 - Dans chaque séquence, l'**exercice se réalise AVANT** la vidéo.
