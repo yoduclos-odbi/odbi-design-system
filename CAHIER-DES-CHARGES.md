@@ -110,6 +110,12 @@ Un membre est rattaché à **une promotion par programme** (peut être dans
 plusieurs promos s'il suit plusieurs programmes). La plateforme filtre
 automatiquement le contenu synchrone selon sa/ses promo(s).
 
+### Volume & navigation des promotions
+- **Beaucoup de promotions** : ex. « La Voie » → **~5 promotions par an**
+- Côté UI : sélection des promotions via un **dérouleur groupé par année**
+  (pas une liste de chips qui déborderait)
+- À prévoir : archivage des promotions passées
+
 ---
 
 ## 7. Structure d'un cours
@@ -126,7 +132,7 @@ Page cours = **4 onglets** :
 
 ## 8. Structure d'une session
 
-Page session = **4 onglets** (ordre = pédagogie inversée) :
+Page session = **5 onglets** (ordre = pédagogie inversée) :
 
 1. **📝 Exercices** *(pédagogie inversée — important)*
    - Un ou plusieurs exercices à réaliser AVANT le contenu
@@ -136,6 +142,11 @@ Page session = **4 onglets** (ordre = pédagogie inversée) :
 2. **🎬 Vidéos** — plusieurs vidéos par session (playlist) — hébergement type Mux/Vimeo
 3. **🎧 Ressources** — un ou plusieurs audios + PDF (écoute / téléchargement)
 4. **✅ Quiz** — voir §9
+5. **🎥 Replay** — la visio live de la session, **propre à la promo du membre** :
+   - Enregistrement BBB
+   - Transcription + **chapitrage** + **résumé** par Notta (multi-langues)
+   - Accès « Questions à YoDalf » sur la base de la visio
+   - Rythme : **~1 visio / semaine par cours** → 1 replay par session ; les programmes durent **3 à 12 mois** (volume important à prévoir)
 
 ---
 
@@ -163,15 +174,23 @@ Page session = **4 onglets** (ordre = pédagogie inversée) :
 
 ### Visios
 - Classes **synchrones** d'une promotion, via **BigBlueButton**
-- Menu « Visios live » = agenda **filtré** par les promos du membre
-- Chaque visio porte l'étiquette de son cours + promo
+- Chaque participant voit **uniquement les visios de son cours ET de sa promo** (croisement inscription × cours × promo)
+- **Pas d'inscription** aux visios : accès **automatique** via l'appartenance à la promo
+- **Visios du jour dans le menu de gauche** : accès rapide pour rejoindre BBB en un clic
+- Menu « Visios live » = agenda **filtré** par les promos du membre + prochaines visios
+- Rythme : **~1 visio / semaine par cours**
+
+### Hébergement BBB (existant ODBI)
+- BBB **auto-hébergé chez OVH** (serveur **TURN** inclus)
+- Domaine associé : **https://www.classe-virtuelle.com/**
+- Actuellement utilisé via **Moodle** → à ré-intégrer dans la nouvelle plateforme (voir §17)
 
 ### Replays
 Flux : `Visio BBB → enregistrement BBB → Notta (transcription + chapitrage + résumé, multi-langues) → objet Replay rattaché à la promo`
 
 - **Accès réservé aux membres de la promotion** concernée 🔒
-- Le membre retrouve ses replays dans « Visios live → Replays », **filtrés par promo**
-- Actions par replay : ▶ Revoir (BBB) · 📝 Transcription (Notta) · 📄 Résumé (Notta) · langues dispo
+- Les replays sont rangés **dans chaque session du cours** (onglet « 🎥 Replay »), pas dans une liste globale (volume important)
+- Actions par replay : ▶ Revoir (BBB) · 📝 Transcription (Notta) · 📄 Résumé (Notta) · 🧙 Questions à YoDalf · langues dispo
 - **Résumé = fait par Notta** (transcription + chapitrage + résumé proposé)
 
 ---
@@ -220,7 +239,46 @@ Onglets :
 
 ---
 
-## 16. Points en suspens / à décider
+## 16. Intégration technique BigBlueButton
+
+### Existant
+- BBB **auto-hébergé chez OVH** (serveur **TURN** pour la traversée NAT/firewall)
+- Domaine : **https://www.classe-virtuelle.com/**
+- Intégré aujourd'hui à **Moodle** (plugin BBB Moodle)
+
+### Approche d'intégration dans la nouvelle plateforme
+La maquette montre une visio « intégrée » (tuiles dans la page). En réalité,
+deux modes possibles côté BBB :
+
+1. **Redirection / nouvel onglet (recommandé pour démarrer)**
+   - La plateforme appelle l'**API BBB** (`create` + `join`) côté serveur,
+     signe la requête avec le **secret BBB**, puis ouvre l'URL de session.
+   - Le membre rejoint la salle BBB (interface BBB native, audio/vidéo via TURN).
+   - Simple, robuste, réutilise l'existant OVH/classe-virtuelle.com tel quel.
+
+2. **Intégration embarquée (iframe / BBB HTML5 / API frontend)**
+   - La salle s'affiche **dans** la plateforme (comme suggéré visuellement).
+   - Plus immersif mais plus complexe (CSP, cookies tiers, mises à jour BBB).
+
+> **Reco** : démarrer en **mode 1** (l'app pilote la création/jointure via l'API
+> BBB, rejointe en plein écran), puis évaluer l'embarqué si vraiment souhaité.
+> Dans les deux cas, la logique « qui peut rejoindre quelle salle » est gérée
+> par **notre** plateforme (membre × cours × promo), pas par BBB.
+
+### À récupérer côté ODBI pour l'intégration
+- URL du serveur BBB (API endpoint) + **secret partagé** (shared secret)
+- Confirmation de la version BBB et de l'activation de l'API d'enregistrement
+  (pour récupérer les replays)
+
+### Migration depuis Moodle
+- Moodle ne sert qu'à **lancer** les salles BBB → rien à migrer côté visio,
+  on rebranche simplement l'API BBB sur la nouvelle plateforme.
+- À voir séparément : faut-il migrer des **contenus de cours** existants depuis
+  Moodle ? (point à clarifier)
+
+---
+
+## 17. Points en suspens / à décider
 
 - [ ] Groupe WhatsApp : **par promotion** (hypothèse retenue) ou par programme ?
 - [ ] Niveau de gating exercices : configurable par session côté admin ?
@@ -228,6 +286,8 @@ Onglets :
 - [ ] Sens de la synchro Notion (CRM) : inscriptions → fiches ? suivi prospects ?
 - [ ] Modèle d'abonnement / tarification (Stripe) : à définir
 - [ ] Langues de l'interface (FR seul, ou multilingue ?)
+- [ ] BBB : mode **redirection** (reco) ou **embarqué (iframe)** dans la plateforme ?
+- [ ] Migration de **contenus de cours** depuis Moodle : nécessaire ou non ?
 
 ---
 

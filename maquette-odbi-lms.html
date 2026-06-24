@@ -200,6 +200,21 @@ a{color:inherit;text-decoration:none}
 .lock-banner .lk-txt a{color:var(--color-accent);cursor:pointer;text-decoration:underline;font-size:12px}
 .promo-pick{font-family:var(--font-title);font-weight:500;font-size:12px;padding:6px 12px;border-radius:var(--radius-full);border:1px solid rgba(74,74,74,.2);background:#fff;color:var(--color-jet);cursor:pointer}
 .promo-pick.active{background:var(--color-accent);color:#fff;border-color:var(--color-accent)}
+.promo-select{font-family:var(--font-body);font-size:13px;padding:7px 12px;border:1px solid rgba(74,74,74,.25);border-radius:var(--radius-md);background:#fff;color:var(--color-jet)}
+/* Visios du jour (sidebar) */
+.side-visio{background:var(--color-background);border-radius:10px;padding:10px 12px;margin-bottom:8px;cursor:pointer;border-left:3px solid var(--color-asparagus);transition:background .15s}
+.side-visio:hover{background:#e9e7df}
+.side-visio.islive{border-left-color:#d64545}
+.side-visio .sv-time{font-family:var(--font-title);font-weight:700;font-size:12px;color:var(--color-accent);display:flex;align-items:center;gap:6px}
+.side-visio.islive .sv-time{color:#d64545}
+.side-visio .sv-t{font-size:12px;font-family:var(--font-title);font-weight:500;margin-top:3px;color:var(--color-jet)}
+.side-visio .sv-p{font-size:11px;color:var(--color-neutral);margin-top:1px}
+/* Replay / chapitrage */
+.chapter{display:flex;gap:12px;padding:10px 12px;border-radius:8px;cursor:pointer}
+.chapter:hover{background:var(--color-background)}
+.chapter .ts{font-family:var(--font-title);font-weight:700;color:var(--color-accent);font-size:12px;min-width:48px}
+.chapter .ct{font-size:13px}
+.summary-box{background:rgba(134,164,63,.08);border-left:4px solid var(--color-asparagus);border-radius:8px;padding:16px 18px;font-size:13px;line-height:1.7}
 
 /* ---------- Visio ---------- */
 .visio-stage{background:#1a1a1a;border-radius:var(--radius-lg);aspect-ratio:16/9;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:8px;padding:8px;margin-bottom:var(--space-5)}
@@ -336,6 +351,18 @@ a{color:inherit;text-decoration:none}
     <div class="nav-item" data-page="game" onclick="go(this)"><span class="ico">🏆</span> Progression</div>
     <div class="nav-item" data-page="agenda" onclick="go(this)"><span class="ico">📅</span> Agenda</div>
     <div class="nav-sep"></div>
+    <div class="nav-label">🎥 Visios du jour</div>
+    <div class="side-visio islive" onclick="goTo('visio')">
+      <div class="sv-time"><span class="blink"></span> EN DIRECT · 18h00</div>
+      <div class="sv-t">La Voie des managers</div>
+      <div class="sv-p">Promo 2026 — Automne</div>
+    </div>
+    <div class="side-visio" onclick="goTo('visio')">
+      <div class="sv-time">⏰ 20h30</div>
+      <div class="sv-t">BTC : 2ème génération</div>
+      <div class="sv-p">Session coaching live</div>
+    </div>
+    <div class="nav-sep"></div>
     <div class="nav-label">Administration</div>
     <div class="nav-item" data-page="admin" onclick="go(this)"><span class="ico">⚙️</span> Back-office</div>
     <div class="nav-sep"></div>
@@ -427,8 +454,17 @@ a{color:inherit;text-decoration:none}
           <p style="color:var(--color-neutral);margin-top:6px">4 sessions · 4h de contenu · animé par Yohann D.</p>
           <div style="margin-top:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
             <span style="font-size:12px;color:var(--color-neutral)">👥 Promotion :</span>
-            <button class="promo-pick active" id="pp-aut" onclick="switchPromo('aut')">Promo 2026 — Automne</button>
-            <button class="promo-pick" id="pp-pri" onclick="switchPromo('pri')">Promo 2027 — Printemps</button>
+            <select class="promo-select" id="promoSelect" onchange="switchPromo(this.value)">
+              <optgroup label="2027">
+                <option value="lvm-2027-pri">Promo 2027 — Printemps</option>
+                <option value="lvm-2027-ete">Promo 2027 — Été</option>
+              </optgroup>
+              <optgroup label="2026">
+                <option value="lvm-2026-aut" selected>Promo 2026 — Automne</option>
+                <option value="lvm-2026-ete">Promo 2026 — Été</option>
+                <option value="lvm-2026-pri">Promo 2026 — Printemps</option>
+              </optgroup>
+            </select>
           </div>
         </div>
         <button class="btn btn-accent" onclick="goTo('lesson')">Reprendre ▶</button>
@@ -464,26 +500,10 @@ a{color:inherit;text-decoration:none}
         </div>
       </div>
 
-      <!-- Présentiels (par promotion) -->
+      <!-- Présentiels (par promotion, pilotés par le dérouleur) -->
       <div id="crs-presentiel" class="hidden">
-        <!-- Promo Automne -->
-        <div id="pres-aut">
-          <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">📍 Rencontres physiques de votre promotion — <b>Promo 2026 — Automne</b>.</p>
-          <div class="grid grid-2">
-            <div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 14–15 nov. 2026</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Séminaire d'intégration</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 ODBI Campus — Lyon · 9h–17h</p></div><button class="btn btn-ghost">Détails</button></div></div>
-            <div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 23 jan. 2027</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Atelier pratique — mise en situation</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 Espace Bellecour — Lyon · 9h–13h</p></div><button class="btn btn-ghost">Détails</button></div></div>
-            <div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 12 mars 2027</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Certification & clôture</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 ODBI Campus — Lyon · 9h–17h</p></div><button class="btn btn-ghost">Détails</button></div></div>
-          </div>
-        </div>
-        <!-- Promo Printemps -->
-        <div id="pres-pri" class="hidden">
-          <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">📍 Rencontres physiques de votre promotion — <b>Promo 2027 — Printemps</b>.</p>
-          <div class="grid grid-2">
-            <div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 18–19 avr. 2027</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Séminaire d'intégration</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 ODBI Campus — Paris · 9h–17h</p></div><button class="btn btn-ghost">Détails</button></div></div>
-            <div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 26 juin 2027</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Atelier pratique — mise en situation</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 Le Hub — Paris · 9h–13h</p></div><button class="btn btn-ghost">Détails</button></div></div>
-            <div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 25 sept. 2027</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Certification & clôture</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 ODBI Campus — Paris · 9h–17h</p></div><button class="btn btn-ghost">Détails</button></div></div>
-          </div>
-        </div>
+        <p id="pres-intro" style="color:var(--color-neutral);margin-bottom:var(--space-5)"></p>
+        <div id="pres-list" class="grid grid-2"></div>
       </div>
 
       <!-- Lexique (niveau cours) -->
@@ -520,6 +540,7 @@ a{color:inherit;text-decoration:none}
         <div class="tab" onclick="sessTab(this,'video')">🎬 Vidéos</div>
         <div class="tab" onclick="sessTab(this,'res')">🎧 Ressources</div>
         <div class="tab" onclick="sessTab(this,'quiz')">✅ Quiz</div>
+        <div class="tab" onclick="sessTab(this,'replay')">🎥 Replay</div>
       </div>
 
       <!-- Exercices (pédagogie inversée) -->
@@ -624,6 +645,32 @@ a{color:inherit;text-decoration:none}
         <button class="btn btn-primary">Valider le quiz</button>
       </div>
 
+      <!-- Replay (visio de la session, par promo) -->
+      <div id="sess-replay" class="hidden">
+        <span class="course-tag" style="margin-bottom:12px">🎥 Classe de la semaine · 👥 Promo 2026 — Automne</span>
+        <p style="color:var(--color-neutral);margin:10px 0 var(--space-5)">Le replay de la visio live de cette session, réservé à votre promotion. Transcription, chapitrage et résumé par Notta.</p>
+        <div class="lesson-layout">
+          <div>
+            <div class="player vid-main"><span class="tag">🎥 Replay BBB · 58 min · 12 mars</span><div class="play">▶</div></div>
+            <div style="display:flex;gap:10px;margin-bottom:var(--space-5);flex-wrap:wrap">
+              <button class="btn btn-ghost">📝 Transcription (Notta)</button>
+              <button class="btn btn-accent" onclick="goTo('ai')">🧙 Questions à YoDalf</button>
+              <span class="lang-flags" style="margin-left:auto">🌐 FR · EN</span>
+            </div>
+            <h4 style="font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--color-neutral);margin-bottom:10px">Résumé (Notta)</h4>
+            <div class="summary-box">La session a porté sur les leviers d'engagement d'une équipe. Trois idées clés : (1) clarifier l'objectif commun avant de déléguer, (2) ritualiser le feedback selon les 3 piliers, (3) traiter les tensions tôt. Exercice donné : préparer un feedback réel pour la prochaine fois.</div>
+          </div>
+          <div class="side-list">
+            <h4>Chapitres (Notta)</h4>
+            <div class="chapter"><span class="ts">00:00</span><span class="ct">Introduction & objectifs</span></div>
+            <div class="chapter"><span class="ts">06:20</span><span class="ct">Créer l'engagement collectif</span></div>
+            <div class="chapter"><span class="ts">18:45</span><span class="ct">Le feedback en pratique</span></div>
+            <div class="chapter"><span class="ts">32:10</span><span class="ct">Gérer les tensions</span></div>
+            <div class="chapter"><span class="ts">47:30</span><span class="ct">Q&R et passage à l'action</span></div>
+          </div>
+        </div>
+      </div>
+
     </section>
 
     <!-- VISIO -->
@@ -644,42 +691,14 @@ a{color:inherit;text-decoration:none}
       <div class="visio-controls">
         <div class="vctrl">🎤</div><div class="vctrl">📹</div><div class="vctrl">🖥️</div><div class="vctrl">✋</div><div class="vctrl">💬</div><div class="vctrl end">📞</div>
       </div>
-      <div class="section-title">Vos prochaines sessions</div>
+      <div class="section-title">Vos prochaines visios</div>
+      <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">Accès automatique — vous êtes inscrit aux visios de vos promotions, pas besoin de s'inscrire.</p>
       <div class="grid grid-2">
-        <div class="card" style="padding:var(--space-5)"><span class="course-tag">📘 La Voie des managers</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Mobiliser une équipe : Q&R</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Demain · 18h00 — 1h</p></div><button class="btn btn-ghost">S'inscrire</button></div></div>
-        <div class="card" style="padding:var(--space-5)"><span class="course-tag" style="color:var(--color-asparagus);background:rgba(134,164,63,.12)">🎓 BTC : 2ème génération</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Pratique du coaching live</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Vendredi · 12h30 — 45 min</p></div><button class="btn btn-ghost">S'inscrire</button></div></div>
+        <div class="card" style="padding:var(--space-5)"><span class="course-tag">📘 La Voie des managers · Promo 2026 — Automne</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Mobiliser une équipe : Q&R</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Demain · 18h00 — 1h</p></div><button class="btn btn-ghost">📅 Mon agenda</button></div></div>
+        <div class="card" style="padding:var(--space-5)"><span class="course-tag" style="color:var(--color-asparagus);background:rgba(134,164,63,.12)">🎓 BTC : 2ème génération</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Pratique du coaching live</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Vendredi · 12h30 — 45 min</p></div><button class="btn btn-ghost">📅 Mon agenda</button></div></div>
       </div>
 
-      <div class="section-title">Replays & comptes-rendus de vos promotions</div>
-      <div class="suggest mb6">
-        <button style="background:var(--color-primary);color:#fff">Toutes mes promos</button>
-        <button>👥 La Voie des managers · Promo 2026 — Automne</button>
-        <button>🎓 BTC : 2ème génération</button>
-      </div>
-      <div class="grid grid-2">
-        <div class="card" style="padding:var(--space-5)">
-          <span class="course-tag">📘 La Voie des managers · 👥 Promo 2026 — Automne</span>
-          <h3 style="font-size:16px;margin-top:10px">Créer l'engagement collectif</h3>
-          <p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Session 2 · enregistrée le 12 mars · 58 min</p>
-          <div class="replay-actions">
-            <button class="btn btn-accent">▶ Revoir (BBB)</button>
-            <button class="btn btn-ghost">📝 Transcription</button>
-            <button class="btn btn-ghost">📄 Résumé IA</button>
-            <span class="lang-flags">🌐 FR · EN</span>
-          </div>
-        </div>
-        <div class="card" style="padding:var(--space-5)">
-          <span class="course-tag" style="color:var(--color-asparagus);background:rgba(134,164,63,.12)">🎓 BTC : 2ème génération</span>
-          <h3 style="font-size:16px;margin-top:10px">Posture du coach</h3>
-          <p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Session 1 · enregistrée le 5 mars · 1h12</p>
-          <div class="replay-actions">
-            <button class="btn btn-accent">▶ Revoir (BBB)</button>
-            <button class="btn btn-ghost">📝 Transcription</button>
-            <button class="btn btn-ghost">📄 Résumé IA</button>
-            <span class="lang-flags">🌐 FR · EN · ES</span>
-          </div>
-        </div>
-      </div>
+      <div class="note" style="background:rgba(17,76,106,.06);border-left:4px solid var(--color-accent);border-radius:8px;padding:14px 16px;margin-top:var(--space-8);font-size:13px">💡 Les <b>replays</b> (avec transcription, chapitrage et résumé Notta) se trouvent désormais <b>dans chaque session du cours</b>, onglet « 🎥 Replay ».</div>
     </section>
 
     <!-- AI ASSISTANT -->
@@ -847,7 +866,7 @@ function adminTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.clas
   ['members','courses','promos','integ'].forEach(x=>document.getElementById('admin-'+x).classList.add('hidden'));
   document.getElementById('admin-'+t).classList.remove('hidden')}
 function sessTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
-  ['ex','video','res','quiz'].forEach(x=>document.getElementById('sess-'+x).classList.add('hidden'));
+  ['ex','video','res','quiz','replay'].forEach(x=>document.getElementById('sess-'+x).classList.add('hidden'));
   document.getElementById('sess-'+t).classList.remove('hidden')}
 function unlockSession(){
   var c=document.getElementById('exoCheck');if(c)c.classList.add('done');
@@ -856,14 +875,30 @@ function unlockSession(){
     var ct=document.getElementById('content-'+x);if(ct)ct.classList.remove('hidden');
   });
 }
-function switchPromo(p){
-  document.getElementById('pp-aut').classList.toggle('active',p==='aut');
-  document.getElementById('pp-pri').classList.toggle('active',p==='pri');
-  document.getElementById('pres-aut').classList.toggle('hidden',p!=='aut');
-  document.getElementById('pres-pri').classList.toggle('hidden',p!=='pri');
-  document.getElementById('wa-promo').textContent = (p==='aut'
-    ? 'Promo 2026 — Automne · « La Voie des managers » — 42 participants'
-    : 'Promo 2027 — Printemps · « La Voie des managers » — 35 participants');
+const PROMOS = {
+  'lvm-2026-aut': {nom:'Promo 2026 — Automne', wa:42, ville:'Lyon', pres:[
+    {d:'14–15 nov. 2026',t:"Séminaire d'intégration",l:'ODBI Campus — Lyon · 9h–17h'},
+    {d:'23 jan. 2027',t:'Atelier pratique — mise en situation',l:'Espace Bellecour — Lyon · 9h–13h'},
+    {d:'12 mars 2027',t:'Certification & clôture',l:'ODBI Campus — Lyon · 9h–17h'}]},
+  'lvm-2026-ete': {nom:'Promo 2026 — Été', wa:31, ville:'Lyon', pres:[
+    {d:'2–3 juil. 2026',t:"Séminaire d'intégration",l:'ODBI Campus — Lyon · 9h–17h'},
+    {d:'10 sept. 2026',t:'Atelier pratique',l:'Espace Bellecour — Lyon · 9h–13h'}]},
+  'lvm-2026-pri': {nom:'Promo 2026 — Printemps', wa:0, ville:'Lyon', pres:[
+    {d:'Promotion terminée',t:'Présentiels archivés',l:'—'}]},
+  'lvm-2027-pri': {nom:'Promo 2027 — Printemps', wa:35, ville:'Paris', pres:[
+    {d:'18–19 avr. 2027',t:"Séminaire d'intégration",l:'ODBI Campus — Paris · 9h–17h'},
+    {d:'26 juin 2027',t:'Atelier pratique — mise en situation',l:'Le Hub — Paris · 9h–13h'},
+    {d:'25 sept. 2027',t:'Certification & clôture',l:'ODBI Campus — Paris · 9h–17h'}]},
+  'lvm-2027-ete': {nom:'Promo 2027 — Été', wa:12, ville:'Paris', pres:[
+    {d:'Calendrier en préparation',t:'Présentiels à venir',l:'—'}]}
+};
+function switchPromo(key){
+  var p = PROMOS[key]; if(!p) return;
+  document.getElementById('pres-intro').innerHTML = '📍 Rencontres physiques de votre promotion — <b>'+p.nom+'</b>.';
+  document.getElementById('pres-list').innerHTML = p.pres.map(function(e){
+    return '<div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 '+e.d+'</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">'+e.t+'</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 '+e.l+'</p></div><button class="btn btn-ghost">Détails</button></div></div>';
+  }).join('');
+  document.getElementById('wa-promo').textContent = p.nom+' · « La Voie des managers » — '+p.wa+' participants';
 }
 function courseTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
   ['sessions','presentiel','lexique','references'].forEach(x=>document.getElementById('crs-'+x).classList.add('hidden'));
@@ -872,6 +907,7 @@ function sendMsg(){const i=document.getElementById('chatInput');if(!i.value.trim
   b.innerHTML+='<div class="msg me">'+i.value+'</div>';const q=i.value;i.value='';
   setTimeout(()=>{b.innerHTML+='<div class="msg ai">💡 (Réponse YoDalf simulée) Dans la version réelle, je m\'appuierais sur le contenu de vos cours ODBI pour répondre précisément à : « '+q+' »</div>';b.scrollTop=b.scrollHeight},500);b.scrollTop=b.scrollHeight}
 function quickAsk(el){document.getElementById('chatInput').value=el.textContent;sendMsg()}
+switchPromo('lvm-2026-aut');
 </script>
 </body>
 </html>
