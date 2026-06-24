@@ -125,13 +125,15 @@ les accès de connexion** par e-mail (cf. §13, flux Notion → LMS).
 
 ## 7. Structure d'un cours
 
-Page cours = **4 onglets** :
+Page cours = **6 onglets** :
 1. **Sessions** — liste des sessions (contenu asynchrone)
 2. **Présentiels** — dates + lieux + horaires (par promotion)
 3. **Lexique** — termes clés (niveau cours)
 4. **Références** — livres, vidéos, articles recommandés (niveau cours)
+5. **Participants** — annuaire des membres de la promotion (photo, nom, ville)
+6. **WhatsApp** — accès au groupe WhatsApp de la promotion
 
-+ Badge de la promotion du membre + accès au groupe WhatsApp de la promo.
++ Badge / sélecteur de la promotion du membre (dérouleur par année).
 
 ---
 
@@ -362,9 +364,13 @@ Le profil affiche aussi : **les cours auxquels le membre est inscrit** + sa
 **progression** (par cours, avec promotion).
 
 ### Annuaire des participants
-- Accessible depuis la page d'un cours (bouton « 👥 Participants »)
-- Liste les **participants du cours / de la promotion** (photo, nom, ville)
-- Accès au **groupe WhatsApp** de la promo
+- **Onglet « Participants »** de la page cours (au même niveau que Lexique/Références)
+- Liste les **participants de la promotion** (photo, nom, ville)
+- Le **groupe WhatsApp** de la promo est lui aussi un **onglet du cours**
+
+### Agenda
+- Présenté comme un **vrai calendrier** (vue mensuelle), événements color-codés :
+  visios (BBB), présentiels, échéances — filtré sur les promos du membre.
 
 ---
 

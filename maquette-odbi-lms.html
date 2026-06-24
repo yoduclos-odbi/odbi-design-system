@@ -247,6 +247,26 @@ a{color:inherit;text-decoration:none}
 .person .pa{width:54px;height:54px;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-title);font-weight:700;font-size:18px}
 .person b{font-family:var(--font-title);font-size:14px;display:block}
 .person small{color:var(--color-neutral);font-size:12px}
+/* Agenda calendrier */
+.cal{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);overflow:hidden}
+.cal-head{display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) var(--space-5);border-bottom:1px solid rgba(74,74,74,.1)}
+.cal-head h2{font-size:18px}
+.cal-nav{display:flex;gap:8px}
+.cal-nav button{width:34px;height:34px;border-radius:8px;background:var(--color-background);font-size:16px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr)}
+.cal-dow{padding:10px;text-align:center;font-family:var(--font-title);font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--color-neutral);border-bottom:1px solid rgba(74,74,74,.08)}
+.cal-cell{min-height:98px;border:1px solid rgba(74,74,74,.06);padding:6px}
+.cal-cell .num{font-family:var(--font-title);font-weight:500;color:var(--color-jet);font-size:12px}
+.cal-cell.out{background:var(--color-background)}
+.cal-cell.out .num{color:var(--color-neutral)}
+.cal-cell.today .num{background:var(--color-accent);color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center}
+.ev{display:block;border-radius:5px;padding:3px 6px;margin-top:4px;font-size:10px;font-family:var(--font-title);font-weight:500;color:#fff;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;cursor:pointer}
+.ev.visio{background:#d64545}
+.ev.pres{background:var(--color-indigo-dye)}
+.ev.ech{background:var(--color-asparagus)}
+.cal-legend{display:flex;gap:18px;margin-top:var(--space-4);font-size:12px;color:var(--color-neutral);flex-wrap:wrap}
+.cal-legend span{display:flex;align-items:center;gap:6px}
+.cal-legend i{width:12px;height:12px;border-radius:3px;display:inline-block}
 
 /* ---------- Visio ---------- */
 .visio-stage{background:#1a1a1a;border-radius:var(--radius-lg);aspect-ratio:16/9;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:8px;padding:8px;margin-bottom:var(--space-5)}
@@ -499,20 +519,17 @@ a{color:inherit;text-decoration:none}
             </select>
           </div>
         </div>
-        <div style="display:flex;gap:10px"><button class="btn btn-ghost" onclick="goTo('participants')">👥 Participants</button><button class="btn btn-accent" onclick="goTo('lesson')">Reprendre ▶</button></div>
+        <button class="btn btn-accent" onclick="goTo('lesson')">Reprendre ▶</button>
       </div>
       <div class="progress mb6" style="height:10px"><span style="width:72%"></span></div>
-      <div class="wa-card mb6">
-        <div class="wa-ic">💬</div>
-        <div style="flex:1"><h3 style="font-size:15px">Groupe WhatsApp de la promotion</h3><p id="wa-promo" style="color:var(--color-neutral);font-size:13px;margin-top:2px">Promo 2026 — Automne · « La Voie des managers » — 42 participants</p></div>
-        <button class="btn btn-wa">Rejoindre le groupe</button>
-      </div>
 
       <div class="tabs">
         <div class="tab active" onclick="courseTab(this,'sessions')">📚 Sessions</div>
         <div class="tab" onclick="courseTab(this,'presentiel')">📍 Présentiels</div>
         <div class="tab" onclick="courseTab(this,'lexique')">📖 Lexique</div>
         <div class="tab" onclick="courseTab(this,'references')">🔖 Références</div>
+        <div class="tab" onclick="courseTab(this,'participants')">👥 Participants</div>
+        <div class="tab" onclick="courseTab(this,'whatsapp')">💬 WhatsApp</div>
       </div>
 
       <!-- Sessions (asynchrone) -->
@@ -556,6 +573,31 @@ a{color:inherit;text-decoration:none}
         <div class="ref-item"><span class="ref-type video">Vidéo</span><div class="t"><b>Conférence : leadership en haute intensité</b><small>Lien externe · 22 min</small></div></div>
         <div class="ref-item"><span class="ref-type article">Article</span><div class="t"><b>Étude : engagement et performance d'équipe</b><small>Lien externe · 8 min de lecture</small></div></div>
         <div class="ref-item"><span class="ref-type livre">Livre</span><div class="t"><b>Décider sous pression</b><small>Ouvrage de référence</small></div></div>
+      </div>
+
+      <!-- Participants (de la promo) -->
+      <div id="crs-participants" class="hidden">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">👥 Participants de votre promotion — <b>Promo 2026 — Automne</b> · 42 membres.</p>
+        <div class="people">
+          <div class="person"><div class="pa" style="background:var(--color-indigo-dye)">JD</div><b>Jean Dupont</b><small>Lyon</small></div>
+          <div class="person"><div class="pa" style="background:var(--color-asparagus)">ML</div><b>Marie Lambert</b><small>Paris</small></div>
+          <div class="person"><div class="pa" style="background:var(--color-apple-green)">TP</div><b>Thomas Petit</b><small>Lyon</small></div>
+          <div class="person"><div class="pa" style="background:#888">SR</div><b>Sophie Roux</b><small>Marseille</small></div>
+          <div class="person"><div class="pa" style="background:var(--color-indigo-dye)">LC</div><b>Lucas Chen</b><small>Lyon</small></div>
+          <div class="person"><div class="pa" style="background:var(--color-asparagus)">AB</div><b>Amélie Blanc</b><small>Bordeaux</small></div>
+          <div class="person"><div class="pa" style="background:#888">KN</div><b>Karim Nadir</b><small>Lyon</small></div>
+          <div class="person"><div class="pa" style="background:var(--color-apple-green)">EG</div><b>Emma Girard</b><small>Annecy</small></div>
+        </div>
+      </div>
+
+      <!-- WhatsApp (de la promo) -->
+      <div id="crs-whatsapp" class="hidden">
+        <div class="wa-card">
+          <div class="wa-ic">💬</div>
+          <div style="flex:1"><h3 style="font-size:15px">Groupe WhatsApp de la promotion</h3><p id="wa-promo" style="color:var(--color-neutral);font-size:13px;margin-top:2px">Promo 2026 — Automne · « La Voie des managers » — 42 participants</p></div>
+          <button class="btn btn-wa">Rejoindre le groupe</button>
+        </div>
+        <p style="color:var(--color-neutral);font-size:13px;margin-top:var(--space-4)">💡 La communauté du cours se passe sur WhatsApp. Chaque promotion a son propre groupe.</p>
       </div>
     </section>
 
@@ -815,12 +857,60 @@ a{color:inherit;text-decoration:none}
 
     <!-- AGENDA -->
     <section id="page-agenda" class="page">
-      <div class="page-head"><h1>Agenda</h1><p>Vos visios, échéances et événements ODBI</p></div>
-      <div class="grid grid-2">
-        <div class="card" style="padding:var(--space-5)"><div class="live"><span class="blink"></span> Aujourd'hui</div><span class="course-tag" style="margin-top:8px">📘 La Voie des managers</span><h3 style="font-size:16px;margin-top:8px">Feedback à haute intensité — Visio live</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">18h00 · BigBlueButton</p></div>
-        <div class="card" style="padding:var(--space-5)"><div style="color:var(--color-primary);font-family:var(--font-title);font-weight:700;font-size:13px">Demain</div><span class="course-tag" style="margin-top:8px">📘 La Voie des managers</span><h3 style="font-size:16px;margin-top:8px">Mobiliser une équipe : Q&R</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">18h00 · BigBlueButton</p></div>
-        <div class="card" style="padding:var(--space-5)"><div style="color:var(--color-neutral);font-family:var(--font-title);font-weight:700;font-size:13px">Vendredi</div><span class="course-tag" style="margin-top:8px;color:var(--color-asparagus);background:rgba(134,164,63,.12)">🎓 BTC : 2ème génération</span><h3 style="font-size:16px;margin-top:8px">Pratique du coaching live</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">12h30 · BigBlueButton</p></div>
-        <div class="card" style="padding:var(--space-5)"><div style="color:var(--color-neutral);font-family:var(--font-title);font-weight:700;font-size:13px">Lundi</div><span class="course-tag" style="margin-top:8px">📘 Vous En Paix</span><h3 style="font-size:16px;margin-top:8px">Échéance : exercice de la semaine</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">À rendre avant 12h</p></div>
+      <div class="page-head"><h1>Agenda</h1><p>Vos visios, présentiels et échéances</p></div>
+      <div class="cal">
+        <div class="cal-head">
+          <h2>Juin 2026</h2>
+          <div class="cal-nav"><button>‹</button><button>›</button></div>
+        </div>
+        <div class="cal-grid">
+          <div class="cal-dow">Lun</div><div class="cal-dow">Mar</div><div class="cal-dow">Mer</div><div class="cal-dow">Jeu</div><div class="cal-dow">Ven</div><div class="cal-dow">Sam</div><div class="cal-dow">Dim</div>
+          <!-- Semaine 1 -->
+          <div class="cal-cell"><div class="num">1</div></div>
+          <div class="cal-cell"><div class="num">2</div></div>
+          <div class="cal-cell"><div class="num">3</div><span class="ev visio">18h · Visio La Voie</span></div>
+          <div class="cal-cell"><div class="num">4</div></div>
+          <div class="cal-cell"><div class="num">5</div><span class="ev visio">12h30 · BTC live</span></div>
+          <div class="cal-cell"><div class="num">6</div></div>
+          <div class="cal-cell"><div class="num">7</div></div>
+          <!-- Semaine 2 -->
+          <div class="cal-cell"><div class="num">8</div></div>
+          <div class="cal-cell"><div class="num">9</div></div>
+          <div class="cal-cell"><div class="num">10</div><span class="ev visio">18h · Visio La Voie</span></div>
+          <div class="cal-cell"><div class="num">11</div></div>
+          <div class="cal-cell"><div class="num">12</div><span class="ev visio">12h30 · BTC live</span></div>
+          <div class="cal-cell"><div class="num">13</div><span class="ev pres">Présentiel — Lyon</span></div>
+          <div class="cal-cell"><div class="num">14</div></div>
+          <!-- Semaine 3 -->
+          <div class="cal-cell"><div class="num">15</div></div>
+          <div class="cal-cell"><div class="num">16</div><span class="ev ech">Échéance exercice</span></div>
+          <div class="cal-cell"><div class="num">17</div><span class="ev visio">18h · Visio La Voie</span></div>
+          <div class="cal-cell"><div class="num">18</div></div>
+          <div class="cal-cell"><div class="num">19</div><span class="ev visio">12h30 · BTC live</span></div>
+          <div class="cal-cell"><div class="num">20</div></div>
+          <div class="cal-cell"><div class="num">21</div></div>
+          <!-- Semaine 4 -->
+          <div class="cal-cell"><div class="num">22</div></div>
+          <div class="cal-cell"><div class="num">23</div></div>
+          <div class="cal-cell today"><div class="num">24</div><span class="ev visio">18h · Visio La Voie</span><span class="ev ech">Exercice à rendre</span></div>
+          <div class="cal-cell"><div class="num">25</div><span class="ev visio">20h30 · BTC live</span></div>
+          <div class="cal-cell"><div class="num">26</div><span class="ev visio">12h30 · BTC live</span></div>
+          <div class="cal-cell"><div class="num">27</div></div>
+          <div class="cal-cell"><div class="num">28</div></div>
+          <!-- Semaine 5 -->
+          <div class="cal-cell"><div class="num">29</div></div>
+          <div class="cal-cell"><div class="num">30</div><span class="ev visio">18h · Visio La Voie</span></div>
+          <div class="cal-cell out"><div class="num">1</div></div>
+          <div class="cal-cell out"><div class="num">2</div></div>
+          <div class="cal-cell out"><div class="num">3</div></div>
+          <div class="cal-cell out"><div class="num">4</div></div>
+          <div class="cal-cell out"><div class="num">5</div></div>
+        </div>
+      </div>
+      <div class="cal-legend">
+        <span><i style="background:#d64545"></i> Visio live (BBB)</span>
+        <span><i style="background:var(--color-indigo-dye)"></i> Présentiel</span>
+        <span><i style="background:var(--color-asparagus)"></i> Échéance</span>
       </div>
     </section>
 
@@ -1055,24 +1145,6 @@ a{color:inherit;text-decoration:none}
       </div>
     </section>
 
-    <!-- ===== PARTICIPANTS DU COURS ===== -->
-    <section id="page-participants" class="page">
-      <div class="breadcrumb" onclick="goTo('course')">La Voie des managers / <b>Participants</b></div>
-      <div class="flex-between mb6">
-        <div><h1>Participants</h1><p style="color:var(--color-neutral);margin-top:4px">La Voie des managers · Promo 2026 — Automne · 42 membres</p></div>
-        <button class="btn btn-wa">💬 Groupe WhatsApp</button>
-      </div>
-      <div class="people">
-        <div class="person"><div class="pa" style="background:var(--color-indigo-dye)">JD</div><b>Jean Dupont</b><small>Lyon</small></div>
-        <div class="person"><div class="pa" style="background:var(--color-asparagus)">ML</div><b>Marie Lambert</b><small>Paris</small></div>
-        <div class="person"><div class="pa" style="background:var(--color-apple-green)">TP</div><b>Thomas Petit</b><small>Lyon</small></div>
-        <div class="person"><div class="pa" style="background:#888">SR</div><b>Sophie Roux</b><small>Marseille</small></div>
-        <div class="person"><div class="pa" style="background:var(--color-indigo-dye)">LC</div><b>Lucas Chen</b><small>Lyon</small></div>
-        <div class="person"><div class="pa" style="background:var(--color-asparagus)">AB</div><b>Amélie Blanc</b><small>Bordeaux</small></div>
-        <div class="person"><div class="pa" style="background:#888">KN</div><b>Karim Nadir</b><small>Lyon</small></div>
-        <div class="person"><div class="pa" style="background:var(--color-apple-green)">EG</div><b>Emma Girard</b><small>Annecy</small></div>
-      </div>
-    </section>
   </main>
 </div>
 
@@ -1128,7 +1200,7 @@ function switchPromo(key){
   document.getElementById('wa-promo').textContent = p.nom+' · « La Voie des managers » — '+p.wa+' participants';
 }
 function courseTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
-  ['sessions','presentiel','lexique','references'].forEach(x=>document.getElementById('crs-'+x).classList.add('hidden'));
+  ['sessions','presentiel','lexique','references','participants','whatsapp'].forEach(x=>document.getElementById('crs-'+x).classList.add('hidden'));
   document.getElementById('crs-'+t).classList.remove('hidden')}
 function sendMsg(){const i=document.getElementById('chatInput');if(!i.value.trim())return;const b=document.getElementById('chatBody');
   b.innerHTML+='<div class="msg me">'+i.value+'</div>';const q=i.value;i.value='';
