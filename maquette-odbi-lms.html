@@ -215,6 +215,26 @@ a{color:inherit;text-decoration:none}
 .chapter .ts{font-family:var(--font-title);font-weight:700;color:var(--color-accent);font-size:12px;min-width:48px}
 .chapter .ct{font-size:13px}
 .summary-box{background:rgba(134,164,63,.08);border-left:4px solid var(--color-asparagus);border-radius:8px;padding:16px 18px;font-size:13px;line-height:1.7}
+/* Back-office édition */
+.edit-card{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:var(--space-5);margin-bottom:var(--space-4)}
+.edit-card h3{font-size:15px;margin-bottom:var(--space-4)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-4)}
+.upload-zone{border:2px dashed rgba(74,74,74,.25);border-radius:var(--radius-md);padding:var(--space-6);text-align:center;color:var(--color-neutral);font-size:13px;cursor:pointer;background:var(--color-background)}
+.upload-zone:hover{border-color:var(--color-primary);color:var(--color-jet)}
+.upload-zone .big{font-size:26px;display:block;margin-bottom:6px}
+.edit-row{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid rgba(74,74,74,.12);border-radius:var(--radius-md);padding:12px 14px;margin-bottom:8px}
+.edit-row .handle{color:var(--color-neutral);cursor:grab;font-size:16px}
+.edit-row .grow{flex:1}
+.edit-row .grow b{font-family:var(--font-title);font-size:14px}
+.edit-row .grow small{color:var(--color-neutral);font-size:12px;display:block;margin-top:2px}
+.icon-btn{background:var(--color-background);border-radius:6px;padding:6px 9px;cursor:pointer;font-size:13px;border:none}
+.icon-btn:hover{background:#e6e4dc}
+.q-builder{border:1px solid rgba(74,74,74,.15);border-radius:var(--radius-md);padding:var(--space-4);margin-bottom:var(--space-4)}
+.q-builder .qtop{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.add-btn{background:transparent;border:2px dashed rgba(74,74,74,.25);border-radius:var(--radius-md);padding:11px;width:100%;color:var(--color-accent);font-family:var(--font-title);font-weight:500;cursor:pointer}
+.add-btn:hover{border-color:var(--color-accent);background:rgba(17,76,106,.04)}
+.gate-toggle{display:flex;align-items:center;gap:14px;background:rgba(134,164,63,.08);border-radius:var(--radius-md);padding:14px 16px}
 
 /* ---------- Visio ---------- */
 .visio-stage{background:#1a1a1a;border-radius:var(--radius-lg);aspect-ratio:16/9;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:8px;padding:8px;margin-bottom:var(--space-5)}
@@ -818,11 +838,11 @@ a{color:inherit;text-decoration:none}
         <div class="flex-between mb6"><h3>13 formations</h3><button class="btn btn-primary">+ Créer une formation</button></div>
         <table class="table">
           <tr><th>Formation</th><th>Univers</th><th>Modules</th><th>Inscrits</th><th>WhatsApp</th><th>Statut</th><th></th></tr>
-          <tr><td>La Voie</td><td><span class="badge" style="background:var(--color-indigo-dye)">La Voie</span></td><td>6</td><td>210</td><td>💬 Lié</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
-          <tr><td>La Voie des managers</td><td><span class="badge" style="background:var(--color-indigo-dye)">La Voie</span></td><td>6</td><td>180</td><td>💬 Lié</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
-          <tr><td>Vous En Paix</td><td><span class="badge" style="background:var(--color-indigo-dye)">La Voie</span></td><td>4</td><td>96</td><td>💬 Lié</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
-          <tr><td>BTC : 2ème génération</td><td><span class="badge" style="background:var(--color-black)">École</span></td><td>8</td><td>64</td><td>💬 Lié</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
-          <tr><td>IC : Cohésion de groupe</td><td><span class="badge" style="background:var(--color-black)">École</span></td><td>6</td><td>38</td><td>➕ À lier</td><td>Brouillon</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
+          <tr><td>La Voie</td><td><span class="badge" style="background:var(--color-indigo-dye)">La Voie</span></td><td>6</td><td>210</td><td>💬 Lié</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px" onclick="goTo('editcourse')">✏️ Éditer</button></td></tr>
+          <tr><td>La Voie des managers</td><td><span class="badge" style="background:var(--color-indigo-dye)">La Voie</span></td><td>6</td><td>180</td><td>💬 Lié</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px" onclick="goTo('editcourse')">✏️ Éditer</button></td></tr>
+          <tr><td>Vous En Paix</td><td><span class="badge" style="background:var(--color-indigo-dye)">La Voie</span></td><td>4</td><td>96</td><td>💬 Lié</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px" onclick="goTo('editcourse')">✏️ Éditer</button></td></tr>
+          <tr><td>BTC : 2ème génération</td><td><span class="badge" style="background:var(--color-black)">École</span></td><td>8</td><td>64</td><td>💬 Lié</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px" onclick="goTo('editcourse')">✏️ Éditer</button></td></tr>
+          <tr><td>IC : Cohésion de groupe</td><td><span class="badge" style="background:var(--color-black)">École</span></td><td>6</td><td>38</td><td>➕ À lier</td><td>Brouillon</td><td><button class="btn btn-ghost" style="padding:6px 12px" onclick="goTo('editcourse')">✏️ Éditer</button></td></tr>
         </table>
       </div>
 
@@ -849,6 +869,145 @@ a{color:inherit;text-decoration:none}
           <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">📝 Notta</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Transcription & traduction des visios</p></div><span class="badge" style="background:var(--color-primary)">Connecté</span></div><p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-4)">Chaque visio BigBlueButton est automatiquement transcrite et traduite par Notta. Le compte-rendu est rattaché à la leçon correspondante.</p></div>
           <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">🗂️ Notion (CRM + BPF)</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">CRM membres + extraction Qualiopi / BPF</p></div><span class="badge" style="background:var(--color-primary)">Connecté</span></div><div class="field" style="margin-top:var(--space-5)"><label>Base Notion (CRM)</label><input value="CRM ODBI — Membres & prospects"></div><div class="field"><label>Base Notion (BPF / assiduité)</label><input value="Reporting Qualiopi — Assiduité & heures"></div></div>
         </div>
+      </div>
+    </section>
+
+    <!-- ===== ÉDITEUR DE COURS (admin) ===== -->
+    <section id="page-editcourse" class="page">
+      <div class="breadcrumb" onclick="goTo('admin')">Back-office / Cours / <b>Éditer : La Voie des managers</b></div>
+      <div class="flex-between mb6">
+        <h1>Éditer le cours</h1>
+        <div style="display:flex;gap:10px"><button class="btn btn-ghost">Aperçu</button><button class="btn btn-primary">💾 Enregistrer</button></div>
+      </div>
+
+      <div class="edit-card">
+        <h3>⚙️ Paramètres du cours</h3>
+        <div class="row2">
+          <div class="field"><label>Nom du cours</label><input value="La Voie des managers"></div>
+          <div class="field"><label>Univers</label><select><option>La Voie (bleu + vert)</option><option>L'École (noir + vert)</option></select></div>
+        </div>
+        <div class="row3">
+          <div class="field"><label>Animateur</label><input value="Yohann Duclos"></div>
+          <div class="field"><label>Statut</label><select><option>Publié</option><option>Brouillon</option></select></div>
+          <div class="field"><label>Durée estimée</label><input value="4h"></div>
+        </div>
+        <div class="field"><label>Description</label><textarea rows="3">Programme long pour managers en contexte de haute intensité.</textarea></div>
+        <div class="row2">
+          <div class="field"><label>Image de couverture</label><div class="upload-zone"><span class="big">🖼️</span>Glisser une image ou cliquer pour téléverser</div></div>
+          <div class="field"><label>Lien du groupe WhatsApp (par promo, voir onglet Promotions)</label><input value="géré par promotion"></div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active" onclick="ecTab(this,'sessions')">📚 Sessions</div>
+        <div class="tab" onclick="ecTab(this,'lexique')">📖 Lexique</div>
+        <div class="tab" onclick="ecTab(this,'references')">🔖 Références</div>
+        <div class="tab" onclick="ecTab(this,'presentiels')">📍 Présentiels</div>
+      </div>
+
+      <!-- Sessions -->
+      <div id="ec-sessions">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-4)">📦 Contenu asynchrone — partagé par toutes les promotions. Glissez pour réordonner.</p>
+        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>Session 1 — Fondamentaux du leadership</b><small>📝 1 exercice · 🎬 3 vidéos · 🎧 1 audio · 📄 2 PDF · ✅ quiz</small></div><button class="icon-btn" onclick="goTo('editsession')">✏️ Éditer</button><button class="icon-btn">⧉</button><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>Session 2 — Mobiliser une équipe</b><small>📝 2 exercices · 🎬 4 vidéos · 🎧 2 audios · 📄 1 PDF · ✅ quiz</small></div><button class="icon-btn" onclick="goTo('editsession')">✏️ Éditer</button><button class="icon-btn">⧉</button><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>Session 3 — Leadership de soi</b><small>🎬 3 vidéos · 📄 2 PDF · ✅ quiz</small></div><button class="icon-btn" onclick="goTo('editsession')">✏️ Éditer</button><button class="icon-btn">⧉</button><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>Session 4 — Décider en incertitude</b><small>🎬 2 vidéos · 🎧 1 audio · ✅ quiz</small></div><button class="icon-btn" onclick="goTo('editsession')">✏️ Éditer</button><button class="icon-btn">⧉</button><button class="icon-btn">🗑️</button></div>
+        <button class="add-btn" onclick="goTo('editsession')">+ Ajouter une session</button>
+      </div>
+
+      <!-- Lexique -->
+      <div id="ec-lexique" class="hidden">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-4)">Termes clés du cours.</p>
+        <div class="edit-row"><div class="grow"><div class="row2"><input value="Haute intensité"><input value="Contexte exigeant — pression, enjeu, rythme élevés."></div></div><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><div class="grow"><div class="row2"><input value="Feedback"><input value="Retour structuré sur un comportement observé."></div></div><button class="icon-btn">🗑️</button></div>
+        <button class="add-btn">+ Ajouter un terme</button>
+      </div>
+
+      <!-- Références -->
+      <div id="ec-references" class="hidden">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-4)">Livres, vidéos et articles recommandés.</p>
+        <div class="edit-row"><select style="max-width:120px"><option>Livre</option><option>Vidéo</option><option>Article</option></select><input class="grow" value="L'art du management — collectif ODBI"><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><select style="max-width:120px"><option>Vidéo</option><option>Livre</option><option>Article</option></select><input class="grow" value="Conférence : leadership en haute intensité"><button class="icon-btn">🗑️</button></div>
+        <button class="add-btn">+ Ajouter une référence</button>
+      </div>
+
+      <!-- Présentiels -->
+      <div id="ec-presentiels" class="hidden">
+        <div class="flex-between mb6"><div class="field" style="margin:0"><label>Promotion concernée</label><select class="promo-select"><option>Promo 2026 — Automne</option><option>Promo 2027 — Printemps</option></select></div></div>
+        <div class="edit-row"><div class="grow"><div class="row3"><input value="14–15 nov. 2026"><input value="Séminaire d'intégration"><input value="ODBI Campus — Lyon"></div></div><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><div class="grow"><div class="row3"><input value="23 jan. 2027"><input value="Atelier pratique"><input value="Espace Bellecour — Lyon"></div></div><button class="icon-btn">🗑️</button></div>
+        <button class="add-btn">+ Ajouter un présentiel</button>
+      </div>
+    </section>
+
+    <!-- ===== ÉDITEUR DE SESSION (admin) ===== -->
+    <section id="page-editsession" class="page">
+      <div class="breadcrumb" onclick="goTo('editcourse')">Back-office / Cours / La Voie des managers / <b>Session 2</b></div>
+      <div class="flex-between mb6">
+        <h1>Éditer la session</h1>
+        <div style="display:flex;gap:10px"><button class="btn btn-ghost">Aperçu</button><button class="btn btn-primary">💾 Enregistrer</button></div>
+      </div>
+
+      <div class="edit-card">
+        <div class="row2">
+          <div class="field"><label>Titre de la session</label><input value="Session 2 — Mobiliser une équipe"></div>
+          <div class="field"><label>Accès</label><select><option>Déverrouillée</option><option>Verrouillée jusqu'à la session précédente</option></select></div>
+        </div>
+        <div class="gate-toggle">
+          <div class="toggle"></div>
+          <div><b style="font-family:var(--font-title)">Pédagogie inversée</b><div style="font-size:12px;color:var(--color-neutral)">Exiger de cocher les exercices pour débloquer vidéos/ressources (non bloquant : « voir quand même » reste possible)</div></div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active" onclick="esTab(this,'ex')">📝 Exercices</div>
+        <div class="tab" onclick="esTab(this,'video')">🎬 Vidéos</div>
+        <div class="tab" onclick="esTab(this,'res')">🎧 Ressources</div>
+        <div class="tab" onclick="esTab(this,'quiz')">✅ Quiz</div>
+      </div>
+
+      <!-- Exercices -->
+      <div id="es-ex">
+        <div class="edit-card">
+          <div class="field"><label>Exercice 1 — Titre</label><input value="Diagnostic de votre posture managériale"></div>
+          <div class="field"><label>Consigne</label><textarea rows="3">Observez votre dernière réunion : qu'avez-vous délégué / gardé ? Notez 3 situations.</textarea></div>
+          <div class="field"><label>Fiche d'exercice (PDF)</label><div class="upload-zone"><span class="big">📄</span>Téléverser la fiche</div></div>
+        </div>
+        <button class="add-btn">+ Ajouter un exercice</button>
+      </div>
+
+      <!-- Vidéos -->
+      <div id="es-video" class="hidden">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-4)">Vidéos hébergées sur Vimeo. La reprise de lecture est gérée automatiquement par la plateforme.</p>
+        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row3"><input value="1 · Créer l'engagement"><input value="ID Vimeo : 901234567" ><input value="14 min"></div></div><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row3"><input value="2 · Feedback à haute intensité"><input value="ID Vimeo : 901234568"><input value="20 min"></div></div><button class="icon-btn">🗑️</button></div>
+        <button class="add-btn">+ Ajouter une vidéo (ID/URL Vimeo)</button>
+      </div>
+
+      <!-- Ressources -->
+      <div id="es-res" class="hidden">
+        <div class="upload-zone mb6"><span class="big">⬆️</span>Glisser des fichiers audio ou PDF, ou cliquer pour téléverser</div>
+        <div class="edit-row"><span style="font-size:18px">🎧</span><input class="grow" value="Méditation guidée — ancrage du leader"><span style="font-size:12px;color:var(--color-neutral)">Audio · 11 min</span><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><span style="font-size:18px">📄</span><input class="grow" value="Fiche pratique — les 3 piliers du feedback"><span style="font-size:12px;color:var(--color-neutral)">PDF · 2 p.</span><button class="icon-btn">🗑️</button></div>
+      </div>
+
+      <!-- Quiz -->
+      <div id="es-quiz" class="hidden">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-4)">Quiz de la session — plusieurs formes. Score mémorisé, refaisable, sans seuil.</p>
+        <div class="q-builder">
+          <div class="qtop"><span style="font-family:var(--font-title);font-weight:700">Q1</span><select style="max-width:180px"><option>Choix multiple (QCM)</option><option>Vrai / Faux</option><option>Association</option><option>Réponse libre</option></select><button class="icon-btn" style="margin-left:auto">🗑️</button></div>
+          <div class="field"><input value="Quels sont les piliers du feedback ODBI ?"></div>
+          <div class="edit-row"><span>✅</span><input class="grow" value="Clarté du fait"></div>
+          <div class="edit-row"><span>✅</span><input class="grow" value="Impact mesuré"></div>
+          <div class="edit-row"><span>⬜</span><input class="grow" value="Autorité hiérarchique"></div>
+          <button class="add-btn" style="margin-top:6px">+ Ajouter une option</button>
+        </div>
+        <div class="q-builder">
+          <div class="qtop"><span style="font-family:var(--font-title);font-weight:700">Q2</span><select style="max-width:180px"><option>Vrai / Faux</option><option>Choix multiple (QCM)</option><option>Association</option><option>Réponse libre</option></select><button class="icon-btn" style="margin-left:auto">🗑️</button></div>
+          <div class="field"><input value="Un bon feedback commence par un jugement de valeur."></div>
+          <div style="display:flex;gap:10px"><span class="badge" style="background:var(--color-neutral)">Vrai</span><span class="badge" style="background:var(--color-primary)">Faux ✓</span></div>
+        </div>
+        <button class="add-btn">+ Ajouter une question</button>
       </div>
     </section>
   </main>
@@ -912,6 +1071,12 @@ function sendMsg(){const i=document.getElementById('chatInput');if(!i.value.trim
   b.innerHTML+='<div class="msg me">'+i.value+'</div>';const q=i.value;i.value='';
   setTimeout(()=>{b.innerHTML+='<div class="msg ai">💡 (Réponse YoDalf simulée) Dans la version réelle, je m\'appuierais sur le contenu de vos cours ODBI pour répondre précisément à : « '+q+' »</div>';b.scrollTop=b.scrollHeight},500);b.scrollTop=b.scrollHeight}
 function quickAsk(el){document.getElementById('chatInput').value=el.textContent;sendMsg()}
+function ecTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
+  ['sessions','lexique','references','presentiels'].forEach(x=>document.getElementById('ec-'+x).classList.add('hidden'));
+  document.getElementById('ec-'+t).classList.remove('hidden')}
+function esTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
+  ['ex','video','res','quiz'].forEach(x=>document.getElementById('es-'+x).classList.add('hidden'));
+  document.getElementById('es-'+t).classList.remove('hidden')}
 switchPromo('lvm-2026-aut');
 </script>
 </body>

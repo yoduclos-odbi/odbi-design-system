@@ -251,6 +251,17 @@ Onglets :
 - **Promotions** — cohortes par programme, membres, dates, classes, présentiels
 - **Intégrations** — config BBB, Notta, YoDalf, WhatsApp, Notion, Stripe
 
+### Éditeur de cours (back-office)
+Doit être **ergonomique** (rechargement manuel des contenus depuis Moodle).
+
+**Éditeur de cours** :
+- Paramètres : nom, univers, animateur, statut (publié/brouillon), durée, description, image de couverture
+- Onglets d'édition : **Sessions** (ajout / réordonnancement par glisser-déposer / duplication / suppression), **Lexique**, **Références**, **Présentiels** (par promotion)
+
+**Éditeur de session** :
+- Titre, règle d'accès (verrouillage), **toggle « pédagogie inversée »** (gating exercices, activable par session — non bloquant)
+- Onglets d'édition : **Exercices** (titre, consigne, fiche PDF), **Vidéos** (ID/URL Vimeo, titre, durée), **Ressources** (upload audios/PDF par glisser-déposer), **Quiz** (constructeur : type par question — QCM / Vrai-Faux / Association / Réponse libre — options et bonne réponse)
+
 ---
 
 ## 15. Stack technique envisagée
@@ -338,7 +349,7 @@ formation/promotion, etc. (volet financier = à coupler avec Stripe).
 ## 18. Points en suspens / à décider
 
 - [ ] Groupe WhatsApp : **par promotion** (hypothèse retenue) ou par programme ?
-- [ ] Niveau de gating exercices : configurable par session côté admin ?
+- [x] Gating exercices : **configurable par session** (toggle « pédagogie inversée » dans l'éditeur)
 - [ ] Lexique : uniquement par cours, ou aussi un lexique global plateforme ?
 - [x] Sens de la synchro Notion : **bidirectionnel** — Notion→LMS (inscriptions + envoi des accès), LMS→Notion (CRM + BPF)
 - [ ] Service d'**e-mailing transactionnel** à choisir (envoi des accès, notifications)
