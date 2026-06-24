@@ -212,7 +212,7 @@ Flux : `Visio BBB → enregistrement BBB → Notta (transcription + chapitrage +
 | **Notta** | Transcription + chapitrage + résumé des visios (multi-langues) |
 | **YoDalf / Claude (Anthropic)** | Assistant IA sur le contenu |
 | **WhatsApp** | Groupe communautaire **par promotion** (lien externe) |
-| **Notion** | **CRM ODBI** (membres & prospects) — synchro |
+| **Notion** | **CRM ODBI** (membres & prospects) + **extraction Qualiopi / BPF** (assiduité, heures) |
 | **Stripe** | Paiements & abonnements |
 
 ---
@@ -278,7 +278,34 @@ deux modes possibles côté BBB :
 
 ---
 
-## 17. Points en suspens / à décider
+## 17. Conformité Qualiopi & BPF (traçabilité)
+
+ODBI est un **organisme de formation (OF) certifié Qualiopi** → obligations de
+**traçabilité** et de **reporting réglementaire**.
+
+### Le système doit journaliser (« éléments de connexion » / assiduité)
+- **Connexions** des membres à la plateforme (dates/heures, durée)
+- **Présence aux visios** (entrée/sortie BBB) — émargement numérique
+- **Progression** : sessions ouvertes/terminées, vidéos vues, exercices cochés
+- **Quiz** : tentatives et scores
+- Rattachement systématique à : **membre × cours/formation × promotion**
+
+Ces traces servent de **preuves d'assiduité** (exigence Qualiopi) et alimentent
+les statistiques du **BPF**.
+
+### BPF — Bilan Pédagogique et Financier (annuel)
+Données à pouvoir produire : nombre de stagiaires, **heures réalisées** par
+formation/promotion, etc. (volet financier = à coupler avec Stripe).
+
+### Extraction / export
+- **Extraction vers une base de données Notion** avec les **champs souhaités**
+  (à définir précisément avec ODBI).
+- Réutilise l'intégration **Notion** existante (déjà CRM) — Notion devient aussi
+  le réceptacle des données de reporting BPF/Qualiopi.
+
+---
+
+## 18. Points en suspens / à décider
 
 - [ ] Groupe WhatsApp : **par promotion** (hypothèse retenue) ou par programme ?
 - [ ] Niveau de gating exercices : configurable par session côté admin ?
@@ -288,6 +315,8 @@ deux modes possibles côté BBB :
 - [ ] Langues de l'interface (FR seul, ou multilingue ?)
 - [ ] BBB : mode **redirection** (reco) ou **embarqué (iframe)** dans la plateforme ?
 - [ ] Migration de **contenus de cours** depuis Moodle : nécessaire ou non ?
+- [ ] BPF/Qualiopi : **champs exacts** à exporter vers Notion + durée de conservation des traces
+- [ ] Émargement : signature électronique requise, ou trace de connexion suffisante ?
 
 ---
 
