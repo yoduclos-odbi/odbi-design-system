@@ -971,10 +971,6 @@ a.ref-item:hover{background:var(--color-background)}
       </div>
 
       <div id="admin-courses" class="hidden">
-        <div class="gate-toggle mb6" style="background:rgba(214,69,69,.06)">
-          <div class="toggle off" onclick="this.classList.toggle('off')"></div>
-          <div><b style="font-family:var(--font-title)">🔓 Déverrouiller tout le contenu (tous les programmes)</b><div style="font-size:12px;color:var(--color-neutral)">Ignore la pédagogie inversée : les participants accèdent directement aux vidéos et ressources, sans cocher l'exercice. (Activable globalement ou par programme dans l'éditeur.)</div></div>
-        </div>
         <div class="flex-between mb6"><h3>13 formations</h3><button class="btn btn-primary">+ Créer une formation</button></div>
         <table class="table">
           <tr><th>Formation</th><th>Univers</th><th>Modules</th><th>Inscrits</th><th>WhatsApp</th><th>Statut</th><th></th></tr>
@@ -997,19 +993,6 @@ a.ref-item:hover{background:var(--color-background)}
           <tr><td>Promo 2026 — Printemps</td><td>La Voie des managers</td><td>38</td><td>Mars 2026</td><td>8 visios</td><td>3</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Gérer</button></td></tr>
           <tr><td>BTC — 2ème génération</td><td>Born To Coach</td><td>24</td><td>Janv. 2026</td><td>12 visios</td><td>4</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Gérer</button></td></tr>
           <tr><td>IC — Cohésion #1</td><td>IC : Cohésion de groupe</td><td>16</td><td>Oct. 2026</td><td>6 visios</td><td>2</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Gérer</button></td></tr>
-        </table>
-
-        <h3 class="section-title">🎥 Planning des visios (par promotion)</h3>
-        <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">C'est ici qu'on <b>programme les visios</b> : une date par semaine, rattachée à une promotion. La salle BigBlueButton est créée automatiquement.</p>
-        <div style="display:flex;gap:10px;margin-bottom:var(--space-4);flex-wrap:wrap">
-          <select class="promo-select"><option>La Voie des managers · Promo 2026 — Automne</option><option>Born To Coach · 2e gén.</option></select>
-          <button class="btn btn-primary">+ Programmer une visio</button>
-        </div>
-        <table class="table">
-          <tr><th>Semaine / séquence</th><th>Date</th><th>Heure</th><th>Durée</th><th>Animateur</th><th>Salle BBB</th><th></th></tr>
-          <tr><td>Semaine 1 — Créer l'engagement</td><td>12 mars 2026</td><td>18h00</td><td>1h</td><td>Yohann D.</td><td>✅ Créée</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Modifier</button></td></tr>
-          <tr><td>Semaine 2 — Le feedback</td><td>19 mars 2026</td><td>18h00</td><td>1h</td><td>Yohann D.</td><td>✅ Créée</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Modifier</button></td></tr>
-          <tr><td>Semaine 3 — Gérer les tensions</td><td>26 mars 2026</td><td>18h00</td><td>1h</td><td>Yohann D.</td><td>➕ À créer</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Modifier</button></td></tr>
         </table>
       </div>
 
@@ -1065,6 +1048,10 @@ a.ref-item:hover{background:var(--color-background)}
         <div class="row2">
           <div class="field"><label>Image de couverture</label><div class="upload-zone"><span class="big">🖼️</span>Glisser une image ou cliquer pour téléverser</div></div>
           <div class="field"><label>Lien du groupe WhatsApp (par promo, voir onglet Promotions)</label><input value="géré par promotion"></div>
+        </div>
+        <div class="gate-toggle" style="margin-top:var(--space-2);background:rgba(214,69,69,.06)">
+          <div class="toggle off" onclick="this.classList.toggle('off')"></div>
+          <div><b style="font-family:var(--font-title)">🔓 Déverrouiller tout le contenu de ce programme</b><div style="font-size:12px;color:var(--color-neutral)">Ignore la pédagogie inversée pour CE programme uniquement : accès direct aux vidéos et ressources, sans cocher l'exercice.</div></div>
         </div>
       </div>
 
@@ -1131,9 +1118,9 @@ a.ref-item:hover{background:var(--color-background)}
 
       <h3 class="section-title" style="margin-top:0">🗓️ Séquences (semaines) de la session</h3>
       <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">Découpez la session en semaines. Chaque semaine a son contenu et, si besoin, sa visio. <b>Les dates des visios sont fixées par promotion</b> (onglet Promotions → Planning des visios).</p>
-      <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>Semaine 1 — Créer l'engagement</b><small>📝 1 exo · 🎬 3 vidéos · 🎧 2 ressources · ✅ quiz · 🎥 visio prévue</small></div><button class="icon-btn">✏️ Contenu</button><button class="icon-btn" onclick="goTo('admin')">🎥 Visio</button><button class="icon-btn">🗑️</button></div>
-      <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>Semaine 2 — Le feedback en pratique</b><small>📝 1 exo · 🎬 1 vidéo · 🎧 1 ressource · ✅ quiz · 🎥 visio prévue</small></div><button class="icon-btn">✏️ Contenu</button><button class="icon-btn" onclick="goTo('admin')">🎥 Visio</button><button class="icon-btn">🗑️</button></div>
-      <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>Semaine 3 — Gérer les tensions</b><small>📝 1 exo · 🎬 2 vidéos · ✅ quiz · 🎥 visio prévue</small></div><button class="icon-btn">✏️ Contenu</button><button class="icon-btn" onclick="goTo('admin')">🎥 Visio</button><button class="icon-btn">🗑️</button></div>
+      <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>Semaine 1 — Créer l'engagement</b><small>📝 1 exo · 🎬 3 vidéos · 🎧 2 ressources · ✅ quiz · 🎥 visio</small></div><button class="icon-btn">✏️ Contenu</button><button class="icon-btn">🗑️</button></div>
+      <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>Semaine 2 — Le feedback en pratique</b><small>📝 1 exo · 🎬 1 vidéo · 🎧 1 ressource · ✅ quiz · 🎥 visio</small></div><button class="icon-btn">✏️ Contenu</button><button class="icon-btn">🗑️</button></div>
+      <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>Semaine 3 — Gérer les tensions</b><small>📝 1 exo · 🎬 2 vidéos · ✅ quiz · 🎥 visio</small></div><button class="icon-btn">✏️ Contenu</button><button class="icon-btn">🗑️</button></div>
       <button class="add-btn" style="margin-bottom:var(--space-8)">+ Ajouter une semaine</button>
 
       <h3 class="section-title" style="margin-top:0">Contenu de la séquence — <span style="color:var(--color-accent)">Semaine 1</span></h3>
@@ -1142,6 +1129,7 @@ a.ref-item:hover{background:var(--color-background)}
         <div class="tab" onclick="esTab(this,'video')">🎬 Vidéos</div>
         <div class="tab" onclick="esTab(this,'res')">🎧 Ressources</div>
         <div class="tab" onclick="esTab(this,'quiz')">✅ Quiz</div>
+        <div class="tab" onclick="esTab(this,'visio')">🎥 Visio</div>
       </div>
 
       <!-- Exercices -->
@@ -1186,6 +1174,25 @@ a.ref-item:hover{background:var(--color-background)}
           <div style="display:flex;gap:10px"><span class="badge" style="background:var(--color-neutral)">Vrai</span><span class="badge" style="background:var(--color-primary)">Faux ✓</span></div>
         </div>
         <button class="add-btn">+ Ajouter une question</button>
+      </div>
+
+      <!-- Visio -->
+      <div id="es-visio" class="hidden">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-4)">Créez la visio de cette séquence. La salle <b>BigBlueButton</b> est générée automatiquement. Les <b>dates sont précisées par promotion</b> à la programmation.</p>
+        <div class="edit-card">
+          <div class="gate-toggle" style="margin-bottom:var(--space-4)"><div class="toggle"></div><div><b style="font-family:var(--font-title)">Visio prévue pour cette séquence</b><div style="font-size:12px;color:var(--color-neutral)">Activez pour qu'une classe live soit programmée chaque semaine pour les promotions.</div></div></div>
+          <div class="row2">
+            <div class="field"><label>Titre de la visio</label><input value="Créer l'engagement — Q&R"></div>
+            <div class="field"><label>Animateur</label><input value="Yohann Duclos"></div>
+          </div>
+          <div class="row3">
+            <div class="field"><label>Jour (relatif à la semaine)</label><select><option>Jeudi</option><option>Lundi</option><option>Mardi</option><option>Mercredi</option><option>Vendredi</option></select></div>
+            <div class="field"><label>Heure</label><input value="18h00"></div>
+            <div class="field"><label>Durée</label><input value="1h"></div>
+          </div>
+          <div class="field"><label>Salle BigBlueButton</label><input value="Créée automatiquement à la programmation (classe-virtuelle.com)" readonly></div>
+          <p style="font-size:12px;color:var(--color-neutral)">📅 Les <b>dates exactes</b> par promotion sont fixées lors de la programmation de la promo (héritent de ce modèle de jour/heure).</p>
+        </div>
       </div>
     </section>
 
@@ -1323,7 +1330,7 @@ function ecTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classLi
   ['sessions','lexique','references','presentiels'].forEach(x=>document.getElementById('ec-'+x).classList.add('hidden'));
   document.getElementById('ec-'+t).classList.remove('hidden')}
 function esTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
-  ['ex','video','res','quiz'].forEach(x=>document.getElementById('es-'+x).classList.add('hidden'));
+  ['ex','video','res','quiz','visio'].forEach(x=>document.getElementById('es-'+x).classList.add('hidden'));
   document.getElementById('es-'+t).classList.remove('hidden')}
 switchPromo('lvm-2026-aut');
 </script>

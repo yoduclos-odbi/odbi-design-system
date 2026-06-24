@@ -304,13 +304,10 @@ Onglets :
     manuellement par un admin**.
   - **Création manuelle d'un compte gratuit** par l'admin, en donnant accès aux
     **programmes et sessions de son choix** (ex. 1ère session en découverte gratuite).
-  - **Déverrouillage global du contenu** : option admin pour **ignorer la pédagogie
-    inversée** sur tous les programmes (accès direct vidéos/ressources) — activable
-    aussi par programme dans l'éditeur.
+  - **Déverrouillage par programme** : option dans l'éditeur du programme pour **ignorer
+    la pédagogie inversée** sur ce programme (accès direct vidéos/ressources) — pas globalement.
 - **Cours** — création/édition des cours, sessions, contenus, WhatsApp par cours
 - **Promotions** — cohortes par programme, membres, dates, classes, présentiels
-  - **Planning des visios** : programmation des visios par promotion (semaine → date/heure/
-    durée/animateur), création automatique de la salle BBB.
 - **Suivi pédagogique (animateur)** — accès aux **restitutions des participants** :
   exercices rendus (fichiers téléchargeables), **résultats de quiz** (score, tentatives),
   vidéos vues, statut. Filtrable par cours / promo / séquence. Export CSV + Notion (BPF).
@@ -327,14 +324,20 @@ Doit être **ergonomique** (rechargement manuel des contenus depuis Moodle).
 - Titre, règle d'accès (verrouillage), **toggle « pédagogie inversée »** (gating exercices, activable par session — non bloquant)
 - **Découpage en séquences (semaines)** : ajout / réordonnancement / suppression des semaines ;
   chaque semaine a son contenu et, le cas échéant, sa visio.
-- Édition du **contenu de la séquence sélectionnée** : **Exercices** (titre, consigne, fiche PDF),
-  **Vidéos** (ID/URL Vimeo, titre, durée — plusieurs), **Ressources** (upload audios/PDF, plusieurs),
-  **Quiz** (constructeur : type par question — QCM / Vrai-Faux / Association / Réponse libre — ~5 questions)
+- Édition du **contenu de la séquence sélectionnée** via onglets, **au même niveau** :
+  **Exercices**, **Vidéos** (Vimeo, plusieurs), **Ressources** (audios/PDF, plusieurs),
+  **Quiz** (constructeur ~5 questions), **🎥 Visio**.
 
 ### Programmation des visios
-- Les visios se **programment par promotion** : back-office → **Promotions → Planning des visios**.
-- Pour chaque **semaine/séquence** : date, heure, durée, animateur → **création automatique de la salle BBB**.
-- La session définit l'**ossature** (quelles semaines ont une visio) ; la promotion fixe les **dates réelles**.
+- La **visio se crée dans l'éditeur de session** (onglet **Visio** de la séquence), au même
+  titre qu'un exercice ou une ressource — **pas** dans Promotions.
+- On y définit le **modèle** : titre, animateur, jour (relatif à la semaine), heure, durée ;
+  la **salle BBB est créée automatiquement**.
+- Les **dates exactes par promotion** héritent de ce modèle lors de la programmation de la promo.
+
+### Déverrouillage du contenu
+- Le déverrouillage (ignorer la pédagogie inversée) se fait **par programme**
+  (toggle dans l'éditeur du programme), **pas globalement**.
 
 ---
 
