@@ -110,6 +110,11 @@ Un membre est rattaché à **une promotion par programme** (peut être dans
 plusieurs promos s'il suit plusieurs programmes). La plateforme filtre
 automatiquement le contenu synchrone selon sa/ses promo(s).
 
+**Rattachement (source d'inscription)** : l'inscription d'un participant à un
+cours se fait depuis la **base Notion « participants »** (via un bouton). Le LMS
+provisionne alors le compte, le rattache au cours + à la promotion, et **envoie
+les accès de connexion** par e-mail (cf. §13, flux Notion → LMS).
+
 ### Volume & navigation des promotions
 - **Beaucoup de promotions** : ex. « La Voie » → **~5 promotions par an**
 - Côté UI : sélection des promotions via un **dérouleur groupé par année**
@@ -212,8 +217,25 @@ Flux : `Visio BBB → enregistrement BBB → Notta (transcription + chapitrage +
 | **Notta** | Transcription + chapitrage + résumé des visios (multi-langues) |
 | **YoDalf / Claude (Anthropic)** | Assistant IA sur le contenu |
 | **WhatsApp** | Groupe communautaire **par promotion** (lien externe) |
-| **Notion** | **CRM ODBI** (membres & prospects) + **extraction Qualiopi / BPF** (assiduité, heures) |
+| **Notion** | **CRM** + **source des inscriptions** + **extraction Qualiopi / BPF** |
+| **E-mailing transactionnel** | Envoi automatique des accès LMS + notifications (service à choisir) |
 | **Stripe** | Paiements & abonnements |
+
+### Flux Notion (bidirectionnel)
+
+**① Notion → LMS (inscriptions)**
+- Sur Notion, une **base de données « participants »** : on inscrit un participant
+  à un cours via un **simple bouton**.
+- Cela déclenche côté LMS : **création/provisionning du compte**, **rattachement
+  au cours + à la promotion**, puis **envoi automatique des infos et des accès de
+  connexion** au participant (e-mail d'onboarding).
+
+**② LMS → Notion (CRM + reporting)**
+- Mise à jour des fiches membres (CRM)
+- Export des données **assiduité / heures / BPF** (cf. §17)
+
+> Implique un **service d'e-mailing transactionnel** pour l'envoi des accès et
+> des notifications (bienvenue, identifiants/lien d'activation, rappels visio…).
 
 ---
 
@@ -235,6 +257,8 @@ Onglets :
 - **Visio** : BigBlueButton (API)
 - **IA** : API Claude (Anthropic)
 - **Paiement** : Stripe
+- **E-mailing transactionnel** : à choisir (ex. Resend, Postmark, Brevo…) — envoi des accès + notifications
+- **CRM / inscriptions / reporting** : Notion (via API)
 - À confirmer au démarrage du projet réel.
 
 ---
@@ -310,7 +334,9 @@ formation/promotion, etc. (volet financier = à coupler avec Stripe).
 - [ ] Groupe WhatsApp : **par promotion** (hypothèse retenue) ou par programme ?
 - [ ] Niveau de gating exercices : configurable par session côté admin ?
 - [ ] Lexique : uniquement par cours, ou aussi un lexique global plateforme ?
-- [ ] Sens de la synchro Notion (CRM) : inscriptions → fiches ? suivi prospects ?
+- [x] Sens de la synchro Notion : **bidirectionnel** — Notion→LMS (inscriptions + envoi des accès), LMS→Notion (CRM + BPF)
+- [ ] Service d'**e-mailing transactionnel** à choisir (envoi des accès, notifications)
+- [ ] Contenu exact de l'**e-mail d'onboarding** (identifiants vs lien magique d'activation ?)
 - [ ] Modèle d'abonnement / tarification (Stripe) : à définir
 - [ ] Langues de l'interface (FR seul, ou multilingue ?)
 - [ ] BBB : mode **redirection** (reco) ou **embarqué (iframe)** dans la plateforme ?
