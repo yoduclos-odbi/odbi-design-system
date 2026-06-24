@@ -164,6 +164,10 @@ a{color:inherit;text-decoration:none}
 .res-ic.pdf{background:#d64545}.res-ic.audio{background:var(--color-asparagus)}.res-ic.doc{background:var(--color-accent)}
 .res-item .t{flex:1}.res-item .t b{font-family:var(--font-title);font-size:14px;display:block}.res-item .t small{color:var(--color-neutral);font-size:12px}
 .quiz-type{display:inline-block;font-size:11px;font-family:var(--font-title);font-weight:500;color:var(--color-accent);background:rgba(17,76,106,.08);padding:3px 10px;border-radius:var(--radius-full);margin-bottom:10px}
+.quiz-score{display:flex;align-items:center;gap:var(--space-5);background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:var(--space-4) var(--space-5);margin-bottom:var(--space-5);border-left:4px solid var(--color-primary)}
+.quiz-score .big{font-family:var(--font-title);font-weight:700;font-size:26px;color:var(--color-primary)}
+.quiz-score .attempts{flex:1;font-size:12px;color:var(--color-neutral)}
+.quiz-score .attempts b{color:var(--color-jet);font-family:var(--font-title)}
 .quiz-q{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:var(--space-5);margin-bottom:var(--space-4)}
 .quiz-q h4{font-size:15px;margin-bottom:var(--space-3)}
 .q-opt{display:flex;align-items:center;gap:12px;padding:11px 14px;border:1px solid rgba(74,74,74,.18);border-radius:var(--radius-md);margin-bottom:8px;cursor:pointer}
@@ -323,7 +327,7 @@ a{color:inherit;text-decoration:none}
       <div class="banner">
         <div>
           <h2>Bienvenue, Jean 👋</h2>
-          <p>Vous avez 2 leçons en cours et une visio « La Voie des managers » aujourd'hui à 18h.</p>
+          <p>Vous avez 2 sessions en cours et une visio « La Voie des managers » aujourd'hui à 18h.</p>
         </div>
         <button class="btn" style="background:#fff;color:var(--color-accent)" onclick="goTo('visio')">Rejoindre la visio</button>
       </div>
@@ -397,28 +401,62 @@ a{color:inherit;text-decoration:none}
     <section id="page-course" class="page">
       <div class="breadcrumb" onclick="goTo('catalog')">Mes programmes / La Voie / <b>La Voie des managers</b></div>
       <div class="flex-between mb6">
-        <div><h1>La Voie des managers</h1><p style="color:var(--color-neutral);margin-top:6px">6 modules · 24 leçons · 4h de contenu · animé par Yohann D.</p></div>
+        <div>
+          <h1>La Voie des managers</h1>
+          <p style="color:var(--color-neutral);margin-top:6px">4 sessions · 4h de contenu · animé par Yohann D.</p>
+          <span class="course-tag" style="margin-top:10px">👥 Promotion 2026 — Automne</span>
+        </div>
         <button class="btn btn-accent" onclick="goTo('lesson')">Reprendre ▶</button>
       </div>
       <div class="progress mb6" style="height:10px"><span style="width:72%"></span></div>
       <div class="wa-card mb6">
         <div class="wa-ic">💬</div>
-        <div style="flex:1"><h3 style="font-size:15px">Groupe WhatsApp du programme</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:2px">Échangez avec les autres membres de « La Voie des managers » — 42 participants</p></div>
+        <div style="flex:1"><h3 style="font-size:15px">Groupe WhatsApp de la promotion</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:2px">Promotion 2026 — Automne · « La Voie des managers » — 42 participants</p></div>
         <button class="btn btn-wa">Rejoindre le groupe</button>
       </div>
 
-      <h3 style="margin-bottom:var(--space-4)">Sessions du cours</h3>
-      <div class="module">
-        <div class="module-head" onclick="goTo('lesson')"><div class="lesson done" style="padding:0;border:none"><div class="check">✓</div><div><h3>Session 1 — Fondamentaux du leadership</h3><div class="sub">🎬 3 vidéos · 🎧 1 audio · 📄 2 PDF · ✅ quiz · terminé</div></div></div><button class="btn btn-ghost" style="padding:6px 14px">Revoir</button></div>
+      <div class="tabs">
+        <div class="tab active" onclick="courseTab(this,'sessions')">📚 Sessions</div>
+        <div class="tab" onclick="courseTab(this,'presentiel')">📍 Présentiels</div>
+        <div class="tab" onclick="courseTab(this,'lexique')">📖 Lexique</div>
       </div>
-      <div class="module">
-        <div class="module-head" onclick="goTo('lesson')"><div class="lesson" style="padding:0;border:none"><div class="check" style="border-color:var(--color-accent)"></div><div><h3>Session 2 — Mobiliser une équipe</h3><div class="sub">🎬 4 vidéos · 🎧 2 audios · 📄 1 PDF · ✅ quiz · 🎥 1 visio · en cours</div></div></div><button class="btn btn-accent" style="padding:6px 14px">Continuer ▶</button></div>
+
+      <!-- Sessions (asynchrone) -->
+      <div id="crs-sessions">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">📦 Contenu en autonomie (asynchrone) — identique pour toutes les promotions.</p>
+        <div class="module">
+          <div class="module-head" onclick="goTo('lesson')"><div class="lesson done" style="padding:0;border:none"><div class="check">✓</div><div><h3>Session 1 — Fondamentaux du leadership</h3><div class="sub">🎬 3 vidéos · 🎧 1 audio · 📄 2 PDF · ✅ quiz · terminé</div></div></div><button class="btn btn-ghost" style="padding:6px 14px">Revoir</button></div>
+        </div>
+        <div class="module">
+          <div class="module-head" onclick="goTo('lesson')"><div class="lesson" style="padding:0;border:none"><div class="check" style="border-color:var(--color-accent)"></div><div><h3>Session 2 — Mobiliser une équipe</h3><div class="sub">🎬 4 vidéos · 🎧 2 audios · 📄 1 PDF · ✅ quiz · en cours</div></div></div><button class="btn btn-accent" style="padding:6px 14px">Continuer ▶</button></div>
+        </div>
+        <div class="module">
+          <div class="module-head" style="opacity:.55;border-left-color:var(--color-neutral)"><div class="lesson" style="padding:0;border:none"><div class="check">🔒</div><div><h3>Session 3 — Leadership de soi</h3><div class="sub">🎬 3 vidéos · 📄 2 PDF · ✅ quiz · verrouillé</div></div></div></div>
+        </div>
+        <div class="module">
+          <div class="module-head" style="opacity:.55;border-left-color:var(--color-neutral)"><div class="lesson" style="padding:0;border:none"><div class="check">🔒</div><div><h3>Session 4 — Décider en incertitude</h3><div class="sub">🎬 2 vidéos · 🎧 1 audio · ✅ quiz · verrouillé</div></div></div></div>
+        </div>
       </div>
-      <div class="module">
-        <div class="module-head" style="opacity:.55;border-left-color:var(--color-neutral)"><div class="lesson" style="padding:0;border:none"><div class="check">🔒</div><div><h3>Session 3 — Leadership de soi</h3><div class="sub">🎬 3 vidéos · 📄 2 PDF · ✅ quiz · verrouillé</div></div></div></div>
+
+      <!-- Présentiels (par promotion) -->
+      <div id="crs-presentiel" class="hidden">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">📍 Rencontres physiques de votre promotion — <b>Promotion 2026 — Automne</b>.</p>
+        <div class="grid grid-2">
+          <div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 14–15 nov. 2026</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Séminaire d'intégration</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 ODBI Campus — Lyon · 9h–17h</p></div><button class="btn btn-ghost">Détails</button></div></div>
+          <div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 23 jan. 2027</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Atelier pratique — mise en situation</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 Espace Bellecour — Lyon · 9h–13h</p></div><button class="btn btn-ghost">Détails</button></div></div>
+          <div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 12 mars 2027</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Certification & clôture</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 ODBI Campus — Lyon · 9h–17h</p></div><button class="btn btn-ghost">Détails</button></div></div>
+        </div>
       </div>
-      <div class="module">
-        <div class="module-head" style="opacity:.55;border-left-color:var(--color-neutral)"><div class="lesson" style="padding:0;border:none"><div class="check">🔒</div><div><h3>Session 4 — Décider en incertitude</h3><div class="sub">🎬 2 vidéos · 🎧 1 audio · ✅ quiz · 🎥 1 visio · verrouillé</div></div></div></div>
+
+      <!-- Lexique (niveau cours) -->
+      <div id="crs-lexique" class="hidden">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">📖 Lexique du cours — les termes clés de « La Voie des managers ».</p>
+        <dl>
+          <div class="lex-item"><dt>Haute intensité</dt><dd>Contexte exigeant où la pression, l'enjeu et le rythme sont élevés ; cadre de référence des programmes ODBI.</dd></div>
+          <div class="lex-item"><dt>Feedback</dt><dd>Retour structuré sur un comportement observé, visant l'amélioration sans dégrader la relation.</dd></div>
+          <div class="lex-item"><dt>Engagement collectif</dt><dd>Adhésion active des membres d'une équipe à un objectif commun et aux moyens de l'atteindre.</dd></div>
+          <div class="lex-item"><dt>Promotion</dt><dd>Groupe de membres qui suivent ensemble une même édition du cours, avec ses propres classes synchrones et présentiels.</dd></div>
+        </dl>
       </div>
     </section>
 
@@ -435,7 +473,6 @@ a{color:inherit;text-decoration:none}
         <div class="tab" onclick="sessTab(this,'res')">🎧 Ressources</div>
         <div class="tab" onclick="sessTab(this,'quiz')">✅ Quiz</div>
         <div class="tab" onclick="sessTab(this,'ref')">📚 Références</div>
-        <div class="tab" onclick="sessTab(this,'lex')">📖 Lexique</div>
       </div>
 
       <!-- Vidéos -->
@@ -472,7 +509,12 @@ a{color:inherit;text-decoration:none}
 
       <!-- Quiz -->
       <div id="sess-quiz" class="hidden">
-        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Quiz de la session — plusieurs formes de questions.</p>
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Quiz de la session — plusieurs formes de questions. Pas de score minimal : refaites-le autant de fois que vous voulez, vos tentatives sont mémorisées.</p>
+        <div class="quiz-score">
+          <div class="big">80%</div>
+          <div class="attempts">Meilleur score · <b>2 tentatives</b><br>Tentative 1 : 60% (12 mars) · Tentative 2 : 80% (14 mars)</div>
+          <button class="btn btn-ghost">↻ Refaire le quiz</button>
+        </div>
         <div class="quiz-q">
           <span class="quiz-type">Choix multiple (QCM)</span>
           <h4>1. Quels sont les piliers du feedback ODBI ?</h4>
@@ -510,23 +552,13 @@ a{color:inherit;text-decoration:none}
         <div class="ref-item"><span class="ref-type video">Vidéo</span><div class="t"><b>Conférence : leadership en haute intensité</b><small>Lien externe · 22 min</small></div></div>
         <div class="ref-item"><span class="ref-type article">Article</span><div class="t"><b>Étude : engagement et performance d'équipe</b><small>Lien externe · 8 min de lecture</small></div></div>
       </div>
-
-      <!-- Lexique -->
-      <div id="sess-lex" class="hidden">
-        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Les termes clés de cette session.</p>
-        <dl>
-          <div class="lex-item"><dt>Haute intensité</dt><dd>Contexte exigeant où la pression, l'enjeu et le rythme sont élevés ; cadre de référence des programmes ODBI.</dd></div>
-          <div class="lex-item"><dt>Feedback</dt><dd>Retour structuré sur un comportement observé, visant l'amélioration sans dégrader la relation.</dd></div>
-          <div class="lex-item"><dt>Engagement collectif</dt><dd>Adhésion active des membres d'une équipe à un objectif commun et aux moyens de l'atteindre.</dd></div>
-        </dl>
-      </div>
     </section>
 
     <!-- VISIO -->
     <section id="page-visio" class="page">
-      <div class="page-head"><h1>Visios live</h1><p>Vos sessions BigBlueButton — uniquement les programmes auxquels vous êtes inscrit</p></div>
+      <div class="page-head"><h1>Visios live</h1><p>Les classes synchrones de votre promotion (BigBlueButton)</p></div>
       <div class="visio-info">
-        <div><div class="live"><span class="blink"></span> EN DIRECT</div><span class="course-tag" style="margin-top:8px">📘 La Voie des managers · Module 2</span><h3 style="margin-top:8px">Feedback à haute intensité — cas réels</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:4px">Animée par Yohann D. · 14 participants</p></div>
+        <div><div class="live"><span class="blink"></span> EN DIRECT</div><span class="course-tag" style="margin-top:8px">📘 La Voie des managers · 👥 Promo 2026 — Automne</span><h3 style="margin-top:8px">Feedback à haute intensité — cas réels</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:4px">Animée par Yohann D. · 14 participants</p></div>
         <button class="btn btn-accent">Rejoindre la salle BBB</button>
       </div>
       <div class="visio-stage">
@@ -646,6 +678,7 @@ a{color:inherit;text-decoration:none}
       <div class="tabs">
         <div class="tab active" onclick="adminTab(this,'members')">Membres & accès</div>
         <div class="tab" onclick="adminTab(this,'courses')">Cours</div>
+        <div class="tab" onclick="adminTab(this,'promos')">Promotions</div>
         <div class="tab" onclick="adminTab(this,'integ')">Intégrations</div>
       </div>
 
@@ -669,6 +702,20 @@ a{color:inherit;text-decoration:none}
           <tr><td>Vous En Paix</td><td><span class="badge" style="background:var(--color-indigo-dye)">La Voie</span></td><td>4</td><td>96</td><td>💬 Lié</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
           <tr><td>BTC : 2ème génération</td><td><span class="badge" style="background:var(--color-black)">École</span></td><td>8</td><td>64</td><td>💬 Lié</td><td>Publié</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
           <tr><td>IC : Cohésion de groupe</td><td><span class="badge" style="background:var(--color-black)">École</span></td><td>6</td><td>38</td><td>➕ À lier</td><td>Brouillon</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer</button></td></tr>
+        </table>
+      </div>
+
+      <div id="admin-promos" class="hidden">
+        <div class="card mb6" style="padding:var(--space-5);border-left:4px solid var(--color-accent)">
+          <p style="font-size:13px"><b>📦 Asynchrone</b> (cours, vidéos, audios, quiz, lexique) = <b>partagé</b> par toutes les promotions. &nbsp;·&nbsp; <b>📍 Synchrone</b> (classes / visios, présentiels) = <b>propre à chaque promotion</b>.</p>
+        </div>
+        <div class="flex-between mb6"><h3>Promotions par programme</h3><button class="btn btn-primary">+ Créer une promotion</button></div>
+        <table class="table">
+          <tr><th>Promotion</th><th>Programme</th><th>Membres</th><th>Début</th><th>Classes</th><th>Présentiels</th><th></th></tr>
+          <tr><td>Promo 2026 — Automne</td><td>La Voie des managers</td><td>42</td><td>Sept. 2026</td><td>8 visios</td><td>3</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Gérer</button></td></tr>
+          <tr><td>Promo 2026 — Printemps</td><td>La Voie des managers</td><td>38</td><td>Mars 2026</td><td>8 visios</td><td>3</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Gérer</button></td></tr>
+          <tr><td>BTC — 2ème génération</td><td>Born To Coach</td><td>24</td><td>Janv. 2026</td><td>12 visios</td><td>4</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Gérer</button></td></tr>
+          <tr><td>IC — Cohésion #1</td><td>IC : Cohésion de groupe</td><td>16</td><td>Oct. 2026</td><td>6 visios</td><td>2</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Gérer</button></td></tr>
         </table>
       </div>
 
@@ -700,11 +747,14 @@ function goTo(page){
 }
 function go(el){goTo(el.dataset.page)}
 function adminTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
-  ['members','courses','integ'].forEach(x=>document.getElementById('admin-'+x).classList.add('hidden'));
+  ['members','courses','promos','integ'].forEach(x=>document.getElementById('admin-'+x).classList.add('hidden'));
   document.getElementById('admin-'+t).classList.remove('hidden')}
 function sessTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
-  ['video','res','quiz','ref','lex'].forEach(x=>document.getElementById('sess-'+x).classList.add('hidden'));
+  ['video','res','quiz','ref'].forEach(x=>document.getElementById('sess-'+x).classList.add('hidden'));
   document.getElementById('sess-'+t).classList.remove('hidden')}
+function courseTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
+  ['sessions','presentiel','lexique'].forEach(x=>document.getElementById('crs-'+x).classList.add('hidden'));
+  document.getElementById('crs-'+t).classList.remove('hidden')}
 function sendMsg(){const i=document.getElementById('chatInput');if(!i.value.trim())return;const b=document.getElementById('chatBody');
   b.innerHTML+='<div class="msg me">'+i.value+'</div>';const q=i.value;i.value='';
   setTimeout(()=>{b.innerHTML+='<div class="msg ai">💡 (Réponse YoDalf simulée) Dans la version réelle, je m\'appuierais sur le contenu de vos cours ODBI pour répondre précisément à : « '+q+' »</div>';b.scrollTop=b.scrollHeight},500);b.scrollTop=b.scrollHeight}
