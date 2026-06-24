@@ -1015,19 +1015,39 @@ a.ref-item:hover{background:var(--color-background)}
       </div>
 
       <div id="admin-suivi" class="hidden">
-        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Vue animateur — exercices rendus par les participants et résultats des quiz.</p>
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Vue animateur — restitutions des participants et résultats des quiz. <span style="color:var(--color-primary)">● Stats actualisées en temps réel</span>.</p>
         <div style="display:flex;gap:10px;margin-bottom:var(--space-5);flex-wrap:wrap">
           <select class="promo-select"><option>La Voie des managers</option><option>Born To Coach — 2e gén.</option></select>
           <select class="promo-select"><option>Promo 2026 — Automne</option><option>Promo 2027 — Printemps</option></select>
-          <select class="promo-select"><option>Séquence 1 — Créer l'engagement</option><option>Séquence 2 — Le feedback</option></select>
+          <select class="promo-select" onchange="suiviScope(this.value)">
+            <option value="all">Toutes les séquences (vue programme)</option>
+            <option value="one">Séquence 1 — Créer l'engagement</option>
+            <option value="one">Séquence 2 — Le feedback</option>
+          </select>
         </div>
-        <table class="table">
-          <tr><th>Participant</th><th>Exercice rendu</th><th>Quiz (score)</th><th>Vidéos vues</th><th>Statut</th></tr>
-          <tr><td><span class="pmini" style="background:var(--color-indigo-dye)">JD</span> Jean Dupont</td><td><a style="color:var(--color-accent);cursor:pointer">📎 exercice-jd.pdf</a> · 14 mars</td><td><b>80%</b> (2 essais)</td><td>3 / 3</td><td>✅ À jour</td></tr>
-          <tr><td><span class="pmini" style="background:var(--color-apple-green)">ML</span> Marie Lambert</td><td><a style="color:var(--color-accent);cursor:pointer">📎 photo-exercice.jpg</a> · 13 mars</td><td><b>100%</b> (1 essai)</td><td>3 / 3</td><td>✅ À jour</td></tr>
-          <tr><td><span class="pmini" style="background:#888">TP</span> Thomas Petit</td><td><span style="color:var(--color-neutral)">— non rendu</span></td><td><b>60%</b> (1 essai)</td><td>1 / 3</td><td>⚠️ En retard</td></tr>
-          <tr><td><span class="pmini" style="background:var(--color-indigo-dye)">SR</span> Sophie Roux</td><td><a style="color:var(--color-accent);cursor:pointer">📎 exercice-sr.docx</a> · 15 mars</td><td><span style="color:var(--color-neutral)">non fait</span></td><td>2 / 3</td><td>⏳ En cours</td></tr>
-        </table>
+
+        <!-- Vue agrégée programme (Toutes les séquences) -->
+        <div id="suivi-all">
+          <table class="table">
+            <tr><th>Participant</th><th>Progression</th><th>Exercices rendus</th><th>Score quiz moyen</th><th>Vidéos vues</th><th>Assiduité visios</th><th>Statut</th></tr>
+            <tr><td><span class="pmini" style="background:var(--color-indigo-dye)">JD</span> Jean Dupont</td><td><b>72%</b></td><td>2 / 2</td><td><b>85%</b></td><td>9 / 12</td><td>6 / 8</td><td>✅ À jour</td></tr>
+            <tr><td><span class="pmini" style="background:var(--color-apple-green)">ML</span> Marie Lambert</td><td><b>95%</b></td><td>2 / 2</td><td><b>98%</b></td><td>12 / 12</td><td>8 / 8</td><td>✅ À jour</td></tr>
+            <tr><td><span class="pmini" style="background:#888">TP</span> Thomas Petit</td><td><b>28%</b></td><td>0 / 2</td><td><b>55%</b></td><td>3 / 12</td><td>2 / 8</td><td>⚠️ En retard</td></tr>
+            <tr><td><span class="pmini" style="background:var(--color-indigo-dye)">SR</span> Sophie Roux</td><td><b>60%</b></td><td>1 / 2</td><td><b>—</b></td><td>7 / 12</td><td>5 / 8</td><td>⏳ En cours</td></tr>
+          </table>
+        </div>
+
+        <!-- Vue détaillée d'une séquence -->
+        <div id="suivi-one" class="hidden">
+          <table class="table">
+            <tr><th>Participant</th><th>Exercice rendu</th><th>Quiz (score)</th><th>Vidéos vues</th><th>Statut</th></tr>
+            <tr><td><span class="pmini" style="background:var(--color-indigo-dye)">JD</span> Jean Dupont</td><td><a style="color:var(--color-accent);cursor:pointer">📎 exercice-jd.pdf</a> · 14 mars</td><td><b>80%</b> (2 essais)</td><td>3 / 3</td><td>✅ À jour</td></tr>
+            <tr><td><span class="pmini" style="background:var(--color-apple-green)">ML</span> Marie Lambert</td><td><a style="color:var(--color-accent);cursor:pointer">📎 photo-exercice.jpg</a> · 13 mars</td><td><b>100%</b> (1 essai)</td><td>3 / 3</td><td>✅ À jour</td></tr>
+            <tr><td><span class="pmini" style="background:#888">TP</span> Thomas Petit</td><td><span style="color:var(--color-neutral)">— non rendu</span></td><td><b>60%</b> (1 essai)</td><td>1 / 3</td><td>⚠️ En retard</td></tr>
+            <tr><td><span class="pmini" style="background:var(--color-indigo-dye)">SR</span> Sophie Roux</td><td><a style="color:var(--color-accent);cursor:pointer">📎 exercice-sr.docx</a> · 15 mars</td><td><span style="color:var(--color-neutral)">non fait</span></td><td>2 / 3</td><td>⏳ En cours</td></tr>
+          </table>
+        </div>
+
         <div style="display:flex;gap:10px;margin-top:var(--space-5)"><button class="btn btn-ghost">⬇ Exporter (CSV)</button><button class="btn btn-ghost">📊 Vers Notion (BPF)</button></div>
       </div>
 
@@ -1386,6 +1406,10 @@ function lexFilter(l,el){
   document.querySelectorAll('#lexList .lex-item').forEach(it=>{
     it.style.display=(l==='all'||it.getAttribute('data-letter')===l)?'':'none';
   });
+}
+function suiviScope(v){
+  document.getElementById('suivi-all').classList.toggle('hidden',v!=='all');
+  document.getElementById('suivi-one').classList.toggle('hidden',v!=='one');
 }
 function ecTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
   ['sessions','lexique','references','presentiels'].forEach(x=>document.getElementById('ec-'+x).classList.add('hidden'));

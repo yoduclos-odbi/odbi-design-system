@@ -314,7 +314,10 @@ Onglets :
 - **Promotions** — cohortes par programme, membres, dates, classes, présentiels
 - **Suivi pédagogique (animateur)** — accès aux **restitutions des participants** :
   exercices rendus (fichiers téléchargeables), **résultats de quiz** (score, tentatives),
-  vidéos vues, statut. Filtrable par cours / promo / séquence. Export CSV + Notion (BPF).
+  vidéos vues, statut. Filtrable par programme / promo / séquence — avec option
+  **« Toutes les séquences »** donnant des **stats agrégées par participant au niveau
+  du programme** (progression, exercices rendus, score quiz moyen, vidéos vues,
+  assiduité visios), **actualisées en temps réel**. Export CSV + Notion (BPF).
 - **Intégrations** — config BBB, Notta, YoDalf, WhatsApp, Notion, Stripe
 
 ### Éditeur de cours (back-office)
