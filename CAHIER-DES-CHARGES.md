@@ -368,7 +368,9 @@ Le profil affiche aussi :
 - **Onglet « Participants »** de la page cours (au même niveau que Lexique/Références)
 - Champs affichés : **prénom, nom, ville, rôle, e-mail, numéro WhatsApp**
 - Le **groupe WhatsApp** de la promo est lui aussi un **onglet du cours**
-- ⚠️ Affichage e-mail + WhatsApp entre participants → à cadrer RGPD (consentement / opt-in ?)
+- **RGPD — opt-in** : l'e-mail et le numéro WhatsApp ne sont visibles par les autres
+  participants **que si le membre y a consenti** (réglage dans son profil). Par
+  défaut masqués ; prénom/nom/ville/rôle restent visibles.
 
 ### Agenda
 - Présenté comme un **vrai calendrier** (vue mensuelle), événements color-codés :
@@ -386,7 +388,7 @@ Le profil affiche aussi :
 - [ ] **Plan Vimeo** adapté (Pro/Business+) requis pour Player SDK + confidentialité par domaine
 - [ ] Contenu exact de l'**e-mail d'onboarding** (identifiants vs lien magique d'activation ?)
 - [ ] Profil : répartition exacte des champs **Notion (synchro)** vs **LMS (éditable)**
-- [ ] Annuaire : quelles infos sont visibles entre participants (ville, contact… RGPD) ?
+- [x] Annuaire RGPD : **opt-in** — e-mail & WhatsApp visibles seulement si le membre consent
 - [ ] Modèle d'abonnement / tarification (Stripe) : à définir
 - [ ] Langues de l'interface (FR seul, ou multilingue ?)
 - [ ] BBB : mode **redirection** (reco) ou **embarqué (iframe)** dans la plateforme ?
