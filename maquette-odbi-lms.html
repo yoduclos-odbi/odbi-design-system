@@ -419,6 +419,7 @@ a{color:inherit;text-decoration:none}
         <div class="tab active" onclick="courseTab(this,'sessions')">📚 Sessions</div>
         <div class="tab" onclick="courseTab(this,'presentiel')">📍 Présentiels</div>
         <div class="tab" onclick="courseTab(this,'lexique')">📖 Lexique</div>
+        <div class="tab" onclick="courseTab(this,'references')">🔖 Références</div>
       </div>
 
       <!-- Sessions (asynchrone) -->
@@ -458,6 +459,15 @@ a{color:inherit;text-decoration:none}
           <div class="lex-item"><dt>Promotion</dt><dd>Groupe de membres qui suivent ensemble une même édition du cours, avec ses propres classes synchrones et présentiels.</dd></div>
         </dl>
       </div>
+
+      <!-- Références (niveau cours) -->
+      <div id="crs-references" class="hidden">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">🔖 Pour aller plus loin : vidéos, livres et articles recommandés pour ce cours.</p>
+        <div class="ref-item"><span class="ref-type livre">Livre</span><div class="t"><b>L'art du management — collectif ODBI</b><small>Chapitres 3 et 5 · mobiliser une équipe</small></div></div>
+        <div class="ref-item"><span class="ref-type video">Vidéo</span><div class="t"><b>Conférence : leadership en haute intensité</b><small>Lien externe · 22 min</small></div></div>
+        <div class="ref-item"><span class="ref-type article">Article</span><div class="t"><b>Étude : engagement et performance d'équipe</b><small>Lien externe · 8 min de lecture</small></div></div>
+        <div class="ref-item"><span class="ref-type livre">Livre</span><div class="t"><b>Décider sous pression</b><small>Ouvrage de référence</small></div></div>
+      </div>
     </section>
 
     <!-- SESSION -->
@@ -472,7 +482,6 @@ a{color:inherit;text-decoration:none}
         <div class="tab active" onclick="sessTab(this,'video')">🎬 Vidéos</div>
         <div class="tab" onclick="sessTab(this,'res')">🎧 Ressources</div>
         <div class="tab" onclick="sessTab(this,'quiz')">✅ Quiz</div>
-        <div class="tab" onclick="sessTab(this,'ref')">📚 Références</div>
       </div>
 
       <!-- Vidéos -->
@@ -545,13 +554,6 @@ a{color:inherit;text-decoration:none}
         <button class="btn btn-primary">Valider le quiz</button>
       </div>
 
-      <!-- Références -->
-      <div id="sess-ref" class="hidden">
-        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Pour aller plus loin : vidéos, livres et articles recommandés.</p>
-        <div class="ref-item"><span class="ref-type livre">Livre</span><div class="t"><b>L'art du management — collectif ODBI</b><small>Chapitres 3 et 5 · mobiliser une équipe</small></div></div>
-        <div class="ref-item"><span class="ref-type video">Vidéo</span><div class="t"><b>Conférence : leadership en haute intensité</b><small>Lien externe · 22 min</small></div></div>
-        <div class="ref-item"><span class="ref-type article">Article</span><div class="t"><b>Étude : engagement et performance d'équipe</b><small>Lien externe · 8 min de lecture</small></div></div>
-      </div>
     </section>
 
     <!-- VISIO -->
@@ -750,10 +752,10 @@ function adminTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.clas
   ['members','courses','promos','integ'].forEach(x=>document.getElementById('admin-'+x).classList.add('hidden'));
   document.getElementById('admin-'+t).classList.remove('hidden')}
 function sessTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
-  ['video','res','quiz','ref'].forEach(x=>document.getElementById('sess-'+x).classList.add('hidden'));
+  ['video','res','quiz'].forEach(x=>document.getElementById('sess-'+x).classList.add('hidden'));
   document.getElementById('sess-'+t).classList.remove('hidden')}
 function courseTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
-  ['sessions','presentiel','lexique'].forEach(x=>document.getElementById('crs-'+x).classList.add('hidden'));
+  ['sessions','presentiel','lexique','references'].forEach(x=>document.getElementById('crs-'+x).classList.add('hidden'));
   document.getElementById('crs-'+t).classList.remove('hidden')}
 function sendMsg(){const i=document.getElementById('chatInput');if(!i.value.trim())return;const b=document.getElementById('chatBody');
   b.innerHTML+='<div class="msg me">'+i.value+'</div>';const q=i.value;i.value='';
