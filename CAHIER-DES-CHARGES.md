@@ -111,6 +111,11 @@ progression, promotions, groupe WhatsApp, visios propres).
   session ouverte** (la session gratuite). **Tout le reste est réservé** : sessions suivantes
   (verrouillées), présentiels, lexique, références, participants, WhatsApp. Un CTA
   « Rejoindre le programme » est proposé sur les sections réservées.
+  - **Aucune promotion** : un non‑inscrit n'appartient à **aucune promo**. Le contenu gratuit
+    est **asynchrone** (partagé, indépendant des promotions) ; le **synchrone** (visios/replays,
+    présentiels, WhatsApp) dépend d'une promotion et nécessite l'inscription. Le sélecteur de
+    promotion **n'apparaît pas** en accès découverte. L'admin assigne une promotion lors de
+    l'inscription.
 - Dans le catalogue : cours inscrits = barre de progression ; cours non inscrits =
   mention « 🎁 Contenu gratuit · reste réservé aux inscrits ».
 
