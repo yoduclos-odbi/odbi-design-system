@@ -198,6 +198,8 @@ a{color:inherit;text-decoration:none}
 .lock-banner .lk-txt{flex:1;font-size:13px;line-height:1.6}
 .lock-banner .lk-txt b{font-family:var(--font-title)}
 .lock-banner .lk-txt a{color:var(--color-accent);cursor:pointer;text-decoration:underline;font-size:12px}
+.promo-pick{font-family:var(--font-title);font-weight:500;font-size:12px;padding:6px 12px;border-radius:var(--radius-full);border:1px solid rgba(74,74,74,.2);background:#fff;color:var(--color-jet);cursor:pointer}
+.promo-pick.active{background:var(--color-accent);color:#fff;border-color:var(--color-accent)}
 
 /* ---------- Visio ---------- */
 .visio-stage{background:#1a1a1a;border-radius:var(--radius-lg);aspect-ratio:16/9;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:8px;padding:8px;margin-bottom:var(--space-5)}
@@ -423,14 +425,18 @@ a{color:inherit;text-decoration:none}
         <div>
           <h1>La Voie des managers</h1>
           <p style="color:var(--color-neutral);margin-top:6px">4 sessions · 4h de contenu · animé par Yohann D.</p>
-          <span class="course-tag" style="margin-top:10px">👥 Promotion 2026 — Automne</span>
+          <div style="margin-top:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <span style="font-size:12px;color:var(--color-neutral)">👥 Promotion :</span>
+            <button class="promo-pick active" id="pp-aut" onclick="switchPromo('aut')">Promo 2026 — Automne</button>
+            <button class="promo-pick" id="pp-pri" onclick="switchPromo('pri')">Promo 2027 — Printemps</button>
+          </div>
         </div>
         <button class="btn btn-accent" onclick="goTo('lesson')">Reprendre ▶</button>
       </div>
       <div class="progress mb6" style="height:10px"><span style="width:72%"></span></div>
       <div class="wa-card mb6">
         <div class="wa-ic">💬</div>
-        <div style="flex:1"><h3 style="font-size:15px">Groupe WhatsApp de la promotion</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:2px">Promotion 2026 — Automne · « La Voie des managers » — 42 participants</p></div>
+        <div style="flex:1"><h3 style="font-size:15px">Groupe WhatsApp de la promotion</h3><p id="wa-promo" style="color:var(--color-neutral);font-size:13px;margin-top:2px">Promo 2026 — Automne · « La Voie des managers » — 42 participants</p></div>
         <button class="btn btn-wa">Rejoindre le groupe</button>
       </div>
 
@@ -460,11 +466,23 @@ a{color:inherit;text-decoration:none}
 
       <!-- Présentiels (par promotion) -->
       <div id="crs-presentiel" class="hidden">
-        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">📍 Rencontres physiques de votre promotion — <b>Promotion 2026 — Automne</b>.</p>
-        <div class="grid grid-2">
-          <div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 14–15 nov. 2026</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Séminaire d'intégration</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 ODBI Campus — Lyon · 9h–17h</p></div><button class="btn btn-ghost">Détails</button></div></div>
-          <div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 23 jan. 2027</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Atelier pratique — mise en situation</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 Espace Bellecour — Lyon · 9h–13h</p></div><button class="btn btn-ghost">Détails</button></div></div>
-          <div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 12 mars 2027</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Certification & clôture</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 ODBI Campus — Lyon · 9h–17h</p></div><button class="btn btn-ghost">Détails</button></div></div>
+        <!-- Promo Automne -->
+        <div id="pres-aut">
+          <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">📍 Rencontres physiques de votre promotion — <b>Promo 2026 — Automne</b>.</p>
+          <div class="grid grid-2">
+            <div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 14–15 nov. 2026</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Séminaire d'intégration</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 ODBI Campus — Lyon · 9h–17h</p></div><button class="btn btn-ghost">Détails</button></div></div>
+            <div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 23 jan. 2027</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Atelier pratique — mise en situation</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 Espace Bellecour — Lyon · 9h–13h</p></div><button class="btn btn-ghost">Détails</button></div></div>
+            <div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 12 mars 2027</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Certification & clôture</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 ODBI Campus — Lyon · 9h–17h</p></div><button class="btn btn-ghost">Détails</button></div></div>
+          </div>
+        </div>
+        <!-- Promo Printemps -->
+        <div id="pres-pri" class="hidden">
+          <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">📍 Rencontres physiques de votre promotion — <b>Promo 2027 — Printemps</b>.</p>
+          <div class="grid grid-2">
+            <div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 18–19 avr. 2027</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Séminaire d'intégration</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 ODBI Campus — Paris · 9h–17h</p></div><button class="btn btn-ghost">Détails</button></div></div>
+            <div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 26 juin 2027</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Atelier pratique — mise en situation</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 Le Hub — Paris · 9h–13h</p></div><button class="btn btn-ghost">Détails</button></div></div>
+            <div class="card" style="padding:var(--space-5)"><span class="course-tag">📅 25 sept. 2027</span><div class="flex-between" style="margin-top:10px"><div><h3 style="font-size:16px">Certification & clôture</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">📍 ODBI Campus — Paris · 9h–17h</p></div><button class="btn btn-ghost">Détails</button></div></div>
+          </div>
         </div>
       </div>
 
@@ -837,6 +855,15 @@ function unlockSession(){
     var l=document.getElementById('lock-'+x);if(l)l.classList.add('hidden');
     var ct=document.getElementById('content-'+x);if(ct)ct.classList.remove('hidden');
   });
+}
+function switchPromo(p){
+  document.getElementById('pp-aut').classList.toggle('active',p==='aut');
+  document.getElementById('pp-pri').classList.toggle('active',p==='pri');
+  document.getElementById('pres-aut').classList.toggle('hidden',p!=='aut');
+  document.getElementById('pres-pri').classList.toggle('hidden',p!=='pri');
+  document.getElementById('wa-promo').textContent = (p==='aut'
+    ? 'Promo 2026 — Automne · « La Voie des managers » — 42 participants'
+    : 'Promo 2027 — Printemps · « La Voie des managers » — 35 participants');
 }
 function courseTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
   ['sessions','presentiel','lexique','references'].forEach(x=>document.getElementById('crs-'+x).classList.add('hidden'));
