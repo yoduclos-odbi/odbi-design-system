@@ -62,6 +62,15 @@ promotion (accès par membre).
 
 ---
 
+## 4bis. Connexion / authentification
+
+- Page de connexion : **e-mail + mot de passe** + **« Mot de passe oublié »**
+  (lien de réinitialisation par e-mail).
+- **Pas de création de compte en self-service** sur la plateforme (les comptes
+  viennent de Notion ou sont créés par un admin — cf. §14).
+
+---
+
 ## 5. Arborescence du catalogue
 
 ```
@@ -291,6 +300,13 @@ Flux : `Visio BBB → enregistrement BBB → Notta (transcription + chapitrage +
 
 Onglets :
 - **Membres & accès** — comptes, rôles, accès aux cours (éditable), activation
+  - **Pas d'auto-inscription** : les comptes sont créés **via Notion** (inscription) **ou
+    manuellement par un admin**.
+  - **Création manuelle d'un compte gratuit** par l'admin, en donnant accès aux
+    **programmes et sessions de son choix** (ex. 1ère session en découverte gratuite).
+  - **Déverrouillage global du contenu** : option admin pour **ignorer la pédagogie
+    inversée** sur tous les programmes (accès direct vidéos/ressources) — activable
+    aussi par programme dans l'éditeur.
 - **Cours** — création/édition des cours, sessions, contenus, WhatsApp par cours
 - **Promotions** — cohortes par programme, membres, dates, classes, présentiels
 - **Suivi pédagogique (animateur)** — accès aux **restitutions des participants** :

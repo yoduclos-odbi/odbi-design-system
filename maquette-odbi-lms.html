@@ -405,18 +405,16 @@ a.ref-item:hover{background:var(--color-background)}
         <div class="field"><label>Adresse e-mail</label><input type="email" value="membre@odbi.fr"></div>
         <div class="field"><label>Mot de passe</label><input type="password" value="••••••••"></div>
         <button class="btn btn-primary btn-block" onclick="enterApp()">Se connecter</button>
-        <p class="auth-switch">Pas encore membre ? <a onclick="showSignup()">Créer un compte</a></p>
+        <p class="auth-switch"><a onclick="showForgot()">Mot de passe oublié ?</a></p>
+        <p class="auth-switch" style="color:var(--color-neutral);font-size:12px">Votre compte est créé par ODBI (via l'inscription). Vous recevez vos accès par e-mail.</p>
       </div>
-      <!-- SIGNUP -->
-      <div id="signup-view" class="hidden">
-        <h2>Inscription</h2>
-        <p class="sub">Rejoignez l'académie ODBI</p>
-        <div class="field"><label>Nom complet</label><input type="text" placeholder="Jean Dupont"></div>
+      <!-- MOT DE PASSE OUBLIÉ -->
+      <div id="forgot-view" class="hidden">
+        <h2>Mot de passe oublié</h2>
+        <p class="sub">Recevez un lien de réinitialisation par e-mail</p>
         <div class="field"><label>Adresse e-mail</label><input type="email" placeholder="vous@email.fr"></div>
-        <div class="field"><label>Mot de passe</label><input type="password" placeholder="Choisissez un mot de passe"></div>
-        <div class="field"><label>Code d'accès / parcours</label><input type="text" placeholder="(optionnel) code d'invitation"></div>
-        <button class="btn btn-primary btn-block" onclick="enterApp()">Créer mon compte</button>
-        <p class="auth-switch">Déjà membre ? <a onclick="showLogin()">Se connecter</a></p>
+        <button class="btn btn-primary btn-block" onclick="showLogin()">Envoyer le lien</button>
+        <p class="auth-switch"><a onclick="showLogin()">← Retour à la connexion</a></p>
       </div>
     </div>
   </div>
@@ -953,8 +951,16 @@ a.ref-item:hover{background:var(--color-background)}
       </div>
 
       <div id="admin-members">
-        <div class="flex-between mb6"><h3>247 membres inscrits</h3><div style="display:flex;gap:10px"><button class="btn btn-ghost">🔄 Synchroniser depuis Notion</button><button class="btn btn-primary">+ Inviter un membre</button></div></div>
-        <div class="note" style="background:rgba(17,76,106,.06);border-left:4px solid var(--color-accent);border-radius:8px;padding:12px 16px;margin-bottom:var(--space-5);font-size:13px">💡 Les inscriptions arrivent depuis la base <b>Notion « participants »</b> (via bouton). À la synchro, le compte est créé, rattaché à sa promo, et les <b>accès de connexion sont envoyés par e-mail</b> automatiquement.</div>
+        <div class="flex-between mb6"><h3>247 membres inscrits</h3><div style="display:flex;gap:10px"><button class="btn btn-ghost">🔄 Synchroniser depuis Notion</button><button class="btn btn-primary" onclick="var n=document.getElementById('newAccount');n.style.display=n.style.display==='none'?'block':'none'">+ Créer un compte (accès gratuit)</button></div></div>
+        <div class="note" style="background:rgba(17,76,106,.06);border-left:4px solid var(--color-accent);border-radius:8px;padding:12px 16px;margin-bottom:var(--space-5);font-size:13px">💡 Deux façons de créer un compte : <b>① automatiquement depuis Notion</b> (inscription payante → accès complet à la promo, accès envoyés par e-mail) ; <b>② manuellement ici</b> en tant qu'admin, pour donner un <b>accès gratuit</b> aux programmes et sessions de votre choix.</div>
+        <div class="edit-card" id="newAccount" style="display:none">
+          <h3>Créer un compte (accès gratuit)</h3>
+          <div class="row2"><div class="field"><label>Prénom</label><input placeholder="Prénom"></div><div class="field"><label>Nom</label><input placeholder="Nom"></div></div>
+          <div class="field"><label>E-mail</label><input type="email" placeholder="vous@email.fr"></div>
+          <div class="field"><label>Programmes accessibles</label><select><option>La Voie des managers</option><option>Born To Coach — 2e gén.</option><option>(plusieurs au choix)</option></select></div>
+          <div class="field"><label>Sessions accessibles</label><select><option>Toutes les sessions</option><option>Sessions sélectionnées…</option><option>1ère session (découverte gratuite)</option></select></div>
+          <button class="btn btn-primary">Créer & envoyer les accès</button>
+        </div>
         <table class="table">
           <tr><th>Membre</th><th>E-mail</th><th>Rôle</th><th>Accès cours</th><th>Actif</th></tr>
           <tr><td>Jean Dupont</td><td>membre@odbi.fr</td><td><span class="role member">Membre</span></td><td>3 cours</td><td><div class="toggle"></div></td></tr>
@@ -965,6 +971,10 @@ a.ref-item:hover{background:var(--color-background)}
       </div>
 
       <div id="admin-courses" class="hidden">
+        <div class="gate-toggle mb6" style="background:rgba(214,69,69,.06)">
+          <div class="toggle off" onclick="this.classList.toggle('off')"></div>
+          <div><b style="font-family:var(--font-title)">🔓 Déverrouiller tout le contenu (tous les programmes)</b><div style="font-size:12px;color:var(--color-neutral)">Ignore la pédagogie inversée : les participants accèdent directement aux vidéos et ressources, sans cocher l'exercice. (Activable globalement ou par programme dans l'éditeur.)</div></div>
+        </div>
         <div class="flex-between mb6"><h3>13 formations</h3><button class="btn btn-primary">+ Créer une formation</button></div>
         <table class="table">
           <tr><th>Formation</th><th>Univers</th><th>Modules</th><th>Inscrits</th><th>WhatsApp</th><th>Statut</th><th></th></tr>
@@ -1213,8 +1223,8 @@ a.ref-item:hover{background:var(--color-background)}
 </div>
 
 <script>
-function showSignup(){document.getElementById('login-view').classList.add('hidden');document.getElementById('signup-view').classList.remove('hidden')}
-function showLogin(){document.getElementById('signup-view').classList.add('hidden');document.getElementById('login-view').classList.remove('hidden')}
+function showForgot(){document.getElementById('login-view').classList.add('hidden');document.getElementById('forgot-view').classList.remove('hidden')}
+function showLogin(){var f=document.getElementById('forgot-view');if(f)f.classList.add('hidden');document.getElementById('login-view').classList.remove('hidden')}
 function enterApp(){document.getElementById('auth').style.display='none';document.getElementById('app').classList.add('active')}
 function logout(){document.getElementById('app').classList.remove('active');document.getElementById('auth').style.display='flex';showLogin()}
 function goTo(page){
