@@ -185,6 +185,11 @@ a{color:inherit;text-decoration:none}
 .lex-item{background:#fff;border-radius:var(--radius-md);box-shadow:var(--shadow-sm);padding:14px 18px;margin-bottom:10px;border-left:3px solid var(--color-asparagus)}
 .lex-item dt{font-family:var(--font-title);font-weight:700;font-size:14px;margin-bottom:4px}
 .lex-item dd{color:var(--color-jet);font-size:13px;line-height:1.6}
+.alpha{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:var(--space-5)}
+.alpha button{width:30px;height:30px;border-radius:6px;background:var(--color-background);font-family:var(--font-title);font-weight:700;font-size:12px;color:var(--color-jet);cursor:pointer}
+.alpha button:not(.off):hover{background:rgba(17,76,106,.12)}
+.alpha button.active{background:var(--color-accent);color:#fff}
+.alpha button.off{opacity:.3;cursor:default}
 .session-row .check.video{background:transparent;border:none;font-size:18px;color:var(--color-neutral)}
 
 /* ---------- Exercices / pédagogie inversée ---------- */
@@ -200,6 +205,19 @@ a{color:inherit;text-decoration:none}
 .lock-banner .lk-txt{flex:1;font-size:13px;line-height:1.6}
 .lock-banner .lk-txt b{font-family:var(--font-title)}
 .lock-banner .lk-txt a{color:var(--color-accent);cursor:pointer;text-decoration:underline;font-size:12px}
+/* Séquences de session (multi-semaines) */
+.seq{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);margin-bottom:var(--space-4);overflow:hidden}
+.seq-head{display:flex;align-items:center;gap:14px;padding:var(--space-4) var(--space-5);cursor:pointer;border-left:4px solid var(--color-neutral)}
+.seq.open .seq-head{border-left-color:var(--color-primary)}
+.seq-head .wk{font-size:11px;font-family:var(--font-title);font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--color-accent)}
+.seq-head h3{font-size:16px;margin-top:2px}
+.seq-head .st{font-size:12px;color:var(--color-neutral);margin-top:3px}
+.seq-head .chev{margin-left:auto;color:var(--color-neutral);font-size:14px}
+.seq-body{display:none;padding:var(--space-5);border-top:1px solid rgba(74,74,74,.08)}
+.seq.open .seq-body{display:block}
+.seq-part{margin-bottom:var(--space-6)}
+.seq-part:last-child{margin-bottom:0}
+.seq-part > h4{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--color-neutral);margin-bottom:var(--space-3)}
 .promo-pick{font-family:var(--font-title);font-weight:500;font-size:12px;padding:6px 12px;border-radius:var(--radius-full);border:1px solid rgba(74,74,74,.2);background:#fff;color:var(--color-jet);cursor:pointer}
 .promo-pick.active{background:var(--color-accent);color:#fff;border-color:var(--color-accent)}
 .promo-select{font-family:var(--font-body);font-size:13px;padding:7px 12px;border:1px solid rgba(74,74,74,.25);border-radius:var(--radius-md);background:#fff;color:var(--color-jet)}
@@ -561,12 +579,32 @@ a{color:inherit;text-decoration:none}
 
       <!-- Lexique (niveau cours) -->
       <div id="crs-lexique" class="hidden">
-        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">📖 Lexique du cours — les termes clés de « La Voie des managers ».</p>
-        <dl>
-          <div class="lex-item"><dt>Haute intensité</dt><dd>Contexte exigeant où la pression, l'enjeu et le rythme sont élevés ; cadre de référence des programmes ODBI.</dd></div>
-          <div class="lex-item"><dt>Feedback</dt><dd>Retour structuré sur un comportement observé, visant l'amélioration sans dégrader la relation.</dd></div>
-          <div class="lex-item"><dt>Engagement collectif</dt><dd>Adhésion active des membres d'une équipe à un objectif commun et aux moyens de l'atteindre.</dd></div>
-          <div class="lex-item"><dt>Promotion</dt><dd>Groupe de membres qui suivent ensemble une même édition du cours, avec ses propres classes synchrones et présentiels.</dd></div>
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">📖 Lexique du cours — cliquez sur une lettre pour aller au terme souhaité.</p>
+        <div class="alpha" id="lexAlpha">
+          <button class="active" onclick="lexFilter('all',this)">Tous</button>
+          <button class="on" onclick="lexFilter('A',this)">A</button>
+          <button class="off">B</button>
+          <button class="on" onclick="lexFilter('C',this)">C</button>
+          <button class="on" onclick="lexFilter('D',this)">D</button>
+          <button class="on" onclick="lexFilter('E',this)">E</button>
+          <button class="on" onclick="lexFilter('F',this)">F</button>
+          <button class="off">G</button>
+          <button class="on" onclick="lexFilter('H',this)">H</button>
+          <button class="off">I</button><button class="off">J</button><button class="off">K</button><button class="off">L</button><button class="off">M</button><button class="off">N</button><button class="off">O</button>
+          <button class="on" onclick="lexFilter('P',this)">P</button>
+          <button class="off">Q</button><button class="off">R</button><button class="off">S</button><button class="off">T</button><button class="off">U</button>
+          <button class="on" onclick="lexFilter('V',this)">V</button>
+          <button class="off">W</button><button class="off">X</button><button class="off">Y</button><button class="off">Z</button>
+        </div>
+        <dl id="lexList">
+          <div class="lex-item" data-letter="A"><dt>Assiduité</dt><dd>Présence et régularité du participant (connexions, visios) — tracée pour Qualiopi.</dd></div>
+          <div class="lex-item" data-letter="C"><dt>Coaching</dt><dd>Accompagnement visant à faire émerger les ressources de la personne.</dd></div>
+          <div class="lex-item" data-letter="D"><dt>Délégation</dt><dd>Confier une responsabilité tout en gardant le cap et le soutien.</dd></div>
+          <div class="lex-item" data-letter="E"><dt>Engagement collectif</dt><dd>Adhésion active des membres d'une équipe à un objectif commun.</dd></div>
+          <div class="lex-item" data-letter="F"><dt>Feedback</dt><dd>Retour structuré sur un comportement observé, visant l'amélioration sans dégrader la relation.</dd></div>
+          <div class="lex-item" data-letter="H"><dt>Haute intensité</dt><dd>Contexte exigeant — pression, enjeu et rythme élevés ; cadre de référence ODBI.</dd></div>
+          <div class="lex-item" data-letter="P"><dt>Promotion</dt><dd>Groupe de membres suivant ensemble une même édition du cours (classes & présentiels propres).</dd></div>
+          <div class="lex-item" data-letter="V"><dt>Vision</dt><dd>Cap clair et inspirant donné à une équipe pour orienter l'action.</dd></div>
         </dl>
       </div>
 
@@ -612,142 +650,87 @@ a{color:inherit;text-decoration:none}
         <button class="btn btn-accent" onclick="goTo('ai')">🧙 Demander à YoDalf</button>
       </div>
 
-      <div class="tabs">
-        <div class="tab active" onclick="sessTab(this,'ex')">📝 Exercices</div>
-        <div class="tab" onclick="sessTab(this,'video')">🎬 Vidéos</div>
-        <div class="tab" onclick="sessTab(this,'res')">🎧 Ressources</div>
-        <div class="tab" onclick="sessTab(this,'quiz')">✅ Quiz</div>
-        <div class="tab" onclick="sessTab(this,'replay')">🎥 Replay</div>
+      <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">🗓️ Cette session se déroule sur <b>plusieurs semaines</b>. Chaque <b>séquence</b> regroupe une vidéo et ses exercices, ressources et quiz synchronisés. <b>Pédagogie inversée</b> : faites l'exercice pour débloquer la vidéo et les ressources <i>(non obligatoire)</i>.</p>
+
+      <!-- Séquence 1 -->
+      <div class="seq open">
+        <div class="seq-head" onclick="toggleSeq(this)"><div><div class="wk">Semaine 1</div><h3>Séquence 1 — Créer l'engagement</h3><div class="st">📝 1 exercice · 🎬 1 vidéo (14 min) · 🎧 2 ressources · ✅ quiz</div></div><span class="chev">▾</span></div>
+        <div class="seq-body">
+          <div class="seq-part">
+            <h4>📝 Exercice préparatoire</h4>
+            <div class="exo"><h4>Diagnostic de votre posture managériale</h4><p>Avant la vidéo, observez votre dernière réunion : qu'avez-vous délégué / gardé ? Notez 3 situations.</p><button class="btn btn-ghost">📄 Fiche d'exercice</button></div>
+            <div class="exo-check" id="exoCheck1" onclick="unlockStep(1)"><div class="box">✓</div> J'ai fait l'exercice — débloquer la vidéo et les ressources</div>
+          </div>
+          <div class="seq-part">
+            <h4>🎬 Vidéo</h4>
+            <div class="lock-banner" id="lock1"><div class="lk-ic">🔒</div><div class="lk-txt"><b>Pédagogie inversée</b> — réalisez l'exercice ci-dessus pour débloquer la vidéo.<br><a onclick="unlockStep(1)">Voir quand même</a></div><button class="btn btn-primary" onclick="unlockStep(1)">J'ai fait l'exercice ✓</button></div>
+            <div id="content1" class="hidden">
+              <div class="player vid-main"><span class="tag">🎬 Vidéo — Vimeo · 14 min</span><div class="play">▶</div></div>
+              <div style="display:flex;align-items:center;gap:12px;margin:var(--space-4) 0"><button class="btn btn-accent">⏯ Reprendre à 07:12</button><span style="font-size:12px;color:var(--color-neutral)">52% visionné</span></div>
+              <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--color-neutral);margin:var(--space-5) 0 var(--space-3)">🎧 Ressources de la séquence</h4>
+              <div class="res-item"><div class="res-ic audio">🎧</div><div class="t"><b>Méditation guidée — ancrage du leader</b><small>Audio · 11 min</small></div><button class="btn btn-ghost">▶ Écouter</button></div>
+              <div class="res-item"><div class="res-ic pdf">📄</div><div class="t"><b>Fiche — les 3 piliers du feedback</b><small>PDF · 2 pages</small></div><button class="btn btn-ghost">⬇ Télécharger</button></div>
+            </div>
+          </div>
+          <div class="seq-part">
+            <h4>✅ Quiz de la séquence</h4>
+            <div class="quiz-score"><div class="big">80%</div><div class="attempts">Meilleur score · <b>2 tentatives</b> · refaisable, sans seuil</div><button class="btn btn-ghost">↻ Refaire</button></div>
+            <div class="quiz-q"><span class="quiz-type">QCM</span><h4>Quels sont les piliers du feedback ODBI ?</h4><div class="q-opt sel"><div class="box"></div> Clarté du fait</div><div class="q-opt sel"><div class="box"></div> Impact mesuré</div><div class="q-opt"><div class="box"></div> Autorité hiérarchique</div></div>
+            <button class="btn btn-primary">Valider le quiz</button>
+          </div>
+        </div>
       </div>
 
-      <!-- Exercices (pédagogie inversée) -->
-      <div id="sess-ex">
-        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">🔄 <b>Pédagogie inversée</b> — réalisez d'abord les exercices, puis cochez pour débloquer les vidéos et documents. <i>(Recommandé, non obligatoire.)</i></p>
-        <div class="exo">
-          <h4>📝 Exercice 1 — Diagnostic de votre posture managériale</h4>
-          <p>Avant de visionner les vidéos, prenez 15 minutes pour observer votre dernière réunion d'équipe : qu'avez-vous délégué ? qu'avez-vous gardé ? Notez 3 situations concrètes dans votre carnet.</p>
-          <button class="btn btn-ghost">📄 Télécharger la fiche d'exercice</button>
-        </div>
-        <div class="exo">
-          <h4>📝 Exercice 2 — Préparer un feedback</h4>
-          <p>Choisissez une personne de votre équipe à qui vous devez un retour. Rédigez-le selon les 3 piliers (fait · impact · engagement) — vous le confronterez à la méthode dans les vidéos.</p>
-          <button class="btn btn-ghost">📄 Télécharger la fiche d'exercice</button>
-        </div>
-        <div class="exo-check" id="exoCheck" onclick="unlockSession()">
-          <div class="box">✓</div> J'ai réalisé les exercices de cette session — débloquer les vidéos et documents
+      <!-- Séquence 2 -->
+      <div class="seq">
+        <div class="seq-head" onclick="toggleSeq(this)"><div><div class="wk">Semaine 2</div><h3>Séquence 2 — Le feedback en pratique</h3><div class="st">📝 1 exercice · 🎬 1 vidéo (20 min) · 🎧 1 ressource · ✅ quiz</div></div><span class="chev">▸</span></div>
+        <div class="seq-body">
+          <div class="seq-part">
+            <h4>📝 Exercice préparatoire</h4>
+            <div class="exo"><h4>Préparer un feedback réel</h4><p>Choisissez une personne à qui vous devez un retour. Rédigez-le selon les 3 piliers avant la vidéo.</p><button class="btn btn-ghost">📄 Fiche d'exercice</button></div>
+            <div class="exo-check" id="exoCheck2" onclick="unlockStep(2)"><div class="box">✓</div> J'ai fait l'exercice — débloquer la vidéo et les ressources</div>
+          </div>
+          <div class="seq-part">
+            <h4>🎬 Vidéo</h4>
+            <div class="lock-banner" id="lock2"><div class="lk-ic">🔒</div><div class="lk-txt"><b>Pédagogie inversée</b> — réalisez l'exercice ci-dessus pour débloquer la vidéo.<br><a onclick="unlockStep(2)">Voir quand même</a></div><button class="btn btn-primary" onclick="unlockStep(2)">J'ai fait l'exercice ✓</button></div>
+            <div id="content2" class="hidden">
+              <div class="player vid-main"><span class="tag">🎬 Vidéo — Vimeo · 20 min</span><div class="play">▶</div></div>
+              <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--color-neutral);margin:var(--space-5) 0 var(--space-3)">🎧 Ressources de la séquence</h4>
+              <div class="res-item"><div class="res-ic pdf">📄</div><div class="t"><b>Modèle de feedback structuré</b><small>PDF · 1 page</small></div><button class="btn btn-ghost">⬇ Télécharger</button></div>
+            </div>
+          </div>
+          <div class="seq-part">
+            <h4>✅ Quiz de la séquence</h4>
+            <div class="quiz-q"><span class="quiz-type">Vrai / Faux</span><h4>Un bon feedback commence par un jugement de valeur.</h4><div class="q-opt"><div class="box"></div> Vrai</div><div class="q-opt sel"><div class="box"></div> Faux</div></div>
+            <button class="btn btn-primary">Valider le quiz</button>
+          </div>
         </div>
       </div>
 
-      <!-- Vidéos -->
-      <div id="sess-video" class="hidden">
-        <div class="lock-banner" id="lock-video">
-          <div class="lk-ic">🔒</div>
-          <div class="lk-txt"><b>Pédagogie inversée</b> — réalisez d'abord les exercices de la session pour débloquer ces vidéos.<br><a onclick="unlockSession()">Voir quand même (sans cocher)</a></div>
-          <button class="btn btn-primary" onclick="unlockSession()">J'ai fait les exercices ✓</button>
-        </div>
-        <div id="content-video" class="hidden">
+      <!-- Séquence 3 (à venir) -->
+      <div class="seq">
+        <div class="seq-head" onclick="toggleSeq(this)" style="opacity:.6"><div><div class="wk">Semaine 3</div><h3>Séquence 3 — Gérer les tensions</h3><div class="st">🔒 Disponible à partir de la semaine 3</div></div><span class="chev">▸</span></div>
+        <div class="seq-body"><p style="color:var(--color-neutral)">Cette séquence s'ouvrira automatiquement la semaine prochaine pour votre promotion.</p></div>
+      </div>
+
+      <!-- Classe en direct / Replay -->
+      <div class="seq">
+        <div class="seq-head" onclick="toggleSeq(this)" style="border-left-color:#d64545"><div><div class="wk" style="color:#d64545">Classe en direct</div><h3>🎥 Replay de la visio — Promo 2026 Automne</h3><div class="st">BBB · 58 min · transcription, chapitrage & résumé Notta</div></div><span class="chev">▸</span></div>
+        <div class="seq-body">
           <div class="lesson-layout">
             <div>
-              <div class="player vid-main"><span class="tag">🎬 Vidéo 1/4 — Vimeo</span><div class="play">▶</div></div>
-              <div style="display:flex;align-items:center;gap:12px;margin-bottom:var(--space-4)">
-                <button class="btn btn-accent">⏯ Reprendre à 07:12</button>
-                <span style="font-size:12px;color:var(--color-neutral)">Vous vous étiez arrêté ici · 52% visionné</span>
-              </div>
-              <div class="lesson-content">
-                <h2>Créer l'engagement collectif</h2>
-                <p>Première vidéo de la session : comment fédérer une équipe autour d'un objectif commun en contexte de haute intensité. Les vidéos suivantes approfondissent chaque levier.</p>
-                <button class="btn btn-primary">Marquer la session comme terminée ✓</button>
-              </div>
+              <div class="player vid-main"><span class="tag">🎥 Replay BBB · 58 min · 12 mars</span><div class="play">▶</div></div>
+              <div style="display:flex;gap:10px;margin:var(--space-4) 0;flex-wrap:wrap"><button class="btn btn-ghost">📝 Transcription (Notta)</button><button class="btn btn-accent" onclick="goTo('ai')">🧙 Questions à YoDalf</button><span class="lang-flags" style="margin-left:auto">🌐 FR · EN</span></div>
+              <h4 style="font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--color-neutral);margin-bottom:10px">Résumé (Notta)</h4>
+              <div class="summary-box">Leviers d'engagement d'une équipe : (1) clarifier l'objectif avant de déléguer, (2) ritualiser le feedback, (3) traiter les tensions tôt.</div>
             </div>
             <div class="side-list">
-              <h4>Vidéos de la session (4)</h4>
-              <div class="vid-list">
-                <div class="vid-item active"><div class="vid-thumb">▶</div><div class="t">1 · Créer l'engagement</div><div class="d">14 min</div></div>
-                <div class="vid-item"><div class="vid-thumb">▶</div><div class="t">2 · Feedback à haute intensité</div><div class="d">20 min</div></div>
-                <div class="vid-item"><div class="vid-thumb">▶</div><div class="t">3 · Gérer les tensions</div><div class="d">17 min</div></div>
-                <div class="vid-item"><div class="vid-thumb">▶</div><div class="t">4 · Synthèse & passage à l'action</div><div class="d">9 min</div></div>
-              </div>
+              <h4>Chapitres (Notta)</h4>
+              <div class="chapter"><span class="ts">00:00</span><span class="ct">Introduction & objectifs</span></div>
+              <div class="chapter"><span class="ts">06:20</span><span class="ct">Créer l'engagement</span></div>
+              <div class="chapter"><span class="ts">18:45</span><span class="ct">Le feedback en pratique</span></div>
+              <div class="chapter"><span class="ts">32:10</span><span class="ct">Gérer les tensions</span></div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Ressources -->
-      <div id="sess-res" class="hidden">
-        <div class="lock-banner" id="lock-res">
-          <div class="lk-ic">🔒</div>
-          <div class="lk-txt"><b>Pédagogie inversée</b> — réalisez d'abord les exercices de la session pour débloquer ces documents.<br><a onclick="unlockSession()">Voir quand même (sans cocher)</a></div>
-          <button class="btn btn-primary" onclick="unlockSession()">J'ai fait les exercices ✓</button>
-        </div>
-        <div id="content-res" class="hidden">
-          <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Audios à écouter et documents à télécharger pour cette session.</p>
-          <div class="res-item"><div class="res-ic audio">🎧</div><div class="t"><b>Méditation guidée — ancrage du leader</b><small>Audio · 11 min</small></div><button class="btn btn-ghost">▶ Écouter</button></div>
-          <div class="res-item"><div class="res-ic audio">🎧</div><div class="t"><b>Podcast — retour d'expérience manager</b><small>Audio · 24 min</small></div><button class="btn btn-ghost">▶ Écouter</button></div>
-          <div class="res-item"><div class="res-ic pdf">📄</div><div class="t"><b>Fiche pratique — les 3 piliers du feedback</b><small>PDF · 2 pages</small></div><button class="btn btn-ghost">⬇ Télécharger</button></div>
-          <div class="res-item"><div class="res-ic doc">📑</div><div class="t"><b>Support de la session (slides)</b><small>PDF · 18 pages</small></div><button class="btn btn-ghost">⬇ Télécharger</button></div>
-        </div>
-      </div>
-
-      <!-- Quiz -->
-      <div id="sess-quiz" class="hidden">
-        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Quiz de la session — plusieurs formes de questions. Pas de score minimal : refaites-le autant de fois que vous voulez, vos tentatives sont mémorisées.</p>
-        <div class="quiz-score">
-          <div class="big">80%</div>
-          <div class="attempts">Meilleur score · <b>2 tentatives</b><br>Tentative 1 : 60% (12 mars) · Tentative 2 : 80% (14 mars)</div>
-          <button class="btn btn-ghost">↻ Refaire le quiz</button>
-        </div>
-        <div class="quiz-q">
-          <span class="quiz-type">Choix multiple (QCM)</span>
-          <h4>1. Quels sont les piliers du feedback ODBI ?</h4>
-          <div class="q-opt sel"><div class="box"></div> Clarté du fait</div>
-          <div class="q-opt sel"><div class="box"></div> Impact mesuré</div>
-          <div class="q-opt"><div class="box"></div> Autorité hiérarchique</div>
-          <div class="q-opt sel"><div class="box"></div> Engagement vers l'action</div>
-        </div>
-        <div class="quiz-q">
-          <span class="quiz-type">Vrai / Faux</span>
-          <h4>2. Un bon feedback commence par un jugement de valeur.</h4>
-          <div class="q-opt"><div class="box"></div> Vrai</div>
-          <div class="q-opt sel"><div class="box"></div> Faux</div>
-        </div>
-        <div class="quiz-q">
-          <span class="quiz-type">Association</span>
-          <h4>3. Reliez chaque pilier à sa description.</h4>
-          <div class="q-match">
-            <div class="col"><div>Clarté du fait</div><div>Impact mesuré</div><div>Engagement</div></div>
-            <div class="col"><div>Décrire la conséquence concrète</div><div>Co-construire la suite</div><div>Décrire le comportement observé</div></div>
-          </div>
-        </div>
-        <div class="quiz-q">
-          <span class="quiz-type">Réponse libre</span>
-          <h4>4. Décrivez une situation où vous appliquerez ce feedback cette semaine.</h4>
-          <textarea class="field" rows="3" placeholder="Votre réponse…" style="width:100%"></textarea>
-        </div>
-        <button class="btn btn-primary">Valider le quiz</button>
-      </div>
-
-      <!-- Replay (visio de la session, par promo) -->
-      <div id="sess-replay" class="hidden">
-        <span class="course-tag" style="margin-bottom:12px">🎥 Classe de la semaine · 👥 Promo 2026 — Automne</span>
-        <p style="color:var(--color-neutral);margin:10px 0 var(--space-5)">Le replay de la visio live de cette session, réservé à votre promotion. Transcription, chapitrage et résumé par Notta.</p>
-        <div class="lesson-layout">
-          <div>
-            <div class="player vid-main"><span class="tag">🎥 Replay BBB · 58 min · 12 mars</span><div class="play">▶</div></div>
-            <div style="display:flex;gap:10px;margin-bottom:var(--space-5);flex-wrap:wrap">
-              <button class="btn btn-ghost">📝 Transcription (Notta)</button>
-              <button class="btn btn-accent" onclick="goTo('ai')">🧙 Questions à YoDalf</button>
-              <span class="lang-flags" style="margin-left:auto">🌐 FR · EN</span>
-            </div>
-            <h4 style="font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--color-neutral);margin-bottom:10px">Résumé (Notta)</h4>
-            <div class="summary-box">La session a porté sur les leviers d'engagement d'une équipe. Trois idées clés : (1) clarifier l'objectif commun avant de déléguer, (2) ritualiser le feedback selon les 3 piliers, (3) traiter les tensions tôt. Exercice donné : préparer un feedback réel pour la prochaine fois.</div>
-          </div>
-          <div class="side-list">
-            <h4>Chapitres (Notta)</h4>
-            <div class="chapter"><span class="ts">00:00</span><span class="ct">Introduction & objectifs</span></div>
-            <div class="chapter"><span class="ts">06:20</span><span class="ct">Créer l'engagement collectif</span></div>
-            <div class="chapter"><span class="ts">18:45</span><span class="ct">Le feedback en pratique</span></div>
-            <div class="chapter"><span class="ts">32:10</span><span class="ct">Gérer les tensions</span></div>
-            <div class="chapter"><span class="ts">47:30</span><span class="ct">Q&R et passage à l'action</span></div>
           </div>
         </div>
       </div>
@@ -1186,15 +1169,14 @@ function go(el){goTo(el.dataset.page)}
 function adminTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
   ['members','courses','promos','integ'].forEach(x=>document.getElementById('admin-'+x).classList.add('hidden'));
   document.getElementById('admin-'+t).classList.remove('hidden')}
-function sessTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
-  ['ex','video','res','quiz','replay'].forEach(x=>document.getElementById('sess-'+x).classList.add('hidden'));
-  document.getElementById('sess-'+t).classList.remove('hidden')}
-function unlockSession(){
-  var c=document.getElementById('exoCheck');if(c)c.classList.add('done');
-  ['video','res'].forEach(x=>{
-    var l=document.getElementById('lock-'+x);if(l)l.classList.add('hidden');
-    var ct=document.getElementById('content-'+x);if(ct)ct.classList.remove('hidden');
-  });
+function toggleSeq(el){
+  var seq=el.parentNode; seq.classList.toggle('open');
+  var chev=el.querySelector('.chev'); if(chev) chev.textContent = seq.classList.contains('open')?'▾':'▸';
+}
+function unlockStep(n){
+  var c=document.getElementById('exoCheck'+n);if(c)c.classList.add('done');
+  var l=document.getElementById('lock'+n);if(l)l.classList.add('hidden');
+  var ct=document.getElementById('content'+n);if(ct)ct.classList.remove('hidden');
 }
 const PROMOS = {
   'lvm-2026-aut': {nom:'Promo 2026 — Automne', wa:42, ville:'Lyon', pres:[
@@ -1228,6 +1210,13 @@ function sendMsg(){const i=document.getElementById('chatInput');if(!i.value.trim
   b.innerHTML+='<div class="msg me">'+i.value+'</div>';const q=i.value;i.value='';
   setTimeout(()=>{b.innerHTML+='<div class="msg ai">💡 (Réponse YoDalf simulée) Dans la version réelle, je m\'appuierais sur le contenu de vos cours ODBI pour répondre précisément à : « '+q+' »</div>';b.scrollTop=b.scrollHeight},500);b.scrollTop=b.scrollHeight}
 function quickAsk(el){document.getElementById('chatInput').value=el.textContent;sendMsg()}
+function lexFilter(l,el){
+  document.querySelectorAll('#lexAlpha button').forEach(b=>b.classList.remove('active'));
+  if(el)el.classList.add('active');
+  document.querySelectorAll('#lexList .lex-item').forEach(it=>{
+    it.style.display=(l==='all'||it.getAttribute('data-letter')===l)?'':'none';
+  });
+}
 function ecTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
   ['sessions','lexique','references','presentiels'].forEach(x=>document.getElementById('ec-'+x).classList.add('hidden'));
   document.getElementById('ec-'+t).classList.remove('hidden')}

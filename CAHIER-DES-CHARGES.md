@@ -138,7 +138,7 @@ les accès de connexion** par e-mail (cf. §13, flux Notion → LMS).
 Page cours = **6 onglets** :
 1. **Sessions** — liste des sessions (contenu asynchrone)
 2. **Présentiels** — dates + lieux + horaires (par promotion)
-3. **Lexique** — termes clés (niveau cours)
+3. **Lexique** — termes clés (niveau cours), avec **index alphabétique** (A–Z) pour filtrer/aller à un terme
 4. **Références** — livres, vidéos, articles recommandés (niveau cours)
 5. **Participants** — annuaire des membres de la promotion (photo, nom, ville)
 6. **WhatsApp** — accès au groupe WhatsApp de la promotion
@@ -149,25 +149,36 @@ Page cours = **6 onglets** :
 
 ## 8. Structure d'une session
 
-Page session = **5 onglets** (ordre = pédagogie inversée) :
+Une session **n'est pas un bloc unique** : elle est organisée en **séquences**,
+et peut **s'étaler sur plusieurs semaines** (adaptation pédagogique).
 
-1. **📝 Exercices** *(pédagogie inversée — important)*
-   - Un ou plusieurs exercices à réaliser AVANT le contenu
-   - Le membre **coche « j'ai réalisé l'exercice »** → **débloque** vidéos / audios / PDF
-   - **NON obligatoire** : option « Voir quand même » pour ne jamais bloquer durement
-   - Fiche d'exercice téléchargeable
-2. **🎬 Vidéos** — plusieurs vidéos par session (playlist) — **hébergées sur Vimeo**
-   - **Reprise de lecture** : le participant reprend **là où il s'est arrêté**
-   - Géré **par la plateforme** (pas par Vimeo) via le **Vimeo Player SDK** :
-     position enregistrée par **membre × vidéo**, multi-appareils
-   - Alimente aussi la **progression** (% vu) et l'**assiduité** (Qualiopi/BPF)
-3. **🎧 Ressources** — un ou plusieurs audios + PDF (écoute / téléchargement)
-4. **✅ Quiz** — voir §9
-5. **🎥 Replay** — la visio live de la session, **propre à la promo du membre** :
-   - Enregistrement BBB
-   - Transcription + **chapitrage** + **résumé** par Notta (multi-langues)
-   - Accès « Questions à YoDalf » sur la base de la visio
-   - Rythme : **~1 visio / semaine par cours** → 1 replay par session ; les programmes durent **3 à 12 mois** (volume important à prévoir)
+### Une session = une suite de séquences
+- Une session contient **plusieurs vidéos** → **une séquence par vidéo** (≈ une semaine).
+- Chaque séquence regroupe, **synchronisés avec sa vidéo** :
+  - 1+ **exercice(s)** préparatoire(s)
+  - 1+ **ressource(s)** (audios / PDF)
+  - un **quiz** de séquence
+- Affichage : **accordéon** de séquences (déroulables), avec libellé de semaine
+  et déverrouillage progressif des séquences au fil des semaines.
+
+### Pédagogie inversée (par séquence)
+- Dans chaque séquence, l'**exercice se réalise AVANT** la vidéo.
+- Le membre **coche « j'ai fait l'exercice »** → **débloque** la vidéo + ressources de la séquence.
+- **NON obligatoire** : option « Voir quand même ».
+- Activable/désactivable par session (toggle admin).
+
+### Vidéos
+- **Hébergées sur Vimeo** ; **reprise de lecture** gérée par la plateforme
+  (Vimeo Player SDK, position par membre × vidéo, multi-appareils) ; alimente
+  progression + assiduité.
+
+### Quiz
+- Un quiz **par séquence** (et/ou de session). Voir §9.
+
+### Replay de la classe (visio live)
+- La visio live de la session est accessible **dans la session** (bloc « Classe en direct / Replay »),
+  **propre à la promo** : enregistrement BBB + transcription/**chapitrage**/**résumé** Notta + « Questions à YoDalf ».
+- Rythme : **~1 visio / semaine par cours** ; programmes de **3 à 12 mois** (volume important).
 
 ---
 
