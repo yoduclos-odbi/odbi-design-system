@@ -176,6 +176,11 @@ et peut **s'étaler sur plusieurs semaines** (adaptation pédagogique).
 - **NON obligatoire** : option « Voir quand même ».
 - Activable/désactivable par session (toggle admin).
 
+### Restitution des exercices (dépôt participant → animateur)
+- Le participant peut **déposer (uploader) son exercice réalisé** (PDF, photo, doc…)
+  directement dans le bloc exercice.
+- Ces dépôts sont **visibles par l'animateur** (voir §14 — Suivi pédagogique).
+
 ### Vidéos
 - **Hébergées sur Vimeo** ; **reprise de lecture** gérée par la plateforme
   (Vimeo Player SDK, position par membre × vidéo, multi-appareils) ; alimente
@@ -285,6 +290,9 @@ Onglets :
 - **Membres & accès** — comptes, rôles, accès aux cours (éditable), activation
 - **Cours** — création/édition des cours, sessions, contenus, WhatsApp par cours
 - **Promotions** — cohortes par programme, membres, dates, classes, présentiels
+- **Suivi pédagogique (animateur)** — accès aux **restitutions des participants** :
+  exercices rendus (fichiers téléchargeables), **résultats de quiz** (score, tentatives),
+  vidéos vues, statut. Filtrable par cours / promo / séquence. Export CSV + Notion (BPF).
 - **Intégrations** — config BBB, Notta, YoDalf, WhatsApp, Notion, Stripe
 
 ### Éditeur de cours (back-office)

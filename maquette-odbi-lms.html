@@ -670,6 +670,8 @@ a{color:inherit;text-decoration:none}
           <div class="seq-part p-exo">
             <h4>📝 ÉTAPE 1 · Exercice préparatoire</h4>
             <div class="exo"><h4>Diagnostic de votre posture managériale</h4><p>Avant la vidéo, observez votre dernière réunion : qu'avez-vous délégué / gardé ? Notez 3 situations.</p><button class="btn btn-ghost">📄 Fiche d'exercice</button></div>
+            <div class="upload-zone" style="margin:var(--space-3) 0"><span class="big">⬆️</span>Déposer mon exercice réalisé (PDF, photo, doc…) — <b>visible par l'animateur</b></div>
+            <p style="font-size:12px;color:#5e7a1f;font-family:var(--font-title);font-weight:500">✅ Déposé le 14 mars · <a style="color:var(--color-accent);cursor:pointer">Voir / remplacer</a></p>
             <div class="exo-check" id="exoCheck1" onclick="unlockStep(1)"><div class="box">✓</div> J'ai fait l'exercice — débloquer la vidéo et les ressources</div>
           </div>
           <div class="seq-part p-video">
@@ -718,6 +720,7 @@ a{color:inherit;text-decoration:none}
           <div class="seq-part p-exo">
             <h4>📝 ÉTAPE 1 · Exercice préparatoire</h4>
             <div class="exo"><h4>Préparer un feedback réel</h4><p>Choisissez une personne à qui vous devez un retour. Rédigez-le selon les 3 piliers avant la vidéo.</p><button class="btn btn-ghost">📄 Fiche d'exercice</button></div>
+            <div class="upload-zone" style="margin:var(--space-3) 0"><span class="big">⬆️</span>Déposer mon exercice réalisé (PDF, photo, doc…) — <b>visible par l'animateur</b></div>
             <div class="exo-check" id="exoCheck2" onclick="unlockStep(2)"><div class="box">✓</div> J'ai fait l'exercice — débloquer la vidéo et les ressources</div>
           </div>
           <div class="seq-part p-video">
@@ -929,6 +932,7 @@ a{color:inherit;text-decoration:none}
         <div class="tab active" onclick="adminTab(this,'members')">Membres & accès</div>
         <div class="tab" onclick="adminTab(this,'courses')">Cours</div>
         <div class="tab" onclick="adminTab(this,'promos')">Promotions</div>
+        <div class="tab" onclick="adminTab(this,'suivi')">Suivi pédagogique</div>
         <div class="tab" onclick="adminTab(this,'integ')">Intégrations</div>
       </div>
 
@@ -968,6 +972,23 @@ a{color:inherit;text-decoration:none}
           <tr><td>BTC — 2ème génération</td><td>Born To Coach</td><td>24</td><td>Janv. 2026</td><td>12 visios</td><td>4</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Gérer</button></td></tr>
           <tr><td>IC — Cohésion #1</td><td>IC : Cohésion de groupe</td><td>16</td><td>Oct. 2026</td><td>6 visios</td><td>2</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Gérer</button></td></tr>
         </table>
+      </div>
+
+      <div id="admin-suivi" class="hidden">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Vue animateur — exercices rendus par les participants et résultats des quiz.</p>
+        <div style="display:flex;gap:10px;margin-bottom:var(--space-5);flex-wrap:wrap">
+          <select class="promo-select"><option>La Voie des managers</option><option>Born To Coach — 2e gén.</option></select>
+          <select class="promo-select"><option>Promo 2026 — Automne</option><option>Promo 2027 — Printemps</option></select>
+          <select class="promo-select"><option>Séquence 1 — Créer l'engagement</option><option>Séquence 2 — Le feedback</option></select>
+        </div>
+        <table class="table">
+          <tr><th>Participant</th><th>Exercice rendu</th><th>Quiz (score)</th><th>Vidéos vues</th><th>Statut</th></tr>
+          <tr><td><span class="pmini" style="background:var(--color-indigo-dye)">JD</span> Jean Dupont</td><td><a style="color:var(--color-accent);cursor:pointer">📎 exercice-jd.pdf</a> · 14 mars</td><td><b>80%</b> (2 essais)</td><td>3 / 3</td><td>✅ À jour</td></tr>
+          <tr><td><span class="pmini" style="background:var(--color-apple-green)">ML</span> Marie Lambert</td><td><a style="color:var(--color-accent);cursor:pointer">📎 photo-exercice.jpg</a> · 13 mars</td><td><b>100%</b> (1 essai)</td><td>3 / 3</td><td>✅ À jour</td></tr>
+          <tr><td><span class="pmini" style="background:#888">TP</span> Thomas Petit</td><td><span style="color:var(--color-neutral)">— non rendu</span></td><td><b>60%</b> (1 essai)</td><td>1 / 3</td><td>⚠️ En retard</td></tr>
+          <tr><td><span class="pmini" style="background:var(--color-indigo-dye)">SR</span> Sophie Roux</td><td><a style="color:var(--color-accent);cursor:pointer">📎 exercice-sr.docx</a> · 15 mars</td><td><span style="color:var(--color-neutral)">non fait</span></td><td>2 / 3</td><td>⏳ En cours</td></tr>
+        </table>
+        <div style="display:flex;gap:10px;margin-top:var(--space-5)"><button class="btn btn-ghost">⬇ Exporter (CSV)</button><button class="btn btn-ghost">📊 Vers Notion (BPF)</button></div>
       </div>
 
       <div id="admin-integ" class="hidden">
@@ -1189,7 +1210,7 @@ function goTo(page){
 }
 function go(el){goTo(el.dataset.page)}
 function adminTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
-  ['members','courses','promos','integ'].forEach(x=>document.getElementById('admin-'+x).classList.add('hidden'));
+  ['members','courses','promos','suivi','integ'].forEach(x=>document.getElementById('admin-'+x).classList.add('hidden'));
   document.getElementById('admin-'+t).classList.remove('hidden')}
 function toggleSeq(el){
   var seq=el.parentNode; seq.classList.toggle('open');
