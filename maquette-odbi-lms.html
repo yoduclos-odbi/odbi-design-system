@@ -213,11 +213,19 @@ a{color:inherit;text-decoration:none}
 .seq-head h3{font-size:16px;margin-top:2px}
 .seq-head .st{font-size:12px;color:var(--color-neutral);margin-top:3px}
 .seq-head .chev{margin-left:auto;color:var(--color-neutral);font-size:14px}
-.seq-body{display:none;padding:var(--space-5);border-top:1px solid rgba(74,74,74,.08)}
+.seq-body{display:none;padding:var(--space-5);border-top:1px solid rgba(74,74,74,.08);background:var(--color-background)}
 .seq.open .seq-body{display:block}
-.seq-part{margin-bottom:var(--space-6)}
+.seq-part{background:#fff;border-radius:var(--radius-md);box-shadow:var(--shadow-sm);padding:var(--space-5);margin-bottom:var(--space-4);border-left:4px solid var(--color-neutral)}
 .seq-part:last-child{margin-bottom:0}
-.seq-part > h4{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--color-neutral);margin-bottom:var(--space-3)}
+.seq-part.p-exo{border-left-color:var(--color-asparagus)}
+.seq-part.p-video{border-left-color:#d64545}
+.seq-part.p-res{border-left-color:var(--color-jet)}
+.seq-part.p-quiz{border-left-color:var(--color-apple-green)}
+.seq-part > h4{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--color-jet);margin-bottom:var(--space-4);font-family:var(--font-title);font-weight:700}
+.seq-part .exo{box-shadow:none;border-left:none;background:transparent;padding:0;margin:0 0 var(--space-3)}
+.seq-part .quiz-q{box-shadow:none;padding:0;margin-bottom:var(--space-4)}
+.seq-part .quiz-score{box-shadow:none;background:var(--color-background);border-left:none}
+.seq-part .res-item{box-shadow:none;border:1px solid rgba(74,74,74,.12)}
 .promo-pick{font-family:var(--font-title);font-weight:500;font-size:12px;padding:6px 12px;border-radius:var(--radius-full);border:1px solid rgba(74,74,74,.2);background:#fff;color:var(--color-jet);cursor:pointer}
 .promo-pick.active{background:var(--color-accent);color:#fff;border-color:var(--color-accent)}
 .promo-select{font-family:var(--font-body);font-size:13px;padding:7px 12px;border:1px solid rgba(74,74,74,.25);border-radius:var(--radius-md);background:#fff;color:var(--color-jet)}
@@ -658,24 +666,29 @@ a{color:inherit;text-decoration:none}
       <div class="seq open">
         <div class="seq-head" onclick="toggleSeq(this)"><div><div class="wk">Semaine 1</div><h3>Séquence 1 — Créer l'engagement</h3><div class="st">📝 1 exercice · 🎬 1 vidéo (14 min) · 🎧 2 ressources · ✅ quiz</div></div><span class="chev">▾</span></div>
         <div class="seq-body">
-          <div class="seq-part">
-            <h4>📝 Exercice préparatoire</h4>
+          <div class="seq-part p-exo">
+            <h4>📝 ÉTAPE 1 · Exercice préparatoire</h4>
             <div class="exo"><h4>Diagnostic de votre posture managériale</h4><p>Avant la vidéo, observez votre dernière réunion : qu'avez-vous délégué / gardé ? Notez 3 situations.</p><button class="btn btn-ghost">📄 Fiche d'exercice</button></div>
             <div class="exo-check" id="exoCheck1" onclick="unlockStep(1)"><div class="box">✓</div> J'ai fait l'exercice — débloquer la vidéo et les ressources</div>
           </div>
-          <div class="seq-part">
-            <h4>🎬 Vidéo</h4>
+          <div class="seq-part p-video">
+            <h4>🎬 ÉTAPE 2 · Vidéo</h4>
             <div class="lock-banner" id="lock1"><div class="lk-ic">🔒</div><div class="lk-txt"><b>Pédagogie inversée</b> — réalisez l'exercice ci-dessus pour débloquer la vidéo.<br><a onclick="unlockStep(1)">Voir quand même</a></div><button class="btn btn-primary" onclick="unlockStep(1)">J'ai fait l'exercice ✓</button></div>
             <div id="content1" class="hidden">
               <div class="player vid-main"><span class="tag">🎬 Vidéo — Vimeo · 14 min</span><div class="play">▶</div></div>
-              <div style="display:flex;align-items:center;gap:12px;margin:var(--space-4) 0"><button class="btn btn-accent">⏯ Reprendre à 07:12</button><span style="font-size:12px;color:var(--color-neutral)">52% visionné</span></div>
-              <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--color-neutral);margin:var(--space-5) 0 var(--space-3)">🎧 Ressources de la séquence</h4>
+              <div style="display:flex;align-items:center;gap:12px;margin-top:var(--space-4)"><button class="btn btn-accent">⏯ Reprendre à 07:12</button><span style="font-size:12px;color:var(--color-neutral)">52% visionné</span></div>
+            </div>
+          </div>
+          <div class="seq-part p-res">
+            <h4>🎧 ÉTAPE 3 · Ressources synchronisées</h4>
+            <div class="lock-banner" id="lockr1"><div class="lk-ic">🔒</div><div class="lk-txt">Disponibles une fois l'exercice réalisé.<br><a onclick="unlockStep(1)">Voir quand même</a></div></div>
+            <div id="resv1" class="hidden">
               <div class="res-item"><div class="res-ic audio">🎧</div><div class="t"><b>Méditation guidée — ancrage du leader</b><small>Audio · 11 min</small></div><button class="btn btn-ghost">▶ Écouter</button></div>
               <div class="res-item"><div class="res-ic pdf">📄</div><div class="t"><b>Fiche — les 3 piliers du feedback</b><small>PDF · 2 pages</small></div><button class="btn btn-ghost">⬇ Télécharger</button></div>
             </div>
           </div>
-          <div class="seq-part">
-            <h4>✅ Quiz de la séquence</h4>
+          <div class="seq-part p-quiz">
+            <h4>✅ ÉTAPE 4 · Quiz de la séquence</h4>
             <div class="quiz-score"><div class="big">80%</div><div class="attempts">Meilleur score · <b>2 tentatives</b> · refaisable, sans seuil</div><button class="btn btn-ghost">↻ Refaire</button></div>
             <div class="quiz-q"><span class="quiz-type">QCM</span><h4>Quels sont les piliers du feedback ODBI ?</h4><div class="q-opt sel"><div class="box"></div> Clarté du fait</div><div class="q-opt sel"><div class="box"></div> Impact mesuré</div><div class="q-opt"><div class="box"></div> Autorité hiérarchique</div></div>
             <button class="btn btn-primary">Valider le quiz</button>
@@ -687,22 +700,27 @@ a{color:inherit;text-decoration:none}
       <div class="seq">
         <div class="seq-head" onclick="toggleSeq(this)"><div><div class="wk">Semaine 2</div><h3>Séquence 2 — Le feedback en pratique</h3><div class="st">📝 1 exercice · 🎬 1 vidéo (20 min) · 🎧 1 ressource · ✅ quiz</div></div><span class="chev">▸</span></div>
         <div class="seq-body">
-          <div class="seq-part">
-            <h4>📝 Exercice préparatoire</h4>
+          <div class="seq-part p-exo">
+            <h4>📝 ÉTAPE 1 · Exercice préparatoire</h4>
             <div class="exo"><h4>Préparer un feedback réel</h4><p>Choisissez une personne à qui vous devez un retour. Rédigez-le selon les 3 piliers avant la vidéo.</p><button class="btn btn-ghost">📄 Fiche d'exercice</button></div>
             <div class="exo-check" id="exoCheck2" onclick="unlockStep(2)"><div class="box">✓</div> J'ai fait l'exercice — débloquer la vidéo et les ressources</div>
           </div>
-          <div class="seq-part">
-            <h4>🎬 Vidéo</h4>
+          <div class="seq-part p-video">
+            <h4>🎬 ÉTAPE 2 · Vidéo</h4>
             <div class="lock-banner" id="lock2"><div class="lk-ic">🔒</div><div class="lk-txt"><b>Pédagogie inversée</b> — réalisez l'exercice ci-dessus pour débloquer la vidéo.<br><a onclick="unlockStep(2)">Voir quand même</a></div><button class="btn btn-primary" onclick="unlockStep(2)">J'ai fait l'exercice ✓</button></div>
             <div id="content2" class="hidden">
               <div class="player vid-main"><span class="tag">🎬 Vidéo — Vimeo · 20 min</span><div class="play">▶</div></div>
-              <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--color-neutral);margin:var(--space-5) 0 var(--space-3)">🎧 Ressources de la séquence</h4>
+            </div>
+          </div>
+          <div class="seq-part p-res">
+            <h4>🎧 ÉTAPE 3 · Ressources synchronisées</h4>
+            <div class="lock-banner" id="lockr2"><div class="lk-ic">🔒</div><div class="lk-txt">Disponibles une fois l'exercice réalisé.<br><a onclick="unlockStep(2)">Voir quand même</a></div></div>
+            <div id="resv2" class="hidden">
               <div class="res-item"><div class="res-ic pdf">📄</div><div class="t"><b>Modèle de feedback structuré</b><small>PDF · 1 page</small></div><button class="btn btn-ghost">⬇ Télécharger</button></div>
             </div>
           </div>
-          <div class="seq-part">
-            <h4>✅ Quiz de la séquence</h4>
+          <div class="seq-part p-quiz">
+            <h4>✅ ÉTAPE 4 · Quiz de la séquence</h4>
             <div class="quiz-q"><span class="quiz-type">Vrai / Faux</span><h4>Un bon feedback commence par un jugement de valeur.</h4><div class="q-opt"><div class="box"></div> Vrai</div><div class="q-opt sel"><div class="box"></div> Faux</div></div>
             <button class="btn btn-primary">Valider le quiz</button>
           </div>
@@ -1179,6 +1197,8 @@ function unlockStep(n){
   var c=document.getElementById('exoCheck'+n);if(c)c.classList.add('done');
   var l=document.getElementById('lock'+n);if(l)l.classList.add('hidden');
   var ct=document.getElementById('content'+n);if(ct)ct.classList.remove('hidden');
+  var lr=document.getElementById('lockr'+n);if(lr)lr.classList.add('hidden');
+  var rv=document.getElementById('resv'+n);if(rv)rv.classList.remove('hidden');
 }
 const PROMOS = {
   'lvm-2026-aut': {nom:'Promo 2026 — Automne', wa:42, ville:'Lyon', pres:[
