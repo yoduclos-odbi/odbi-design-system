@@ -318,7 +318,13 @@ Doit être **ergonomique** (rechargement manuel des contenus depuis Moodle).
 
 **Éditeur de cours** :
 - Paramètres : nom, univers, animateur, statut (publié/brouillon), durée, description, image de couverture
-- Onglets d'édition : **Sessions** (ajout / réordonnancement par glisser-déposer / duplication / suppression), **Lexique**, **Références**, **Présentiels** (par promotion)
+- Onglets d'édition :
+  - **Sessions** (ajout / réordonnancement / duplication / suppression)
+  - **Lexique** (terme + définition)
+  - **Références** (type + titre + **lien/URL**)
+  - **Présentiels** (par promotion) : dates, intitulé, lieu, horaires + **détails pratiques**
+    (🚗 accès/transport, 🏨 hébergement, 📋 règlement intérieur en PDF, 🏢 fiche établissement en PDF)
+  - **Déverrouillage du programme** (toggle pédagogie inversée, par programme)
 
 **Éditeur de session** :
 - Titre, règle d'accès (verrouillage), **toggle « pédagogie inversée »** (gating exercices, activable par session — non bloquant)
@@ -331,9 +337,9 @@ Doit être **ergonomique** (rechargement manuel des contenus depuis Moodle).
 ### Programmation des visios
 - La **visio se crée dans l'éditeur de session** (onglet **Visio** de la séquence), au même
   titre qu'un exercice ou une ressource — **pas** dans Promotions.
-- On y définit le **modèle** : titre, animateur, jour (relatif à la semaine), heure, durée ;
+- On y définit : titre, animateur, **date complète via calendrier (jour/mois/année)**, heure, durée ;
   la **salle BBB est créée automatiquement**.
-- Les **dates exactes par promotion** héritent de ce modèle lors de la programmation de la promo.
+- La date se (re)définit pour la promotion concernée.
 
 ### Déverrouillage du contenu
 - Le déverrouillage (ignorer la pédagogie inversée) se fait **par programme**

@@ -85,6 +85,7 @@ a{color:inherit;text-decoration:none}
 /* ---------- Cards / grid ---------- */
 .grid{display:grid;gap:var(--space-5)}
 .grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
 .grid-2{grid-template-columns:repeat(2,1fr)}
 .card{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);overflow:hidden;transition:transform .2s,box-shadow .2s}
 .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
@@ -477,10 +478,11 @@ a.ref-item:hover{background:var(--color-background)}
         </div>
         <button class="btn" style="background:#fff;color:var(--color-accent)" onclick="goTo('visio')">Rejoindre la visio</button>
       </div>
-      <div class="grid grid-3 mb6">
+      <div class="grid grid-4 mb6">
         <div class="stat"><div class="num green">68%</div><div class="lbl">Progression globale</div></div>
-        <div class="stat"><div class="num">3</div><div class="lbl">Cours actifs</div></div>
+        <div class="stat"><div class="num">3</div><div class="lbl">Programmes actifs</div></div>
         <div class="stat"><div class="num">1 240</div><div class="lbl">Points ODBI</div></div>
+        <div class="stat"><div class="num">9</div><div class="lbl">Badges obtenus</div></div>
       </div>
       <h3 style="margin-bottom:var(--space-4)">Reprendre où vous en étiez</h3>
       <div class="grid grid-3">
@@ -1082,17 +1084,33 @@ a.ref-item:hover{background:var(--color-background)}
 
       <!-- Références -->
       <div id="ec-references" class="hidden">
-        <p style="color:var(--color-neutral);margin-bottom:var(--space-4)">Livres, vidéos et articles recommandés.</p>
-        <div class="edit-row"><select style="max-width:120px"><option>Livre</option><option>Vidéo</option><option>Article</option></select><input class="grow" value="L'art du management — collectif ODBI"><button class="icon-btn">🗑️</button></div>
-        <div class="edit-row"><select style="max-width:120px"><option>Vidéo</option><option>Livre</option><option>Article</option></select><input class="grow" value="Conférence : leadership en haute intensité"><button class="icon-btn">🗑️</button></div>
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-4)">Livres, vidéos et articles recommandés, avec leur lien.</p>
+        <div class="edit-row"><select style="max-width:110px"><option>Livre</option><option>Vidéo</option><option>Article</option></select><input style="flex:1" value="L'art du management — collectif ODBI"><input style="flex:1" placeholder="https://… (lien)" value="https://odbi.fr/…"><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><select style="max-width:110px"><option>Vidéo</option><option>Livre</option><option>Article</option></select><input style="flex:1" value="Conférence : leadership en haute intensité"><input style="flex:1" placeholder="https://… (lien)" value="https://vimeo.com/…"><button class="icon-btn">🗑️</button></div>
         <button class="add-btn">+ Ajouter une référence</button>
       </div>
 
       <!-- Présentiels -->
       <div id="ec-presentiels" class="hidden">
-        <div class="flex-between mb6"><div class="field" style="margin:0"><label>Promotion concernée</label><select class="promo-select"><option>Promo 2026 — Automne</option><option>Promo 2027 — Printemps</option></select></div></div>
-        <div class="edit-row"><div class="grow"><div class="row3"><input value="14–15 nov. 2026"><input value="Séminaire d'intégration"><input value="ODBI Campus — Lyon"></div></div><button class="icon-btn">🗑️</button></div>
-        <div class="edit-row"><div class="grow"><div class="row3"><input value="23 jan. 2027"><input value="Atelier pratique"><input value="Espace Bellecour — Lyon"></div></div><button class="icon-btn">🗑️</button></div>
+        <div class="field" style="max-width:320px;margin-bottom:var(--space-4)"><label>Promotion concernée</label><select class="promo-select"><option>Promo 2026 — Automne</option><option>Promo 2027 — Printemps</option></select></div>
+        <div class="edit-card">
+          <div class="flex-between mb6"><h3 style="margin:0">Présentiel 1</h3><button class="icon-btn">🗑️</button></div>
+          <div class="row3">
+            <div class="field"><label>Dates</label><input type="text" value="14–15 nov. 2026"></div>
+            <div class="field"><label>Intitulé</label><input value="Séminaire d'intégration"></div>
+            <div class="field"><label>Lieu</label><input value="ODBI Campus — Lyon"></div>
+          </div>
+          <div class="field"><label>Horaires</label><input value="9h – 17h" style="max-width:200px"></div>
+          <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--color-neutral);margin:var(--space-4) 0 var(--space-3)">Détails pratiques & documents</h4>
+          <div class="row2">
+            <div class="field"><label>🚗 S'y rendre (accès & transport)</label><input placeholder="Lien ou texte"></div>
+            <div class="field"><label>🏨 Se loger (hébergements)</label><input placeholder="Lien ou texte"></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label>📋 Règlement intérieur (PDF)</label><div class="upload-zone" style="padding:var(--space-4)"><span class="big">📄</span>Téléverser</div></div>
+            <div class="field"><label>🏢 Fiche de l'établissement (PDF)</label><div class="upload-zone" style="padding:var(--space-4)"><span class="big">📄</span>Téléverser</div></div>
+          </div>
+        </div>
         <button class="add-btn">+ Ajouter un présentiel</button>
       </div>
     </section>
@@ -1186,12 +1204,12 @@ a.ref-item:hover{background:var(--color-background)}
             <div class="field"><label>Animateur</label><input value="Yohann Duclos"></div>
           </div>
           <div class="row3">
-            <div class="field"><label>Jour (relatif à la semaine)</label><select><option>Jeudi</option><option>Lundi</option><option>Mardi</option><option>Mercredi</option><option>Vendredi</option></select></div>
-            <div class="field"><label>Heure</label><input value="18h00"></div>
+            <div class="field"><label>📅 Date de la visio</label><input type="date" value="2026-03-12"></div>
+            <div class="field"><label>Heure</label><input type="time" value="18:00"></div>
             <div class="field"><label>Durée</label><input value="1h"></div>
           </div>
-          <div class="field"><label>Salle BigBlueButton</label><input value="Créée automatiquement à la programmation (classe-virtuelle.com)" readonly></div>
-          <p style="font-size:12px;color:var(--color-neutral)">📅 Les <b>dates exactes</b> par promotion sont fixées lors de la programmation de la promo (héritent de ce modèle de jour/heure).</p>
+          <div class="field"><label>Salle BigBlueButton</label><input value="Créée automatiquement à l'enregistrement (classe-virtuelle.com)" readonly></div>
+          <p style="font-size:12px;color:var(--color-neutral)">📅 Choisissez la date complète (jour / mois / année) via le calendrier. Pour une autre promotion, la date se redéfinit ici pour la promo concernée.</p>
         </div>
       </div>
     </section>
