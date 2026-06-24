@@ -153,11 +153,12 @@ Une session **n'est pas un bloc unique** : elle est organisée en **séquences**
 et peut **s'étaler sur plusieurs semaines** (adaptation pédagogique).
 
 ### Une session = une suite de séquences
-- Une session contient **plusieurs vidéos** → **une séquence par vidéo** (≈ une semaine).
+- Une session est une suite de **séquences** (≈ une semaine / un thème chacune).
+- Une séquence peut contenir **plusieurs vidéos** et **plusieurs ressources**.
 - Chaque séquence est une **suite de blocs séparés et color-codés** (cartes distinctes) :
   1. 📝 **Exercice(s)** préparatoire(s)
-  2. 🎬 **Vidéo** (Vimeo)
-  3. 🎧 **Ressource(s)** synchronisées (audios / PDF)
+  2. 🎬 **Vidéo(s)** (Vimeo — playlist possible)
+  3. 🎧 **Ressource(s)** synchronisées (audios / PDF, plusieurs possibles)
   4. ✅ **Quiz** de la séquence
   5. 🎥 **Replay** de la visio de la semaine (BBB + transcription/chapitrage/résumé Notta, par promo)
 - Affichage : **accordéon** de séquences, avec libellé de semaine et déverrouillage progressif.
@@ -195,8 +196,9 @@ et peut **s'étaler sur plusieurs semaines** (adaptation pédagogique).
 
 ## 9. Quiz
 
-- **Un quiz par session**
-- **Plusieurs formes de questions** : QCM, Vrai/Faux, Association (matching), Réponse libre
+- **Au moins un quiz par séquence** (donc plusieurs par session)
+- Un quiz comporte **plusieurs questions** (typiquement **~5**), de **formes variées** :
+  QCM, Vrai/Faux, Association (matching), Réponse libre
 - **Score affiché**, **sans seuil minimal** de réussite
 - **Refaisable** autant de fois que voulu
 - **Mémoire des tentatives** (historique : score + date par tentative)
