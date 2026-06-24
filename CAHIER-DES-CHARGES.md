@@ -107,6 +107,10 @@ progression, promotions, groupe WhatsApp, visios propres).
 - **Freemium** : sur un cours où le participant **n'est pas inscrit**, une partie du
   contenu est **gratuite** (pour donner envie) ; le **reste est réservé aux inscrits**.
 - Sur un cours où il **est inscrit** : accès complet + progression.
+- **Accès découverte (non inscrit / accès gratuit)** : le participant n'a accès **qu'à la
+  session ouverte** (la session gratuite). **Tout le reste est réservé** : sessions suivantes
+  (verrouillées), présentiels, lexique, références, participants, WhatsApp. Un CTA
+  « Rejoindre le programme » est proposé sur les sections réservées.
 - Dans le catalogue : cours inscrits = barre de progression ; cours non inscrits =
   mention « 🎁 Contenu gratuit · reste réservé aux inscrits ».
 

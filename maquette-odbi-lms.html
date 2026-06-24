@@ -115,6 +115,7 @@ a{color:inherit;text-decoration:none}
 .progress{height:7px;background:var(--color-background);border-radius:var(--radius-full);margin-top:12px;overflow:hidden}
 .progress span{display:block;height:100%;background:var(--color-primary);border-radius:var(--radius-full)}
 .free-meta{margin-top:12px;font-size:12px;color:#5e7a1f;font-family:var(--font-title);font-weight:500}
+#sess2row.locked{opacity:.5;pointer-events:none;position:relative}
 .enrolled-tag{display:inline-block;font-size:10px;font-family:var(--font-title);font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#fff;background:var(--color-primary);padding:2px 8px;border-radius:var(--radius-full);margin-bottom:8px}
 
 /* stat cards */
@@ -572,6 +573,13 @@ a.ref-item:hover{background:var(--color-background)}
       </div>
       <div class="progress mb6" style="height:10px"><span style="width:72%"></span></div>
 
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:var(--space-4);flex-wrap:wrap">
+        <span style="font-size:12px;color:var(--color-neutral)">👁️ Aperçu (démo) :</span>
+        <button id="modeFull" class="promo-pick active" onclick="setAccess('full')">Inscrit</button>
+        <button id="modeFree" class="promo-pick" onclick="setAccess('free')">Accès gratuit (non inscrit)</button>
+      </div>
+      <div id="freeBanner" class="hidden" style="background:rgba(134,164,63,.1);border-left:4px solid var(--color-asparagus);border-radius:8px;padding:12px 16px;margin-bottom:var(--space-5);font-size:13px;display:flex;justify-content:space-between;align-items:center;gap:12px"><div>🎁 <b>Accès découverte</b> — seule la <b>1ère session</b> est ouverte. Présentiels, références, participants, WhatsApp, lexique et sessions suivantes sont <b>réservés aux inscrits</b>.</div><button class="btn btn-primary" style="white-space:nowrap">Rejoindre le programme</button></div>
+
       <div class="tabs">
         <div class="tab active" onclick="courseTab(this,'sessions')">📚 Sessions</div>
         <div class="tab" onclick="courseTab(this,'presentiel')">📍 Présentiels</div>
@@ -587,7 +595,7 @@ a.ref-item:hover{background:var(--color-background)}
         <div class="module">
           <div class="module-head" onclick="goTo('lesson')"><div class="lesson done" style="padding:0;border:none"><div class="check">✓</div><div><h3>Session 1 — Fondamentaux du leadership</h3><div class="sub">📝 1 exercice · 🎬 3 vidéos · 🎧 1 audio · 📄 2 PDF · ✅ quiz · 🎥 2 visios · terminé</div></div></div><button class="btn btn-ghost" style="padding:6px 14px">Revoir</button></div>
         </div>
-        <div class="module">
+        <div class="module" id="sess2row">
           <div class="module-head" onclick="goTo('lesson')"><div class="lesson" style="padding:0;border:none"><div class="check" style="border-color:var(--color-accent)"></div><div><h3>Session 2 — Mobiliser une équipe</h3><div class="sub">📝 2 exercices · 🎬 4 vidéos · 🎧 2 audios · 📄 1 PDF · ✅ quiz · 🎥 3 visios · en cours</div></div></div><button class="btn btn-accent" style="padding:6px 14px">Continuer ▶</button></div>
         </div>
         <div class="module">
@@ -666,6 +674,11 @@ a.ref-item:hover{background:var(--color-background)}
           <button class="btn btn-wa">Rejoindre le groupe</button>
         </div>
         <p style="color:var(--color-neutral);font-size:13px;margin-top:var(--space-4)">💡 La communauté du cours se passe sur WhatsApp. Chaque promotion a son propre groupe.</p>
+      </div>
+
+      <!-- Panneau verrouillé (accès gratuit) -->
+      <div id="crs-locked" class="hidden">
+        <div class="lock-banner"><div class="lk-ic">🔒</div><div class="lk-txt"><b>Réservé aux inscrits</b><br>Cette section se débloque en rejoignant le programme. En accès découverte, seule la 1ère session est ouverte.</div><button class="btn btn-primary">Rejoindre le programme</button></div>
       </div>
     </section>
 
@@ -1347,9 +1360,22 @@ function switchPromo(key){
   }).join('');
   document.getElementById('wa-promo').textContent = p.nom+' · « La Voie des managers » — '+p.wa+' participants';
 }
+var accessMode='full';
+function setAccess(m){
+  accessMode=m;
+  document.getElementById('modeFull').classList.toggle('active',m==='full');
+  document.getElementById('modeFree').classList.toggle('active',m==='free');
+  document.getElementById('freeBanner').classList.toggle('hidden',m!=='free');
+  var s2=document.getElementById('sess2row');if(s2)s2.classList.toggle('locked',m==='free');
+  courseTab(document.querySelector('#page-course .tabs .tab'),'sessions');
+}
 function courseTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
   ['sessions','presentiel','lexique','references','participants','whatsapp'].forEach(x=>document.getElementById('crs-'+x).classList.add('hidden'));
-  document.getElementById('crs-'+t).classList.remove('hidden')}
+  var locked=document.getElementById('crs-locked');if(locked)locked.classList.add('hidden');
+  var reserved=['presentiel','lexique','references','participants','whatsapp'];
+  if(accessMode==='free' && reserved.indexOf(t)>=0){ if(locked)locked.classList.remove('hidden'); }
+  else { document.getElementById('crs-'+t).classList.remove('hidden'); }
+}
 function sendMsg(){const i=document.getElementById('chatInput');if(!i.value.trim())return;const b=document.getElementById('chatBody');
   b.innerHTML+='<div class="msg me">'+i.value+'</div>';const q=i.value;i.value='';
   setTimeout(()=>{b.innerHTML+='<div class="msg ai">💡 (Réponse YoDalf simulée) Dans la version réelle, je m\'appuierais sur le contenu de vos cours ODBI pour répondre précisément à : « '+q+' »</div>';b.scrollTop=b.scrollHeight},500);b.scrollTop=b.scrollHeight}
