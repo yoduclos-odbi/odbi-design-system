@@ -217,7 +217,7 @@ Inspirée des LMS type Skool :
      - **Lecteur vidéo à gauche** + **panneau d'infos à droite** (mise en page côte à côte, pour remplir la largeur
        de façon harmonieuse) : titre de la vidéo, **courte description**, puis actions (« Reprendre à … »,
        « Marquer comme vu »). Les chips de sélection des vidéos restent au-dessus ; Précédent/Suivant en bas.
-     - **Bouton « Chapitrage »** : au clic, affiche le **chapitrage de la vidéo** (timestamps cliquables), **importé de Vimeo**.
+     - **Bouton « Chapitrage »** (toggle) : au clic, affiche/masque le **chapitrage de la vidéo** (timestamps cliquables, **importé de Vimeo**), **en pleine largeur sous la vidéo**. Le lecteur reste en **16/9**.
      - **Affichage allégé** : chaque étape = **case à cocher + libellé + durée** (façon Skool), **sans icône de type**
        dans l'arbre (les icônes SVG de type restent dans la zone de contenu).
      - **Cases vertes auto-cochées** une fois l'étape terminée ; pastille verte (partielle/complète) sur les

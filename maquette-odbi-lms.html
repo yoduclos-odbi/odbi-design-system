@@ -232,9 +232,9 @@ a{color:inherit;text-decoration:none}
 /* ---------- Lesson player ---------- */
 .player{background:#000;border-radius:var(--radius-lg);aspect-ratio:16/9;width:100%;max-width:820px;display:flex;align-items:center;justify-content:center;color:#fff;position:relative;margin:0 auto var(--space-4)}
 /* Leçon vidéo : lecteur + panneau d'infos côte à côte */
-.lsvid-row{display:flex;gap:var(--space-6);align-items:stretch;margin-bottom:var(--space-2);flex-wrap:wrap}
+.lsvid-row{display:flex;gap:var(--space-6);align-items:flex-start;margin-bottom:var(--space-2);flex-wrap:wrap}
 .lsvid-row .player{flex:1 1 460px;max-width:none;margin:0;min-width:0}
-.lsvid-info{flex:1 1 260px;min-width:240px;display:flex;flex-direction:column;justify-content:center;padding:var(--space-2) 0}
+.lsvid-info{flex:1 1 260px;min-width:240px;display:flex;flex-direction:column;justify-content:flex-start;padding:var(--space-2) 0}
 .lsvid-info h3{font-size:19px;margin-bottom:10px}
 .lsvid-info p{color:var(--color-neutral);font-size:13.5px;line-height:1.7;margin-bottom:var(--space-5)}
 .lsvid-actions{display:flex;flex-direction:column;gap:10px;align-items:stretch}
@@ -977,11 +977,11 @@ a.ref-item:hover{background:var(--color-background)}
             <h3 id="vidTitle">Créer l'engagement collectif</h3>
             <p id="vidDesc">Les ressorts concrets pour enclencher l'adhésion d'une équipe autour d'un objectif commun.</p>
             <div class="lsvid-actions"><button class="btn btn-accent">⏯ Reprendre à 07:12</button><button class="btn btn-primary">Marquer comme vu ✓</button><button class="btn btn-ghost" id="vidChapBtn" onclick="toggleVidChap(this)">📑 Chapitrage</button></div>
-            <div id="vidChapWrap" class="rep-content hidden">
-              <div class="rep-chaphead">Chapitrage (importé de Vimeo)</div>
-              <ol class="chaplist" id="vidChapList"></ol>
-            </div>
           </div>
+        </div>
+        <div id="vidChapWrap" class="rep-content hidden" style="margin-top:var(--space-4)">
+          <div class="rep-chaphead">Chapitrage (importé de Vimeo)</div>
+          <ol class="chaplist" id="vidChapList"></ol>
         </div>
         <div style="margin-top:var(--space-5);display:flex;justify-content:space-between"><button class="btn btn-ghost" onclick="lsNext('ex')">◀ Exercice</button><button class="btn btn-accent" onclick="lsNext('res')">Suivant · Ressources ▶</button></div>
       </div>
