@@ -84,6 +84,7 @@ a{color:inherit;text-decoration:none}
 .cnav-item{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:var(--radius-md);font-family:var(--font-title);font-size:14px;font-weight:500;color:var(--color-jet);cursor:pointer;transition:all .15s}
 .cnav-item:hover{background:var(--color-background)}
 .cnav-item.active{background:var(--color-primary);color:#fff}
+.cnav-group{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--color-neutral);font-family:var(--font-title);font-weight:700;padding:14px 12px 6px}
 .cnav-item svg{width:18px;height:18px;flex-shrink:0;stroke-width:1.8}
 .nav-sep{height:1px;background:rgba(74,74,74,.1);margin:var(--space-4) 8px}
 .main{padding:var(--space-8);overflow-y:auto;flex:1;min-width:0}
@@ -119,6 +120,15 @@ a{color:inherit;text-decoration:none}
 .lsprog{font-size:12px;color:var(--color-neutral);display:flex;align-items:center;gap:10px}
 .lspbar{display:inline-block;width:120px;height:6px;background:var(--color-background);border-radius:99px;overflow:hidden}
 .lspbar i{display:block;height:100%;width:40%;background:var(--color-primary)}
+.vidtabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:var(--space-4)}
+.vidtab{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid rgba(74,74,74,.15);border-radius:var(--radius-md);padding:9px 13px;cursor:pointer;font-size:13px}
+.vidtab:hover{border-color:var(--color-accent)}
+.vidtab.active{border-color:var(--color-accent);background:rgba(17,76,106,.06)}
+.vidtab .vn{width:24px;height:24px;border-radius:50%;background:var(--color-background);display:flex;align-items:center;justify-content:center;font-family:var(--font-title);font-weight:700;font-size:12px;color:var(--color-jet);flex-shrink:0}
+.vidtab.active .vn{background:var(--color-accent);color:#fff}
+.vidtab.done .vn{background:var(--color-primary);color:#fff}
+.vidtab .vt{font-family:var(--font-title);font-weight:500}
+.vidtab .vd{color:var(--color-neutral);font-size:12px;margin-left:4px}
 /* ---------- Icônes de contenu (SVG) ---------- */
 .i{display:inline-block;width:15px;height:15px;vertical-align:-3px;background-size:contain;background-repeat:no-repeat;background-position:center}
 .i-exo{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27%234D4D4D%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M12%2020h9%27%2F%3E%3Cpath%20d%3D%27M16.5%203.5a2.12%202.12%200%200%201%203%203L7%2019l-4%201%201-4z%27%2F%3E%3C%2Fsvg%3E")}
@@ -513,10 +523,12 @@ a.ref-item:hover{background:var(--color-background)}
         <span class="cnav-back" onclick="goTo('catalog')">← Tous les programmes</span>
         <div class="cnav-title">La Voie des managers</div>
         <div class="cnav-sub">Promo 2026 — Automne</div>
+        <div class="cnav-group">Programme</div>
         <div class="cnav-item active" onclick="courseTab(this,'sessions')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg> Sessions</div>
-        <div class="cnav-item" onclick="courseTab(this,'presentiel')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Présentiels</div>
         <div class="cnav-item" onclick="courseTab(this,'lexique')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> Lexique</div>
         <div class="cnav-item" onclick="courseTab(this,'references')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg> Références</div>
+        <div class="cnav-group">Ma promotion</div>
+        <div class="cnav-item" onclick="courseTab(this,'presentiel')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Présentiels</div>
         <div class="cnav-item" onclick="courseTab(this,'participants')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg> Participants</div>
         <div class="cnav-item" onclick="courseTab(this,'whatsapp')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg> WhatsApp</div>
       </div>
@@ -526,10 +538,10 @@ a.ref-item:hover{background:var(--color-background)}
         <div class="sx-head">
           <div class="sx-title">Session 2 — Mobiliser une équipe</div>
           <input class="sx-search" placeholder="Rechercher…">
-          <div class="sx-meta"><span>3 semaines · 40%</span><span class="sx-collapse" onclick="document.querySelectorAll('#ctx-session .sweek').forEach(function(w){w.classList.remove('open')})">Tout réduire</span></div>
+          <div class="sx-meta"><span>3 thématiques · 40%</span><span class="sx-collapse" onclick="document.querySelectorAll('#ctx-session .sweek').forEach(function(w){w.classList.remove('open')})">Tout réduire</span></div>
         </div>
         <div class="sweek open">
-          <div class="sweek-h" onclick="this.parentNode.classList.toggle('open')"><span class="chev">›</span><div><b>Semaine 1 — Créer l'engagement</b><small>1h 10min</small></div></div>
+          <div class="sweek-h" onclick="this.parentNode.classList.toggle('open')"><span class="chev">›</span><div><b>2.1 — Créer l'engagement</b><small>1h 10min</small></div></div>
           <div class="sweek-b">
             <div class="sstep done" onclick="lsStep(this,'ex')"><span class="sck">✓</span><div class="sl"><span>Exercice</span><small>10 min</small></div></div>
             <div class="sstep active" onclick="lsStep(this,'video')"><span class="sck">▷</span><div class="sl"><span>Vidéos (3)</span><small>33 min</small></div></div>
@@ -539,7 +551,7 @@ a.ref-item:hover{background:var(--color-background)}
           </div>
         </div>
         <div class="sweek">
-          <div class="sweek-h" onclick="this.parentNode.classList.toggle('open')"><span class="chev">›</span><div><b>Semaine 2 — Le feedback</b><small>52 min</small></div></div>
+          <div class="sweek-h" onclick="this.parentNode.classList.toggle('open')"><span class="chev">›</span><div><b>2.2 — Le feedback</b><small>52 min</small></div></div>
           <div class="sweek-b">
             <div class="sstep" onclick="lsStep(this,'ex')"><span class="sck"></span><div class="sl"><span>Exercice</span><small>15 min</small></div></div>
             <div class="sstep" onclick="lsStep(this,'video')"><span class="sck"></span><div class="sl"><span>Vidéo</span><small>20 min</small></div></div>
@@ -547,7 +559,7 @@ a.ref-item:hover{background:var(--color-background)}
           </div>
         </div>
         <div class="sweek locked">
-          <div class="sweek-h"><span class="sck"><span class="i i-lock"></span></span><div><b>Semaine 3 — Gérer les tensions</b><small>Disponible semaine 3</small></div></div>
+          <div class="sweek-h"><span class="sck"><span class="i i-lock"></span></span><div><b>2.3 — Gérer les tensions</b><small>Disponible semaine 3</small></div></div>
         </div>
       </div>
     </aside>
@@ -556,6 +568,7 @@ a.ref-item:hover{background:var(--color-background)}
     <!-- LIVRET D'ACCUEIL -->
     <section id="page-livret" class="page">
       <div class="flex-between mb6"><div><h1>Livret d'accueil</h1><p style="color:var(--color-neutral);margin-top:4px">Toutes les informations pratiques ODBI — intégré depuis Notion</p></div><a class="btn btn-ghost" href="https://odbi.notion.site/Livret-d-Accueil-Client-ODBI-13d94934418a80cb843dfaebb32328ef" target="_blank">Ouvrir dans un onglet ↗</a></div>
+      <div class="note" style="background:rgba(17,76,106,.06);border-left:4px solid var(--color-accent);border-radius:8px;padding:12px 16px;margin-bottom:var(--space-5);font-size:13px">ℹ️ L'aperçu Notion ne s'affiche pas toujours quand la maquette est ouverte <b>en local (fichier)</b> : Notion n'autorise l'intégration que depuis un <b>vrai site web (https)</b>. Une fois la plateforme hébergée, le livret s'affichera ici. En attendant : « Ouvrir dans un onglet ».</div>
       <div class="card" style="padding:0;overflow:hidden">
         <iframe src="https://odbi.notion.site/ebd//13d94934418a80cb843dfaebb32328ef" width="100%" height="720" frameborder="0" allowfullscreen style="border:0;display:block"></iframe>
       </div>
@@ -767,36 +780,28 @@ a.ref-item:hover{background:var(--color-background)}
     <!-- SESSION -->
     <section id="page-lesson" class="page">
       <div class="lshead">
-        <div class="lsbc">La Voie des managers / Session 2 / Semaine 1 / <b id="lsCur">Vidéos</b></div>
+        <div class="lsbc">La Voie des managers / Session 2 / 2.1 / <b id="lsCur">Vidéos</b></div>
         <div class="lsprog">Étape 2 / 5 · 40% de la session<span class="lspbar"><i></i></span></div>
       </div>
 
       <!-- Vidéos -->
       <div id="ls-video" class="ls-panel active">
-        <h2 style="font-size:20px;margin-bottom:4px"><span class="i i-video"></span> Créer l'engagement collectif</h2>
-        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Semaine 1 · 3 vidéos</p>
-        <div class="lesson-layout">
-          <div>
-            <div class="player vid-main"><span class="tag"><span class="i iw-video"></span> Vidéo 1/3 — Vimeo · 14 min</span><div class="play">▶</div></div>
-            <div style="display:flex;align-items:center;gap:12px;margin:var(--space-4) 0"><button class="btn btn-accent">⏯ Reprendre à 07:12</button><span style="font-size:12px;color:var(--color-neutral)">52% visionné</span></div>
-            <button class="btn btn-primary">Marquer comme vu ✓</button>
-          </div>
-          <div class="side-list">
-            <h4>Vidéos de la semaine</h4>
-            <div class="vid-list">
-              <div class="vid-item active"><div class="vid-thumb">▶</div><div class="t">1 · Créer l'engagement</div><div class="d">14 min</div></div>
-              <div class="vid-item"><div class="vid-thumb">▶</div><div class="t">2 · Les 4 leviers</div><div class="d">11 min</div></div>
-              <div class="vid-item"><div class="vid-thumb">▶</div><div class="t">3 · Étude de cas</div><div class="d">8 min</div></div>
-            </div>
-          </div>
+        <h2 style="font-size:20px;margin-bottom:4px"><span class="i i-video"></span> Vidéos de la séquence</h2>
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-4)">2.1 · 3 vidéos · choisissez une vidéo ci-dessous</p>
+        <div class="vidtabs">
+          <div class="vidtab active" onclick="pickVid(this,'Créer l\'engagement collectif','1/3','14 min')"><span class="vn">1</span><span class="vt">Créer l'engagement</span><span class="vd">14 min</span></div>
+          <div class="vidtab" onclick="pickVid(this,'Les 4 leviers d\'engagement','2/3','11 min')"><span class="vn">2</span><span class="vt">Les 4 leviers</span><span class="vd">11 min</span></div>
+          <div class="vidtab" onclick="pickVid(this,'Étude de cas','3/3','8 min')"><span class="vn">3</span><span class="vt">Étude de cas</span><span class="vd">8 min</span></div>
         </div>
-        <div style="margin-top:var(--space-6);display:flex;justify-content:space-between"><button class="btn btn-ghost" onclick="lsNext('ex')">◀ Exercice</button><button class="btn btn-accent" onclick="lsNext('res')">Suivant · Ressources ▶</button></div>
+        <div class="player vid-main"><span class="tag"><span class="i iw-video"></span> <span id="vidLabel">Vidéo 1/3 — Vimeo · 14 min</span></span><div class="play">▶</div></div>
+        <div style="display:flex;align-items:center;gap:12px;margin:var(--space-4) 0;flex-wrap:wrap"><h3 id="vidTitle" style="font-size:16px;margin-right:auto">Créer l'engagement collectif</h3><button class="btn btn-accent">⏯ Reprendre à 07:12</button><button class="btn btn-primary">Marquer comme vu ✓</button></div>
+        <div style="margin-top:var(--space-4);display:flex;justify-content:space-between"><button class="btn btn-ghost" onclick="lsNext('ex')">◀ Exercice</button><button class="btn btn-accent" onclick="lsNext('res')">Suivant · Ressources ▶</button></div>
       </div>
 
       <!-- Exercice -->
       <div id="ls-ex" class="ls-panel">
         <h2 style="font-size:20px;margin-bottom:4px"><span class="i i-exo"></span> Exercice préparatoire</h2>
-        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Semaine 1 · pédagogie inversée — à faire avant la vidéo</p>
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">2.1 · pédagogie inversée — à faire avant la vidéo</p>
         <div class="exo"><h4>Diagnostic de votre posture managériale</h4><p>Observez votre dernière réunion : qu'avez-vous délégué / gardé ? Notez 3 situations.</p><button class="btn btn-ghost">📄 Fiche d'exercice</button></div>
         <div class="upload-zone" style="margin:var(--space-3) 0"><span class="big"></span>Déposer mon exercice réalisé — visible par l'animateur</div>
         <div style="margin-top:var(--space-6);display:flex;justify-content:flex-end"><button class="btn btn-accent" onclick="lsNext('video')">Suivant · Vidéos ▶</button></div>
@@ -805,7 +810,7 @@ a.ref-item:hover{background:var(--color-background)}
       <!-- Ressources -->
       <div id="ls-res" class="ls-panel">
         <h2 style="font-size:20px;margin-bottom:4px"><span class="i i-audio"></span> Ressources de la semaine</h2>
-        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Semaine 1 · 2 ressources</p>
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">2.1 · 2 ressources</p>
         <div class="res-item"><div class="res-ic audio"><span class="i-audio-w"></span></div><div class="t"><b>Méditation guidée — ancrage du leader</b><small>Audio · 11 min</small></div><button class="btn btn-ghost">▶ Écouter</button></div>
         <div class="res-item"><div class="res-ic pdf"><span class="i-pdf-w"></span></div><div class="t"><b>Fiche — les 3 piliers du feedback</b><small>PDF · 2 pages</small></div><button class="btn btn-ghost">⬇ Télécharger</button></div>
         <div style="margin-top:var(--space-6);display:flex;justify-content:space-between"><button class="btn btn-ghost" onclick="lsNext('video')">◀ Vidéos</button><button class="btn btn-accent" onclick="lsNext('quiz')">Suivant · Quiz ▶</button></div>
@@ -814,7 +819,7 @@ a.ref-item:hover{background:var(--color-background)}
       <!-- Quiz -->
       <div id="ls-quiz" class="ls-panel">
         <h2 style="font-size:20px;margin-bottom:4px"><span class="i i-quiz"></span> Quiz de la semaine</h2>
-        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">5 questions · refaisable, sans seuil</p>
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">2.1 · Quiz · 5 questions · refaisable, sans seuil</p>
         <div class="quiz-score"><div class="big">80%</div><div class="attempts">Meilleur score · <b>2 tentatives</b></div><button class="btn btn-ghost">↻ Refaire</button></div>
         <div class="quiz-q"><span class="quiz-type">1/5 · QCM</span><h4>Quels sont les piliers du feedback ODBI ?</h4><div class="q-opt sel"><div class="box"></div> Clarté du fait</div><div class="q-opt sel"><div class="box"></div> Impact mesuré</div><div class="q-opt"><div class="box"></div> Autorité hiérarchique</div></div>
         <div class="quiz-q"><span class="quiz-type">2/5 · Vrai / Faux</span><h4>Un bon feedback commence par un jugement de valeur.</h4><div class="q-opt"><div class="box"></div> Vrai</div><div class="q-opt sel"><div class="box"></div> Faux</div></div>
@@ -1067,11 +1072,59 @@ a.ref-item:hover{background:var(--color-background)}
         <div class="flex-between mb6"><h3>Promotions par programme</h3><div style="display:flex;gap:10px"><button class="btn btn-ghost">Exporter assiduité / BPF → Notion</button><button class="btn btn-primary">+ Créer une promotion</button></div></div>
         <table class="table">
           <tr><th>Promotion</th><th>Programme</th><th>Membres</th><th>Début</th><th>Classes</th><th>Présentiels</th><th></th></tr>
-          <tr><td>Promo 2026 — Automne</td><td>La Voie des managers</td><td>42</td><td>Sept. 2026</td><td>8 visios</td><td>3</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Gérer</button></td></tr>
-          <tr><td>Promo 2026 — Printemps</td><td>La Voie des managers</td><td>38</td><td>Mars 2026</td><td>8 visios</td><td>3</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Gérer</button></td></tr>
-          <tr><td>BTC — 2ème génération</td><td>Born To Coach</td><td>24</td><td>Janv. 2026</td><td>12 visios</td><td>4</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Gérer</button></td></tr>
-          <tr><td>IC — Cohésion #1</td><td>IC : Cohésion de groupe</td><td>16</td><td>Oct. 2026</td><td>6 visios</td><td>2</td><td><button class="btn btn-ghost" style="padding:6px 12px">✏️ Gérer</button></td></tr>
+          <tr><td>Promo 2026 — Automne</td><td>La Voie des managers</td><td>42</td><td>Sept. 2026</td><td>8 visios</td><td>3</td><td><button class="btn btn-ghost" style="padding:6px 12px" onclick="document.getElementById('promoMgmt').scrollIntoView()">✏️ Gérer</button></td></tr>
+          <tr><td>Promo 2026 — Printemps</td><td>La Voie des managers</td><td>38</td><td>Mars 2026</td><td>8 visios</td><td>3</td><td><button class="btn btn-ghost" style="padding:6px 12px" onclick="document.getElementById('promoMgmt').scrollIntoView()">✏️ Gérer</button></td></tr>
+          <tr><td>BTC — 2ème génération</td><td>Born To Coach</td><td>24</td><td>Janv. 2026</td><td>12 visios</td><td>4</td><td><button class="btn btn-ghost" style="padding:6px 12px" onclick="document.getElementById('promoMgmt').scrollIntoView()">✏️ Gérer</button></td></tr>
+          <tr><td>IC — Cohésion #1</td><td>IC : Cohésion de groupe</td><td>16</td><td>Oct. 2026</td><td>6 visios</td><td>2</td><td><button class="btn btn-ghost" style="padding:6px 12px" onclick="document.getElementById('promoMgmt').scrollIntoView()">✏️ Gérer</button></td></tr>
         </table>
+
+        <div id="promoMgmt" class="edit-card" style="margin-top:var(--space-8)">
+          <h3>Gestion de la promotion : Promo 2026 — Automne (La Voie des managers)</h3>
+          <div class="tabs" style="margin-top:var(--space-4)">
+            <div class="tab active" onclick="pmTab(this,'part')">Participants</div>
+            <div class="tab" onclick="pmTab(this,'visios')">Visios &amp; replays</div>
+            <div class="tab" onclick="pmTab(this,'pres')">Présentiels</div>
+            <div class="tab" onclick="pmTab(this,'wa')">WhatsApp</div>
+          </div>
+
+          <div id="pm-part">
+            <div class="flex-between mb6"><h4 style="margin:0">42 participants</h4><button class="btn btn-primary">+ Ajouter / inscrire</button></div>
+            <table class="table"><tr><th>Participant</th><th>E-mail</th><th>Statut</th><th></th></tr>
+              <tr><td>Jean Dupont</td><td>jean.dupont@email.fr</td><td>Actif</td><td><button class="icon-btn">Retirer</button></td></tr>
+              <tr><td>Marie Lambert</td><td>marie.l@email.fr</td><td>Actif</td><td><button class="icon-btn">Retirer</button></td></tr>
+            </table>
+          </div>
+
+          <div id="pm-visios" class="hidden">
+            <div class="flex-between mb6"><h4 style="margin:0">Visios de la promotion</h4><button class="btn btn-primary">+ Programmer une visio</button></div>
+            <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">Rattachée à une séquence du cours. Salle BBB créée automatiquement ; le replay (BBB + Notta) apparaît ici après la visio.</p>
+            <table class="table"><tr><th>Séquence</th><th>Titre</th><th>Date</th><th>Heure</th><th>Salle / Replay</th><th></th></tr>
+              <tr><td>2.1</td><td>Créer l'engagement — Q&R</td><td><input type="date" value="2026-03-12" style="border:1px solid rgba(74,74,74,.2);border-radius:6px;padding:4px 8px"></td><td>18:00</td><td>Replay ✓ + Notta</td><td><button class="icon-btn">✏️</button></td></tr>
+              <tr><td>2.1</td><td>Atelier pratique</td><td><input type="date" value="2026-03-14" style="border:1px solid rgba(74,74,74,.2);border-radius:6px;padding:4px 8px"></td><td>10:00</td><td>Replay ✓ + Notta</td><td><button class="icon-btn">✏️</button></td></tr>
+              <tr><td>2.2</td><td>Le feedback en pratique</td><td><input type="date" value="2026-03-19" style="border:1px solid rgba(74,74,74,.2);border-radius:6px;padding:4px 8px"></td><td>18:00</td><td>À venir</td><td><button class="icon-btn">✏️</button></td></tr>
+            </table>
+          </div>
+
+          <div id="pm-pres" class="hidden">
+            <div class="flex-between mb6"><h4 style="margin:0">Présentiels de la promotion</h4><button class="btn btn-primary">+ Ajouter un présentiel</button></div>
+            <div class="edit-card">
+              <div class="row3">
+                <div class="field"><label>Dates</label><input value="14–15 nov. 2026"></div>
+                <div class="field"><label>Intitulé</label><input value="Séminaire d'intégration"></div>
+                <div class="field"><label>Lieu</label><input value="ODBI Campus — Lyon"></div>
+              </div>
+              <div class="row2">
+                <div class="field"><label>S'y rendre / hébergement (liens)</label><input placeholder="liens"></div>
+                <div class="field"><label>Règlement intérieur / fiche établissement (PDF)</label><div class="upload-zone" style="padding:var(--space-3)">Téléverser</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div id="pm-wa" class="hidden">
+            <div class="field" style="max-width:520px"><label>Lien du groupe WhatsApp de cette promotion</label><input value="https://chat.whatsapp.com/..."></div>
+            <p style="color:var(--color-neutral);font-size:12px">Chaque promotion a son propre groupe. Les membres y accèdent depuis la page du programme.</p>
+          </div>
+        </div>
       </div>
 
       <div id="admin-suivi" class="hidden">
@@ -1157,8 +1210,8 @@ a.ref-item:hover{background:var(--color-background)}
         <div class="tab active" onclick="ecTab(this,'sessions')">📚 Sessions</div>
         <div class="tab" onclick="ecTab(this,'lexique')">Lexique</div>
         <div class="tab" onclick="ecTab(this,'references')">Références</div>
-        <div class="tab" onclick="ecTab(this,'presentiels')">Présentiels</div>
       </div>
+      <p style="color:var(--color-neutral);font-size:12px;margin:-8px 0 var(--space-5)">ℹ️ Présentiels, visios, participants et WhatsApp se gèrent <b>par promotion</b> (onglet Promotions), car ils changent d'une promo à l'autre.</p>
 
       <!-- Sessions -->
       <div id="ec-sessions">
@@ -1186,29 +1239,6 @@ a.ref-item:hover{background:var(--color-background)}
         <button class="add-btn">+ Ajouter une référence</button>
       </div>
 
-      <!-- Présentiels -->
-      <div id="ec-presentiels" class="hidden">
-        <div class="field" style="max-width:320px;margin-bottom:var(--space-4)"><label>Promotion concernée</label><select class="promo-select"><option>Promo 2026 — Automne</option><option>Promo 2027 — Printemps</option></select></div>
-        <div class="edit-card">
-          <div class="flex-between mb6"><h3 style="margin:0">Présentiel 1</h3><button class="icon-btn">🗑️</button></div>
-          <div class="row3">
-            <div class="field"><label>Dates</label><input type="text" value="14–15 nov. 2026"></div>
-            <div class="field"><label>Intitulé</label><input value="Séminaire d'intégration"></div>
-            <div class="field"><label>Lieu</label><input value="ODBI Campus — Lyon"></div>
-          </div>
-          <div class="field"><label>Horaires</label><input value="9h – 17h" style="max-width:200px"></div>
-          <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--color-neutral);margin:var(--space-4) 0 var(--space-3)">Détails pratiques & documents</h4>
-          <div class="row2">
-            <div class="field"><label>🚗 S'y rendre (accès & transport)</label><input placeholder="Lien ou texte"></div>
-            <div class="field"><label>🏨 Se loger (hébergements)</label><input placeholder="Lien ou texte"></div>
-          </div>
-          <div class="row2">
-            <div class="field"><label>📋 Règlement intérieur (PDF)</label><div class="upload-zone" style="padding:var(--space-4)"><span class="big">📄</span>Téléverser</div></div>
-            <div class="field"><label>🏢 Fiche de l'établissement (PDF)</label><div class="upload-zone" style="padding:var(--space-4)"><span class="big">📄</span>Téléverser</div></div>
-          </div>
-        </div>
-        <button class="add-btn">+ Ajouter un présentiel</button>
-      </div>
     </section>
 
     <!-- ===== ÉDITEUR DE SESSION (admin) ===== -->
@@ -1232,9 +1262,9 @@ a.ref-item:hover{background:var(--color-background)}
 
       <h3 class="section-title" style="margin-top:0">Séquences (semaines) de la session</h3>
       <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">Découpez la session en semaines. Chaque semaine a son contenu et, si besoin, sa visio. <b>Les dates des visios sont fixées par promotion</b> (onglet Promotions → Planning des visios).</p>
-      <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>Semaine 1 — Créer l'engagement</b><small><span class="i i-exo"></span> 1 exo · <span class="i i-video"></span> 3 vidéos · <span class="i i-audio"></span> 2 ressources · <span class="i i-quiz"></span> quiz · <span class="i i-visio"></span> visio</small></div><button class="icon-btn">✏️ Contenu</button><button class="icon-btn">🗑️</button></div>
+      <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>2.1 — Créer l'engagement</b><small><span class="i i-exo"></span> 1 exo · <span class="i i-video"></span> 3 vidéos · <span class="i i-audio"></span> 2 ressources · <span class="i i-quiz"></span> quiz · <span class="i i-visio"></span> visio</small></div><button class="icon-btn">✏️ Contenu</button><button class="icon-btn">🗑️</button></div>
       <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>Semaine 2 — Le feedback en pratique</b><small><span class="i i-exo"></span> 1 exo · <span class="i i-video"></span> 1 vidéo · <span class="i i-audio"></span> 1 ressource · <span class="i i-quiz"></span> quiz · <span class="i i-visio"></span> visio</small></div><button class="icon-btn">✏️ Contenu</button><button class="icon-btn">🗑️</button></div>
-      <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>Semaine 3 — Gérer les tensions</b><small><span class="i i-exo"></span> 1 exo · <span class="i i-video"></span> 2 vidéos · <span class="i i-quiz"></span> quiz · <span class="i i-visio"></span> visio</small></div><button class="icon-btn">✏️ Contenu</button><button class="icon-btn">🗑️</button></div>
+      <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>2.3 — Gérer les tensions</b><small><span class="i i-exo"></span> 1 exo · <span class="i i-video"></span> 2 vidéos · <span class="i i-quiz"></span> quiz · <span class="i i-visio"></span> visio</small></div><button class="icon-btn">✏️ Contenu</button><button class="icon-btn">🗑️</button></div>
       <button class="add-btn" style="margin-bottom:var(--space-8)">+ Ajouter une semaine</button>
 
       <h3 class="section-title" style="margin-top:0">Contenu de la séquence — <span style="color:var(--color-accent)">Semaine 1</span></h3>
@@ -1243,7 +1273,6 @@ a.ref-item:hover{background:var(--color-background)}
         <div class="tab" onclick="esTab(this,'video')">🎬 Vidéos</div>
         <div class="tab" onclick="esTab(this,'res')">🎧 Ressources</div>
         <div class="tab" onclick="esTab(this,'quiz')">✅ Quiz</div>
-        <div class="tab" onclick="esTab(this,'visio')">🎥 Visio</div>
       </div>
 
       <!-- Exercices -->
@@ -1291,37 +1320,6 @@ a.ref-item:hover{background:var(--color-background)}
       </div>
 
       <!-- Visio -->
-      <div id="es-visio" class="hidden">
-        <p style="color:var(--color-neutral);margin-bottom:var(--space-4)">Une séquence peut avoir <b>une ou plusieurs visios</b>. La salle <b>BigBlueButton</b> est générée automatiquement. Date complète choisie au calendrier (jour/mois/année).</p>
-        <div class="edit-card">
-          <div class="flex-between mb6"><h3 style="margin:0">Visio 1</h3><button class="icon-btn">🗑️</button></div>
-          <div class="row2">
-            <div class="field"><label>Titre de la visio</label><input value="Créer l'engagement — Q&R"></div>
-            <div class="field"><label>Animateur</label><input value="Yohann Duclos"></div>
-          </div>
-          <div class="row3">
-            <div class="field"><label>Date</label><input type="date" value="2026-03-12"></div>
-            <div class="field"><label>Heure</label><input type="time" value="18:00"></div>
-            <div class="field"><label>Durée</label><input value="1h"></div>
-          </div>
-          <div class="field"><label>Salle BigBlueButton</label><input value="Créée automatiquement (classe-virtuelle.com)" readonly></div>
-        </div>
-        <div class="edit-card">
-          <div class="flex-between mb6"><h3 style="margin:0">Visio 2</h3><button class="icon-btn">🗑️</button></div>
-          <div class="row2">
-            <div class="field"><label>Titre de la visio</label><input value="Atelier pratique — mise en situation"></div>
-            <div class="field"><label>Animateur</label><input value="Marie Lambert"></div>
-          </div>
-          <div class="row3">
-            <div class="field"><label>Date</label><input type="date" value="2026-03-14"></div>
-            <div class="field"><label>Heure</label><input type="time" value="10:00"></div>
-            <div class="field"><label>Durée</label><input value="1h30"></div>
-          </div>
-          <div class="field"><label>Salle BigBlueButton</label><input value="Créée automatiquement (classe-virtuelle.com)" readonly></div>
-        </div>
-        <button class="add-btn">+ Ajouter une visio à cette séquence</button>
-        <p style="font-size:12px;color:var(--color-neutral);margin-top:var(--space-3)">Pour une autre promotion, les dates se redéfinissent pour la promo concernée.</p>
-      </div>
     </section>
 
     <!-- ===== PROFIL ===== -->
@@ -1401,6 +1399,12 @@ function goTo(page){
 const LSLABEL={ex:'Exercice',video:'Vidéos',res:'Ressources',quiz:'Quiz',replay:'Replay'};
 function showLsPanel(t){['ex','video','res','quiz','replay'].forEach(function(x){var p=document.getElementById('ls-'+x);if(p)p.classList.toggle('active',x===t)});var c=document.getElementById('lsCur');if(c)c.textContent=LSLABEL[t]||'';document.querySelector('.main').scrollTo(0,0);}
 function lsStep(el,t){document.querySelectorAll('#ctx-session .sstep').forEach(function(s){s.classList.remove('active')});if(el)el.classList.add('active');showLsPanel(t);}
+function pickVid(el,title,idx,dur){
+  el.parentNode.querySelectorAll('.vidtab').forEach(function(x){x.classList.remove('active')});
+  el.classList.add('active');
+  var t=document.getElementById('vidTitle');if(t)t.textContent=title;
+  var l=document.getElementById('vidLabel');if(l)l.textContent='Vidéo '+idx+' — Vimeo · '+dur;
+}
 function lsNext(t){var steps=document.querySelectorAll('#ctx-session .sweek.open .sstep');steps.forEach(function(s){s.classList.remove('active');if((s.getAttribute('onclick')||'').indexOf("'"+t+"'")>=0)s.classList.add('active');});showLsPanel(t);}
 function adminTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
   ['members','courses','promos','suivi','integ'].forEach(x=>document.getElementById('admin-'+x).classList.add('hidden'));
@@ -1489,15 +1493,18 @@ function setBoRole(r){
   if(coachHidden) adminTab(document.getElementById('tab-suivi'),'suivi');
   else adminTab(document.getElementById('tab-members'),'members');
 }
+function pmTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});el.classList.add('active');
+  ['part','visios','pres','wa'].forEach(function(x){document.getElementById('pm-'+x).classList.add('hidden')});
+  document.getElementById('pm-'+t).classList.remove('hidden')}
 function suiviScope(v){
   document.getElementById('suivi-all').classList.toggle('hidden',v!=='all');
   document.getElementById('suivi-one').classList.toggle('hidden',v!=='one');
 }
 function ecTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
-  ['sessions','lexique','references','presentiels'].forEach(x=>document.getElementById('ec-'+x).classList.add('hidden'));
+  ['sessions','lexique','references'].forEach(x=>document.getElementById('ec-'+x).classList.add('hidden'));
   document.getElementById('ec-'+t).classList.remove('hidden')}
 function esTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
-  ['ex','video','res','quiz','visio'].forEach(x=>document.getElementById('es-'+x).classList.add('hidden'));
+  ['ex','video','res','quiz'].forEach(x=>document.getElementById('es-'+x).classList.add('hidden'));
   document.getElementById('es-'+t).classList.remove('hidden')}
 switchPromo('lvm-2026-aut');
 </script>

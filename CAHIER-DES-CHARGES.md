@@ -170,9 +170,12 @@ les accès de connexion** par e-mail (cf. §13, flux Notion → LMS).
 Inspirée des LMS type Skool :
 - **Menu principal en haut** (barre horizontale, texte sans emojis, onglet actif souligné) :
   Livret · Les programmes · Tableau de bord · Visios live · YoDalf · Progression · Agenda · Back-office.
-- **Barre contextuelle à gauche** (n'apparaît que dans un programme / une session) :
-  - Dans un **programme** : ses sections avec **icônes** (Sessions, Présentiels, Lexique, Références, Participants, WhatsApp).
-  - Dans une **session** : **accordéon** semaines → étapes (Exercice, Vidéos, Ressources, Quiz, Replay), avec « ← retour au programme ».
+- **Barre contextuelle à gauche** (n'apparaît que dans un programme / une session), **présentée dans un bloc/carte** (pas collée au bord) :
+  - Dans un **programme** : ses sections avec **icônes vectorielles** (SVG, pas d'emojis), **regroupées en deux familles** :
+    - **Programme** (asynchrone, partagé entre promos) : Sessions, Lexique, Références.
+    - **Ma promotion** (synchrone, par promo) : Présentiels, Participants, WhatsApp.
+  - Dans une **session** : **accordéon** séquences → étapes, libellées **« 2.1 — [thématique] », « 2.2 — [thématique] »…** (et non « Semaine 1/2/3 »), étapes = Exercice, Vidéos, Ressources, Quiz, Replay ; en-tête avec recherche, méta (« 3 thématiques · 40% ») et « Tout réduire » ; « ← retour au programme ».
+- **Aucune emoji** dans l'interface : les types de contenu (exercice, vidéo, audio, PDF, quiz, visio, verrou, cloche) utilisent des **icônes SVG**. Seules restent les emojis d'identité explicitement validées (YoDalf, badges).
 - **Contenu à droite** : fil d'Ariane + progression ; navigation étape par étape (Précédent/Suivant) possible.
 - Objectif : éviter le double menu (le menu global est en haut, la colonne gauche est contextuelle).
 
@@ -180,13 +183,17 @@ Inspirée des LMS type Skool :
 
 ## 7. Structure d'un cours
 
-Page cours = **6 onglets** :
+Côté membre, la barre contextuelle gauche regroupe les sections en **deux familles** :
+
+**Programme** (asynchrone, partagé entre promos) :
 1. **Sessions** — liste des sessions (contenu asynchrone)
-2. **Présentiels** — dates + lieux + horaires (par promotion), **affichés les uns sous les autres**,
+2. **Lexique** — termes clés (niveau cours), avec **index alphabétique** (A–Z) pour filtrer/aller à un terme
+3. **Références** — livres, vidéos, articles recommandés (niveau cours), **avec liens cliquables**
+
+**Ma promotion** (synchrone, par promo) :
+4. **Présentiels** — dates + lieux + horaires (par promotion), **affichés les uns sous les autres**,
    avec un volet **« Détails pratiques & documents »** par présentiel : accès/transport, hébergement
    (se loger), règlement intérieur, fiche de l'établissement (liens/documents)
-3. **Lexique** — termes clés (niveau cours), avec **index alphabétique** (A–Z) pour filtrer/aller à un terme
-4. **Références** — livres, vidéos, articles recommandés (niveau cours), **avec liens cliquables**
 5. **Participants** — annuaire des membres de la promotion (photo, nom, ville)
 6. **WhatsApp** — accès au groupe WhatsApp de la promotion
 
@@ -200,16 +207,19 @@ Une session **n'est pas un bloc unique** : elle est organisée en **séquences**
 et peut **s'étaler sur plusieurs semaines** (adaptation pédagogique).
 
 ### Une session = une suite de séquences
-- Une session est une suite de **séquences** (≈ une semaine / un thème chacune).
+- Une session est une suite de **séquences**, libellées **« 2.1 — [thématique] », « 2.2 — [thématique] »…**
+  (numéro de session . numéro de séquence + nom de la thématique). On **n'emploie pas** le mot « Semaine ».
 - Une séquence peut contenir **plusieurs vidéos** et **plusieurs ressources**.
-- Chaque séquence est une **suite de blocs séparés et color-codés** (cartes distinctes) :
-  1. 📝 **Exercice(s)** préparatoire(s)
-  2. 🎬 **Vidéo(s)** (Vimeo — playlist possible)
-  3. 🎧 **Ressource(s)** synchronisées (audios / PDF, plusieurs possibles)
-  4. ✅ **Quiz** de la séquence
-  5. 🎥 **Replay** de la visio de la semaine (BBB + transcription/chapitrage/résumé Notta, par promo)
-- Affichage : **accordéon** de séquences, avec libellé de semaine et déverrouillage progressif.
-- Le **replay est rangé à la fin du bloc de la semaine** (pas dans une liste séparée).
+- Chaque séquence est une **suite de blocs séparés** (étapes, icônes SVG) :
+  1. **Exercice(s)** préparatoire(s)
+  2. **Vidéo(s)** (Vimeo — plusieurs possibles)
+  3. **Ressource(s)** synchronisées (audios / PDF, plusieurs possibles)
+  4. **Quiz** de la séquence
+  5. **Replay** de la visio (BBB + transcription/chapitrage/résumé Notta, par promo)
+- Affichage : **accordéon** de séquences, avec déverrouillage progressif et **cases vertes de validation**.
+- **Plusieurs vidéos** dans une étape Vidéos : affichées en **onglets/chips** au-dessus d'un **lecteur pleine largeur**
+  (pas de liste à droite) ; le clic sur une chip change le lecteur, avec « Reprendre / Marquer / Précédent / Suivant ».
+- Le **replay est rangé à la fin du bloc de la séquence** (pas dans une liste séparée).
 
 ### Mapping session / semaine / thème (flexible)
 - **Cas standard : 1 session = 1 semaine.**
@@ -370,31 +380,40 @@ Onglets :
 ### Éditeur de cours (back-office)
 Doit être **ergonomique** (rechargement manuel des contenus depuis Moodle).
 
-**Éditeur de cours** :
+**Principe directeur — séparation programme / promotion** (décision structurante) :
+- **Ce qui appartient au PROGRAMME** (asynchrone, partagé entre toutes les promos) :
+  Sessions, **Lexique, Références**, et au sein des sessions **Exercices, Vidéos, Ressources, Quiz**.
+- **Ce qui appartient à une PROMOTION** (synchrone, varie d'une promo à l'autre) :
+  **Participants, Visios + replays, Présentiels, WhatsApp**.
+- Conséquence : on **n'édite pas** les visios ni les présentiels dans l'éditeur de programme/session ;
+  ils se gèrent dans **Back-office → Promotions** (carte de gestion de la promo sélectionnée).
+
+**Éditeur de cours (programme)** :
 - Paramètres : nom, univers, animateur, statut (publié/brouillon), durée, description, image de couverture
-- Onglets d'édition :
+- **Déverrouillage du programme** (toggle pédagogie inversée, **par programme** — pas global)
+- Onglets d'édition (**uniquement le périmètre programme**) :
   - **Sessions** (ajout / réordonnancement / duplication / suppression)
   - **Lexique** (terme + définition)
   - **Références** (type + titre + **lien/URL**)
-  - **Présentiels** (par promotion) : dates, intitulé, lieu, horaires + **détails pratiques**
-    (🚗 accès/transport, 🏨 hébergement, 📋 règlement intérieur en PDF, 🏢 fiche établissement en PDF)
-  - **Déverrouillage du programme** (toggle pédagogie inversée, par programme)
+  - Note rappelant que **Présentiels, visios, participants et WhatsApp se gèrent par promotion**.
 
 **Éditeur de session** :
 - Titre, règle d'accès (verrouillage), **toggle « pédagogie inversée »** (gating exercices, activable par session — non bloquant)
-- **Découpage en séquences (semaines)** : ajout / réordonnancement / suppression des semaines ;
-  chaque semaine a son contenu et, le cas échéant, sa visio.
+- **Découpage en séquences** (« 2.1, 2.2… ») : ajout / réordonnancement / suppression.
 - Édition du **contenu de la séquence sélectionnée** via onglets, **au même niveau** :
   **Exercices**, **Vidéos** (Vimeo, plusieurs), **Ressources** (audios/PDF, plusieurs),
-  **Quiz** (constructeur ~5 questions), **🎥 Visio**.
+  **Quiz** (constructeur ~5 questions). **Pas d'onglet Visio** (la visio est par promotion).
 
-### Programmation des visios
-- La **visio se crée dans l'éditeur de session** (onglet **Visio** de la séquence), au même
-  titre qu'un exercice ou une ressource — **pas** dans Promotions.
-- Une séquence (semaine) peut avoir **une ou plusieurs visios** (donc plusieurs replays côté membre).
-- On y définit : titre, animateur, **date complète via calendrier (jour/mois/année)**, heure, durée ;
-  la **salle BBB est créée automatiquement**.
-- La date se (re)définit pour la promotion concernée.
+### Gestion d'une promotion (Back-office → Promotions)
+Carte de gestion de la promo sélectionnée, avec sous-onglets :
+- **Participants** — annuaire/membres de la promo (ajout, rôle, accès).
+- **Visios + replays** — **c'est ici que se programment les visios** (et non dans la session) :
+  titre, séquence rattachée, animateur, **date complète via calendrier (jour/mois/année)**, heure, durée ;
+  **salle BBB créée automatiquement** ; une séquence peut avoir **une ou plusieurs visios** par promo
+  (donc plusieurs replays) ; les replays (BBB + Notta) s'attachent à la séquence côté membre.
+- **Présentiels** — dates, intitulé, lieu, horaires + **détails pratiques** (accès/transport,
+  hébergement, règlement intérieur PDF, fiche établissement PDF).
+- **WhatsApp** — lien du groupe de la promotion.
 
 ### Déverrouillage du contenu
 - Le déverrouillage (ignorer la pédagogie inversée) se fait **par programme**
@@ -511,10 +530,13 @@ Le profil affiche aussi :
 
 ### Livret d'accueil
 - **Intégré dans la plateforme** (page interne avec **iframe Notion**), pas un lien externe.
-- Accessible depuis le **menu de gauche**, **au-dessus des programmes**.
+- Accessible depuis le **menu principal (barre du haut)**, **en première position, avant « Les programmes »**.
 - Source : Livret d'Accueil Client ODBI (Notion) — **lien d'intégration officiel** :
   `https://odbi.notion.site/ebd//13d94934418a80cb843dfaebb32328ef` (le `/ebd/` est l'endpoint
   d'embed Notion). Page publiée sur le web ; bouton « Ouvrir dans un onglet » en repli.
+- **Limite de la maquette locale** : l'iframe Notion **ne s'affiche pas** quand le fichier est ouvert
+  en `file://` (Notion exige un hôte `https`). L'intégration **fonctionnera une fois la plateforme hébergée**
+  (Next.js sur un domaine ODBI). En attendant, la maquette affiche une note explicative + le bouton de repli.
 
 ### Agenda
 - Présenté comme un **vrai calendrier** (vue mensuelle), filtré sur les promos du membre.
