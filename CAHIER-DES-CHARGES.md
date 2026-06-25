@@ -366,7 +366,7 @@ enregistrer, et reçoivent des retours (pairs + coach + IA).
 
 ### Accès (dans le programme, pas dans la barre du haut)
 - **Pas d'entrée dans le menu du haut** (allégé). La fonctionnalité vit **dans le menu de gauche du programme**,
-  avec un **libellé contextuel** :
+  **dans la section « Ma promotion »**, avec un **libellé contextuel** :
   - **« Training »** dans les programmes de **l'École** → le membre **programme** ses séances.
   - **« Coaching »** dans les programmes de **La Voie** → le membre **participe** comme coaché (sur invitation).
 - Les **invités** (qui n'ont pas forcément l'entrée dans leur menu) sont prévenus par **notification** (cloche
@@ -384,11 +384,12 @@ enregistrer, et reçoivent des retours (pairs + coach + IA).
 
 ### Visionnage & feedback
 - **Supervision = Coach/Animateur** (pas de rôle « Superviseur » dédié).
-- **Feedback humain = vidéo (Loom)** : déposé par le **coach/animateur**, les **observateurs** et le
-  **participant supplémentaire** (écran + voix). Chaque feedback est **transcrit par Notta**.
+- **Feedback humain = vidéo (Loom) OU document** : déposé par le **coach/animateur**, les **observateurs** et le
+  **participant supplémentaire** (vidéo écran+voix, ou fichier/grille). Chaque feedback **vidéo** est **transcrit par Notta**.
 - **Feedback YoDalf = écrit** : généré **depuis la transcription** (points forts / axes / suggestions horodatés).
-- **Confidentialité** : les **feedbacks sont réservés aux participants de l'École**. Le **coaché (La Voie)
-  ne voit pas** les feedbacks (ni Loom, ni YoDalf).
+- **Confidentialité** : les **feedbacks sont visibles par tous les participants de l'École** de la séance
+  (coach/animateur, participant invité, observateur, **et le coaché s'il est lui-même de l'École**).
+  **Seul un participant de La Voie n'y a pas accès** (ni Loom, ni document, ni YoDalf).
 - **Accès de l'évaluateur** (coach d'un autre programme) : via la **notification** + une liste **« À évaluer »**
   (la page séance étant autonome, l'appartenance au programme n'est pas requise).
 
@@ -399,8 +400,10 @@ enregistrer, et reçoivent des retours (pairs + coach + IA).
 ### Modèle de données
 - `SeanceEntrainement` : créateur, date, salle BBB, participants[] (rôle : coach / coaché / coach‑animateur /
   participant / observateur), programmes concernés, visibilité, enregistrement, transcription.
-- `Feedback` : séance, auteur, type (**vidéo Loom** + **transcription Notta**), URL Loom, date,
-  **visible_ecole_seulement = true** — + `FeedbackYoDalf` (écrit, auto, même restriction).
+- `Feedback` : séance, auteur, type (**vidéo Loom** + transcription Notta **ou document**), URL/fichier, date,
+  **visible_participants_ecole = true** (exclut les participants La Voie) — + `FeedbackYoDalf` (écrit, auto, même restriction).
+- **Suivi pédagogique (BO)** : alimenté automatiquement par les séances (séances réalisées comme coach / coaché,
+  feedbacks reçus & donnés, dernier feedback) — pris en compte dans l'assiduité (Qualiopi).
 
 ---
 
