@@ -359,6 +359,41 @@ Flux : `Visio BBB → enregistrement BBB → Notta (transcription + chapitrage +
 
 ---
 
+## 11bis. Séances d'entraînement (pratique du coaching)
+
+Module **distinct des visios de promo** : les membres de **l'École** s'entraînent à coacher, se font
+enregistrer, et reçoivent des retours (pairs + coach + IA). Entrée de menu dédiée **« Entraînement »**.
+
+### Création d'une séance
+- **Réservée aux membres de l'École** (BTC / IC). Les membres **La Voie ne créent pas** de séances entre eux.
+- Le créateur (= **Coach**, celui qui s'entraîne) choisit date/heure/durée ; **salle BBB créée automatiquement**,
+  **enregistrement activé** (→ transcription & chapitrage **Notta**).
+- **Invitation d'un coaché** : via l'**annuaire** (École ou **La Voie**). L'invité reçoit une **notification**
+  (accepte / refuse).
+- Rôles dans la séance : **Coach** (s'entraîne), **Coaché** (le « client », souvent un La Voie), **Observateur(s)**.
+- **Visibilité du replay** : **privée par défaut** (invités + coach/animateur), élargissable par le créateur
+  (ma promo / inter-promos). Tracée RGPD.
+
+### Visionnage & feedback
+- Visionnable par les participants, le **Coach/Animateur** des programmes concernés (c'est lui qui supervise —
+  **pas de rôle « Superviseur » dédié**), et selon la visibilité.
+- **Feedback humain = vidéo (Loom)** : le coach, un collègue ou un invité enregistre **écran + voix** (Loom) ;
+  la vidéo est rattachée à la séance. Plusieurs feedbacks possibles.
+- **Feedback YoDalf = écrit** : généré **depuis la transcription** (points forts / axes de progrès / suggestions,
+  verbatims horodatés).
+- Vue **« À évaluer »** pour le coach/animateur : séances de ses programmes en attente de retour.
+
+### Intégrations mobilisées
+- **BigBlueButton** (salle + enregistrement), **Notta** (transcription/chapitrage/résumé), **Loom** (feedback
+  vidéo — connecteur à configurer, compte ODBI existant), **YoDalf/Claude** (feedback écrit).
+
+### Modèle de données
+- `SeanceEntrainement` : créateur, date, salle BBB, participants[] (rôle), programmes concernés, visibilité,
+  enregistrement, transcription/chapitrage/résumé.
+- `Feedback` : séance, auteur, type (**vidéo Loom** / texte), URL Loom, date — + `FeedbackYoDalf` (écrit, auto).
+
+---
+
 ## 12. Assistant IA — « YoDalf »
 
 - Mentor IA basé sur **Claude (API Anthropic)**

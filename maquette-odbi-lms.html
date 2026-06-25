@@ -252,6 +252,9 @@ a{color:inherit;text-decoration:none}
 .rep-trans p .t{color:var(--color-accent);font-family:var(--font-body);font-weight:500;margin-right:8px}
 .replay-actions .btn.active{background:var(--color-accent);color:#fff}
 .lsvid-actions .btn.active{background:var(--color-accent);color:#fff}
+/* Feedback vidéo Loom */
+.loom-thumb{height:120px;background:linear-gradient(135deg,#625df5,#8b7ff7);display:flex;align-items:center;justify-content:center;position:relative}
+.loom-thumb .play{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;color:#625df5;font-size:15px;padding-left:3px}
 .player .play{width:74px;height:74px;border-radius:50%;background:rgba(255,255,255,.18);border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:26px;backdrop-filter:blur(4px)}
 .player .tag{position:absolute;top:14px;left:14px;font-size:11px;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:var(--radius-full)}
 .lesson-layout{display:grid;grid-template-columns:1fr 320px;gap:var(--space-6)}
@@ -613,6 +616,7 @@ a.ref-item:hover{background:var(--color-background)}
       <a data-page="catalog" onclick="goTo('catalog')">Les programmes</a>
       <a data-page="dash" class="active" onclick="goTo('dash')">Tableau de bord</a>
       <a data-page="visio" onclick="goTo('visio')">Visios live</a>
+      <a data-page="train" onclick="goTo('train')">Entraînement</a>
       <a data-page="ai" onclick="goTo('ai')">YoDalf</a>
       <a data-page="game" onclick="goTo('game')">Progression</a>
       <a data-page="agenda" onclick="goTo('agenda')">Agenda</a>
@@ -1056,6 +1060,106 @@ a.ref-item:hover{background:var(--color-background)}
       <div class="note" style="background:rgba(17,76,106,.06);border-left:4px solid var(--color-accent);border-radius:8px;padding:14px 16px;margin-top:var(--space-8);font-size:13px">Les <b>replays</b> (avec transcription, chapitrage et résumé Notta) se trouvent désormais <b>dans chaque session du cours</b>, onglet « 🎥 Replay ».</div>
     </section>
 
+    <!-- ENTRAÎNEMENT (séances de pratique) -->
+    <section id="page-train" class="page">
+      <div class="flex-between mb6">
+        <div class="page-head" style="margin:0"><h1>Entraînement</h1><p>Séances de pratique du coaching — membres de l'École, avec des coachés de La Voie (BBB + Loom)</p></div>
+        <button class="btn btn-accent" onclick="toggleTrainForm()">+ Programmer une séance</button>
+      </div>
+
+      <div id="trainForm" class="edit-card hidden" style="margin-bottom:var(--space-6)">
+        <h3>Nouvelle séance d'entraînement</h3>
+        <div class="row3">
+          <div class="field"><label>Date</label><input type="date" value="2026-07-03"></div>
+          <div class="field"><label>Heure</label><input type="time" value="18:00"></div>
+          <div class="field"><label>Durée</label><select><option>45 min</option><option>1h</option><option>1h30</option></select></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label>Coach (qui s'entraîne)</label><input value="Karim Nadir — BTC : 2ème génération"></div>
+          <div class="field"><label>Coaché — invité via l'annuaire</label><input placeholder="Rechercher un membre (École ou La Voie)…" value="Marie Lambert — La Voie"></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label>Observateurs (facultatif)</label><input placeholder="Ajouter des participants…" value="Sophie Roux"></div>
+          <div class="field"><label>Visibilité du replay</label><select><option>Privée (invités + coach/animateur)</option><option>Ma promo</option><option>Inter-promos</option></select></div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:var(--space-2)"><button class="btn btn-primary">Créer la séance (salle BBB)</button><button class="btn btn-ghost" onclick="toggleTrainForm()">Annuler</button></div>
+        <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-4)">ℹ️ Le coaché invité reçoit une <b>notification</b> (accepte / refuse). La <b>salle BBB</b> est créée automatiquement, l'<b>enregistrement</b> est activé (transcription & chapitrage Notta).</p>
+      </div>
+
+      <div class="section-title" style="margin-top:0">Mes séances</div>
+      <div class="grid grid-2">
+        <div class="card course-card" onclick="goTo('train-detail')" style="padding:var(--space-5)">
+          <div class="flex-between"><span class="course-tag" style="color:var(--color-accent);background:rgba(17,76,106,.1)">À venir · 3 juil. · 18h00</span><span class="role" style="background:rgba(74,74,74,.08);color:var(--color-neutral)">Privée</span></div>
+          <h3 style="font-size:16px;margin-top:10px">Karim (coach) ↔ Marie (coachée)</h3>
+          <p style="color:var(--color-neutral);font-size:13px;margin-top:6px">BTC 2 ↔ La Voie · Observatrice : Sophie · 45 min</p>
+        </div>
+        <div class="card course-card" onclick="goTo('train-detail')" style="padding:var(--space-5)">
+          <div class="flex-between"><span class="course-tag" style="color:var(--color-asparagus);background:rgba(134,164,63,.12)">Enregistrée · 21 juin</span><span class="role" style="background:rgba(74,74,74,.08);color:var(--color-neutral)">Privée</span></div>
+          <h3 style="font-size:16px;margin-top:10px">Karim (coach) ↔ Thomas (coaché)</h3>
+          <p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Replay 42 min · 2 feedbacks vidéo · feedback YoDalf ✓</p>
+        </div>
+      </div>
+
+      <div class="section-title">À évaluer — en tant que coach / animateur</div>
+      <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">Séances des programmes que vous animez, en attente de votre retour. Vous visionnez et déposez un <b>feedback vidéo (Loom)</b>.</p>
+      <div class="grid grid-2">
+        <div class="card course-card" onclick="goTo('train-detail')" style="padding:var(--space-5)">
+          <div class="flex-between"><span class="course-tag" style="color:#d64545;background:rgba(214,69,69,.1)">À évaluer · 19 juin</span><span class="role coach">Coach</span></div>
+          <h3 style="font-size:16px;margin-top:10px">Léa (coach) ↔ Karim (coaché)</h3>
+          <p style="color:var(--color-neutral);font-size:13px;margin-top:6px">BTC 1 · 38 min · feedback YoDalf prêt · 0 feedback vidéo</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENTRAÎNEMENT — détail d'une séance -->
+    <section id="page-train-detail" class="page">
+      <div class="breadcrumb" onclick="goTo('train')">Entraînement / <b>Karim ↔ Thomas</b></div>
+      <div class="mb6">
+        <h1 style="font-size:24px">Séance d'entraînement</h1>
+        <p style="color:var(--color-neutral);margin-top:6px">21 juin · 42 min · <b>Karim Nadir</b> (coach · BTC 2) ↔ <b>Thomas Petit</b> (coaché · La Voie) · Observatrice : Sophie · <span style="color:var(--color-neutral)">Visibilité : privée</span></p>
+      </div>
+
+      <div class="card" style="padding:var(--space-5);margin-bottom:var(--space-6)">
+        <div class="lsvid-row">
+          <div class="player vid-main"><span class="tag"><span class="i iw-visio"></span> Replay BBB · 42 min</span><div class="play">▶</div></div>
+          <div class="lsvid-info">
+            <h3>Replay de la séance</h3>
+            <p>Enregistrement BigBlueButton, transcrit & chapitré par Notta.</p>
+            <div class="lsvid-actions replay-actions">
+              <button class="btn btn-accent">▶ Revoir (BBB)</button>
+              <button class="btn btn-ghost" onclick="repShow(this,'trans')">📝 Transcription</button>
+              <button class="btn btn-ghost" onclick="repShow(this,'chap')">📑 Chapitrage</button>
+              <button class="btn btn-ghost active" onclick="repShow(this,'resume')">📄 Résumé</button>
+            </div>
+          </div>
+        </div>
+        <div class="rep-content" style="margin-top:var(--space-4)"></div>
+      </div>
+
+      <div class="section-title" style="margin-top:0">Feedbacks</div>
+
+      <div class="card" style="padding:var(--space-5);margin-bottom:var(--space-4);border-left:4px solid var(--color-asparagus)">
+        <div class="flex-between"><h3 style="font-size:16px;display:flex;align-items:center;gap:8px">🧙 Feedback YoDalf <span class="badge" style="background:var(--color-asparagus)">IA · écrit</span></h3><span style="color:var(--color-neutral);font-size:12px">généré depuis la transcription</span></div>
+        <div style="margin-top:12px;font-size:13.5px;line-height:1.8;color:var(--color-jet)">
+          <b>Points forts</b> — écoute active et reformulations justes (08:12, 17:40) ; bon contrat de départ.<br>
+          <b>Axes de progrès</b> — questions parfois fermées (12:05) ; clarifier l'objectif plus tôt ; laisser davantage de silences.<br>
+          <b>Suggestion</b> — tester une question d'échelle (0–10) pour mesurer l'avancée du coaché.
+        </div>
+      </div>
+
+      <div class="flex-between" style="margin:var(--space-5) 0 var(--space-4)">
+        <h3 style="font-size:16px">Feedbacks vidéo <span style="color:var(--color-neutral);font-size:12px;font-weight:400">· écran + voix (Loom)</span></h3>
+        <button class="btn btn-accent">🎥 Enregistrer un feedback (Loom)</button>
+      </div>
+      <div class="grid grid-3">
+        <div class="card"><div class="loom-thumb"><div class="play">▶</div></div><div class="course-body"><h3 style="font-size:14px">Retour de Yohann <span class="role coach" style="font-size:9px">Coach</span></h3><div class="meta" style="color:var(--color-neutral);font-size:12px;margin-top:4px">Loom · 6 min · 22 juin</div></div></div>
+        <div class="card"><div class="loom-thumb"><div class="play">▶</div></div><div class="course-body"><h3 style="font-size:14px">Retour de Sophie <span class="role member" style="font-size:9px">Pair</span></h3><div class="meta" style="color:var(--color-neutral);font-size:12px;margin-top:4px">Loom · 4 min · 23 juin</div></div></div>
+        <div class="card" style="border:1px dashed rgba(74,74,74,.25);display:flex;align-items:center;justify-content:center;min-height:160px;cursor:pointer"><div style="text-align:center;color:var(--color-neutral)"><div style="font-size:26px">🎥</div><div style="font-size:13px;font-family:var(--font-title);font-weight:500;margin-top:6px">Ajouter un feedback Loom</div></div></div>
+      </div>
+
+      <div style="margin-top:var(--space-6)"><button class="btn btn-ghost" onclick="goTo('train')">◀ Retour aux séances</button></div>
+    </section>
+
     <!-- AI ASSISTANT -->
     <section id="page-ai" class="page">
       <div class="page-head"><h1>YoDalf — votre assistant IA</h1><p>Le mentor IA d'ODBI, formé sur le contenu des cours — disponible 24/7</p></div>
@@ -1359,6 +1463,7 @@ a.ref-item:hover{background:var(--color-background)}
           <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">Stripe</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Paiements & abonnements</p></div><span class="badge" style="background:var(--color-neutral)">À configurer</span></div></div>
           <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">WhatsApp</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Un groupe par programme (lien externe)</p></div><span class="badge" style="background:var(--color-primary)">8 / 13 liés</span></div><p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-4)">Chaque programme a son propre groupe WhatsApp, configuré dans l'onglet « Cours ». Les membres y accèdent depuis la page du programme.</p></div>
           <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">📝 Notta</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Transcription & traduction des visios</p></div><span class="badge" style="background:var(--color-primary)">Connecté</span></div><p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-4)">Chaque visio BigBlueButton est automatiquement transcrite et traduite par Notta. Le compte-rendu est rattaché à la leçon correspondante.</p></div>
+          <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">🎥 Loom</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Feedbacks vidéo (écran + voix) sur les séances d'entraînement</p></div><span class="badge" style="background:var(--color-primary)">Connecté</span></div><div class="field" style="margin-top:var(--space-5)"><label>Compte / espace Loom</label><input value="odbi-campus"></div><p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-2)">Le coach, un collègue ou un invité enregistre un feedback vidéo Loom, rattaché à la séance d'entraînement.</p></div>
           <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">Notion (CRM + BPF)</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">CRM membres + extraction Qualiopi / BPF</p></div><span class="badge" style="background:var(--color-primary)">Connecté</span></div><div class="field" style="margin-top:var(--space-5)"><label>Base Notion (CRM)</label><input value="CRM ODBI — Membres & prospects"></div><div class="field"><label>Base Notion (BPF / assiduité)</label><input value="Reporting Qualiopi — Assiduité & heures"></div></div>
         </div>
       </div>
@@ -1585,7 +1690,7 @@ function goTo(page){
   var pg=document.getElementById('page-'+page);if(pg)pg.classList.add('active');
   // top nav active : page courante, ou "Les programmes" pour cours/session
   document.querySelectorAll('.topnav a').forEach(n=>n.classList.remove('active'));
-  var topKey=(page==='course'||page==='lesson')?'catalog':page;
+  var topKey=(page==='course'||page==='lesson')?'catalog':(page==='train-detail'?'train':page);
   var nav=document.querySelector('.topnav a[data-page="'+topKey+'"]');if(nav)nav.classList.add('active');
   // barre contextuelle gauche : programme (arbre + infos) ou YoDalf (historique des chats)
   var bar=document.getElementById('ctxbar'),cp=document.getElementById('ctx-program'),cy=document.getElementById('ctx-yodalf');
@@ -1682,12 +1787,13 @@ var REP={
 };
 function repShow(btn,type){
   var box=btn.closest('.card');
-  box.querySelectorAll('.replay-actions .btn-ghost').forEach(function(b){if(b.getAttribute('onclick')&&b.getAttribute('onclick').indexOf('repShow')>=0)b.classList.remove('active')});
+  box.querySelectorAll('.replay-actions .btn').forEach(function(b){if(b.getAttribute('onclick')&&b.getAttribute('onclick').indexOf('repShow')>=0)b.classList.remove('active')});
   btn.classList.add('active');
-  box.querySelector('#rep-content').innerHTML=REP[type]||'';
+  var c=box.querySelector('.rep-content');if(c)c.innerHTML=REP[type]||'';
 }
 function seekRep(li){li.parentNode.querySelectorAll('li').forEach(function(x){x.classList.remove('on')});li.classList.add('on');}
-(function(){var rc=document.getElementById('rep-content');if(rc)rc.innerHTML=REP.resume;renderVidChap('1/3');})();
+function toggleTrainForm(){var f=document.getElementById('trainForm');if(f)f.classList.toggle('hidden');}
+(function(){document.querySelectorAll('.rep-content').forEach(function(rc){rc.innerHTML=REP.resume;});renderVidChap('1/3');})();
 function adminTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
   ['members','courses','promos','suivi','integ'].forEach(x=>document.getElementById('admin-'+x).classList.add('hidden'));
   document.getElementById('admin-'+t).classList.remove('hidden')}
