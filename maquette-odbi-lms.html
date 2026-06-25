@@ -521,6 +521,64 @@ a.ref-item:hover{background:var(--color-background)}
 .nav-sec-h .sc-badge{font-size:9px;color:#fff;background:var(--color-asparagus);padding:1px 7px;border-radius:99px;letter-spacing:.5px}
 .nav-sec-b{display:block}
 .nav-sec.closed .nav-sec-b{display:none}
+/* ===== Certification (évaluation finale) ===== */
+.cf-hero{background:linear-gradient(135deg,var(--color-indigo-dye),var(--color-black));color:#fff;border-radius:var(--radius-lg);padding:var(--space-6);margin-bottom:var(--space-6)}
+.cf-hero h3{color:#fff;font-size:18px;margin:0}
+.cf-hero p{color:rgba(255,255,255,.85);font-size:13px;margin-top:6px}
+.cf-rs{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.32);padding:4px 12px;border-radius:99px;font-size:11px;font-family:var(--font-title);font-weight:500;margin-top:12px}
+.cf-rs.none{background:rgba(255,255,255,.07)}
+.cf-sec-t{font-family:var(--font-title);font-weight:700;font-size:15px;margin:var(--space-6) 0 var(--space-3);display:flex;align-items:center;gap:8px}
+.cf-steps{display:flex;gap:var(--space-3);flex-wrap:wrap}
+.cf-step{flex:1 1 150px;background:#fff;border:1px solid rgba(74,74,74,.1);border-radius:var(--radius-md);padding:var(--space-4)}
+.cf-step .n{width:26px;height:26px;border-radius:50%;background:var(--color-asparagus);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-title);font-weight:700;font-size:13px;margin-bottom:8px}
+.cf-step h4{font-size:13px;margin:0 0 4px}
+.cf-step p{font-size:12px;color:var(--color-neutral);margin:0}
+.cf-niv{display:flex;gap:var(--space-3);flex-wrap:wrap}
+.cf-niv .lv{flex:1 1 240px;border:1px solid rgba(74,74,74,.12);border-left:4px solid var(--color-apple-green);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);background:#fff}
+.cf-niv .lv b{font-family:var(--font-title)}
+.cf-niv .lv small{color:var(--color-neutral);display:block;margin-top:2px}
+.cf-bloc{border:1px solid rgba(74,74,74,.1);border-radius:var(--radius-md);margin-bottom:var(--space-3);background:#fff;overflow:hidden}
+.cf-bloc>summary{cursor:pointer;padding:var(--space-4);font-family:var(--font-title);font-weight:700;font-size:14px;list-style:none;display:flex;align-items:center;gap:10px}
+.cf-bloc>summary::-webkit-details-marker{display:none}
+.cf-bloc>summary::before{content:'▸';color:var(--color-asparagus);font-size:12px}
+.cf-bloc[open]>summary::before{content:'▾'}
+.cf-bloc[open]>summary{border-bottom:1px solid rgba(74,74,74,.08)}
+.cf-bloc .bd{padding:var(--space-2) var(--space-4) var(--space-4)}
+.cf-comp{font-size:13px;font-family:var(--font-title);font-weight:600;margin:var(--space-3) 0 4px}
+.cf-ind{font-size:12.5px;color:var(--color-jet);padding:5px 0;border-bottom:1px dashed rgba(74,74,74,.1);display:flex;gap:8px}
+.cf-ind:last-child{border-bottom:none}
+.cf-ind .k{color:var(--color-asparagus);font-weight:700;flex:none}
+.cf-at{border:1px solid rgba(74,74,74,.12);border-radius:var(--radius-md);padding:var(--space-4);background:#fff;display:flex;gap:var(--space-4);align-items:flex-start;margin-bottom:var(--space-3);cursor:pointer;transition:box-shadow .15s}
+.cf-at:hover{box-shadow:var(--shadow-sm)}
+.cf-at .ic{font-size:26px;flex:none;line-height:1}
+.cf-at h4{font-size:14px;margin:0}
+.cf-at .typ{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--color-neutral);font-family:var(--font-title);font-weight:700}
+.cf-at p{font-size:12.5px;color:var(--color-neutral);margin:6px 0 0}
+.cf-st{font-size:11px;padding:3px 10px;border-radius:99px;font-family:var(--font-title);font-weight:500;white-space:nowrap}
+.cf-st.ok{background:rgba(134,164,63,.15);color:var(--color-asparagus)}
+.cf-st.todo{background:rgba(214,69,69,.1);color:#d64545}
+.cf-st.plan{background:rgba(17,76,106,.1);color:var(--color-accent)}
+/* grille de notation */
+.scale{display:inline-flex;gap:4px;flex-wrap:wrap}
+.scale label{font-size:11px;border:1px solid rgba(74,74,74,.25);border-radius:6px;padding:3px 9px;cursor:pointer;color:var(--color-neutral);font-family:var(--font-title)}
+.scale label:hover{border-color:var(--color-asparagus)}
+.scale label.on{background:var(--color-asparagus);color:#fff;border-color:var(--color-asparagus)}
+/* procès-verbal */
+.pv{background:#fff;border:1px solid rgba(74,74,74,.15);border-radius:var(--radius-lg);padding:var(--space-8);max-width:820px;box-shadow:var(--shadow-sm)}
+.pv-head{text-align:center;border-bottom:2px solid var(--color-indigo-dye);padding-bottom:var(--space-4);margin-bottom:var(--space-5)}
+.pv-head h2{font-size:20px;margin:0}
+.pv-head .sub{color:var(--color-neutral);font-size:13px;margin-top:4px}
+.pv-row{display:flex;justify-content:space-between;gap:var(--space-4);padding:8px 0;border-bottom:1px dashed rgba(74,74,74,.12);font-size:14px}
+.pv-row .lbl{color:var(--color-neutral)}
+.pv-verdict{font-family:var(--font-title);font-weight:700;font-size:18px}
+.pv-verdict.ok{color:var(--color-asparagus)}
+.pv-sign{display:flex;gap:var(--space-8);margin-top:var(--space-8);flex-wrap:wrap}
+.pv-sign .sg{flex:1 1 200px;border-top:1px solid var(--color-jet);padding-top:8px;font-size:12px;color:var(--color-neutral)}
+/* diplôme (profil) */
+.diploma{display:flex;gap:var(--space-4);align-items:center;border:1px solid rgba(134,164,63,.4);background:linear-gradient(135deg,rgba(134,164,63,.1),rgba(17,76,106,.06));border-radius:var(--radius-md);padding:var(--space-4);margin-bottom:var(--space-3)}
+.diploma .seal{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--color-asparagus),var(--color-indigo-dye));color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;flex:none}
+.diploma h4{font-size:14px;margin:0}
+.diploma small{color:var(--color-neutral)}
 /* ===== Arbre de navigation (curriculum) ===== */
 .tv{padding:2px 4px 8px}
 .tv-s1{margin:1px 0}
@@ -720,6 +778,14 @@ a.ref-item:hover{background:var(--color-background)}
 
             <div class="cnav-item" onclick="openInfo(this,'lexique')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> Lexique</div>
             <div class="cnav-item" onclick="openInfo(this,'references')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg> Références</div>
+          </div>
+        </div>
+
+        <!-- Certification -->
+        <div class="nav-sec">
+          <div class="nav-sec-h" onclick="toggleSec(this)"><svg class="sc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg> Certification <span class="sc-badge" id="navCertifBadge" style="background:var(--color-indigo-dye)">RNCP</span></div>
+          <div class="nav-sec-b">
+            <div class="cnav-item" onclick="openInfo(this,'certif')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg> Mon parcours de certification</div>
           </div>
         </div>
 
@@ -1019,6 +1085,10 @@ a.ref-item:hover{background:var(--color-background)}
           <div class="card course-card" onclick="goTo('train-detail')" style="padding:var(--space-5)"><div class="flex-between"><span class="course-tag" style="color:#d64545;background:rgba(214,69,69,.1)">À évaluer · 19 juin</span><span class="role coach">Coach</span></div><h3 style="font-size:16px;margin-top:10px">Léa (coach) ↔ Karim (coaché)</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">BTC 1 · 38 min · feedback YoDalf prêt · 0 feedback vidéo</p></div>
         </div>
         </div>
+      </div>
+
+      <!-- CERTIFICATION — évaluation finale (contenu généré par renderCertif) -->
+      <div id="crs-certif" class="hidden"></div>
 
       <!-- Panneau verrouillé (accès gratuit) -->
       <div id="crs-locked" class="hidden">
@@ -1333,6 +1403,7 @@ a.ref-item:hover{background:var(--color-background)}
         <div class="tab" id="tab-courses" onclick="adminTab(this,'courses')">Programmes</div>
         <div class="tab" id="tab-promos" onclick="adminTab(this,'promos')">Promotions</div>
         <div class="tab" id="tab-suivi" onclick="adminTab(this,'suivi')">Suivi pédagogique</div>
+        <div class="tab" id="tab-certif" onclick="adminTab(this,'certif')">Certification</div>
         <div class="tab" id="tab-integ" onclick="adminTab(this,'integ')">Intégrations</div>
       </div>
 
@@ -1484,6 +1555,51 @@ a.ref-item:hover{background:var(--color-background)}
         </div>
 
         <div style="display:flex;gap:10px;margin-top:var(--space-5)"><button class="btn btn-ghost">⬇ Exporter (CSV)</button><button class="btn btn-ghost">Vers Notion (BPF)</button></div>
+      </div>
+
+      <div id="admin-certif" class="hidden">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Paramétrez l'évaluation finale de chaque programme (référentiel, ateliers, grille, niveaux) et suivez les candidats jusqu'à la délivrance du diplôme.</p>
+        <div style="display:flex;gap:10px;margin-bottom:var(--space-5);flex-wrap:wrap">
+          <select class="promo-select" id="certifProgSel" onchange="certifAdminRender()"><option value="ecole">Born To Coach — 2e gén.</option><option value="voie">La Voie des managers</option><option value="vem">Vous En Paix</option></select>
+          <select class="promo-select"><option>Promo 2026</option><option>Promo 2027</option></select>
+        </div>
+
+        <div class="edit-card">
+          <h3>Paramétrage de la certification <span id="certifProgName" style="color:var(--color-neutral);font-weight:400">— Born To Coach</span></h3>
+          <div class="row2">
+            <div class="field"><label>Adossement à un titre</label>
+              <select id="certifRsType" onchange="certifRsToggle()"><option value="rncp">Titre RNCP (enregistré)</option><option value="rs">Certification RS (Répertoire spécifique)</option><option value="none">Certification interne ODBI (non adossée)</option></select>
+            </div>
+            <div class="field" id="certifRsCodeField"><label>Code & intitulé du titre</label><input id="certifRsCode" value="RNCP 37863 — Coach professionnel (Niveau 6)"></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label>Nombre de niveaux de certification</label><select id="certifLevels"><option value="2" selected>2 niveaux (ex. Certifié / mention Excellence)</option><option value="1">1 niveau (Certifié)</option></select></div>
+            <div class="field"><label>Seuil de réussite</label><input value="≥ 60 % par atelier · mention ≥ 85 % de moyenne"></div>
+          </div>
+          <div class="field"><label>Référentiel de compétences (blocs + indicateurs)</label>
+            <div style="display:flex;gap:10px;align-items:center"><span style="font-size:13px;color:var(--color-neutral)">3 blocs · 7 indicateurs</span><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer le référentiel</button><div class="upload-zone" style="padding:var(--space-2);flex:1">Importer (PDF France compétences)</div></div>
+          </div>
+
+          <div class="section-title" style="margin-top:var(--space-5)">Ateliers d'évaluation (1 à 3)</div>
+          <table class="table">
+            <tr><th>#</th><th>Type d'atelier</th><th>Intitulé</th><th>Durée</th><th>Coef.</th><th></th></tr>
+            <tr><td>1</td><td><select><option>Entretien</option><option>Présentation</option><option>Étude de cas</option><option>Jeu de rôle</option><option>Quiz</option></select></td><td><input value="Entretien de coaching"></td><td><input value="30 min" style="width:80px"></td><td><input value="1" style="width:48px"></td><td><button class="icon-btn">✕</button></td></tr>
+            <tr><td>2</td><td><select><option selected>Étude de cas</option><option>Entretien</option><option>Présentation</option><option>Jeu de rôle</option><option>Quiz</option></select></td><td><input value="Étude de cas écrite"></td><td><input value="2h" style="width:80px"></td><td><input value="1" style="width:48px"></td><td><button class="icon-btn">✕</button></td></tr>
+            <tr><td>3</td><td><select><option selected>Présentation</option><option>Entretien</option><option>Étude de cas</option><option>Jeu de rôle</option><option>Quiz</option></select></td><td><input value="Présentation orale devant jury"></td><td><input value="20 min" style="width:80px"></td><td><input value="1" style="width:48px"></td><td><button class="icon-btn">✕</button></td></tr>
+          </table>
+          <button class="btn btn-ghost" style="margin-top:var(--space-2)">+ Ajouter un atelier (max 3)</button>
+          <div style="margin-top:var(--space-4)"><button class="btn btn-primary">💾 Enregistrer le paramétrage</button></div>
+        </div>
+
+        <h3 class="section-title">Candidats à la certification</h3>
+        <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">Avancement des ateliers, grilles de jury, procès-verbal et délivrance du diplôme. <span style="color:var(--color-primary)">● Synchronisé avec le suivi pédagogique.</span></p>
+        <table class="table">
+          <tr><th>Candidat·e</th><th>Ateliers validés</th><th>Moyenne</th><th>Décision</th><th>PV</th><th>Diplôme</th></tr>
+          <tr><td><span class="pmini" style="background:var(--color-asparagus)">KN</span> Karim Nadir</td><td>3 / 3</td><td><b>85 %</b></td><td><span class="cf-st ok">Admis — Excellence</span></td><td><button class="btn btn-ghost" style="padding:6px 12px" onclick="goTo('certif-pv')">Voir le PV</button></td><td><button class="btn btn-accent" style="padding:6px 12px" onclick="deliverDiploma()">🎓 Délivrer</button></td></tr>
+          <tr><td><span class="pmini" style="background:var(--color-indigo-dye)">LM</span> Léa Martin</td><td>2 / 3</td><td>—</td><td><span class="cf-st plan">En cours</span></td><td><button class="btn btn-ghost" style="padding:6px 12px" onclick="goTo('certif-grille')">Saisir la grille</button></td><td>—</td></tr>
+          <tr><td><span class="pmini" style="background:#888">TP</span> Thomas Petit</td><td>1 / 3</td><td>—</td><td><span class="cf-st todo">À planifier</span></td><td>—</td><td>—</td></tr>
+        </table>
+        <div style="display:flex;gap:10px;margin-top:var(--space-5)"><button class="btn btn-ghost">⬇ Exporter les PV (PDF)</button><button class="btn btn-ghost">Vers Notion (registre certifications)</button></div>
       </div>
 
       <div id="admin-integ" class="hidden">
@@ -1698,12 +1814,128 @@ a.ref-item:hover{background:var(--color-background)}
         </div>
       </div>
 
+      <div class="edit-card" style="max-width:700px">
+        <h3>🎓 Mes certifications & diplômes</h3>
+        <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">Diplômes délivrés par le jury à l'issue de votre certification. Téléchargeables à tout moment.</p>
+        <div class="diploma">
+          <div class="seal">🎓</div>
+          <div style="flex:1">
+            <h4>Coach professionnel — <span style="color:var(--color-asparagus)">mention Excellence</span></h4>
+            <small>Born To Coach · délivré le 12/09/2026 · <b>Titre RNCP 37863 (Niveau 6)</b></small>
+          </div>
+          <button class="btn btn-ghost" style="padding:6px 12px">⬇ PDF</button>
+        </div>
+        <div class="diploma">
+          <div class="seal" style="background:linear-gradient(135deg,var(--color-jet),var(--color-indigo-dye))">📜</div>
+          <div style="flex:1">
+            <h4>Manager : conduire et mobiliser une équipe</h4>
+            <small>La Voie des managers · délivré le 14/03/2026 · <b>Certification RS6234</b></small>
+          </div>
+          <button class="btn btn-ghost" style="padding:6px 12px">⬇ PDF</button>
+        </div>
+        <div class="diploma" style="border-style:dashed;background:none;opacity:.7">
+          <div class="seal" style="background:var(--color-neutral)">⏳</div>
+          <div style="flex:1">
+            <h4>Vous En Paix</h4>
+            <small>Certification interne ODBI · ateliers en cours — non encore délivrée</small>
+          </div>
+        </div>
+      </div>
+
       <h3 style="margin:var(--space-8) 0 var(--space-4)">Mes cours & progression</h3>
       <div class="grid grid-2">
         <div class="card course-card" onclick="openCourse('full','voie')" style="padding:var(--space-5)"><span class="course-tag">La Voie des managers · Promo 2026 — Automne</span><h3 style="font-size:15px;margin-top:10px">La Voie des managers</h3><div class="progress" style="margin-top:10px"><span style="width:72%"></span></div><p style="font-size:12px;color:var(--color-neutral);margin-top:6px">72% — Session 2 / 4</p></div>
         <div class="card course-card" onclick="openCourse('full','ecole')" style="padding:var(--space-5)"><span class="course-tag" style="color:var(--color-asparagus);background:rgba(134,164,63,.12)">BTC : 2ème génération</span><h3 style="font-size:15px;margin-top:10px">Born To Coach</h3><div class="progress" style="margin-top:10px"><span style="width:45%"></span></div><p style="font-size:12px;color:var(--color-neutral);margin-top:6px">45% — en cours</p></div>
         <div class="card course-card" onclick="openCourse('full','voie')" style="padding:var(--space-5)"><span class="course-tag">Vous En Paix · Promo 2026 — Automne</span><h3 style="font-size:15px;margin-top:10px">Vous En Paix</h3><div class="progress" style="margin-top:10px"><span style="width:90%"></span></div><p style="font-size:12px;color:var(--color-neutral);margin-top:6px">90% — bientôt terminé</p></div>
       </div>
+    </section>
+
+    <!-- ===== GRILLE DE NOTATION (atelier de certification) ===== -->
+    <section id="page-certif-grille" class="page">
+      <div class="page-head" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
+        <div>
+          <a onclick="backCertif()" style="color:var(--color-accent);cursor:pointer;font-size:13px;font-family:var(--font-title);font-weight:500">← Retour au parcours de certification</a>
+          <h1 style="margin-top:6px">Grille de notation — <span id="grilleAtTitle">Entretien de coaching</span></h1>
+          <p>Évaluation par le jury · barème par indicateur · 2 niveaux possibles selon le programme</p>
+        </div>
+        <span class="cf-st plan" id="grilleRole">Vue jury — saisie</span>
+      </div>
+
+      <div class="card" style="padding:var(--space-5);margin-bottom:var(--space-5)">
+        <div class="grid grid-3" style="gap:var(--space-4)">
+          <div><small style="color:var(--color-neutral)">Candidat·e</small><div style="font-family:var(--font-title);font-weight:600">Karim Nadir — BTC : 2ème génération</div></div>
+          <div><small style="color:var(--color-neutral)">Atelier</small><div style="font-family:var(--font-title);font-weight:600"><span id="grilleAtType">🎙️ Entretien de coaching</span> · 30 min</div></div>
+          <div><small style="color:var(--color-neutral)">Jury</small><div style="font-family:var(--font-title);font-weight:600">Yohann Duclos · Sophie Roux</div></div>
+        </div>
+      </div>
+
+      <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-3)">Pour chaque indicateur, le jury positionne le niveau atteint. Barème : <b>Non acquis (0)</b> · <b>En cours (1)</b> · <b>Acquis (2)</b> · <b>Expert (3)</b>.</p>
+      <div class="grille">
+      <table class="table">
+        <tr><th style="width:42%">Compétence / indicateur</th><th>Niveau atteint</th><th style="width:26%">Observation du jury</th></tr>
+        <tr><td colspan="3" style="background:var(--color-background);font-family:var(--font-title);font-weight:700;font-size:13px">Bloc 1 — Construire la relation de coaching</td></tr>
+        <tr><td>Pose le cadre déontologique et le contrat</td><td><div class="scale"><label onclick="gradePick(this)">NA</label><label onclick="gradePick(this)">EC</label><label class="on" onclick="gradePick(this)">A</label><label onclick="gradePick(this)">Exp</label></div></td><td><input placeholder="…" style="width:100%;border:1px solid rgba(74,74,74,.2);border-radius:6px;padding:5px 8px"></td></tr>
+        <tr><td>Instaure l'alliance et la confiance</td><td><div class="scale"><label onclick="gradePick(this)">NA</label><label onclick="gradePick(this)">EC</label><label onclick="gradePick(this)">A</label><label class="on" onclick="gradePick(this)">Exp</label></div></td><td><input style="width:100%;border:1px solid rgba(74,74,74,.2);border-radius:6px;padding:5px 8px"></td></tr>
+        <tr><td colspan="3" style="background:var(--color-background);font-family:var(--font-title);font-weight:700;font-size:13px">Bloc 2 — Conduire le processus de coaching</td></tr>
+        <tr><td>Pratique l'écoute active et la reformulation</td><td><div class="scale"><label onclick="gradePick(this)">NA</label><label class="on" onclick="gradePick(this)">EC</label><label onclick="gradePick(this)">A</label><label onclick="gradePick(this)">Exp</label></div></td><td><input style="width:100%;border:1px solid rgba(74,74,74,.2);border-radius:6px;padding:5px 8px"></td></tr>
+        <tr><td>Utilise un questionnement ouvert et puissant</td><td><div class="scale"><label onclick="gradePick(this)">NA</label><label onclick="gradePick(this)">EC</label><label class="on" onclick="gradePick(this)">A</label><label onclick="gradePick(this)">Exp</label></div></td><td><input style="width:100%;border:1px solid rgba(74,74,74,.2);border-radius:6px;padding:5px 8px"></td></tr>
+        <tr><td>Fait émerger les options et ancre les engagements</td><td><div class="scale"><label onclick="gradePick(this)">NA</label><label onclick="gradePick(this)">EC</label><label class="on" onclick="gradePick(this)">A</label><label onclick="gradePick(this)">Exp</label></div></td><td><input style="width:100%;border:1px solid rgba(74,74,74,.2);border-radius:6px;padding:5px 8px"></td></tr>
+        <tr><td colspan="3" style="background:var(--color-background);font-family:var(--font-title);font-weight:700;font-size:13px">Bloc 3 — Posture & déontologie</td></tr>
+        <tr><td>Adopte une posture éthique et respecte la confidentialité</td><td><div class="scale"><label onclick="gradePick(this)">NA</label><label onclick="gradePick(this)">EC</label><label onclick="gradePick(this)">A</label><label class="on" onclick="gradePick(this)">Exp</label></div></td><td><input style="width:100%;border:1px solid rgba(74,74,74,.2);border-radius:6px;padding:5px 8px"></td></tr>
+      </table>
+      </div>
+
+      <div class="card" style="padding:var(--space-5);margin-top:var(--space-5);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+        <div><small style="color:var(--color-neutral)">Score de l'atelier</small><div style="font-family:var(--font-title);font-weight:700;font-size:22px;color:var(--color-primary)">15 / 18 — 83 %</div></div>
+        <div class="field" style="margin:0;min-width:240px"><label>Décision pour cet atelier</label><select><option>✅ Réussi — niveau Acquis</option><option>🌟 Réussi — niveau Expert</option><option>❌ Non validé — à repasser</option></select></div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:var(--space-5);flex-wrap:wrap">
+        <button class="btn btn-primary">💾 Enregistrer la grille</button>
+        <button class="btn btn-accent" onclick="goTo('certif-pv')">📄 Voir le procès-verbal</button>
+        <button class="btn btn-ghost" onclick="backCertif()">Annuler</button>
+      </div>
+      <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-4)">ℹ️ Une fois toutes les grilles d'ateliers saisies, le <b>procès-verbal de certification</b> est généré automatiquement, puis le jury déclenche l'<b>envoi du diplôme</b> (déposé dans le profil du candidat).</p>
+    </section>
+
+    <!-- ===== PROCÈS-VERBAL DE CERTIFICATION ===== -->
+    <section id="page-certif-pv" class="page">
+      <div class="page-head" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
+        <div>
+          <a onclick="goTo('certif-grille')" style="color:var(--color-accent);cursor:pointer;font-size:13px;font-family:var(--font-title);font-weight:500">← Retour à la grille</a>
+          <h1 style="margin-top:6px">Procès-verbal de certification</h1>
+          <p>Document officiel de jury — synthèse des ateliers et décision finale</p>
+        </div>
+      </div>
+      <div class="pv">
+        <div class="pv-head">
+          <h2>Procès-verbal de certification</h2>
+          <div class="sub" id="pvRs">Titre RNCP 37863 — « Coach professionnel » (Niveau 6) · ODBI Campus</div>
+        </div>
+        <div class="pv-row"><span class="lbl">Candidat·e</span><span><b>Karim Nadir</b></span></div>
+        <div class="pv-row"><span class="lbl">Programme / promotion</span><span>Born To Coach — 2ème génération · Promo 2026</span></div>
+        <div class="pv-row"><span class="lbl">Membres du jury</span><span>Yohann Duclos (président) · Sophie Roux</span></div>
+        <div class="pv-row"><span class="lbl">Date de la session</span><span>12 septembre 2026</span></div>
+
+        <div class="cf-sec-t">Résultats par atelier</div>
+        <div class="pv-row"><span>🎙️ Entretien de coaching</span><span><b>15 / 18 — 83 %</b> · Acquis</span></div>
+        <div class="pv-row"><span>📂 Étude de cas</span><span><b>17 / 20 — 85 %</b> · Expert</span></div>
+        <div class="pv-row"><span>🎤 Présentation orale devant jury</span><span><b>13 / 15 — 87 %</b> · Expert</span></div>
+
+        <div class="pv-row" style="border-bottom:none;margin-top:var(--space-4)"><span class="lbl">Moyenne générale</span><span class="pv-verdict">85 %</span></div>
+        <div class="pv-row" style="border-top:2px solid var(--color-indigo-dye);border-bottom:none"><span class="lbl">Décision du jury</span><span class="pv-verdict ok">ADMIS·E — mention Excellence</span></div>
+
+        <div class="pv-sign">
+          <div class="sg">Le président du jury<br><b style="color:var(--color-jet)">Yohann Duclos</b></div>
+          <div class="sg">Membre du jury<br><b style="color:var(--color-jet)">Sophie Roux</b></div>
+          <div class="sg">Fait à Lyon, le 12/09/2026</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:var(--space-5);flex-wrap:wrap;max-width:820px">
+        <button class="btn btn-primary">✅ Valider le procès-verbal</button>
+        <button class="btn btn-accent" onclick="deliverDiploma()">🎓 Délivrer le diplôme</button>
+        <button class="btn btn-ghost">⬇ Télécharger le PV (PDF)</button>
+      </div>
+      <p id="diplomaSent" class="hidden" style="color:var(--color-asparagus);font-family:var(--font-title);font-weight:600;margin-top:var(--space-4);max-width:820px">✅ Diplôme délivré et déposé dans le profil du candidat (onglet « Mes certifications »). Une notification + e-mail lui ont été envoyés.</p>
     </section>
 
   </main>
@@ -1748,6 +1980,75 @@ function applyUni(){
   var cb=document.getElementById('trainCreateBtn');if(cb)cb.style.display=ec?'inline-flex':'none';
   var eb=document.getElementById('trainEvalBlock');if(eb)eb.classList.toggle('hidden',!ec);
   var tf=document.getElementById('trainForm');if(tf&&!ec)tf.classList.add('hidden');
+  renderCertif();
+}
+// ===== Certification =====
+var CERTIF={
+ ecole:{badge:'RNCP',badgeColor:'var(--color-indigo-dye)',
+  titre:'Certification — Coach professionnel',rsNone:false,
+  rs:'Titre RNCP 37863 — « Coach professionnel » (Niveau 6)',
+  intro:'Évaluation finale certificative du parcours Born To Coach. Elle atteste de votre maîtrise de la posture et de la pratique du coaching professionnel.',
+  niveaux:[['Certifié','Réussite ≥ 60 % à chacun des 3 ateliers'],['Certifié — mention Excellence','Moyenne générale ≥ 85 %']],
+  ateliers:[
+    ['🎙️','Entretien','Entretien de coaching','Conduite d\'une séance de coaching de 30 min avec un client, devant un binôme de jury.','plan','Planifié · 12 sept.'],
+    ['📂','Étude de cas','Étude de cas écrite','Analyse d\'une problématique de coaching : diagnostic, hypothèses, plan d\'accompagnement (2h).','ok','Rendu · 20 août'],
+    ['🎤','Présentation','Présentation orale devant jury','Soutenance de votre pratique et de votre posture professionnelle (20 min).','plan','À venir · 12 sept.']
+  ],
+  blocs:[
+    ['Bloc 1 — Construire la relation de coaching',[
+      ['Établir le cadre et le contrat',['Pose le cadre déontologique','Co-construit l\'objectif de travail','Clarifie les rôles']],
+      ['Instaurer l\'alliance',['Crée un climat de confiance','Pratique l\'écoute active']]]],
+    ['Bloc 2 — Conduire le processus de coaching',[
+      ['Questionner & faire réfléchir',['Pose des questions ouvertes et puissantes','Reformule avec justesse']],
+      ['Accompagner le changement',['Fait émerger des options','Ancre les engagements']]]],
+    ['Bloc 3 — Posture & déontologie',[
+      ['Adopter une posture éthique',['Respecte la confidentialité','Repère ses limites et recourt à la supervision']]]]
+  ]},
+ voie:{badge:'RS',badgeColor:'var(--color-asparagus)',
+  titre:'Certification — Manager : conduire et mobiliser une équipe',rsNone:false,
+  rs:'Certification RS6234 — « Manager une équipe au quotidien »',
+  intro:'Évaluation finale certificative du parcours La Voie des managers, attestant de votre capacité à organiser, animer et faire progresser une équipe.',
+  niveaux:[['Certifié','Moyenne générale ≥ 60 % sur les ateliers']],
+  ateliers:[
+    ['🎭','Jeu de rôle','Jeu de rôle — entretien managérial','Mise en situation : conduire un entretien de recadrage ou de feedback (20 min).','plan','À venir · 5 mars'],
+    ['❓','Quiz','Quiz de connaissances','QCM final sur les fondamentaux du management (40 questions).','ok','Réussi · 88 %']
+  ],
+  blocs:[
+    ['Bloc 1 — Organiser l\'activité de l\'équipe',[
+      ['Piloter l\'activité',['Fixe des objectifs SMART','Planifie et priorise','Délègue avec clarté']]]],
+    ['Bloc 2 — Animer et mobiliser',[
+      ['Conduire les entretiens',['Mène un entretien individuel','Donne un feedback constructif','Gère un désaccord']]]],
+    ['Bloc 3 — Suivre la performance',[
+      ['Évaluer et faire progresser',['Suit des indicateurs d\'équipe','Conduit l\'entretien annuel']]]]
+  ]}
+};
+function renderCertif(){
+  var c=CERTIF[curUni]||CERTIF.ecole;
+  var box=document.getElementById('crs-certif');if(!box)return;
+  var nb=document.getElementById('navCertifBadge');if(nb){nb.textContent=c.badge;nb.style.background=c.badgeColor;}
+  var steps=[['1','Prérequis','Parcours complété et exercices rendus.'],['2','Ateliers d\'évaluation','1 à 3 ateliers selon le programme (ci-dessous).'],['3','Passage devant le jury','Le jury évalue chaque atelier via une grille d\'indicateurs.'],['4','Procès-verbal','Le jury statue : admis·e, mention, ou ajourné·e.'],['5','Diplôme','Délivrance et dépôt dans votre profil.']];
+  var niv=c.niveaux.map(function(n){return '<div class="lv"><b>'+n[0]+'</b><small>'+n[1]+'</small></div>';}).join('');
+  var ats=c.ateliers.map(function(a){return '<div class="cf-at" onclick="openCertifGrille(this.getAttribute(\'data-t\'),this.getAttribute(\'data-i\'))" data-t="'+a[2]+'" data-i="'+a[0]+'"><div class="ic">'+a[0]+'</div><div style="flex:1"><div class="typ">'+a[1]+'</div><h4>'+a[2]+'</h4><p>'+a[3]+'</p></div><span class="cf-st '+a[4]+'">'+a[5]+'</span></div>';}).join('');
+  var blocs=c.blocs.map(function(b){var comps=b[1].map(function(cp){var inds=cp[1].map(function(i){return '<div class="cf-ind"><span class="k">▸</span><span>'+i+'</span></div>';}).join('');return '<div class="cf-comp">'+cp[0]+'</div>'+inds;}).join('');return '<details class="cf-bloc"><summary>'+b[0]+'</summary><div class="bd">'+comps+'</div></details>';}).join('');
+  box.innerHTML=
+    '<div class="cf-hero"><h3>'+c.titre+'</h3><p>'+c.intro+'</p><span class="cf-rs'+(c.rsNone?' none':'')+'">'+(c.rsNone?'🏷️ Certification interne ODBI — non adossée à un titre':'🏅 '+c.rs)+'</span></div>'+
+    '<div class="cf-sec-t">📋 Déroulement de la certification</div><div class="cf-steps">'+steps.map(function(s){return '<div class="cf-step"><div class="n">'+s[0]+'</div><h4>'+s[1]+'</h4><p>'+s[2]+'</p></div>';}).join('')+'</div>'+
+    '<div class="cf-sec-t">🎯 Niveaux de certification</div><div class="cf-niv">'+niv+'</div>'+
+    '<div class="cf-sec-t">🧩 Ateliers d\'évaluation <span style="font-weight:400;font-size:12px;color:var(--color-neutral)">— cliquez pour voir la grille</span></div>'+ats+
+    '<div class="cf-sec-t">📚 Référentiel de compétences & indicateurs</div>'+blocs+
+    '<div class="card" style="padding:var(--space-5);margin-top:var(--space-5);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px"><div><div style="font-family:var(--font-title);font-weight:600">Mon dossier de certification</div><small style="color:var(--color-neutral)">Grilles du jury, procès-verbal et diplôme</small></div><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-ghost" onclick="goTo(\'certif-pv\')">📄 Mon procès-verbal</button><button class="btn btn-accent" onclick="goTo(\'profile\')">🎓 Mes diplômes</button></div></div>';
+}
+function openCertifGrille(title,ic){var t=document.getElementById('grilleAtTitle');if(t)t.textContent=title;var ty=document.getElementById('grilleAtType');if(ty)ty.textContent=ic+' '+title;goTo('certif-grille');}
+function backCertif(){goTo('course');courseTab(null,'certif');}
+function gradePick(el){el.parentNode.querySelectorAll('label').forEach(function(x){x.classList.remove('on')});el.classList.add('on');}
+function deliverDiploma(){goTo('certif-pv');var d=document.getElementById('diplomaSent');if(d)d.classList.remove('hidden');}
+function certifRsToggle(){var t=document.getElementById('certifRsType');if(!t)return;var f=document.getElementById('certifRsCodeField');if(f)f.style.visibility=(t.value==='none')?'hidden':'visible';}
+function certifAdminRender(){var sel=document.getElementById('certifProgSel');if(!sel)return;var v=sel.value;var nm=document.getElementById('certifProgName');var map={ecole:'— Born To Coach',voie:'— La Voie des managers',vem:'— Vous En Paix'};if(nm)nm.textContent=map[v]||'';
+  var rt=document.getElementById('certifRsType'),rc=document.getElementById('certifRsCode'),lv=document.getElementById('certifLevels');
+  if(v==='ecole'){rt.value='rncp';rc.value='RNCP 37863 — Coach professionnel (Niveau 6)';lv.value='2';}
+  else if(v==='voie'){rt.value='rs';rc.value='RS6234 — Manager une équipe au quotidien';lv.value='1';}
+  else{rt.value='none';rc.value='Certification interne ODBI';lv.value='1';}
+  certifRsToggle();
 }
 function applyAccess(){
   var free=accessMode==='free';
@@ -1788,7 +2089,7 @@ function openInfo(el,t){
   goTo('course');courseTab(null,t);
 }
 function showLocked(){
-  ['accueil','preceptes','training','presentiel','lexique','references','participants','whatsapp'].forEach(function(x){var p=document.getElementById('crs-'+x);if(p)p.classList.add('hidden')});
+  ['accueil','preceptes','training','certif','presentiel','lexique','references','participants','whatsapp'].forEach(function(x){var p=document.getElementById('crs-'+x);if(p)p.classList.add('hidden')});
   var l=document.getElementById('crs-locked');if(l)l.classList.remove('hidden');
 }
 // Arbre : déplier / replier (une seule session ouverte à la fois)
@@ -1843,7 +2144,7 @@ function toggleNotif(){var m=document.getElementById('notifMenu');if(m)m.classLi
 function backCoaching(){goTo('course');courseTab(null,'training');}
 (function(){var rc=document.getElementById('rep-content');if(rc)rc.innerHTML=REP.resume;var sr=document.getElementById('seance-rep');if(sr)sr.innerHTML=REP.trans;renderVidChap('1/3');})();
 function adminTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
-  ['members','courses','promos','suivi','integ'].forEach(x=>document.getElementById('admin-'+x).classList.add('hidden'));
+  ['members','courses','promos','suivi','certif','integ'].forEach(x=>document.getElementById('admin-'+x).classList.add('hidden'));
   document.getElementById('admin-'+t).classList.remove('hidden')}
 function toggleSeq(el){
   var seq=el.parentNode; seq.classList.toggle('open');
@@ -1893,9 +2194,9 @@ function switchPromo(key){
 }
 function courseTab(el,t){
   if(el)el.classList.add('active');
-  ['accueil','preceptes','training','presentiel','lexique','references','participants','whatsapp'].forEach(x=>document.getElementById('crs-'+x).classList.add('hidden'));
+  ['accueil','preceptes','training','certif','presentiel','lexique','references','participants','whatsapp'].forEach(x=>document.getElementById('crs-'+x).classList.add('hidden'));
   var locked=document.getElementById('crs-locked');if(locked)locked.classList.add('hidden');
-  var reserved=['presentiel','lexique','references','participants','whatsapp'];
+  var reserved=['certif','presentiel','lexique','references','participants','whatsapp'];
   if(accessMode==='free' && reserved.indexOf(t)>=0){ if(locked)locked.classList.remove('hidden'); }
   else { document.getElementById('crs-'+t).classList.remove('hidden'); }
 }
