@@ -976,12 +976,12 @@ a.ref-item:hover{background:var(--color-background)}
           <div class="lsvid-info">
             <h3 id="vidTitle">Créer l'engagement collectif</h3>
             <p id="vidDesc">Les ressorts concrets pour enclencher l'adhésion d'une équipe autour d'un objectif commun.</p>
-            <div class="lsvid-actions"><button class="btn btn-accent">⏯ Reprendre à 07:12</button><button class="btn btn-primary">Marquer comme vu ✓</button><button class="btn btn-ghost" id="vidChapBtn" onclick="toggleVidChap(this)">📑 Chapitrage</button></div>
+            <div class="lsvid-actions"><button class="btn btn-primary">Marquer comme vu ✓</button><button class="btn btn-accent">⏯ Reprendre à 07:12</button><button class="btn btn-ghost" id="vidChapBtn" onclick="toggleVidChap(this)">📑 Chapitrage</button></div>
+            <div id="vidChapWrap" class="rep-content hidden">
+              <div class="rep-chaphead">Chapitrage (importé de Vimeo)</div>
+              <ol class="chaplist" id="vidChapList"></ol>
+            </div>
           </div>
-        </div>
-        <div id="vidChapWrap" class="rep-content hidden" style="margin-top:var(--space-4)">
-          <div class="rep-chaphead">Chapitrage (importé de Vimeo)</div>
-          <ol class="chaplist" id="vidChapList"></ol>
         </div>
         <div style="margin-top:var(--space-5);display:flex;justify-content:space-between"><button class="btn btn-ghost" onclick="lsNext('ex')">◀ Exercice</button><button class="btn btn-accent" onclick="lsNext('res')">Suivant · Ressources ▶</button></div>
       </div>
