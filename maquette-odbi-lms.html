@@ -979,7 +979,7 @@ a.ref-item:hover{background:var(--color-background)}
       <div id="crs-training" class="hidden">
         <div class="flex-between" style="margin-bottom:var(--space-4)">
           <div><h3 style="font-size:16px">Coaching</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:4px">Séances où vous êtes <b>coaché(e)</b>, sur invitation d'un membre de l'École. <span>(Côté École, cette section s'intitule « Training » et permet de <b>programmer</b> une séance.)</span></p></div>
-          <button class="btn btn-accent" onclick="toggleTrainForm()">+ Programmer une séance</button>
+          <button class="btn btn-accent" id="trainCreateBtn" onclick="toggleTrainForm()">+ Programmer une séance</button>
         </div>
         <div id="trainForm" class="edit-card hidden" style="margin-bottom:var(--space-6)">
           <h3>Nouvelle séance — Training</h3>
@@ -1008,12 +1008,13 @@ a.ref-item:hover{background:var(--color-background)}
           <div class="card course-card" onclick="goTo('train-detail')" style="padding:var(--space-5)"><div class="flex-between"><span class="course-tag" style="color:var(--color-accent);background:rgba(17,76,106,.1)">À venir · 3 juil. · 18h00</span><span class="role" style="background:rgba(74,74,74,.08);color:var(--color-neutral)">Privée</span></div><h3 style="font-size:16px;margin-top:10px">Karim (coach) ↔ Marie (coachée)</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">BTC 2 ↔ La Voie · Coach/animateur : Yohann · Observatrice : Sophie</p></div>
           <div class="card course-card" onclick="goTo('train-detail')" style="padding:var(--space-5)"><div class="flex-between"><span class="course-tag" style="color:var(--color-asparagus);background:rgba(134,164,63,.12)">Enregistrée · 21 juin</span><span class="role" style="background:rgba(74,74,74,.08);color:var(--color-neutral)">Privée</span></div><h3 style="font-size:16px;margin-top:10px">Karim (coach) ↔ Thomas (coaché)</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Replay 42 min · 3 feedbacks vidéo · feedback YoDalf ✓</p></div>
         </div>
+        <div id="trainEvalBlock">
         <div class="section-title">À évaluer — coach / animateur</div>
         <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">Séances des programmes que vous animez, en attente de votre retour (un coach peut évaluer même hors de son programme).</p>
         <div class="grid grid-2">
           <div class="card course-card" onclick="goTo('train-detail')" style="padding:var(--space-5)"><div class="flex-between"><span class="course-tag" style="color:#d64545;background:rgba(214,69,69,.1)">À évaluer · 19 juin</span><span class="role coach">Coach</span></div><h3 style="font-size:16px;margin-top:10px">Léa (coach) ↔ Karim (coaché)</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">BTC 1 · 38 min · feedback YoDalf prêt · 0 feedback vidéo</p></div>
         </div>
-      </div>
+        </div>
 
       <!-- Panneau verrouillé (accès gratuit) -->
       <div id="crs-locked" class="hidden">
@@ -1737,6 +1738,9 @@ function applyUni(){
   var fb=document.getElementById('seanceFeedbacks'),lk=document.getElementById('seanceFbLock');
   if(fb)fb.classList.toggle('hidden',!ec);
   if(lk)lk.classList.toggle('hidden',ec);
+  var cb=document.getElementById('trainCreateBtn');if(cb)cb.style.display=ec?'inline-flex':'none';
+  var eb=document.getElementById('trainEvalBlock');if(eb)eb.classList.toggle('hidden',!ec);
+  var tf=document.getElementById('trainForm');if(tf&&!ec)tf.classList.add('hidden');
 }
 function applyAccess(){
   var free=accessMode==='free';

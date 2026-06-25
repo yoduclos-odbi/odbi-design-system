@@ -368,7 +368,8 @@ enregistrer, et reçoivent des retours (pairs + coach + IA).
 - **Pas d'entrée dans le menu du haut** (allégé). La fonctionnalité vit **dans le menu de gauche du programme**,
   **dans la section « Ma promotion »**, avec un **libellé contextuel** :
   - **« Training »** dans les programmes de **l'École** → le membre **programme** ses séances.
-  - **« Coaching »** dans les programmes de **La Voie** → le membre **participe** comme coaché (sur invitation).
+  - **« Coaching »** dans les programmes de **La Voie** → le membre **participe** comme coaché (sur invitation) :
+    **lecture seule** — il voit « Mes séances » mais **ni « Programmer une séance » ni « À évaluer »** (réservés à l'École/coach).
 - Les **invités** (qui n'ont pas forcément l'entrée dans leur menu) sont prévenus par **notification** (cloche
   en haut + e-mail) ; chaque notification ouvre directement la séance (**page séance autonome**).
 
