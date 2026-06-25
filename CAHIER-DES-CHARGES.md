@@ -43,13 +43,31 @@ S'appuie sur le **design system ODBI** (`odbi-design-tokens.css` / `.json`).
 - **Couleurs clés** : Asparagus `#86A43F`, Apple Green `#B1BC4B`,
   Indigo Dye `#114C6A`, Jet `#4D4D4D`, Black `#1A1A1A`, Alabaster `#F0EEE6`
 
-### Couleurs par univers
-- **La Voie** → dominante **bleu + vert** (`indigo-dye` + `asparagus`)
-- **L'École** → dominante **noir + vert** (`black` + `asparagus`)
+### Logo & marque
+- Marque : **« Odbi campus »** (et non « ODBI Academy »). Logo en haut à gauche (barre + page de connexion).
+  *Maquette : wordmark reconstitué en CSS ; à remplacer par le fichier logo officiel (SVG/PNG) une fois fourni.*
+
+### Couleurs par univers (codes repris des flyers ODBI)
+- **La Voie** → **bleu + vert mixés** (bleu profond `#1F465B` + vert `#86A43F`).
+- **Born To Coach** → **vert olive + noir** (`#435B20` + noir).
+- **Intelligence Collective** → **vert forêt** (`#3F571D` / `#567030`).
+- **Série Vous En… (VEM/VEP/VAT/VEL)** → **couleurs épurées** des logos : VEM & VAT **bleu**, VEP & VEL **vert**.
+- L'**étiquette texte « bleu + vert »** n'est plus affichée à l'écran (identité conservée dans les tokens).
+
+### Présentation des programmes (vignettes)
+- Chaque programme = **une image + un aplat couleur** selon son code couleur.
+- *Maquette : photos temporaires extraites des flyers PDF (La Voie / BTC / IC) avec aplat dégradé par univers ;
+  la série VEM utilise un aplat couleur plein (sans photo).* À remplacer par les visuels définitifs
+  (export Claude Design ou photothèque ODBI).
 
 ### Icônes
 - **Pas d'emojis dans l'interface** : types de contenu (exercice, vidéo, audio, PDF,
   quiz, visio) et navigation utilisent des **icônes vectorielles (SVG)** cohérentes.
+
+### Page de connexion
+- Dégradé latéral gauche **vert → noir → bleu** (noir inséré au milieu).
+- Accroche : « **Rejoindre le mouvement pour éclairer l'humain et transformer les interactions.** »
+  Sous-titre : « Le campus ODBI : cours structurés, visioconférences en direct et YoDalf… ».
 
 ---
 
