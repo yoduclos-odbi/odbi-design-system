@@ -47,6 +47,10 @@ S'appuie sur le **design system ODBI** (`odbi-design-tokens.css` / `.json`).
 - **La Voie** → dominante **bleu + vert** (`indigo-dye` + `asparagus`)
 - **L'École** → dominante **noir + vert** (`black` + `asparagus`)
 
+### Icônes
+- **Pas d'emojis dans l'interface** : types de contenu (exercice, vidéo, audio, PDF,
+  quiz, visio) et navigation utilisent des **icônes vectorielles (SVG)** cohérentes.
+
 ---
 
 ## 4. Acteurs & rôles
