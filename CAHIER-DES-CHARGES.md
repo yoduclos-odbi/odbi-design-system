@@ -54,8 +54,8 @@ S'appuie sur le **design system ODBI** (`odbi-design-tokens.css` / `.json`).
 - **« La Voie des… » (managers, artisans)** → **bleu + vert mixés** (`#1F465B` + `#86A43F`).
 - **Born To Coach** → **vert olive + noir** (`#435B20` + noir).
 - **Intelligence Collective** → **vert forêt** (`#3F571D` / `#567030`).
-- **Série Vous En… (VEM/VEP/VAT/VEL)** → **cartes épurées** (fond blanc + **accent couleur** en haut, initiales
-  dans la couleur), à l'image des logos : VEM & VAT **bleu** (indigo-dye), VEP & VEL **vert** (asparagus).
+- **Série Vous En… (VEM/VEP/VAT/VEL)** → **photo (placeholder) + aplat couleur** comme les autres programmes :
+  VEM & VAT **bleu** (indigo-dye), VEP & VEL **vert** (asparagus). Photos définitives à fournir.
 - L'**étiquette texte « bleu + vert »** n'est plus affichée à l'écran (identité conservée dans les tokens).
 
 ### Présentation des programmes (vignettes)
