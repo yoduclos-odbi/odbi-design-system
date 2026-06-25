@@ -195,7 +195,11 @@ a{color:inherit;text-decoration:none}
 .course-body .meta{font-size:12px;color:var(--color-neutral);display:flex;gap:14px;margin-top:10px}
 .progress{height:7px;background:var(--color-background);border-radius:var(--radius-full);margin-top:12px;overflow:hidden}
 .progress span{display:block;height:100%;background:var(--color-primary);border-radius:var(--radius-full)}
-.free-meta{margin-top:12px;font-size:12px;color:#5e7a1f;font-family:var(--font-title);font-weight:500}
+.free-meta{margin-top:12px;font-size:11.5px;font-family:var(--font-title);font-weight:500;display:flex;align-items:center;gap:6px;flex-wrap:wrap;color:var(--color-neutral)}
+.free-meta .fm-ic{width:13px;height:13px;stroke-width:2;flex:none}
+.free-meta .fm-lock{color:var(--color-jet)}
+.free-meta .fm-ok{color:var(--color-asparagus)}
+.free-meta .fm-sep{color:rgba(74,74,74,.3)}
 #sess2row.locked{opacity:.5;pointer-events:none;position:relative}
 .enrolled-tag{display:inline-block;font-size:10px;font-family:var(--font-title);font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#fff;background:var(--color-primary);padding:2px 8px;border-radius:var(--radius-full);margin-bottom:8px}
 
@@ -235,6 +239,19 @@ a{color:inherit;text-decoration:none}
 .lsvid-info p{color:var(--color-neutral);font-size:13.5px;line-height:1.7;margin-bottom:var(--space-5)}
 .lsvid-actions{display:flex;flex-direction:column;gap:10px;align-items:stretch}
 .lsvid-actions .btn{width:100%}
+/* Chapitrage / panneaux replay (transcription, chapitrage, résumé) */
+.rep-content{margin-top:var(--space-4)}
+.rep-chaphead,.rep-trans b{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--color-neutral);font-family:var(--font-title);font-weight:700;display:block;margin-bottom:10px}
+.chaplist{list-style:none;margin:0;padding:0}
+.chaplist li{display:flex;gap:14px;align-items:baseline;padding:9px 10px;border-radius:var(--radius-md);cursor:pointer;font-size:13.5px;border-bottom:1px solid rgba(74,74,74,.06)}
+.chaplist li:last-child{border-bottom:none}
+.chaplist li:hover{background:var(--color-background)}
+.chaplist li.on{background:rgba(17,76,106,.08)}
+.chaplist li .t{font-family:var(--font-body);color:var(--color-accent);font-weight:500;min-width:52px;flex:none}
+.rep-trans p{font-size:13px;color:var(--color-jet);margin:6px 0}
+.rep-trans p .t{color:var(--color-accent);font-family:var(--font-body);font-weight:500;margin-right:8px}
+.replay-actions .btn.active{background:var(--color-accent);color:#fff}
+.lsvid-actions .btn.active{background:var(--color-accent);color:#fff}
 .player .play{width:74px;height:74px;border-radius:50%;background:rgba(255,255,255,.18);border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:26px;backdrop-filter:blur(4px)}
 .player .tag{position:absolute;top:14px;left:14px;font-size:11px;background:rgba(255,255,255,.15);padding:5px 12px;border-radius:var(--radius-full)}
 .lesson-layout{display:grid;grid-template-columns:1fr 320px;gap:var(--space-6)}
@@ -782,21 +799,21 @@ a.ref-item:hover{background:var(--color-background)}
 
       <div class="section-title">Le programme La Voie</div>
       <div class="grid grid-3">
-        <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-voie-blue"><span class="uni">La Voie</span></div><div class="course-body"><h3>La Voie</h3><div class="meta">6 modules · ⏱ 5h</div><div class="free-meta">Contenu gratuit · reste réservé aux inscrits</div></div></div>
+        <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-voie-blue"><span class="uni">La Voie</span></div><div class="course-body"><h3>La Voie</h3><div class="meta">6 modules · ⏱ 5h</div><div class="free-meta"><svg class="fm-ic fm-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Réservé aux inscrits<span class="fm-sep">·</span><svg class="fm-ic fm-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.5-1.3"/></svg>Bonus disponible à tous</div></div></div>
       </div>
 
       <div class="section-title">La Voie des…</div>
       <div class="grid grid-3">
         <div class="card course-card" onclick="openCourse('full')"><div class="course-thumb thumb-voie"><span class="uni">Programme long</span></div><div class="course-body"><h3>La Voie des managers</h3><div class="meta">6 modules · ⏱ 4h</div><div class="progress"><span style="width:72%"></span></div></div></div>
-        <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-voie"><span class="uni">Programme long</span></div><div class="course-body"><h3>La Voie des artisans</h3><div class="meta">6 modules · ⏱ 4h</div><div class="free-meta">Contenu gratuit · reste réservé aux inscrits</div></div></div>
+        <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-voie"><span class="uni">Programme long</span></div><div class="course-body"><h3>La Voie des artisans</h3><div class="meta">6 modules · ⏱ 4h</div><div class="free-meta"><svg class="fm-ic fm-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Réservé aux inscrits<span class="fm-sep">·</span><svg class="fm-ic fm-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.5-1.3"/></svg>Bonus disponible à tous</div></div></div>
       </div>
 
       <div class="section-title">La série Vous En…</div>
       <div class="grid grid-3">
-        <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-vem-blue"><span class="uni">VEM</span></div><div class="course-body"><h3>Vous En Mieux</h3><div class="meta">4 modules · ⏱ 2h</div><div class="free-meta">Contenu gratuit · reste réservé aux inscrits</div></div></div>
+        <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-vem-blue"><span class="uni">VEM</span></div><div class="course-body"><h3>Vous En Mieux</h3><div class="meta">4 modules · ⏱ 2h</div><div class="free-meta"><svg class="fm-ic fm-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Réservé aux inscrits<span class="fm-sep">·</span><svg class="fm-ic fm-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.5-1.3"/></svg>Bonus disponible à tous</div></div></div>
         <div class="card course-card" onclick="openCourse('full')"><div class="course-thumb thumb-vem-green"><span class="uni">VEP</span></div><div class="course-body"><h3>Vous En Paix</h3><div class="meta">4 modules · ⏱ 2h45</div><div class="progress"><span style="width:90%"></span></div></div></div>
-        <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-vem-blue"><span class="uni">VAT</span></div><div class="course-body"><h3>Vous Au Top</h3><div class="meta">4 modules · ⏱ 2h</div><div class="free-meta">Contenu gratuit · reste réservé aux inscrits</div></div></div>
-        <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-vem-green"><span class="uni">VEL</span></div><div class="course-body"><h3>Vous En Lien</h3><div class="meta">4 modules · ⏱ 2h</div><div class="free-meta">Contenu gratuit · reste réservé aux inscrits</div></div></div>
+        <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-vem-blue"><span class="uni">VAT</span></div><div class="course-body"><h3>Vous Au Top</h3><div class="meta">4 modules · ⏱ 2h</div><div class="free-meta"><svg class="fm-ic fm-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Réservé aux inscrits<span class="fm-sep">·</span><svg class="fm-ic fm-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.5-1.3"/></svg>Bonus disponible à tous</div></div></div>
+        <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-vem-green"><span class="uni">VEL</span></div><div class="course-body"><h3>Vous En Lien</h3><div class="meta">4 modules · ⏱ 2h</div><div class="free-meta"><svg class="fm-ic fm-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Réservé aux inscrits<span class="fm-sep">·</span><svg class="fm-ic fm-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.5-1.3"/></svg>Bonus disponible à tous</div></div></div>
       </div>
       </div>
 
@@ -806,16 +823,16 @@ a.ref-item:hover{background:var(--color-background)}
 
       <div class="section-title">Born To Coach</div>
       <div class="grid grid-3">
-        <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-btc"><span class="uni">Born To Coach</span></div><div class="course-body"><h3>BTC : 1ère génération</h3><div class="meta">8 modules · ⏱ 16h</div><div class="free-meta">Contenu gratuit · reste réservé aux inscrits</div></div></div>
+        <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-btc"><span class="uni">Born To Coach</span></div><div class="course-body"><h3>BTC : 1ère génération</h3><div class="meta">8 modules · ⏱ 16h</div><div class="free-meta"><svg class="fm-ic fm-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Réservé aux inscrits<span class="fm-sep">·</span><svg class="fm-ic fm-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.5-1.3"/></svg>Bonus disponible à tous</div></div></div>
         <div class="card course-card" onclick="openCourse('full')"><div class="course-thumb thumb-btc"><span class="uni">Born To Coach</span></div><div class="course-body"><h3>BTC : 2ème génération</h3><div class="meta">8 modules · ⏱ 16h</div><div class="progress"><span style="width:45%"></span></div></div></div>
-        <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-btc"><span class="uni">Born To Coach</span></div><div class="course-body"><h3>BTC : 3ème génération</h3><div class="meta">8 modules · ⏱ 16h</div><div class="free-meta">Contenu gratuit · reste réservé aux inscrits</div></div></div>
+        <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-btc"><span class="uni">Born To Coach</span></div><div class="course-body"><h3>BTC : 3ème génération</h3><div class="meta">8 modules · ⏱ 16h</div><div class="free-meta"><svg class="fm-ic fm-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Réservé aux inscrits<span class="fm-sep">·</span><svg class="fm-ic fm-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.5-1.3"/></svg>Bonus disponible à tous</div></div></div>
       </div>
 
       <div class="section-title">Intelligence Collective</div>
       <div class="grid grid-3">
-        <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-ic"><span class="uni">Intelligence Collective</span></div><div class="course-body"><h3>IC : Cohésion de groupe</h3><div class="meta">6 modules · ⏱ 10h</div><div class="free-meta">Contenu gratuit · reste réservé aux inscrits</div></div></div>
-        <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-ic"><span class="uni">Intelligence Collective</span></div><div class="course-body"><h3>IC : Coaching d'équipe</h3><div class="meta">6 modules · ⏱ 10h</div><div class="free-meta">Contenu gratuit · reste réservé aux inscrits</div></div></div>
-        <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-ic"><span class="uni">Intelligence Collective</span></div><div class="course-body"><h3>IC : Transformation des organisations</h3><div class="meta">6 modules · ⏱ 10h</div><div class="free-meta">Contenu gratuit · reste réservé aux inscrits</div></div></div>
+        <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-ic"><span class="uni">Intelligence Collective</span></div><div class="course-body"><h3>IC : Cohésion de groupe</h3><div class="meta">6 modules · ⏱ 10h</div><div class="free-meta"><svg class="fm-ic fm-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Réservé aux inscrits<span class="fm-sep">·</span><svg class="fm-ic fm-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.5-1.3"/></svg>Bonus disponible à tous</div></div></div>
+        <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-ic"><span class="uni">Intelligence Collective</span></div><div class="course-body"><h3>IC : Coaching d'équipe</h3><div class="meta">6 modules · ⏱ 10h</div><div class="free-meta"><svg class="fm-ic fm-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Réservé aux inscrits<span class="fm-sep">·</span><svg class="fm-ic fm-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.5-1.3"/></svg>Bonus disponible à tous</div></div></div>
+        <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-ic"><span class="uni">Intelligence Collective</span></div><div class="course-body"><h3>IC : Transformation des organisations</h3><div class="meta">6 modules · ⏱ 10h</div><div class="free-meta"><svg class="fm-ic fm-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Réservé aux inscrits<span class="fm-sep">·</span><svg class="fm-ic fm-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.5-1.3"/></svg>Bonus disponible à tous</div></div></div>
       </div>
       </div>
     </section>
@@ -959,7 +976,11 @@ a.ref-item:hover{background:var(--color-background)}
           <div class="lsvid-info">
             <h3 id="vidTitle">Créer l'engagement collectif</h3>
             <p id="vidDesc">Les ressorts concrets pour enclencher l'adhésion d'une équipe autour d'un objectif commun.</p>
-            <div class="lsvid-actions"><button class="btn btn-accent">⏯ Reprendre à 07:12</button><button class="btn btn-primary">Marquer comme vu ✓</button></div>
+            <div class="lsvid-actions"><button class="btn btn-accent">⏯ Reprendre à 07:12</button><button class="btn btn-primary">Marquer comme vu ✓</button><button class="btn btn-ghost" id="vidChapBtn" onclick="toggleVidChap(this)">📑 Chapitrage</button></div>
+            <div id="vidChapWrap" class="rep-content hidden">
+              <div class="rep-chaphead">Chapitrage (importé de Vimeo)</div>
+              <ol class="chaplist" id="vidChapList"></ol>
+            </div>
           </div>
         </div>
         <div style="margin-top:var(--space-5);display:flex;justify-content:space-between"><button class="btn btn-ghost" onclick="lsNext('ex')">◀ Exercice</button><button class="btn btn-accent" onclick="lsNext('res')">Suivant · Ressources ▶</button></div>
@@ -1000,8 +1021,8 @@ a.ref-item:hover{background:var(--color-background)}
         <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Visios live de la Promo 2026 — Automne · transcription, chapitrage & résumé Notta</p>
         <div class="card" style="padding:var(--space-5);margin-bottom:var(--space-4)">
           <span class="course-tag" style="color:#d64545;background:rgba(214,69,69,.1)">Visio 1 · 12 mars · 58 min</span>
-          <div class="summary-box" style="margin-top:10px"><b>Résumé Notta :</b> clarifier l'objectif avant de déléguer, ritualiser le feedback, traiter les tensions tôt.</div>
-          <div class="replay-actions"><button class="btn btn-accent">▶ Revoir (BBB)</button><button class="btn btn-ghost">📝 Transcription</button><button class="btn btn-ghost">📄 Résumé</button><button class="btn btn-ghost" onclick="goTo('ai')">🧙 YoDalf</button></div>
+          <div class="replay-actions" style="margin-top:12px"><button class="btn btn-accent">▶ Revoir (BBB)</button><button class="btn btn-ghost" onclick="repShow(this,'trans')">📝 Transcription</button><button class="btn btn-ghost" onclick="repShow(this,'chap')">📑 Chapitrage</button><button class="btn btn-ghost active" onclick="repShow(this,'resume')">📄 Résumé</button><button class="btn btn-ghost" onclick="goTo('ai')">🧙 YoDalf</button></div>
+          <div id="rep-content" class="rep-content"></div>
         </div>
         <div style="display:flex;justify-content:flex-start"><button class="btn btn-ghost" onclick="lsNext('quiz')">◀ Quiz</button></div>
       </div>
@@ -1627,14 +1648,46 @@ function toggleSec(el){el.parentNode.classList.toggle('closed');}
 const LSLABEL={ex:'Exercice',video:'Vidéos',res:'Ressources',quiz:'Quiz',replay:'Replay'};
 function showLsPanel(t){['ex','video','res','quiz','replay'].forEach(function(x){var p=document.getElementById('ls-'+x);if(p)p.classList.toggle('active',x===t)});var c=document.getElementById('lsCur');if(c)c.textContent=LSLABEL[t]||'';document.querySelector('.main').scrollTo(0,0);}
 function lsStep(el,t){showLsPanel(t);}
+var VIDCHAPS={
+ '1/3':[['00:00','Introduction'],['02:10','Pourquoi l\'engagement compte'],['05:40','Les signaux d\'adhésion'],['09:15','Mise en pratique'],['12:30','Synthèse']],
+ '2/3':[['00:00','Les 4 leviers en bref'],['02:30','Levier 1 — le sens'],['05:00','Levier 2 — l\'autonomie'],['08:10','Leviers 3 & 4']],
+ '3/3':[['00:00','Le contexte'],['02:45','Analyse de la situation'],['05:20','Les décisions clés']]
+};
+function renderVidChap(idx){
+  var ol=document.getElementById('vidChapList');if(!ol)return;
+  var arr=VIDCHAPS[idx]||[];
+  ol.innerHTML=arr.map(function(c){return '<li onclick="seekRep(this)"><span class="t">'+c[0]+'</span><span class="c">'+c[1]+'</span></li>';}).join('');
+}
+function toggleVidChap(btn){var w=document.getElementById('vidChapWrap');if(!w)return;var open=w.classList.toggle('hidden')===false;btn.classList.toggle('active',open);}
 function pickVid(el,title,idx,dur,desc){
   el.parentNode.querySelectorAll('.vidtab').forEach(function(x){x.classList.remove('active')});
   el.classList.add('active');
   var t=document.getElementById('vidTitle');if(t)t.textContent=title;
   var l=document.getElementById('vidLabel');if(l)l.textContent='Vidéo '+idx+' — Vimeo · '+dur;
   var d=document.getElementById('vidDesc');if(d&&desc)d.textContent=desc;
+  renderVidChap(idx);
 }
 function lsNext(t){var leaves=document.querySelectorAll('#tv-21 .tv-leaf');leaves.forEach(function(s){s.classList.remove('cur');if((s.getAttribute('onclick')||'').indexOf("'"+t+"'")>=0)s.classList.add('cur');});showLsPanel(t);}
+// Replay : Transcription / Chapitrage / Résumé (panneau qui s'affiche dessous)
+var REP={
+  resume:'<div class="summary-box"><b>Résumé Notta :</b> clarifier l\'objectif avant de déléguer, ritualiser le feedback, traiter les tensions tôt.</div>',
+  trans:'<div class="rep-trans"><b>Transcription Notta (extrait)</b><p><span class="t">00:42</span> Aujourd\'hui on travaille la délégation sans perdre le cap…</p><p><span class="t">07:18</span> La première erreur, c\'est de reprendre la main trop tôt…</p><p><span class="t">23:05</span> Le feedback à chaud doit rester factuel et orienté action…</p><a href="#" style="color:var(--color-accent);font-size:12px">Ouvrir la transcription complète ↗</a></div>',
+  chap:'<div class="rep-chaphead">Chapitrage (importé de Vimeo / Notta)</div><ol class="chaplist">'+
+    '<li onclick="seekRep(this)"><span class="t">00:00</span><span class="c">Accueil & objectifs de la visio</span></li>'+
+    '<li onclick="seekRep(this)"><span class="t">06:30</span><span class="c">Cas n°1 — déléguer sans lâcher le cap</span></li>'+
+    '<li onclick="seekRep(this)"><span class="t">21:15</span><span class="c">Le feedback à chaud</span></li>'+
+    '<li onclick="seekRep(this)"><span class="t">38:40</span><span class="c">Gérer une tension dans l\'équipe</span></li>'+
+    '<li onclick="seekRep(this)"><span class="t">50:10</span><span class="c">Questions & synthèse</span></li>'+
+  '</ol>'
+};
+function repShow(btn,type){
+  var box=btn.closest('.card');
+  box.querySelectorAll('.replay-actions .btn-ghost').forEach(function(b){if(b.getAttribute('onclick')&&b.getAttribute('onclick').indexOf('repShow')>=0)b.classList.remove('active')});
+  btn.classList.add('active');
+  box.querySelector('#rep-content').innerHTML=REP[type]||'';
+}
+function seekRep(li){li.parentNode.querySelectorAll('li').forEach(function(x){x.classList.remove('on')});li.classList.add('on');}
+(function(){var rc=document.getElementById('rep-content');if(rc)rc.innerHTML=REP.resume;renderVidChap('1/3');})();
 function adminTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
   ['members','courses','promos','suivi','integ'].forEach(x=>document.getElementById('admin-'+x).classList.add('hidden'));
   document.getElementById('admin-'+t).classList.remove('hidden')}

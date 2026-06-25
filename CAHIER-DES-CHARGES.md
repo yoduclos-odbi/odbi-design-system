@@ -160,7 +160,7 @@ progression, promotions, groupe WhatsApp, visios propres).
   (fond blanc, **accent couleur en haut** : bleu pour La Voie, foncé pour L'École, en-tête avec filet, sous-sections
   à liseré coloré) → séparation visuelle marquée entre univers et groupes de programmes.
 - Dans le catalogue : cours inscrits = barre de progression ; cours non inscrits =
-  mention « 🎁 Contenu gratuit · reste réservé aux inscrits ».
+  mention « 🔒 Réservé aux inscrits · 🔓 Bonus disponible à tous » (icônes cadenas fermé / ouvert).
 
 ---
 
@@ -217,6 +217,7 @@ Inspirée des LMS type Skool :
      - **Lecteur vidéo à gauche** + **panneau d'infos à droite** (mise en page côte à côte, pour remplir la largeur
        de façon harmonieuse) : titre de la vidéo, **courte description**, puis actions (« Reprendre à … »,
        « Marquer comme vu »). Les chips de sélection des vidéos restent au-dessus ; Précédent/Suivant en bas.
+     - **Bouton « Chapitrage »** : au clic, affiche le **chapitrage de la vidéo** (timestamps cliquables), **importé de Vimeo**.
      - **Affichage allégé** : chaque étape = **case à cocher + libellé + durée** (façon Skool), **sans icône de type**
        dans l'arbre (les icônes SVG de type restent dans la zone de contenu).
      - **Cases vertes auto-cochées** une fois l'étape terminée ; pastille verte (partielle/complète) sur les
@@ -353,7 +354,7 @@ Flux : `Visio BBB → enregistrement BBB → Notta (transcription + chapitrage +
 
 - **Accès réservé aux membres de la promotion** concernée 🔒
 - Les replays sont rangés **dans chaque session du cours** (onglet « 🎥 Replay »), pas dans une liste globale (volume important)
-- Actions par replay : ▶ Revoir (BBB) · 📝 Transcription (Notta) · 📄 Résumé (Notta) · 🧙 Questions à YoDalf · langues dispo
+- Actions par replay (boutons qui **affichent le contenu dessous**) : ▶ Revoir (BBB) · 📝 Transcription (Notta) · 📑 **Chapitrage** (Vimeo/Notta) · 📄 Résumé (Notta) · 🧙 Questions à YoDalf
 - **Résumé = fait par Notta** (transcription + chapitrage + résumé proposé)
 
 ---
