@@ -45,10 +45,13 @@ S'appuie sur le **design system ODBI** (`odbi-design-tokens.css` / `.json`).
 
 ### Logo & marque
 - Marque : **« Odbi campus »** (et non « ODBI Academy »). Logo en haut à gauche (barre + page de connexion).
-  *Maquette : wordmark reconstitué en CSS ; à remplacer par le fichier logo officiel (SVG/PNG) une fois fourni.*
+  *Maquette : **reproduction vectorielle (SVG)** du logo (O en anneau + « dbi » + barre grise + « campus »).
+  À remplacer par le **fichier logo officiel** (SVG/PNG) une fois fourni en pièce jointe — l'image collée
+  dans le chat n'est pas récupérable comme fichier.*
 
 ### Couleurs par univers (codes repris des flyers ODBI)
-- **La Voie** → **bleu + vert mixés** (bleu profond `#1F465B` + vert `#86A43F`).
+- **Programme « La Voie »** → **bleu uniquement** (bleu profond `#1F465B`).
+- **« La Voie des… » (managers, artisans)** → **bleu + vert mixés** (`#1F465B` + `#86A43F`).
 - **Born To Coach** → **vert olive + noir** (`#435B20` + noir).
 - **Intelligence Collective** → **vert forêt** (`#3F571D` / `#567030`).
 - **Série Vous En… (VEM/VEP/VAT/VEL)** → **couleurs épurées** des logos : VEM & VAT **bleu**, VEP & VEL **vert**.
