@@ -222,12 +222,13 @@ Inspirée des LMS type Skool :
        dans l'arbre (les icônes SVG de type restent dans la zone de contenu).
      - **Cases vertes auto-cochées** une fois l'étape terminée ; pastille verte (partielle/complète) sur les
        parents séquence/session ; **cadenas** sur le contenu verrouillé.
-  4. **« Certification »** (section repliable, badge **RNCP / RS / interne** selon le programme) :
-     **« Mon parcours de certification »** → déroulement, niveaux, **ateliers d'évaluation** (cliquables → grille),
-     **référentiel de compétences**, accès au procès-verbal et au diplôme. Réservé aux inscrits (cf. §11ter).
-  5. **« Ma promotion »** (section repliable, synchrone) : **sélecteur de promotion** (dérouleur par année, en tête
+  4. **« Ma promotion »** (section repliable, synchrone) : **sélecteur de promotion** (dérouleur par année, en tête
      de la section — pas de libellé « Promotion » redondant), puis **Coaching/Training, Présentiels, Participants, WhatsApp**.
      Sélecteur masqué en accès découverte (non-inscrit = sans promotion).
+  5. **« Certification »** (section repliable **en bas du menu**, badge **RNCP / RS / interne** ; **masquée si le
+     programme n'est pas certifiant**) : **« Mon parcours de certification »** → déroulement, **niveaux (Niveau 1 / Niveau 2)**,
+     **ateliers d'évaluation** (cliquables → sa grille en lecture), **référentiel**, **mon résultat + mon diplôme**.
+     Le **PV (par promotion)** et la **délivrance** restent côté **jury/BO**, pas dans l'espace participant. Réservé aux inscrits (cf. §11ter).
 - **Pas de recherche dans le menu** : une **seule** zone de recherche, **globale, dans la barre du haut**.
 - **Scrolls indépendants** : la colonne de gauche (menu) et la zone de contenu (centre) **défilent séparément** ;
   cliquer un élément du menu après l'avoir fait défiler affiche le contenu **en haut** de la zone centrale.
@@ -413,14 +414,19 @@ enregistrer, et reçoivent des retours (pairs + coach + IA).
 
 ## 11ter. Certification (évaluation finale)
 
-Chaque programme se termine par une **évaluation finale** qui fait office de **certification**.
+Un programme **peut** se terminer par une **évaluation finale** qui fait office de **certification**.
+
+### Programme certifiant — ou non
+- Un programme peut être **certifiant** ou **non certifiant** (paramétrable au BO).
+- **Si non certifiant** : la section **« Certification » est masquée** côté membre ; le participant reçoit
+  une **attestation de suivi** en fin de parcours (déposée dans son profil).
 
 ### Adossement (RS / RNCP / interne)
-- Un programme peut être **adossé à un titre RNCP**, à une **certification RS** (Répertoire spécifique),
+- Un programme certifiant peut être **adossé à un titre RNCP**, à une **certification RS** (Répertoire spécifique),
   **ou à aucun** (« certification interne ODBI » non adossée).
 - Le **type d'adossement** et le **code + intitulé** du titre sont **paramétrables par programme** (BO).
 - Le badge correspondant (**RNCP / RS / interne**) est affiché dans le menu de gauche du programme
-  (section **« Certification »**) et rappelé sur le diplôme et le procès-verbal.
+  (section **« Certification »**, **en bas du menu**) et rappelé sur le diplôme et le procès-verbal.
 
 ### Ateliers d'évaluation (1 à 3 par programme)
 - Un programme comporte **1 à 3 ateliers**, **de natures différentes** et configurables :
@@ -437,44 +443,59 @@ Chaque programme se termine par une **évaluation finale** qui fait office de **
 ### Grille de notation & niveaux
 - Chaque atelier est noté via une **grille** : pour chaque **indicateur**, le jury positionne le **niveau atteint**
   (barème ex. **Non acquis 0 / En cours 1 / Acquis 2 / Expert 3**) + une **observation**.
-- La grille calcule un **score d'atelier** et une **décision** d'atelier.
-- Un programme peut prévoir **1 ou 2 niveaux de certification** (ex. **Certifié** / **Certifié — mention Excellence**),
-  avec des **seuils** paramétrables (ex. ≥ 60 % par atelier ; mention ≥ 85 % de moyenne).
-- **Vue jury** : saisie des grilles. **Vue candidat** : consultation de ses résultats.
+- La grille calcule un **score d'atelier** et une **contribution au niveau visé**.
+- Un programme peut prévoir **1 ou 2 niveaux de certification** ; **quand il y a 2 niveaux, on les nomme
+  « Niveau 1 » et « Niveau 2 »** (seuils paramétrables, ex. Niveau 1 ≥ 60 % par atelier ; Niveau 2 ≥ 85 % de moyenne).
+  Avec 1 seul niveau : « Niveau 1 ».
+- **Vue jury** : saisie des grilles. **Vue candidat** : consultation de ses résultats (lecture seule).
 
-### Procès-verbal de certification (PV)
-- À l'issue des ateliers, un **procès-verbal** officiel est généré : candidat, programme/promotion,
-  **membres du jury**, dates, **résultats par atelier**, **moyenne**, **décision finale**
-  (**Admis·e** / mention / **Ajourné·e**), **signatures**.
-- Actions jury : **Valider le PV**, **Télécharger (PDF)**, **Délivrer le diplôme**.
+### Jury de certification
+- Le **coach/animateur du programme nomme le jury** mais **n'en fait pas partie** (il a accompagné la promotion).
+- Le jury comprend **au moins 2 personnes**, dont **un·e président·e** (coachs labellisés).
+- Constitution du jury **au BO** (depuis l'annuaire).
 
-### Délivrance du diplôme
-- Le jury **déclenche l'envoi du diplôme** depuis le PV (ou depuis la liste des candidats au BO).
-- Le diplôme est **déposé dans le profil** du candidat → onglet **« Mes certifications & diplômes »**
-  (téléchargeable en PDF), avec **notification + e-mail**.
-- Le profil distingue : diplômes **délivrés** (avec code RNCP/RS) et certifications **en cours / non encore délivrées**.
+### Procès-verbal du jury (PV) — **par promotion**
+- Le PV est **établi par promotion** (un **seul document** pour toute la session), **pas un PV par candidat**.
+- Contenu (modèle ODBI) : **organisme de formation**, **objet** (promotion), **date & lieu**,
+  **composition du jury** (président + membres, présence), **liste des candidats & décisions individuelles**
+  (Niveau 1 / Niveau 2 / Ajourné), **déroulement des délibérations** (procédure, statistiques générales),
+  **remarques & recommandations**, **signatures** (président + membres), **annexes**.
+- Actions jury : **Valider & signer le PV**, **Télécharger (PDF)**, **Délivrer les diplômes (toute la promo)**.
+- Le PV est un **document du jury** (espace jury / BO) — **il n'apparaît pas dans l'espace du participant**.
 
-### Déroulement présenté au candidat (section « Certification » du programme)
-Prérequis → **Ateliers d'évaluation** → **Passage devant le jury** (grilles) → **Procès-verbal** → **Diplôme**.
-Réservé aux **inscrits** (en accès découverte, la section est verrouillée).
+### Délivrance du diplôme — **par le jury**
+- **La délivrance est une action du jury** (depuis le PV ou la liste des candidats au BO) —
+  **jamais une action du participant**.
+- Le diplôme est **déposé dans le profil** du candidat admis → onglet **« Mes certifications & diplômes »**
+  (téléchargeable en PDF), avec **notification + e-mail**. Les candidats **ajournés** reçoivent une **attestation**.
+- Le profil **affiche** (lecture seule) : diplômes **délivrés** (avec code RNCP/RS) et **attestations**.
+
+### Vue candidat (section « Certification » du programme)
+- Déroulement → **Niveaux** → **Ateliers d'évaluation** (cliquables → sa grille en lecture) → **Référentiel**
+  → **Mon résultat** (décision du jury) + **Mon diplôme** (vers le profil).
+- Le candidat **ne voit pas** le PV de promotion ni le bouton de délivrance.
+- Réservé aux **inscrits** (en accès découverte, la section est verrouillée).
 
 ### Back-office — onglet « Certification »
-- **Paramétrage par programme** : adossement (RNCP/RS/interne) + code, **nombre de niveaux** + seuils,
-  **référentiel** (blocs/indicateurs), **ateliers** (1 à 3, type/intitulé/durée/coefficient).
-- **Suivi des candidats** : ateliers validés, moyenne, décision, **accès aux grilles / au PV**,
-  bouton **Délivrer**. **Synchronisé avec le suivi pédagogique** et exportable (PDF / registre Notion).
-- Accessible à l'**Admin** et au **Coach/Animateur** (jury).
+- **Paramétrage par programme** : **certifiant oui/non**, adossement (RNCP/RS/interne) + code,
+  **nombre de niveaux** (1 / 2 → Niveau 1 / Niveau 2) + seuils, **référentiel** (blocs/indicateurs),
+  **ateliers** (1 à 3, type/intitulé/durée/coefficient), **jury** (≥ 2, dont président, coach/animateur exclu).
+- **Suivi des candidats de la promotion** : ateliers validés, moyenne, décision, **saisie des grilles**,
+  **PV par promotion**, **délivrance des diplômes**. **Synchronisé avec le suivi pédagogique** et exportable (PDF / registre Notion).
+- Accessible à l'**Admin** et au **Coach/Animateur** (organisateur ; le jury proprement dit reste tiers).
 
 ### Intégrations mobilisées
-- **Notion** (registre des certifications, BPF), **génération PDF** (PV + diplôme), suivi pédagogique (assiduité Qualiopi).
+- **Notion** (registre des certifications, BPF), **génération PDF** (PV + diplôme + attestations), suivi pédagogique (assiduité Qualiopi).
 
 ### Modèle de données
-- `Certification` : programme, type_adossement (rncp/rs/interne), code_titre, niveaux[] (libellé + seuil), référentiel.
+- `Certification` : programme, **certifiant (bool)**, type_adossement (rncp/rs/interne), code_titre,
+  niveaux[] (Niveau 1 / Niveau 2 + seuil), référentiel, **jury[]** (membre + rôle président/membre).
 - `Bloc` → `Competence` → `Indicateur`.
 - `Atelier` : certification, type (entretien/présentation/étude_de_cas/jeu_de_role/quiz…), intitulé, durée, coefficient.
-- `Grille` : atelier, candidat, jury[], notes[] (indicateur → niveau + observation), score, décision.
-- `ProcesVerbal` : candidat, jury[], résultats_ateliers[], moyenne, décision (admis/mention/ajourné), date, signatures.
-- `Diplome` : candidat, certification, niveau_obtenu, date_délivrance, fichier_pdf → rattaché au **profil**.
+- `Grille` : atelier, candidat, jury[], notes[] (indicateur → niveau + observation), score, contribution_niveau.
+- `ProcesVerbal` : **promotion**, jury[], candidats[] (décision individuelle Niveau 1/2/ajourné), stats,
+  délibérations, remarques, date, lieu, signatures.
+- `Diplome` / `Attestation` : candidat, certification, niveau_obtenu, date_délivrance, fichier_pdf → rattaché au **profil**.
 
 ---
 

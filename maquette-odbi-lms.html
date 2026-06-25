@@ -781,14 +781,6 @@ a.ref-item:hover{background:var(--color-background)}
           </div>
         </div>
 
-        <!-- Certification -->
-        <div class="nav-sec">
-          <div class="nav-sec-h" onclick="toggleSec(this)"><svg class="sc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg> Certification <span class="sc-badge" id="navCertifBadge" style="background:var(--color-indigo-dye)">RNCP</span></div>
-          <div class="nav-sec-b">
-            <div class="cnav-item" onclick="openInfo(this,'certif')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg> Mon parcours de certification</div>
-          </div>
-        </div>
-
         <!-- Ma promotion -->
         <div class="nav-sec">
           <div class="nav-sec-h" onclick="toggleSec(this)"><svg class="sc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg> Ma promotion</div>
@@ -810,6 +802,14 @@ a.ref-item:hover{background:var(--color-background)}
             <div class="cnav-item" onclick="openInfo(this,'presentiel')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Présentiels</div>
             <div class="cnav-item" onclick="openInfo(this,'participants')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg> Participants</div>
             <div class="cnav-item" onclick="openInfo(this,'whatsapp')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg> WhatsApp</div>
+          </div>
+        </div>
+
+        <!-- Certification (en bas du menu ; masquée si le programme n'est pas certifiant) -->
+        <div class="nav-sec" id="navCertifSec">
+          <div class="nav-sec-h" onclick="toggleSec(this)"><svg class="sc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg> Certification <span class="sc-badge" id="navCertifBadge" style="background:var(--color-indigo-dye)">RNCP</span></div>
+          <div class="nav-sec-b">
+            <div class="cnav-item" onclick="openInfo(this,'certif')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg> Mon parcours de certification</div>
           </div>
         </div>
       </div>
@@ -1566,6 +1566,10 @@ a.ref-item:hover{background:var(--color-background)}
 
         <div class="edit-card">
           <h3>Paramétrage de la certification <span id="certifProgName" style="color:var(--color-neutral);font-weight:400">— Born To Coach</span></h3>
+          <div class="field"><label>Ce programme est-il certifiant ?</label>
+            <select id="certifEnabled" onchange="certifEnabledToggle()"><option value="1" selected>Oui — évaluation finale certifiante</option><option value="0">Non — programme sans certification (attestation de suivi)</option></select>
+          </div>
+          <p id="certifDisabledNote" class="hidden" style="background:rgba(74,74,74,.06);border-left:4px solid var(--color-neutral);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--color-jet)">La section <b>« Certification » sera masquée côté membre</b> pour ce programme ; les participants reçoivent une <b>attestation de suivi</b>.</p>
           <div class="row2">
             <div class="field"><label>Adossement à un titre</label>
               <select id="certifRsType" onchange="certifRsToggle()"><option value="rncp">Titre RNCP (enregistré)</option><option value="rs">Certification RS (Répertoire spécifique)</option><option value="none">Certification interne ODBI (non adossée)</option></select>
@@ -1573,7 +1577,7 @@ a.ref-item:hover{background:var(--color-background)}
             <div class="field" id="certifRsCodeField"><label>Code & intitulé du titre</label><input id="certifRsCode" value="RNCP 37863 — Coach professionnel (Niveau 6)"></div>
           </div>
           <div class="row2">
-            <div class="field"><label>Nombre de niveaux de certification</label><select id="certifLevels"><option value="2" selected>2 niveaux (ex. Certifié / mention Excellence)</option><option value="1">1 niveau (Certifié)</option></select></div>
+            <div class="field"><label>Nombre de niveaux de certification</label><select id="certifLevels"><option value="2" selected>2 niveaux (Niveau 1 / Niveau 2)</option><option value="1">1 niveau (Niveau 1)</option></select></div>
             <div class="field"><label>Seuil de réussite</label><input value="≥ 60 % par atelier · mention ≥ 85 % de moyenne"></div>
           </div>
           <div class="field"><label>Référentiel de compétences (blocs + indicateurs)</label>
@@ -1588,18 +1592,30 @@ a.ref-item:hover{background:var(--color-background)}
             <tr><td>3</td><td><select><option selected>Présentation</option><option>Entretien</option><option>Étude de cas</option><option>Jeu de rôle</option><option>Quiz</option></select></td><td><input value="Présentation orale devant jury"></td><td><input value="20 min" style="width:80px"></td><td><input value="1" style="width:48px"></td><td><button class="icon-btn">✕</button></td></tr>
           </table>
           <button class="btn btn-ghost" style="margin-top:var(--space-2)">+ Ajouter un atelier (max 3)</button>
+
+          <div class="section-title" style="margin-top:var(--space-5)">Jury de certification</div>
+          <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-3)">Le <b>coach/animateur du programme nomme le jury</b> mais <b>n'en fait pas partie</b> (il a accompagné la promotion). Le jury comprend <b>au moins 2 personnes</b>, dont un·e <b>président·e</b>.</p>
+          <table class="table">
+            <tr><th>Membre du jury</th><th>Qualité</th><th>Rôle</th><th></th></tr>
+            <tr><td><input value="Céline Duclos"></td><td><input value="Coach labellisée"></td><td><select><option selected>Présidente</option><option>Membre</option></select></td><td><button class="icon-btn">✕</button></td></tr>
+            <tr><td><input value="Thierry Faye"></td><td><input value="Coach labellisé"></td><td><select><option>Présidente</option><option selected>Membre</option></select></td><td><button class="icon-btn">✕</button></td></tr>
+            <tr><td><input value="Isabelle Blanc"></td><td><input value="Coach labellisée"></td><td><select><option>Présidente</option><option selected>Membre</option></select></td><td><button class="icon-btn">✕</button></td></tr>
+          </table>
+          <button class="btn btn-ghost" style="margin-top:var(--space-2)">+ Ajouter un membre du jury (annuaire)</button>
+          <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-2)">⚠️ Le <b>coach/animateur</b> du programme est <b>exclu du jury</b>. Un seul·e président·e requis·e.</p>
+
           <div style="margin-top:var(--space-4)"><button class="btn btn-primary">💾 Enregistrer le paramétrage</button></div>
         </div>
 
-        <h3 class="section-title">Candidats à la certification</h3>
-        <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">Avancement des ateliers, grilles de jury, procès-verbal et délivrance du diplôme. <span style="color:var(--color-primary)">● Synchronisé avec le suivi pédagogique.</span></p>
+        <div class="flex-between mb6" style="flex-wrap:wrap;gap:10px"><h3 class="section-title" style="margin:0">Candidats de la promotion</h3><button class="btn btn-accent" onclick="goTo('certif-pv')">📄 Procès-verbal du jury (promotion)</button></div>
+        <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">Le <b>procès-verbal est établi par promotion</b> (un seul document pour toute la session, signé par le jury). Saisie des grilles par candidat ci-dessous. <span style="color:var(--color-primary)">● Synchronisé avec le suivi pédagogique.</span></p>
         <table class="table">
-          <tr><th>Candidat·e</th><th>Ateliers validés</th><th>Moyenne</th><th>Décision</th><th>PV</th><th>Diplôme</th></tr>
-          <tr><td><span class="pmini" style="background:var(--color-asparagus)">KN</span> Karim Nadir</td><td>3 / 3</td><td><b>85 %</b></td><td><span class="cf-st ok">Admis — Excellence</span></td><td><button class="btn btn-ghost" style="padding:6px 12px" onclick="goTo('certif-pv')">Voir le PV</button></td><td><button class="btn btn-accent" style="padding:6px 12px" onclick="deliverDiploma()">🎓 Délivrer</button></td></tr>
+          <tr><th>Candidat·e</th><th>Ateliers validés</th><th>Moyenne</th><th>Décision</th><th>Grille</th><th>Diplôme</th></tr>
+          <tr><td><span class="pmini" style="background:var(--color-asparagus)">KN</span> Karim Nadir</td><td>3 / 3</td><td><b>85 %</b></td><td><span class="cf-st ok">Admis — Niveau 2</span></td><td><button class="btn btn-ghost" style="padding:6px 12px" onclick="goTo('certif-grille')">Voir</button></td><td><span class="cf-st ok">Délivré</span></td></tr>
           <tr><td><span class="pmini" style="background:var(--color-indigo-dye)">LM</span> Léa Martin</td><td>2 / 3</td><td>—</td><td><span class="cf-st plan">En cours</span></td><td><button class="btn btn-ghost" style="padding:6px 12px" onclick="goTo('certif-grille')">Saisir la grille</button></td><td>—</td></tr>
           <tr><td><span class="pmini" style="background:#888">TP</span> Thomas Petit</td><td>1 / 3</td><td>—</td><td><span class="cf-st todo">À planifier</span></td><td>—</td><td>—</td></tr>
         </table>
-        <div style="display:flex;gap:10px;margin-top:var(--space-5)"><button class="btn btn-ghost">⬇ Exporter les PV (PDF)</button><button class="btn btn-ghost">Vers Notion (registre certifications)</button></div>
+        <div style="display:flex;gap:10px;margin-top:var(--space-5);flex-wrap:wrap"><button class="btn btn-accent" onclick="deliverDiploma()">🎓 Délivrer les diplômes (promotion)</button><button class="btn btn-ghost">⬇ Exporter le PV (PDF)</button><button class="btn btn-ghost">Vers Notion (registre certifications)</button></div>
       </div>
 
       <div id="admin-integ" class="hidden">
@@ -1833,12 +1849,13 @@ a.ref-item:hover{background:var(--color-background)}
           </div>
           <button class="btn btn-ghost" style="padding:6px 12px">⬇ PDF</button>
         </div>
-        <div class="diploma" style="border-style:dashed;background:none;opacity:.7">
-          <div class="seal" style="background:var(--color-neutral)">⏳</div>
+        <div class="diploma" style="border-style:dashed">
+          <div class="seal" style="background:var(--color-neutral)">📄</div>
           <div style="flex:1">
-            <h4>Vous En Paix</h4>
-            <small>Certification interne ODBI · ateliers en cours — non encore délivrée</small>
+            <h4>Vous En Paix — Attestation de suivi</h4>
+            <small>Programme non certifiant · attestation délivrée en fin de parcours</small>
           </div>
+          <button class="btn btn-ghost" style="padding:6px 12px">⬇ PDF</button>
         </div>
       </div>
 
@@ -1865,7 +1882,7 @@ a.ref-item:hover{background:var(--color-background)}
         <div class="grid grid-3" style="gap:var(--space-4)">
           <div><small style="color:var(--color-neutral)">Candidat·e</small><div style="font-family:var(--font-title);font-weight:600">Karim Nadir — BTC : 2ème génération</div></div>
           <div><small style="color:var(--color-neutral)">Atelier</small><div style="font-family:var(--font-title);font-weight:600"><span id="grilleAtType">🎙️ Entretien de coaching</span> · 30 min</div></div>
-          <div><small style="color:var(--color-neutral)">Jury</small><div style="font-family:var(--font-title);font-weight:600">Yohann Duclos · Sophie Roux</div></div>
+          <div><small style="color:var(--color-neutral)">Jury</small><div style="font-family:var(--font-title);font-weight:600">Céline Duclos (présidente) · Thierry Faye</div></div>
         </div>
       </div>
 
@@ -1887,55 +1904,71 @@ a.ref-item:hover{background:var(--color-background)}
 
       <div class="card" style="padding:var(--space-5);margin-top:var(--space-5);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
         <div><small style="color:var(--color-neutral)">Score de l'atelier</small><div style="font-family:var(--font-title);font-weight:700;font-size:22px;color:var(--color-primary)">15 / 18 — 83 %</div></div>
-        <div class="field" style="margin:0;min-width:240px"><label>Décision pour cet atelier</label><select><option>✅ Réussi — niveau Acquis</option><option>🌟 Réussi — niveau Expert</option><option>❌ Non validé — à repasser</option></select></div>
+        <div class="field" style="margin:0;min-width:240px"><label>Contribution au niveau visé</label><select><option>✅ Atelier validé — contribue au Niveau 1</option><option>🌟 Atelier validé — contribue au Niveau 2</option><option>❌ Atelier non validé — à repasser</option></select></div>
       </div>
       <div style="display:flex;gap:10px;margin-top:var(--space-5);flex-wrap:wrap">
         <button class="btn btn-primary">💾 Enregistrer la grille</button>
-        <button class="btn btn-accent" onclick="goTo('certif-pv')">📄 Voir le procès-verbal</button>
+        <button class="btn btn-accent" onclick="goTo('certif-pv')">📄 Voir le procès-verbal de la promo</button>
         <button class="btn btn-ghost" onclick="backCertif()">Annuler</button>
       </div>
-      <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-4)">ℹ️ Une fois toutes les grilles d'ateliers saisies, le <b>procès-verbal de certification</b> est généré automatiquement, puis le jury déclenche l'<b>envoi du diplôme</b> (déposé dans le profil du candidat).</p>
+      <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-4)">ℹ️ Une fois toutes les grilles d'ateliers saisies pour la promotion, le <b>procès-verbal du jury (par promotion)</b> est généré, puis le jury déclenche l'<b>envoi des diplômes</b> (déposés dans le profil de chaque candidat admis).</p>
     </section>
 
     <!-- ===== PROCÈS-VERBAL DE CERTIFICATION ===== -->
     <section id="page-certif-pv" class="page">
       <div class="page-head" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
         <div>
-          <a onclick="goTo('certif-grille')" style="color:var(--color-accent);cursor:pointer;font-size:13px;font-family:var(--font-title);font-weight:500">← Retour à la grille</a>
-          <h1 style="margin-top:6px">Procès-verbal de certification</h1>
-          <p>Document officiel de jury — synthèse des ateliers et décision finale</p>
+          <a onclick="goTo('admin');adminTab(document.getElementById('tab-certif'),'certif')" style="color:var(--color-accent);cursor:pointer;font-size:13px;font-family:var(--font-title);font-weight:500">← Retour à la certification (back-office)</a>
+          <h1 style="margin-top:6px">Procès-verbal du jury de certification</h1>
+          <p>Document officiel <b>par promotion</b> — établi et signé par le jury</p>
         </div>
       </div>
       <div class="pv">
         <div class="pv-head">
-          <h2>Procès-verbal de certification</h2>
+          <h2>Procès-verbal du jury de certification</h2>
           <div class="sub" id="pvRs">Titre RNCP 37863 — « Coach professionnel » (Niveau 6) · ODBI Campus</div>
         </div>
-        <div class="pv-row"><span class="lbl">Candidat·e</span><span><b>Karim Nadir</b></span></div>
-        <div class="pv-row"><span class="lbl">Programme / promotion</span><span>Born To Coach — 2ème génération · Promo 2026</span></div>
-        <div class="pv-row"><span class="lbl">Membres du jury</span><span>Yohann Duclos (président) · Sophie Roux</span></div>
-        <div class="pv-row"><span class="lbl">Date de la session</span><span>12 septembre 2026</span></div>
+        <div class="pv-row"><span class="lbl">Organisme de formation</span><span><b>ODBI</b></span></div>
+        <div class="pv-row"><span class="lbl">Objet</span><span>Certification de la promotion <b>BTC — 2ème génération</b></span></div>
+        <div class="pv-row"><span class="lbl">Date & lieu</span><span>12 septembre 2026 — ODBI Campus, Lyon</span></div>
 
-        <div class="cf-sec-t">Résultats par atelier</div>
-        <div class="pv-row"><span>🎙️ Entretien de coaching</span><span><b>15 / 18 — 83 %</b> · Acquis</span></div>
-        <div class="pv-row"><span>📂 Étude de cas</span><span><b>17 / 20 — 85 %</b> · Expert</span></div>
-        <div class="pv-row"><span>🎤 Présentation orale devant jury</span><span><b>13 / 15 — 87 %</b> · Expert</span></div>
+        <div class="cf-sec-t">Composition du jury</div>
+        <div class="pv-row"><span class="lbl">Présidente du jury</span><span><b>Céline Duclos</b> (coach labellisée)</span></div>
+        <div class="pv-row"><span class="lbl">Membres du jury</span><span>Thierry Faye (coach labellisé) · Isabelle Blanc (coach labellisée)</span></div>
+        <div class="pv-row" style="border-bottom:none"><span class="lbl">Présence</span><span>Tous présents</span></div>
+        <p style="font-size:12px;color:var(--color-neutral);margin:4px 0 var(--space-2)">⚠️ Le <b>coach/animateur du programme ne fait pas partie du jury</b> (il a accompagné la promotion). Jury composé d'au moins 2 personnes dont un·e président·e.</p>
 
-        <div class="pv-row" style="border-bottom:none;margin-top:var(--space-4)"><span class="lbl">Moyenne générale</span><span class="pv-verdict">85 %</span></div>
-        <div class="pv-row" style="border-top:2px solid var(--color-indigo-dye);border-bottom:none"><span class="lbl">Décision du jury</span><span class="pv-verdict ok">ADMIS·E — mention Excellence</span></div>
+        <div class="cf-sec-t">Candidats & décisions individuelles</div>
+        <table class="table" style="margin-bottom:var(--space-4)">
+          <tr><th>Candidat·e</th><th>Moyenne</th><th>Décision</th></tr>
+          <tr><td>Karim Nadir</td><td><b>85 %</b></td><td><span class="cf-st ok">Admis — Niveau 2</span></td></tr>
+          <tr><td>Léa Martin</td><td><b>78 %</b></td><td><span class="cf-st ok">Admis — Niveau 1</span></td></tr>
+          <tr><td>Sophie Belart</td><td><b>62 %</b></td><td><span class="cf-st ok">Admis — Niveau 1</span></td></tr>
+          <tr><td>Victor Therond</td><td><b>—</b></td><td><span class="cf-st todo">Ajourné — repasse en sept.</span></td></tr>
+        </table>
+
+        <div class="cf-sec-t">Déroulement des délibérations</div>
+        <div class="pv-row"><span class="lbl">Procédure</span><span style="text-align:right;max-width:60%">Évaluation à chaud après chaque atelier, suivie d'un débriefing avec le candidat.</span></div>
+        <div class="pv-row" style="border-bottom:none"><span class="lbl">Statistiques générales</span><span style="text-align:right;max-width:60%"><b>75 % d'admis au Niveau 1</b> · <b>25 % au Niveau 2</b> (max. 8 candidats par session).</span></div>
+
+        <div class="cf-sec-t">Remarques & recommandations</div>
+        <ul style="font-size:13px;color:var(--color-jet);margin:0 0 var(--space-2);padding-left:18px">
+          <li>Prévoir une <b>attestation de participation</b> pour les candidats ajournés (remise en groupe).</li>
+          <li>Simplifier le référentiel (certains indicateurs difficilement évaluables).</li>
+        </ul>
 
         <div class="pv-sign">
-          <div class="sg">Le président du jury<br><b style="color:var(--color-jet)">Yohann Duclos</b></div>
-          <div class="sg">Membre du jury<br><b style="color:var(--color-jet)">Sophie Roux</b></div>
-          <div class="sg">Fait à Lyon, le 12/09/2026</div>
+          <div class="sg">La présidente du jury<br><b style="color:var(--color-jet)">Céline Duclos</b></div>
+          <div class="sg">Membre du jury<br><b style="color:var(--color-jet)">Thierry Faye</b></div>
+          <div class="sg">Membre du jury<br><b style="color:var(--color-jet)">Isabelle Blanc</b></div>
         </div>
       </div>
       <div style="display:flex;gap:10px;margin-top:var(--space-5);flex-wrap:wrap;max-width:820px">
-        <button class="btn btn-primary">✅ Valider le procès-verbal</button>
-        <button class="btn btn-accent" onclick="deliverDiploma()">🎓 Délivrer le diplôme</button>
+        <button class="btn btn-primary">✅ Valider & signer le PV</button>
+        <button class="btn btn-accent" onclick="deliverDiploma()">🎓 Délivrer les diplômes (toute la promo)</button>
         <button class="btn btn-ghost">⬇ Télécharger le PV (PDF)</button>
       </div>
-      <p id="diplomaSent" class="hidden" style="color:var(--color-asparagus);font-family:var(--font-title);font-weight:600;margin-top:var(--space-4);max-width:820px">✅ Diplôme délivré et déposé dans le profil du candidat (onglet « Mes certifications »). Une notification + e-mail lui ont été envoyés.</p>
+      <p id="diplomaSent" class="hidden" style="color:var(--color-asparagus);font-family:var(--font-title);font-weight:600;margin-top:var(--space-4);max-width:820px">✅ Diplômes délivrés par le jury et déposés dans le profil de chaque candidat admis (onglet « Mes certifications »). Notification + e-mail envoyés. Une <b>attestation</b> est générée pour les candidats ajournés.</p>
     </section>
 
   </main>
@@ -1988,7 +2021,7 @@ var CERTIF={
   titre:'Certification — Coach professionnel',rsNone:false,
   rs:'Titre RNCP 37863 — « Coach professionnel » (Niveau 6)',
   intro:'Évaluation finale certificative du parcours Born To Coach. Elle atteste de votre maîtrise de la posture et de la pratique du coaching professionnel.',
-  niveaux:[['Certifié','Réussite ≥ 60 % à chacun des 3 ateliers'],['Certifié — mention Excellence','Moyenne générale ≥ 85 %']],
+  niveaux:[['Niveau 1','Compétences acquises sur l\'ensemble des blocs (≥ 60 % par atelier)'],['Niveau 2','Maîtrise avancée — moyenne générale ≥ 85 %']],
   ateliers:[
     ['🎙️','Entretien','Entretien de coaching','Conduite d\'une séance de coaching de 30 min avec un client, devant un binôme de jury.','plan','Planifié · 12 sept.'],
     ['📂','Étude de cas','Étude de cas écrite','Analyse d\'une problématique de coaching : diagnostic, hypothèses, plan d\'accompagnement (2h).','ok','Rendu · 20 août'],
@@ -2008,7 +2041,7 @@ var CERTIF={
   titre:'Certification — Manager : conduire et mobiliser une équipe',rsNone:false,
   rs:'Certification RS6234 — « Manager une équipe au quotidien »',
   intro:'Évaluation finale certificative du parcours La Voie des managers, attestant de votre capacité à organiser, animer et faire progresser une équipe.',
-  niveaux:[['Certifié','Moyenne générale ≥ 60 % sur les ateliers']],
+  niveaux:[['Niveau 1 (unique)','Certification obtenue si moyenne générale ≥ 60 %']],
   ateliers:[
     ['🎭','Jeu de rôle','Jeu de rôle — entretien managérial','Mise en situation : conduire un entretien de recadrage ou de feedback (20 min).','plan','À venir · 5 mars'],
     ['❓','Quiz','Quiz de connaissances','QCM final sur les fondamentaux du management (40 questions).','ok','Réussi · 88 %']
@@ -2020,13 +2053,19 @@ var CERTIF={
       ['Conduire les entretiens',['Mène un entretien individuel','Donne un feedback constructif','Gère un désaccord']]]],
     ['Bloc 3 — Suivre la performance',[
       ['Évaluer et faire progresser',['Suit des indicateurs d\'équipe','Conduit l\'entretien annuel']]]]
-  ]}
+  ]},
+ // Exemple de programme NON certifiant (la section « Certification » disparaît côté membre)
+ vem:null
 };
 function renderCertif(){
-  var c=CERTIF[curUni]||CERTIF.ecole;
+  var c=CERTIF[curUni];
   var box=document.getElementById('crs-certif');if(!box)return;
+  var sec=document.getElementById('navCertifSec');
+  // Programme non certifiant : on masque la section dans le menu et on affiche un message neutre
+  if(!c){ if(sec)sec.style.display='none'; box.innerHTML='<div class="card" style="padding:var(--space-6)"><h3 style="font-size:16px">Programme sans certification</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Ce programme ne donne pas lieu à une évaluation finale certifiante. Vous recevez une <b>attestation de suivi</b> à l\'issue du parcours.</p></div>'; return; }
+  if(sec)sec.style.display='';
   var nb=document.getElementById('navCertifBadge');if(nb){nb.textContent=c.badge;nb.style.background=c.badgeColor;}
-  var steps=[['1','Prérequis','Parcours complété et exercices rendus.'],['2','Ateliers d\'évaluation','1 à 3 ateliers selon le programme (ci-dessous).'],['3','Passage devant le jury','Le jury évalue chaque atelier via une grille d\'indicateurs.'],['4','Procès-verbal','Le jury statue : admis·e, mention, ou ajourné·e.'],['5','Diplôme','Délivrance et dépôt dans votre profil.']];
+  var steps=[['1','Prérequis','Parcours complété et exercices rendus.'],['2','Ateliers d\'évaluation','1 à 3 ateliers selon le programme (ci-dessous).'],['3','Passage devant le jury','Le jury (≥ 2 personnes, dont un·e président·e) évalue chaque atelier via une grille d\'indicateurs.'],['4','Procès-verbal','Le jury statue par promotion : admis·e (Niveau 1/2) ou ajourné·e.'],['5','Diplôme','Délivré par le jury et déposé dans votre profil.']];
   var niv=c.niveaux.map(function(n){return '<div class="lv"><b>'+n[0]+'</b><small>'+n[1]+'</small></div>';}).join('');
   var ats=c.ateliers.map(function(a){return '<div class="cf-at" onclick="openCertifGrille(this.getAttribute(\'data-t\'),this.getAttribute(\'data-i\'))" data-t="'+a[2]+'" data-i="'+a[0]+'"><div class="ic">'+a[0]+'</div><div style="flex:1"><div class="typ">'+a[1]+'</div><h4>'+a[2]+'</h4><p>'+a[3]+'</p></div><span class="cf-st '+a[4]+'">'+a[5]+'</span></div>';}).join('');
   var blocs=c.blocs.map(function(b){var comps=b[1].map(function(cp){var inds=cp[1].map(function(i){return '<div class="cf-ind"><span class="k">▸</span><span>'+i+'</span></div>';}).join('');return '<div class="cf-comp">'+cp[0]+'</div>'+inds;}).join('');return '<details class="cf-bloc"><summary>'+b[0]+'</summary><div class="bd">'+comps+'</div></details>';}).join('');
@@ -2036,19 +2075,21 @@ function renderCertif(){
     '<div class="cf-sec-t">🎯 Niveaux de certification</div><div class="cf-niv">'+niv+'</div>'+
     '<div class="cf-sec-t">🧩 Ateliers d\'évaluation <span style="font-weight:400;font-size:12px;color:var(--color-neutral)">— cliquez pour voir la grille</span></div>'+ats+
     '<div class="cf-sec-t">📚 Référentiel de compétences & indicateurs</div>'+blocs+
-    '<div class="card" style="padding:var(--space-5);margin-top:var(--space-5);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px"><div><div style="font-family:var(--font-title);font-weight:600">Mon dossier de certification</div><small style="color:var(--color-neutral)">Grilles du jury, procès-verbal et diplôme</small></div><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-ghost" onclick="goTo(\'certif-pv\')">📄 Mon procès-verbal</button><button class="btn btn-accent" onclick="goTo(\'profile\')">🎓 Mes diplômes</button></div></div>';
+    '<div class="card" style="padding:var(--space-5);margin-top:var(--space-5);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px"><div><div style="font-family:var(--font-title);font-weight:600">Mon résultat</div><small style="color:var(--color-neutral)">Décision du jury et diplôme</small></div><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span class="cf-st ok">Admis·e — Niveau 2</span><button class="btn btn-accent" onclick="goTo(\'profile\')">🎓 Mon diplôme</button></div></div>'+
+    '<p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-4)">ℹ️ Les grilles d\'évaluation, le <b>procès-verbal (établi par promotion)</b> et la <b>délivrance du diplôme</b> sont gérés par le <b>jury</b>.</p>';
 }
 function openCertifGrille(title,ic){var t=document.getElementById('grilleAtTitle');if(t)t.textContent=title;var ty=document.getElementById('grilleAtType');if(ty)ty.textContent=ic+' '+title;goTo('certif-grille');}
 function backCertif(){goTo('course');courseTab(null,'certif');}
 function gradePick(el){el.parentNode.querySelectorAll('label').forEach(function(x){x.classList.remove('on')});el.classList.add('on');}
 function deliverDiploma(){goTo('certif-pv');var d=document.getElementById('diplomaSent');if(d)d.classList.remove('hidden');}
 function certifRsToggle(){var t=document.getElementById('certifRsType');if(!t)return;var f=document.getElementById('certifRsCodeField');if(f)f.style.visibility=(t.value==='none')?'hidden':'visible';}
+function certifEnabledToggle(){var e=document.getElementById('certifEnabled');if(!e)return;var off=e.value==='0';var n=document.getElementById('certifDisabledNote');if(n)n.classList.toggle('hidden',!off);}
 function certifAdminRender(){var sel=document.getElementById('certifProgSel');if(!sel)return;var v=sel.value;var nm=document.getElementById('certifProgName');var map={ecole:'— Born To Coach',voie:'— La Voie des managers',vem:'— Vous En Paix'};if(nm)nm.textContent=map[v]||'';
-  var rt=document.getElementById('certifRsType'),rc=document.getElementById('certifRsCode'),lv=document.getElementById('certifLevels');
-  if(v==='ecole'){rt.value='rncp';rc.value='RNCP 37863 — Coach professionnel (Niveau 6)';lv.value='2';}
-  else if(v==='voie'){rt.value='rs';rc.value='RS6234 — Manager une équipe au quotidien';lv.value='1';}
-  else{rt.value='none';rc.value='Certification interne ODBI';lv.value='1';}
-  certifRsToggle();
+  var rt=document.getElementById('certifRsType'),rc=document.getElementById('certifRsCode'),lv=document.getElementById('certifLevels'),en=document.getElementById('certifEnabled');
+  if(v==='ecole'){en.value='1';rt.value='rncp';rc.value='RNCP 37863 — Coach professionnel (Niveau 6)';lv.value='2';}
+  else if(v==='voie'){en.value='1';rt.value='rs';rc.value='RS6234 — Manager une équipe au quotidien';lv.value='1';}
+  else{en.value='0';rt.value='none';rc.value='Certification interne ODBI';lv.value='1';}  // Vous En Paix : non certifiant
+  certifRsToggle();certifEnabledToggle();
 }
 function applyAccess(){
   var free=accessMode==='free';
