@@ -174,6 +174,16 @@ a{color:inherit;text-decoration:none}
 .uni-chip.ecole{background:linear-gradient(var(--color-black),var(--color-asparagus))}
 .universe h2{font-size:22px}
 .universe .desc{color:var(--color-neutral);font-size:13px;margin-top:2px}
+/* Bloc d'univers (séparation marquée) */
+.uni-block{background:#fff;border:1px solid rgba(74,74,74,.1);border-top:5px solid var(--color-neutral);border-radius:var(--radius-xl);padding:var(--space-5) var(--space-7) var(--space-7);margin-bottom:var(--space-8);box-shadow:var(--shadow-sm)}
+.uni-block.voie{border-top-color:var(--color-indigo-dye)}
+.uni-block.ecole{border-top-color:var(--color-jet)}
+.uni-block .universe{margin:0 0 var(--space-5);padding-bottom:var(--space-4);border-bottom:1px solid rgba(74,74,74,.1)}
+.uni-block .uni-chip{height:44px;width:9px}
+.uni-block .section-title{margin:var(--space-6) 0 var(--space-4);padding-left:14px;border-left:3px solid var(--color-asparagus);color:var(--color-jet);font-size:13px}
+.uni-block.ecole .section-title{border-left-color:var(--color-jet)}
+.uni-block .grid:last-child{margin-bottom:0}
+.course-card{border:1px solid rgba(74,74,74,.08)}
 /* Bouton WhatsApp */
 .btn-wa{background:#25D366;color:#fff}
 .btn-wa:hover{background:#1eb858}
@@ -755,9 +765,10 @@ a.ref-item:hover{background:var(--color-background)}
       <div class="note" style="background:rgba(134,164,63,.1);border-left:4px solid var(--color-asparagus);border-radius:8px;padding:12px 16px;margin-bottom:var(--space-6);font-size:13px">Tous les cours sont visibles. Sur un cours où vous n'êtes pas inscrit, une partie du contenu est <b>gratuite</b> ; le reste se débloque <b>en rejoignant le programme</b>.</div>
 
       <!-- Univers La Voie -->
+      <div class="uni-block voie">
       <div class="universe"><div class="uni-chip voie"></div><div><h2>La Voie</h2><div class="desc">Programmes de transformation</div></div></div>
 
-      <div class="section-title" style="margin-top:var(--space-5)">Le programme La Voie</div>
+      <div class="section-title">Le programme La Voie</div>
       <div class="grid grid-3">
         <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-voie-blue"><span class="uni">La Voie</span></div><div class="course-body"><h3>La Voie</h3><div class="meta">6 modules · ⏱ 5h</div><div class="free-meta">Contenu gratuit · reste réservé aux inscrits</div></div></div>
       </div>
@@ -775,11 +786,13 @@ a.ref-item:hover{background:var(--color-background)}
         <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-vem-blue"><span class="uni">VAT</span></div><div class="course-body"><h3>Vous Au Top</h3><div class="meta">4 modules · ⏱ 2h</div><div class="free-meta">Contenu gratuit · reste réservé aux inscrits</div></div></div>
         <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-vem-green"><span class="uni">VEL</span></div><div class="course-body"><h3>Vous En Lien</h3><div class="meta">4 modules · ⏱ 2h</div><div class="free-meta">Contenu gratuit · reste réservé aux inscrits</div></div></div>
       </div>
+      </div>
 
       <!-- Univers L'École -->
+      <div class="uni-block ecole">
       <div class="universe"><div class="uni-chip ecole"></div><div><h2>L'École</h2><div class="desc">Formations certifiantes</div></div></div>
 
-      <div class="section-title" style="margin-top:var(--space-5)">Born To Coach</div>
+      <div class="section-title">Born To Coach</div>
       <div class="grid grid-3">
         <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-btc"><span class="uni">Born To Coach</span></div><div class="course-body"><h3>BTC : 1ère génération</h3><div class="meta">8 modules · ⏱ 16h</div><div class="free-meta">Contenu gratuit · reste réservé aux inscrits</div></div></div>
         <div class="card course-card" onclick="openCourse('full')"><div class="course-thumb thumb-btc"><span class="uni">Born To Coach</span></div><div class="course-body"><h3>BTC : 2ème génération</h3><div class="meta">8 modules · ⏱ 16h</div><div class="progress"><span style="width:45%"></span></div></div></div>
@@ -791,6 +804,7 @@ a.ref-item:hover{background:var(--color-background)}
         <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-ic"><span class="uni">Intelligence Collective</span></div><div class="course-body"><h3>IC : Cohésion de groupe</h3><div class="meta">6 modules · ⏱ 10h</div><div class="free-meta">Contenu gratuit · reste réservé aux inscrits</div></div></div>
         <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-ic"><span class="uni">Intelligence Collective</span></div><div class="course-body"><h3>IC : Coaching d'équipe</h3><div class="meta">6 modules · ⏱ 10h</div><div class="free-meta">Contenu gratuit · reste réservé aux inscrits</div></div></div>
         <div class="card course-card" onclick="openCourse('free')"><div class="course-thumb thumb-ic"><span class="uni">Intelligence Collective</span></div><div class="course-body"><h3>IC : Transformation des organisations</h3><div class="meta">6 modules · ⏱ 10h</div><div class="free-meta">Contenu gratuit · reste réservé aux inscrits</div></div></div>
+      </div>
       </div>
     </section>
 

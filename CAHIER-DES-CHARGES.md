@@ -156,6 +156,9 @@ progression, promotions, groupe WhatsApp, visios propres).
     présentiels, WhatsApp) dépend d'une promotion et nécessite l'inscription. Le sélecteur de
     promotion **n'apparaît pas** en accès découverte. L'admin assigne une promotion lors de
     l'inscription.
+- **Présentation du catalogue** : chaque **univers** (La Voie / L'École) est présenté dans un **bloc/panneau distinct**
+  (fond blanc, **accent couleur en haut** : bleu pour La Voie, foncé pour L'École, en-tête avec filet, sous-sections
+  à liseré coloré) → séparation visuelle marquée entre univers et groupes de programmes.
 - Dans le catalogue : cours inscrits = barre de progression ; cours non inscrits =
   mention « 🎁 Contenu gratuit · reste réservé aux inscrits ».
 
