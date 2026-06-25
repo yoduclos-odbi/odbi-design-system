@@ -366,7 +366,7 @@ Flux : `Visio BBB → enregistrement BBB → Notta (transcription + chapitrage +
 - Illustration dédiée : `assets/yodalf.png` (fournie par ODBI ; repli emoji 🧙)
 - **Menu de gauche « Historique des conversations »** (même style/carte que le menu des programmes) :
   bouton **« + Nouvelle conversation »** puis la liste des chats mémorisés, **groupés par date**
-  (Aujourd'hui / 7 derniers jours / Plus ancien), chat actif surligné. Permet de **garder en mémoire**
+  (Aujourd'hui / 7 derniers jours / Plus ancien) — **groupes repliables** (chevron, comme le menu des sessions), chat actif surligné. Permet de **garder en mémoire**
   et rouvrir les échanges précédents.
 
 ---

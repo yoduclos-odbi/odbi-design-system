@@ -705,15 +705,27 @@ a.ref-item:hover{background:var(--color-background)}
       <!-- Panneau YoDalf : historique des conversations (même style que le menu programme) -->
       <div id="ctx-yodalf" class="hidden">
         <button class="btn btn-primary" style="width:100%;margin-bottom:var(--space-2)" onclick="newChat()">+ Nouvelle conversation</button>
-        <div class="cnav-group">Aujourd'hui</div>
-        <div class="cnav-item active" onclick="pickChat(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Feedback à haute intensité</div>
-        <div class="cnav-item" onclick="pickChat(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Préparer ma visio de demain</div>
-        <div class="cnav-group">7 derniers jours</div>
-        <div class="cnav-item" onclick="pickChat(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Quiz — Mobiliser une équipe</div>
-        <div class="cnav-item" onclick="pickChat(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Résumé de la séquence 2.1</div>
-        <div class="cnav-group">Plus ancien</div>
-        <div class="cnav-item" onclick="pickChat(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Mon plan d'action manager</div>
-        <div class="cnav-item" onclick="pickChat(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Comprendre l'intelligence collective</div>
+        <div class="nav-sec">
+          <div class="nav-sec-h" onclick="toggleSec(this)"><svg class="sc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg> Aujourd'hui</div>
+          <div class="nav-sec-b">
+            <div class="cnav-item active" onclick="pickChat(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Feedback à haute intensité</div>
+            <div class="cnav-item" onclick="pickChat(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Préparer ma visio de demain</div>
+          </div>
+        </div>
+        <div class="nav-sec">
+          <div class="nav-sec-h" onclick="toggleSec(this)"><svg class="sc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg> 7 derniers jours</div>
+          <div class="nav-sec-b">
+            <div class="cnav-item" onclick="pickChat(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Quiz — Mobiliser une équipe</div>
+            <div class="cnav-item" onclick="pickChat(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Résumé de la séquence 2.1</div>
+          </div>
+        </div>
+        <div class="nav-sec">
+          <div class="nav-sec-h" onclick="toggleSec(this)"><svg class="sc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg> Plus ancien</div>
+          <div class="nav-sec-b">
+            <div class="cnav-item" onclick="pickChat(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Mon plan d'action manager</div>
+            <div class="cnav-item" onclick="pickChat(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Comprendre l'intelligence collective</div>
+          </div>
+        </div>
       </div>
     </aside>
 
