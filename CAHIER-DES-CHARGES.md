@@ -529,4 +529,21 @@ Le profil affiche aussi :
 
 - `maquette-odbi-lms.html` — maquette interactive (écrans)
 - `architecture-odbi.html` — schéma d'organisation (plan d'ensemble)
+- `modeles-session.html` / `modele-A-variantes.html` / `modele-A-integration.html` — explorations de navigation
 - `odbi-design-tokens.css` / `.json` — design system
+
+---
+
+## Backlog UX (idées à conserver pour plus tard)
+
+- **« Reprendre »** omniprésent (retour exact à la dernière position vidéo/étape)
+- **Recherche globale** (cours, sessions, lexique, ressources)
+- **« Ma prochaine action »** sur le dashboard (exercice/visio/replay à faire)
+- **Rappels & notifications** (visio imminente, exercice à rendre, nouveau replay, badge)
+- **Onboarding** 1ʳᵉ connexion (visite guidée + Livret d'accueil)
+- **Responsive / mobile-first** (chantier prioritaire — usage smartphone)
+- **Lecteur vidéo** : vitesse, « vu » auto à 90 %, chapitres cliquables
+- **Téléchargement hors-ligne** des PDF/audios
+- **YoDalf contextuel** (pré-rempli selon le contenu) + plan de semaine + relances
+- **Dashboard animateur** : alertes retard, exercices reçus, assiduité
+- **Gamification vivante** : animations points/badges, classement promo, défis
