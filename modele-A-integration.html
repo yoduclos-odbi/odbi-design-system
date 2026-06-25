@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ODBI — Navigation programme ↔ session (intégrée)</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--asparagus:#86A43F;--apple:#B1BC4B;--indigo:#114C6A;--jet:#4D4D4D;--grey:#A4A4A7;--alabaster:#F0EEE6;--ft:'Roboto',sans-serif;--fb:'Roboto Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--fb);background:var(--alabaster);color:var(--jet);font-size:14px;padding:32px 20px}
+.wrap{max-width:1040px;margin:0 auto}
+h1,h2,h3,h4{font-family:var(--ft)}
+.intro{text-align:center;margin-bottom:34px}.intro h1{font-size:23px;margin-bottom:8px}.intro p{color:var(--grey);font-size:13px}
+.model{background:#fff;border-radius:16px;box-shadow:0 4px 14px rgba(0,0,0,.07);padding:24px;margin-bottom:30px}
+.tag{display:inline-block;font-family:var(--ft);font-weight:700;font-size:12px;color:#fff;background:var(--indigo);padding:5px 12px;border-radius:999px;margin-bottom:10px}
+.model h2{font-size:18px;margin-bottom:6px}.model .desc{color:var(--grey);font-size:13px;margin-bottom:18px}
+.frame{border:1px solid rgba(74,74,74,.16);border-radius:12px;overflow:hidden}
+.top{height:44px;background:#fff;border-bottom:1px solid rgba(74,74,74,.1);display:flex;align-items:center;padding:0 14px}
+.logo{font-family:var(--ft);font-weight:700;font-size:13px;display:flex;align-items:center;gap:8px}.logo .d{width:11px;height:11px;background:var(--apple);transform:rotate(45deg)}
+.body{display:flex;min-height:340px}
+.rail{width:52px;background:#fff;border-right:1px solid rgba(74,74,74,.1);padding:12px 0;display:flex;flex-direction:column;align-items:center;gap:6px}
+.ri{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px}.ri.on{background:var(--asparagus)}
+.ctx{width:228px;background:#fbfbf9;border-right:1px solid rgba(74,74,74,.1);padding:14px}
+.ctx .ttl{font-family:var(--ft);font-weight:700;font-size:13px;margin-bottom:2px}
+.ctx .sub{font-size:10px;color:var(--grey);margin-bottom:14px}
+.ctx .back{font-size:11px;color:var(--indigo);font-family:var(--ft);font-weight:500;margin-bottom:12px;cursor:pointer}
+.ctx .sec{display:flex;gap:9px;align-items:center;font-size:12px;padding:8px 9px;border-radius:7px;color:var(--jet);font-family:var(--ft);font-weight:500;margin-bottom:2px;cursor:pointer}
+.ctx .sec:hover{background:var(--alabaster)}
+.ctx .sec.on{background:var(--asparagus);color:#fff}
+.lbl{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--grey);font-family:var(--ft);font-weight:700;margin:12px 0 6px 4px}
+.wk{font-family:var(--ft);font-weight:500;font-size:12px;background:var(--alabaster);padding:7px 9px;border-radius:6px;margin-bottom:6px}
+.st{display:flex;gap:8px;font-size:12px;padding:6px 9px 6px 14px;border-radius:6px;color:var(--jet)}
+.st.on{background:rgba(17,76,106,.12);color:var(--indigo);font-family:var(--ft);font-weight:500}
+.st .ck{margin-left:auto;font-size:11px;color:var(--asparagus)}
+.main{flex:1;padding:20px;background:var(--alabaster)}
+.main .bc{font-size:11px;color:var(--grey);margin-bottom:10px}
+.main h3{font-size:16px;margin-bottom:12px}
+.scr{background:#000;border-radius:8px;aspect-ratio:16/9;max-width:330px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px}
+.cardrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.mc{background:#fff;border-radius:9px;box-shadow:0 2px 8px rgba(0,0,0,.05);padding:12px 14px;font-size:12px;font-family:var(--ft);font-weight:500;min-width:150px}
+.mc small{display:block;color:var(--grey);font-family:var(--fb);font-weight:400;margin-top:3px}
+.note{font-size:12px;color:var(--asparagus);font-family:var(--ft);font-weight:500;margin-top:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="intro">
+    <h1>Une seule colonne de gauche, qui s'adapte au niveau</h1>
+    <p>Menu global réduit en icônes · le panneau contextuel montre les sections du programme, puis le sommaire de la session.</p>
+  </div>
+
+  <!-- ÉTAT 1 : sur le programme -->
+  <div class="model">
+    <span class="tag">État 1 — Sur le programme</span>
+    <h2>Le panneau gauche = sections du programme</h2>
+    <div class="desc">Sessions, Présentiels, Lexique, Références, Participants, WhatsApp sont ici, à gauche (plus en onglets).</div>
+    <div class="frame">
+      <div class="top"><div class="logo"><span class="d"></span> ODBI ACADEMY</div></div>
+      <div class="body">
+        <div class="rail"><div class="ri">📒</div><div class="ri on">📚</div><div class="ri">🏠</div><div class="ri">🎥</div><div class="ri">🧙</div></div>
+        <div class="ctx">
+          <div class="ttl">La Voie des managers</div><div class="sub">👥 Promo 2026 — Automne</div>
+          <div class="sec on">📚 Sessions</div>
+          <div class="sec">📍 Présentiels</div>
+          <div class="sec">📖 Lexique</div>
+          <div class="sec">🔖 Références</div>
+          <div class="sec">👥 Participants</div>
+          <div class="sec">💬 WhatsApp</div>
+        </div>
+        <div class="main">
+          <div class="bc">La Voie des managers / Sessions</div>
+          <h3>Sessions du programme</h3>
+          <div class="cardrow" style="flex-direction:column;max-width:420px">
+            <div class="mc">✅ Session 1 — Fondamentaux <small>terminé</small></div>
+            <div class="mc">▶ Session 2 — Mobiliser une équipe <small>en cours · cliquer pour ouvrir</small></div>
+            <div class="mc" style="opacity:.6">🔒 Session 3 — Leadership de soi <small>verrouillé</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="note">→ On clique sur « Session 2 » pour entrer dans la session (état 2)</div>
+  </div>
+
+  <!-- ÉTAT 2 : dans la session -->
+  <div class="model">
+    <span class="tag">État 2 — Dans une session</span>
+    <h2>Le panneau gauche devient le sommaire de la session</h2>
+    <div class="desc">Le panneau bascule sur les semaines → étapes. Un « ← Retour au programme » ramène à l'état 1 (Présentiels, Références…).</div>
+    <div class="frame">
+      <div class="top"><div class="logo"><span class="d"></span> ODBI ACADEMY</div></div>
+      <div class="body">
+        <div class="rail"><div class="ri">📒</div><div class="ri on">📚</div><div class="ri">🏠</div><div class="ri">🎥</div><div class="ri">🧙</div></div>
+        <div class="ctx">
+          <div class="back">← Retour au programme</div>
+          <div class="ttl">Session 2 — Mobiliser une équipe</div><div class="sub">3 semaines</div>
+          <div class="wk">Semaine 1 ▾</div>
+          <div class="st">📝 Exercice <span class="ck">✓</span></div>
+          <div class="st on">🎬 Vidéos ▶</div>
+          <div class="st">🎧 Ressources</div>
+          <div class="st">✅ Quiz</div>
+          <div class="st">🎥 Replay</div>
+          <div class="wk" style="margin-top:8px">Semaine 2 ▸</div>
+          <div class="wk" style="opacity:.55">Semaine 3 🔒</div>
+        </div>
+        <div class="main">
+          <div class="bc">Session 2 / Semaine 1 / Vidéos</div>
+          <h3>🎬 Créer l'engagement collectif</h3>
+          <div class="scr">▶ Vidéo 1/3 — Vimeo · 14 min</div>
+        </div>
+      </div>
+    </div>
+    <div class="note">✅ Pas de double menu · les sections programme (présentiels, références…) restent à 1 clic via « Retour au programme »</div>
+  </div>
+</div>
+</body>
+</html>
