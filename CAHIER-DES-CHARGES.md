@@ -211,8 +211,9 @@ Inspirée des LMS type Skool :
      - puis **Lexique** et **Références** (au même endroit que le curriculum).
      - **Une seule session dépliée à la fois** ET **une seule séquence dépliée à la fois** (ouvrir 2.2 referme 2.1)
        pour éviter un menu qui s'allonge à l'infini.
-     - **Lecteur vidéo** centré, de taille confortable (largeur plafonnée). **Sous le lecteur, centrés** :
-       le **titre de la vidéo**, une **courte description**, puis les actions (« Reprendre à … », « Marquer comme vu »).
+     - **Lecteur vidéo à gauche** + **panneau d'infos à droite** (mise en page côte à côte, pour remplir la largeur
+       de façon harmonieuse) : titre de la vidéo, **courte description**, puis actions (« Reprendre à … »,
+       « Marquer comme vu »). Les chips de sélection des vidéos restent au-dessus ; Précédent/Suivant en bas.
      - **Affichage allégé** : chaque étape = **case à cocher + libellé + durée** (façon Skool), **sans icône de type**
        dans l'arbre (les icônes SVG de type restent dans la zone de contenu).
      - **Cases vertes auto-cochées** une fois l'étape terminée ; pastille verte (partielle/complète) sur les
