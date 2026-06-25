@@ -161,6 +161,19 @@ les accès de connexion** par e-mail (cf. §13, flux Notion → LMS).
 
 ---
 
+## 6bis. Navigation (architecture de l'information)
+
+Inspirée des LMS type Skool :
+- **Menu principal en haut** (barre horizontale, texte sans emojis, onglet actif souligné) :
+  Livret · Les programmes · Tableau de bord · Visios live · YoDalf · Progression · Agenda · Back-office.
+- **Barre contextuelle à gauche** (n'apparaît que dans un programme / une session) :
+  - Dans un **programme** : ses sections avec **icônes** (Sessions, Présentiels, Lexique, Références, Participants, WhatsApp).
+  - Dans une **session** : **accordéon** semaines → étapes (Exercice, Vidéos, Ressources, Quiz, Replay), avec « ← retour au programme ».
+- **Contenu à droite** : fil d'Ariane + progression ; navigation étape par étape (Précédent/Suivant) possible.
+- Objectif : éviter le double menu (le menu global est en haut, la colonne gauche est contextuelle).
+
+---
+
 ## 7. Structure d'un cours
 
 Page cours = **6 onglets** :

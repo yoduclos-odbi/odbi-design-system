@@ -61,21 +61,45 @@ a{color:inherit;text-decoration:none}
 .logo .dot{width:14px;height:14px;background:var(--color-apple-green);border-radius:3px;display:inline-block;transform:rotate(45deg)}
 
 /* ---------- App layout ---------- */
-.app{display:none;min-height:100vh;grid-template-columns:248px 1fr;grid-template-rows:auto 1fr}
-.app.active{display:grid}
-.topbar{grid-column:1/3;background:#fff;border-bottom:1px solid rgba(74,74,74,.1);display:flex;align-items:center;justify-content:space-between;padding:0 var(--space-6);height:62px;position:sticky;top:0;z-index:10}
-.topbar .logo{color:var(--color-jet)}
-.topbar-right{display:flex;align-items:center;gap:var(--space-4)}
-.search{background:var(--color-background);border-radius:var(--radius-full);padding:8px 16px;width:280px;border:none;font-family:var(--font-body)}
-.avatar{width:38px;height:38px;border-radius:50%;background:var(--color-indigo-dye);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-title);font-weight:700}
-.sidebar{background:#fff;border-right:1px solid rgba(74,74,74,.1);padding:var(--space-5) var(--space-3);display:flex;flex-direction:column;gap:4px}
-.nav-item{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:var(--radius-md);font-family:var(--font-title);font-size:14px;font-weight:500;color:var(--color-jet);cursor:pointer;transition:all .15s}
-.nav-item:hover{background:var(--color-background)}
-.nav-item.active{background:var(--color-primary);color:#fff}
-.nav-item .ico{font-size:18px;width:22px;text-align:center}
+.app{display:none;min-height:100vh;flex-direction:column}
+.app.active{display:flex}
+.topbar{background:#fff;border-bottom:1px solid rgba(74,74,74,.1);display:flex;align-items:center;gap:var(--space-6);padding:0 var(--space-6);height:62px;position:sticky;top:0;z-index:20}
+.topbar .logo{color:var(--color-jet);flex-shrink:0;font-size:18px}
+.topnav{display:flex;gap:2px;flex:1;flex-wrap:wrap}
+.topnav a{font-family:var(--font-title);font-size:15px;font-weight:500;color:var(--color-neutral);padding:20px 6px;margin:0 8px;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent}
+.topnav a:hover{color:var(--color-jet)}
+.topnav a.active{color:var(--color-jet);border-bottom-color:var(--color-primary)}
+.topbar-right{display:flex;align-items:center;gap:var(--space-4);flex-shrink:0}
+.search{background:var(--color-background);border-radius:var(--radius-full);padding:8px 16px;width:180px;border:none;font-family:var(--font-body)}
+.avatar{width:38px;height:38px;border-radius:50%;background:var(--color-indigo-dye);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-title);font-weight:700;cursor:pointer;flex-shrink:0}
+.shell{display:flex;flex:1;min-height:0}
+.ctxbar{width:262px;background:#fff;border-right:1px solid rgba(74,74,74,.1);padding:var(--space-5) var(--space-3);overflow-y:auto;max-height:calc(100vh - 62px);flex-shrink:0}
+.ctxbar.hidden{display:none}
+.cnav-back{font-size:12px;color:var(--color-accent);font-family:var(--font-title);font-weight:500;padding:4px 12px;cursor:pointer;display:block;margin-bottom:var(--space-3)}
+.cnav-title{font-family:var(--font-title);font-weight:700;font-size:14px;padding:0 12px;margin-bottom:3px}
+.cnav-sub{font-size:11px;color:var(--color-neutral);padding:0 12px;margin-bottom:var(--space-4)}
+.cnav-item{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:var(--radius-md);font-family:var(--font-title);font-size:14px;font-weight:500;color:var(--color-jet);cursor:pointer;transition:all .15s}
+.cnav-item:hover{background:var(--color-background)}
+.cnav-item.active{background:var(--color-primary);color:#fff}
+.cnav-item svg{width:18px;height:18px;flex-shrink:0;stroke-width:1.8}
 .nav-sep{height:1px;background:rgba(74,74,74,.1);margin:var(--space-4) 8px}
-.nav-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--color-neutral);padding:0 14px;margin-bottom:6px;font-family:var(--font-title);font-weight:700}
-.main{padding:var(--space-8);overflow-y:auto;max-height:calc(100vh - 62px)}
+.main{padding:var(--space-8);overflow-y:auto;max-height:calc(100vh - 62px);flex:1}
+/* accordéon session (barre gauche) */
+.sweek{margin-bottom:4px}
+.sweek-h{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-radius:var(--radius-md);background:var(--color-background);font-family:var(--font-title);font-weight:500;font-size:13px;cursor:pointer}
+.sweek-b{display:none;padding:4px 0}
+.sweek.open .sweek-b{display:block}
+.sstep{display:flex;align-items:center;gap:10px;padding:9px 12px 9px 16px;border-radius:var(--radius-md);font-size:13px;cursor:pointer;color:var(--color-jet)}
+.sstep:hover{background:var(--color-background)}
+.sstep.active{background:rgba(17,76,106,.12);color:var(--color-accent);font-family:var(--font-title);font-weight:500}
+.sstep .sck{width:16px;text-align:center;font-size:11px;color:var(--color-neutral)}
+.sstep.done .sck{color:var(--color-primary)}
+.ls-panel{display:none}.ls-panel.active{display:block;animation:fade .25s ease}
+.lshead{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:var(--space-6);padding-bottom:var(--space-4);border-bottom:1px solid rgba(74,74,74,.1)}
+.lsbc{font-size:12px;color:var(--color-neutral)}.lsbc b{color:var(--color-jet);font-family:var(--font-title)}
+.lsprog{font-size:12px;color:var(--color-neutral);display:flex;align-items:center;gap:10px}
+.lspbar{display:inline-block;width:120px;height:6px;background:var(--color-background);border-radius:99px;overflow:hidden}
+.lspbar i{display:block;height:100%;width:40%;background:var(--color-primary)}
 .page{display:none}.page.active{display:block;animation:fade .25s ease}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .page-head{margin-bottom:var(--space-6)}
@@ -426,40 +450,66 @@ a.ref-item:hover{background:var(--color-background)}
 <div id="app" class="app">
   <div class="topbar">
     <div class="logo"><span class="dot"></span> ODBI ACADEMY</div>
+    <nav class="topnav">
+      <a data-page="livret" onclick="goTo('livret')">Livret d'accueil</a>
+      <a data-page="catalog" onclick="goTo('catalog')">Les programmes</a>
+      <a data-page="dash" class="active" onclick="goTo('dash')">Tableau de bord</a>
+      <a data-page="visio" onclick="goTo('visio')">Visios live</a>
+      <a data-page="ai" onclick="goTo('ai')">YoDalf</a>
+      <a data-page="game" onclick="goTo('game')">Progression</a>
+      <a data-page="agenda" onclick="goTo('agenda')">Agenda</a>
+      <a data-page="admin" onclick="goTo('admin')">Back-office</a>
+    </nav>
     <div class="topbar-right">
-      <input class="search" placeholder="Rechercher un cours, une leçon…">
-      <div style="position:relative">🔔</div>
-      <div class="avatar" onclick="goTo('profile')" style="cursor:pointer" title="Mon profil">JD</div>
+      <input class="search" placeholder="Rechercher…">
+      <div style="position:relative;cursor:pointer">🔔</div>
+      <div class="avatar" onclick="goTo('profile')" title="Mon profil">JD</div>
+      <div style="cursor:pointer;color:var(--color-neutral)" onclick="logout()" title="Déconnexion">↩</div>
     </div>
   </div>
 
-  <aside class="sidebar">
-    <div class="nav-label">Espace membre</div>
-    <div class="nav-item" data-page="livret" onclick="go(this)"><span class="ico">📒</span> Livret d'accueil</div>
-    <div class="nav-item" data-page="catalog" onclick="go(this)"><span class="ico">📚</span> Les programmes</div>
-    <div class="nav-item active" data-page="dash" onclick="go(this)"><span class="ico">🏠</span> Tableau de bord</div>
-    <div class="nav-item" data-page="visio" onclick="go(this)"><span class="ico">🎥</span> Visios live</div>
-    <div class="nav-item" data-page="ai" onclick="go(this)"><span class="ico">🧙</span> YoDalf</div>
-    <div class="nav-item" data-page="game" onclick="go(this)"><span class="ico">🏆</span> Progression</div>
-    <div class="nav-item" data-page="agenda" onclick="go(this)"><span class="ico">📅</span> Agenda</div>
-    <div class="nav-sep"></div>
-    <div class="nav-label">🎥 Visios du jour</div>
-    <div class="side-visio islive" onclick="goTo('visio')">
-      <div class="sv-time"><span class="blink"></span> EN DIRECT · 18h00</div>
-      <div class="sv-t">La Voie des managers</div>
-      <div class="sv-p">Promo 2026 — Automne</div>
-    </div>
-    <div class="side-visio" onclick="goTo('visio')">
-      <div class="sv-time">⏰ 20h30</div>
-      <div class="sv-t">BTC : 2ème génération</div>
-      <div class="sv-p">Session coaching live</div>
-    </div>
-    <div class="nav-sep"></div>
-    <div class="nav-label">Administration</div>
-    <div class="nav-item" data-page="admin" onclick="go(this)"><span class="ico">⚙️</span> Back-office</div>
-    <div class="nav-sep"></div>
-    <div class="nav-item" onclick="logout()"><span class="ico">↩️</span> Déconnexion</div>
-  </aside>
+  <div class="shell">
+    <aside id="ctxbar" class="ctxbar hidden">
+      <!-- Sections du programme -->
+      <div id="ctx-course">
+        <span class="cnav-back" onclick="goTo('catalog')">← Tous les programmes</span>
+        <div class="cnav-title">La Voie des managers</div>
+        <div class="cnav-sub">👥 Promo 2026 — Automne</div>
+        <div class="cnav-item active" onclick="courseTab(this,'sessions')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg> Sessions</div>
+        <div class="cnav-item" onclick="courseTab(this,'presentiel')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Présentiels</div>
+        <div class="cnav-item" onclick="courseTab(this,'lexique')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> Lexique</div>
+        <div class="cnav-item" onclick="courseTab(this,'references')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg> Références</div>
+        <div class="cnav-item" onclick="courseTab(this,'participants')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg> Participants</div>
+        <div class="cnav-item" onclick="courseTab(this,'whatsapp')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg> WhatsApp</div>
+      </div>
+      <!-- Accordéon de la session -->
+      <div id="ctx-session" class="hidden">
+        <span class="cnav-back" onclick="goTo('course')">← La Voie des managers</span>
+        <div class="cnav-title">Session 2 — Mobiliser une équipe</div>
+        <div class="cnav-sub">3 semaines · 40% complété</div>
+        <div class="sweek open">
+          <div class="sweek-h" onclick="this.parentNode.classList.toggle('open')">Semaine 1 — Créer l'engagement <span>▾</span></div>
+          <div class="sweek-b">
+            <div class="sstep done" onclick="lsStep(this,'ex')"><span class="sck">✓</span> Exercice</div>
+            <div class="sstep active" onclick="lsStep(this,'video')"><span class="sck">▶</span> Vidéos (3)</div>
+            <div class="sstep" onclick="lsStep(this,'res')"><span class="sck">○</span> Ressources</div>
+            <div class="sstep" onclick="lsStep(this,'quiz')"><span class="sck">○</span> Quiz</div>
+            <div class="sstep" onclick="lsStep(this,'replay')"><span class="sck">○</span> Replay</div>
+          </div>
+        </div>
+        <div class="sweek">
+          <div class="sweek-h" onclick="this.parentNode.classList.toggle('open')">Semaine 2 — Le feedback <span>▸</span></div>
+          <div class="sweek-b">
+            <div class="sstep" onclick="lsStep(this,'ex')"><span class="sck">○</span> Exercice</div>
+            <div class="sstep" onclick="lsStep(this,'video')"><span class="sck">○</span> Vidéo</div>
+            <div class="sstep" onclick="lsStep(this,'quiz')"><span class="sck">○</span> Quiz</div>
+          </div>
+        </div>
+        <div class="sweek">
+          <div class="sweek-h" style="opacity:.55">Semaine 3 — Gérer les tensions 🔒 <span>▸</span></div>
+        </div>
+      </div>
+    </aside>
 
   <main class="main">
     <!-- LIVRET D'ACCUEIL -->
@@ -580,15 +630,6 @@ a.ref-item:hover{background:var(--color-background)}
       </div>
       <div id="freeBanner" class="hidden" style="background:rgba(134,164,63,.1);border-left:4px solid var(--color-asparagus);border-radius:8px;padding:12px 16px;margin-bottom:var(--space-5);font-size:13px;display:flex;justify-content:space-between;align-items:center;gap:12px"><div>🎁 <b>Accès découverte — sans promotion</b>. Seule la <b>1ère session</b> (contenu en autonomie) est ouverte. Les visios/replays, présentiels, participants et WhatsApp dépendent d'une <b>promotion</b> et nécessitent une inscription.</div><button class="btn btn-primary" style="white-space:nowrap">Rejoindre le programme</button></div>
 
-      <div class="tabs">
-        <div class="tab active" onclick="courseTab(this,'sessions')">📚 Sessions</div>
-        <div class="tab" onclick="courseTab(this,'presentiel')">📍 Présentiels</div>
-        <div class="tab" onclick="courseTab(this,'lexique')">📖 Lexique</div>
-        <div class="tab" onclick="courseTab(this,'references')">🔖 Références</div>
-        <div class="tab" onclick="courseTab(this,'participants')">👥 Participants</div>
-        <div class="tab" onclick="courseTab(this,'whatsapp')">💬 WhatsApp</div>
-      </div>
-
       <!-- Sessions (asynchrone) -->
       <div id="crs-sessions">
         <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">📦 Contenu en autonomie (asynchrone) — identique pour toutes les promotions.</p>
@@ -684,111 +725,73 @@ a.ref-item:hover{background:var(--color-background)}
 
     <!-- SESSION -->
     <section id="page-lesson" class="page">
-      <div class="breadcrumb" onclick="goTo('course')">La Voie des managers / <b>Session 2 — Mobiliser une équipe</b></div>
-      <div class="flex-between mb6">
-        <div><h1>Session 2 — Mobiliser une équipe</h1><p style="color:var(--color-neutral);margin-top:6px">Cours : La Voie des managers · animé par Yohann D.</p></div>
-        <button class="btn btn-accent" onclick="goTo('ai')">🧙 Demander à YoDalf</button>
+      <div class="lshead">
+        <div class="lsbc">La Voie des managers / Session 2 / Semaine 1 / <b id="lsCur">Vidéos</b></div>
+        <div class="lsprog">Étape 2 / 5 · 40% de la session<span class="lspbar"><i></i></span></div>
       </div>
 
-      <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">🗓️ Cette session se déroule sur <b>plusieurs semaines</b>. Chaque <b>séquence</b> regroupe une vidéo et ses exercices, ressources et quiz synchronisés. <b>Pédagogie inversée</b> : faites l'exercice pour débloquer la vidéo et les ressources <i>(non obligatoire)</i>.</p>
-
-      <!-- Séquence 1 -->
-      <div class="seq open">
-        <div class="seq-head" onclick="toggleSeq(this)"><div><div class="wk">Semaine 1</div><h3>Séquence 1 — Créer l'engagement</h3><div class="st">📝 1 exercice · 🎬 3 vidéos · 🎧 2 ressources · ✅ quiz (5 questions) · 🎥 replay</div></div><span class="chev">▾</span></div>
-        <div class="seq-body">
-          <div class="seq-part p-exo">
-            <h4>📝 ÉTAPE 1 · Exercice préparatoire</h4>
-            <div class="exo"><h4>Diagnostic de votre posture managériale</h4><p>Avant la vidéo, observez votre dernière réunion : qu'avez-vous délégué / gardé ? Notez 3 situations.</p><button class="btn btn-ghost">📄 Fiche d'exercice</button></div>
-            <div class="upload-zone" style="margin:var(--space-3) 0"><span class="big">⬆️</span>Déposer mon exercice réalisé (PDF, photo, doc…) — <b>visible par l'animateur</b></div>
-            <p style="font-size:12px;color:#5e7a1f;font-family:var(--font-title);font-weight:500">✅ Déposé le 14 mars · <a style="color:var(--color-accent);cursor:pointer">Voir / remplacer</a></p>
-            <div class="exo-check" id="exoCheck1" onclick="unlockStep(1)"><div class="box">✓</div> J'ai fait l'exercice — débloquer la vidéo et les ressources</div>
+      <!-- Vidéos -->
+      <div id="ls-video" class="ls-panel active">
+        <h2 style="font-size:20px;margin-bottom:4px">🎬 Créer l'engagement collectif</h2>
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Semaine 1 · 3 vidéos</p>
+        <div class="lesson-layout">
+          <div>
+            <div class="player vid-main"><span class="tag">🎬 Vidéo 1/3 — Vimeo · 14 min</span><div class="play">▶</div></div>
+            <div style="display:flex;align-items:center;gap:12px;margin:var(--space-4) 0"><button class="btn btn-accent">⏯ Reprendre à 07:12</button><span style="font-size:12px;color:var(--color-neutral)">52% visionné</span></div>
+            <button class="btn btn-primary">Marquer comme vu ✓</button>
           </div>
-          <div class="seq-part p-video">
-            <h4>🎬 ÉTAPE 2 · Vidéos (3)</h4>
-            <div class="lock-banner" id="lock1"><div class="lk-ic">🔒</div><div class="lk-txt"><b>Pédagogie inversée</b> — réalisez l'exercice ci-dessus pour débloquer les vidéos.<br><a onclick="unlockStep(1)">Voir quand même</a></div><button class="btn btn-primary" onclick="unlockStep(1)">J'ai fait l'exercice ✓</button></div>
-            <div id="content1" class="hidden">
-              <div class="player vid-main"><span class="tag">🎬 Vidéo 1/3 — Vimeo · 14 min</span><div class="play">▶</div></div>
-              <div style="display:flex;align-items:center;gap:12px;margin:var(--space-4) 0"><button class="btn btn-accent">⏯ Reprendre à 07:12</button><span style="font-size:12px;color:var(--color-neutral)">52% visionné</span></div>
-              <div class="vid-list">
-                <div class="vid-item active"><div class="vid-thumb">▶</div><div class="t">1 · Introduction à l'engagement</div><div class="d">14 min</div></div>
-                <div class="vid-item"><div class="vid-thumb">▶</div><div class="t">2 · Les 4 leviers d'engagement</div><div class="d">11 min</div></div>
-                <div class="vid-item"><div class="vid-thumb">▶</div><div class="t">3 · Étude de cas</div><div class="d">8 min</div></div>
-              </div>
+          <div class="side-list">
+            <h4>Vidéos de la semaine</h4>
+            <div class="vid-list">
+              <div class="vid-item active"><div class="vid-thumb">▶</div><div class="t">1 · Créer l'engagement</div><div class="d">14 min</div></div>
+              <div class="vid-item"><div class="vid-thumb">▶</div><div class="t">2 · Les 4 leviers</div><div class="d">11 min</div></div>
+              <div class="vid-item"><div class="vid-thumb">▶</div><div class="t">3 · Étude de cas</div><div class="d">8 min</div></div>
             </div>
-          </div>
-          <div class="seq-part p-res">
-            <h4>🎧 ÉTAPE 3 · Ressources synchronisées</h4>
-            <div class="lock-banner" id="lockr1"><div class="lk-ic">🔒</div><div class="lk-txt">Disponibles une fois l'exercice réalisé.<br><a onclick="unlockStep(1)">Voir quand même</a></div></div>
-            <div id="resv1" class="hidden">
-              <div class="res-item"><div class="res-ic audio">🎧</div><div class="t"><b>Méditation guidée — ancrage du leader</b><small>Audio · 11 min</small></div><button class="btn btn-ghost">▶ Écouter</button></div>
-              <div class="res-item"><div class="res-ic pdf">📄</div><div class="t"><b>Fiche — les 3 piliers du feedback</b><small>PDF · 2 pages</small></div><button class="btn btn-ghost">⬇ Télécharger</button></div>
-            </div>
-          </div>
-          <div class="seq-part p-quiz">
-            <h4>✅ ÉTAPE 4 · Quiz de la séquence (5 questions)</h4>
-            <div class="quiz-score"><div class="big">80%</div><div class="attempts">Meilleur score · <b>2 tentatives</b> · refaisable, sans seuil</div><button class="btn btn-ghost">↻ Refaire</button></div>
-            <div class="quiz-q"><span class="quiz-type">1/5 · QCM</span><h4>Quels sont les piliers du feedback ODBI ?</h4><div class="q-opt sel"><div class="box"></div> Clarté du fait</div><div class="q-opt sel"><div class="box"></div> Impact mesuré</div><div class="q-opt"><div class="box"></div> Autorité hiérarchique</div></div>
-            <div class="quiz-q"><span class="quiz-type">2/5 · Vrai / Faux</span><h4>Un bon feedback commence par un jugement de valeur.</h4><div class="q-opt"><div class="box"></div> Vrai</div><div class="q-opt sel"><div class="box"></div> Faux</div></div>
-            <div class="quiz-q"><span class="quiz-type">3/5 · Réponse libre</span><h4>Citez une situation où vous appliquerez l'engagement collectif.</h4><textarea class="field" rows="2" placeholder="Votre réponse…" style="width:100%"></textarea></div>
-            <p style="color:var(--color-neutral);font-size:12px;margin-bottom:var(--space-4)">+ 2 autres questions (association, QCM)…</p>
-            <button class="btn btn-primary">Valider le quiz</button>
-          </div>
-          <div class="seq-part p-replay">
-            <h4>🎥 ÉTAPE 5 · Replays de la semaine (2)</h4>
-            <span class="course-tag" style="color:#d64545;background:rgba(214,69,69,.1)">Visio 1 · 12 mars · 58 min · Promo 2026 Automne</span>
-            <div class="summary-box" style="margin-top:10px"><b>Résumé Notta :</b> clarifier l'objectif avant de déléguer, ritualiser le feedback, traiter les tensions tôt. <b>Chapitres :</b> 00:00 Intro · 06:20 Engagement · 18:45 Feedback.</div>
-            <div class="replay-actions"><button class="btn btn-accent">▶ Revoir (BBB)</button><button class="btn btn-ghost">📝 Transcription</button><button class="btn btn-ghost">📄 Résumé</button><button class="btn btn-ghost" onclick="goTo('ai')">🧙 YoDalf</button><span class="lang-flags">🌐 FR · EN</span></div>
-            <span class="course-tag" style="color:#d64545;background:rgba(214,69,69,.1);margin-top:var(--space-5);display:inline-block">Visio 2 · 14 mars · 1h30 · atelier pratique</span>
-            <div class="summary-box" style="margin-top:10px"><b>Résumé Notta :</b> mises en situation, jeux de rôle de feedback, débrief collectif. <b>Chapitres :</b> 00:00 Consignes · 12:00 Ateliers · 58:00 Débrief.</div>
-            <div class="replay-actions"><button class="btn btn-accent">▶ Revoir (BBB)</button><button class="btn btn-ghost">📝 Transcription</button><button class="btn btn-ghost">📄 Résumé</button><button class="btn btn-ghost" onclick="goTo('ai')">🧙 YoDalf</button><span class="lang-flags">🌐 FR · EN</span></div>
           </div>
         </div>
+        <div style="margin-top:var(--space-6);display:flex;justify-content:space-between"><button class="btn btn-ghost" onclick="lsNext('ex')">◀ Exercice</button><button class="btn btn-accent" onclick="lsNext('res')">Suivant · Ressources ▶</button></div>
       </div>
 
-      <!-- Séquence 2 -->
-      <div class="seq">
-        <div class="seq-head" onclick="toggleSeq(this)"><div><div class="wk">Semaine 2</div><h3>Séquence 2 — Le feedback en pratique</h3><div class="st">📝 1 exercice · 🎬 1 vidéo (20 min) · 🎧 1 ressource · ✅ quiz</div></div><span class="chev">▸</span></div>
-        <div class="seq-body">
-          <div class="seq-part p-exo">
-            <h4>📝 ÉTAPE 1 · Exercice préparatoire</h4>
-            <div class="exo"><h4>Préparer un feedback réel</h4><p>Choisissez une personne à qui vous devez un retour. Rédigez-le selon les 3 piliers avant la vidéo.</p><button class="btn btn-ghost">📄 Fiche d'exercice</button></div>
-            <div class="upload-zone" style="margin:var(--space-3) 0"><span class="big">⬆️</span>Déposer mon exercice réalisé (PDF, photo, doc…) — <b>visible par l'animateur</b></div>
-            <div class="exo-check" id="exoCheck2" onclick="unlockStep(2)"><div class="box">✓</div> J'ai fait l'exercice — débloquer la vidéo et les ressources</div>
-          </div>
-          <div class="seq-part p-video">
-            <h4>🎬 ÉTAPE 2 · Vidéo</h4>
-            <div class="lock-banner" id="lock2"><div class="lk-ic">🔒</div><div class="lk-txt"><b>Pédagogie inversée</b> — réalisez l'exercice ci-dessus pour débloquer la vidéo.<br><a onclick="unlockStep(2)">Voir quand même</a></div><button class="btn btn-primary" onclick="unlockStep(2)">J'ai fait l'exercice ✓</button></div>
-            <div id="content2" class="hidden">
-              <div class="player vid-main"><span class="tag">🎬 Vidéo — Vimeo · 20 min</span><div class="play">▶</div></div>
-            </div>
-          </div>
-          <div class="seq-part p-res">
-            <h4>🎧 ÉTAPE 3 · Ressources synchronisées</h4>
-            <div class="lock-banner" id="lockr2"><div class="lk-ic">🔒</div><div class="lk-txt">Disponibles une fois l'exercice réalisé.<br><a onclick="unlockStep(2)">Voir quand même</a></div></div>
-            <div id="resv2" class="hidden">
-              <div class="res-item"><div class="res-ic pdf">📄</div><div class="t"><b>Modèle de feedback structuré</b><small>PDF · 1 page</small></div><button class="btn btn-ghost">⬇ Télécharger</button></div>
-            </div>
-          </div>
-          <div class="seq-part p-quiz">
-            <h4>✅ ÉTAPE 4 · Quiz de la séquence</h4>
-            <div class="quiz-q"><span class="quiz-type">Vrai / Faux</span><h4>Un bon feedback commence par un jugement de valeur.</h4><div class="q-opt"><div class="box"></div> Vrai</div><div class="q-opt sel"><div class="box"></div> Faux</div></div>
-            <button class="btn btn-primary">Valider le quiz</button>
-          </div>
-          <div class="seq-part p-replay">
-            <h4>🎥 ÉTAPE 5 · Replay de la classe (visio)</h4>
-            <span class="course-tag" style="color:#d64545;background:rgba(214,69,69,.1)">Visio du 19 mars · 1h04 · Promo 2026 Automne</span>
-            <div class="summary-box" style="margin-top:10px"><b>Résumé Notta :</b> mises en situation de feedback, gestion des réactions, plan d'action individuel. <b>Chapitres :</b> 00:00 Rappel · 04:10 Jeux de rôle · 27:30 Débrief · 51:00 Q&R.</div>
-            <div class="replay-actions"><button class="btn btn-accent">▶ Revoir (BBB)</button><button class="btn btn-ghost">📝 Transcription</button><button class="btn btn-ghost">📄 Résumé</button><button class="btn btn-ghost" onclick="goTo('ai')">🧙 YoDalf</button><span class="lang-flags">🌐 FR · EN</span></div>
-          </div>
+      <!-- Exercice -->
+      <div id="ls-ex" class="ls-panel">
+        <h2 style="font-size:20px;margin-bottom:4px">📝 Exercice préparatoire</h2>
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Semaine 1 · pédagogie inversée — à faire avant la vidéo</p>
+        <div class="exo"><h4>Diagnostic de votre posture managériale</h4><p>Observez votre dernière réunion : qu'avez-vous délégué / gardé ? Notez 3 situations.</p><button class="btn btn-ghost">📄 Fiche d'exercice</button></div>
+        <div class="upload-zone" style="margin:var(--space-3) 0"><span class="big">⬆️</span>Déposer mon exercice réalisé — visible par l'animateur</div>
+        <div style="margin-top:var(--space-6);display:flex;justify-content:flex-end"><button class="btn btn-accent" onclick="lsNext('video')">Suivant · Vidéos ▶</button></div>
+      </div>
+
+      <!-- Ressources -->
+      <div id="ls-res" class="ls-panel">
+        <h2 style="font-size:20px;margin-bottom:4px">🎧 Ressources de la semaine</h2>
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Semaine 1 · 2 ressources</p>
+        <div class="res-item"><div class="res-ic audio">🎧</div><div class="t"><b>Méditation guidée — ancrage du leader</b><small>Audio · 11 min</small></div><button class="btn btn-ghost">▶ Écouter</button></div>
+        <div class="res-item"><div class="res-ic pdf">📄</div><div class="t"><b>Fiche — les 3 piliers du feedback</b><small>PDF · 2 pages</small></div><button class="btn btn-ghost">⬇ Télécharger</button></div>
+        <div style="margin-top:var(--space-6);display:flex;justify-content:space-between"><button class="btn btn-ghost" onclick="lsNext('video')">◀ Vidéos</button><button class="btn btn-accent" onclick="lsNext('quiz')">Suivant · Quiz ▶</button></div>
+      </div>
+
+      <!-- Quiz -->
+      <div id="ls-quiz" class="ls-panel">
+        <h2 style="font-size:20px;margin-bottom:4px">✅ Quiz de la semaine</h2>
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">5 questions · refaisable, sans seuil</p>
+        <div class="quiz-score"><div class="big">80%</div><div class="attempts">Meilleur score · <b>2 tentatives</b></div><button class="btn btn-ghost">↻ Refaire</button></div>
+        <div class="quiz-q"><span class="quiz-type">1/5 · QCM</span><h4>Quels sont les piliers du feedback ODBI ?</h4><div class="q-opt sel"><div class="box"></div> Clarté du fait</div><div class="q-opt sel"><div class="box"></div> Impact mesuré</div><div class="q-opt"><div class="box"></div> Autorité hiérarchique</div></div>
+        <div class="quiz-q"><span class="quiz-type">2/5 · Vrai / Faux</span><h4>Un bon feedback commence par un jugement de valeur.</h4><div class="q-opt"><div class="box"></div> Vrai</div><div class="q-opt sel"><div class="box"></div> Faux</div></div>
+        <p style="color:var(--color-neutral);font-size:12px;margin-bottom:var(--space-4)">+ 3 autres questions…</p>
+        <div style="display:flex;justify-content:space-between"><button class="btn btn-ghost" onclick="lsNext('res')">◀ Ressources</button><button class="btn btn-accent" onclick="lsNext('replay')">Suivant · Replay ▶</button></div>
+      </div>
+
+      <!-- Replay -->
+      <div id="ls-replay" class="ls-panel">
+        <h2 style="font-size:20px;margin-bottom:4px">🎥 Replays de la semaine</h2>
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Visios live de la Promo 2026 — Automne · transcription, chapitrage & résumé Notta</p>
+        <div class="card" style="padding:var(--space-5);margin-bottom:var(--space-4)">
+          <span class="course-tag" style="color:#d64545;background:rgba(214,69,69,.1)">Visio 1 · 12 mars · 58 min</span>
+          <div class="summary-box" style="margin-top:10px"><b>Résumé Notta :</b> clarifier l'objectif avant de déléguer, ritualiser le feedback, traiter les tensions tôt.</div>
+          <div class="replay-actions"><button class="btn btn-accent">▶ Revoir (BBB)</button><button class="btn btn-ghost">📝 Transcription</button><button class="btn btn-ghost">📄 Résumé</button><button class="btn btn-ghost" onclick="goTo('ai')">🧙 YoDalf</button></div>
         </div>
+        <div style="display:flex;justify-content:flex-start"><button class="btn btn-ghost" onclick="lsNext('quiz')">◀ Quiz</button></div>
       </div>
-
-      <!-- Séquence 3 (à venir) -->
-      <div class="seq">
-        <div class="seq-head" onclick="toggleSeq(this)" style="opacity:.6"><div><div class="wk">Semaine 3</div><h3>Séquence 3 — Gérer les tensions</h3><div class="st">🔒 Disponible à partir de la semaine 3</div></div><span class="chev">▸</span></div>
-        <div class="seq-body"><p style="color:var(--color-neutral)">Cette séquence s'ouvrira automatiquement la semaine prochaine pour votre promotion.</p></div>
-      </div>
-
     </section>
 
     <!-- VISIO -->
@@ -1332,6 +1335,7 @@ a.ref-item:hover{background:var(--color-background)}
     </section>
 
   </main>
+  </div>
 </div>
 
 <script>
@@ -1341,12 +1345,22 @@ function enterApp(){document.getElementById('auth').style.display='none';documen
 function logout(){document.getElementById('app').classList.remove('active');document.getElementById('auth').style.display='flex';showLogin()}
 function goTo(page){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById('page-'+page).classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  const nav=document.querySelector('.nav-item[data-page="'+page+'"]');if(nav)nav.classList.add('active');
+  var pg=document.getElementById('page-'+page);if(pg)pg.classList.add('active');
+  // top nav active : page courante, ou "Les programmes" pour cours/session
+  document.querySelectorAll('.topnav a').forEach(n=>n.classList.remove('active'));
+  var topKey=(page==='course'||page==='lesson')?'catalog':page;
+  var nav=document.querySelector('.topnav a[data-page="'+topKey+'"]');if(nav)nav.classList.add('active');
+  // barre contextuelle gauche
+  var bar=document.getElementById('ctxbar'),cc=document.getElementById('ctx-course'),cs=document.getElementById('ctx-session');
+  if(page==='course'){bar.classList.remove('hidden');cc.classList.remove('hidden');cs.classList.add('hidden');}
+  else if(page==='lesson'){bar.classList.remove('hidden');cs.classList.remove('hidden');cc.classList.add('hidden');}
+  else{bar.classList.add('hidden');}
   document.querySelector('.main').scrollTo(0,0);
 }
-function go(el){goTo(el.dataset.page)}
+const LSLABEL={ex:'Exercice',video:'Vidéos',res:'Ressources',quiz:'Quiz',replay:'Replay'};
+function showLsPanel(t){['ex','video','res','quiz','replay'].forEach(function(x){var p=document.getElementById('ls-'+x);if(p)p.classList.toggle('active',x===t)});var c=document.getElementById('lsCur');if(c)c.textContent=LSLABEL[t]||'';document.querySelector('.main').scrollTo(0,0);}
+function lsStep(el,t){document.querySelectorAll('#ctx-session .sstep').forEach(function(s){s.classList.remove('active')});if(el)el.classList.add('active');showLsPanel(t);}
+function lsNext(t){var steps=document.querySelectorAll('#ctx-session .sweek.open .sstep');steps.forEach(function(s){s.classList.remove('active');if((s.getAttribute('onclick')||'').indexOf("'"+t+"'")>=0)s.classList.add('active');});showLsPanel(t);}
 function adminTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
   ['members','courses','promos','suivi','integ'].forEach(x=>document.getElementById('admin-'+x).classList.add('hidden'));
   document.getElementById('admin-'+t).classList.remove('hidden')}
@@ -1404,9 +1418,9 @@ function setAccess(m){
   document.getElementById('freeBanner').classList.toggle('hidden',m!=='free');
   var pp=document.getElementById('promoPicker');if(pp)pp.style.display=(m==='free')?'none':'flex';
   var s2=document.getElementById('sess2row');if(s2)s2.classList.toggle('locked',m==='free');
-  courseTab(document.querySelector('#page-course .tabs .tab'),'sessions');
+  courseTab(document.querySelector('#ctx-course .cnav-item'),'sessions');
 }
-function courseTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
+function courseTab(el,t){document.querySelectorAll('#ctx-course .cnav-item').forEach(function(x){x.classList.remove('active')});if(el)el.classList.add('active');
   ['sessions','presentiel','lexique','references','participants','whatsapp'].forEach(x=>document.getElementById('crs-'+x).classList.add('hidden'));
   var locked=document.getElementById('crs-locked');if(locked)locked.classList.add('hidden');
   var reserved=['presentiel','lexique','references','participants','whatsapp'];
