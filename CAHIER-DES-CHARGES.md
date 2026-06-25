@@ -184,7 +184,9 @@ Inspirée des LMS type Skool :
        Session (S1, S2…) → Séquence (« 2.1 — [thématique] »…) → Étape (Exercice, Vidéos, Ressources, Quiz, Replay).
        Lien **« Tout réduire »** dans l'en-tête de section.
      - puis **Lexique** et **Références** (au même endroit que le curriculum).
-     - **Une seule session dépliée à la fois** (les autres se referment) pour éviter le mur de lignes.
+     - **Une seule session dépliée à la fois** ET **une seule séquence dépliée à la fois** (ouvrir 2.2 referme 2.1)
+       pour éviter un menu qui s'allonge à l'infini.
+     - Le **lecteur vidéo** est dimensionné pour tenir dans l'écran **sans scroll** (largeur plafonnée).
      - **Affichage allégé** : chaque étape = **case à cocher + libellé + durée** (façon Skool), **sans icône de type**
        dans l'arbre (les icônes SVG de type restent dans la zone de contenu).
      - **Cases vertes auto-cochées** une fois l'étape terminée ; pastille verte (partielle/complète) sur les
