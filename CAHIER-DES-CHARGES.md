@@ -54,7 +54,8 @@ S'appuie sur le **design system ODBI** (`odbi-design-tokens.css` / `.json`).
 - **« La Voie des… » (managers, artisans)** → **bleu + vert mixés** (`#1F465B` + `#86A43F`).
 - **Born To Coach** → **vert olive + noir** (`#435B20` + noir).
 - **Intelligence Collective** → **vert forêt** (`#3F571D` / `#567030`).
-- **Série Vous En… (VEM/VEP/VAT/VEL)** → **couleurs épurées** des logos : VEM & VAT **bleu**, VEP & VEL **vert**.
+- **Série Vous En… (VEM/VEP/VAT/VEL)** → **cartes épurées** (fond blanc + **accent couleur** en haut, initiales
+  dans la couleur), à l'image des logos : VEM & VAT **bleu** (indigo-dye), VEP & VEL **vert** (asparagus).
 - L'**étiquette texte « bleu + vert »** n'est plus affichée à l'écran (identité conservée dans les tokens).
 
 ### Présentation des programmes (vignettes)
@@ -360,6 +361,10 @@ Flux : `Visio BBB → enregistrement BBB → Notta (transcription + chapitrage +
 - Formé sur le contenu des cours (résumés, révisions, Q&R)
 - Accessible depuis le menu + depuis une session (« Demander à YoDalf »)
 - Illustration dédiée : `assets/yodalf.png` (fournie par ODBI ; repli emoji 🧙)
+- **Menu de gauche « Historique des conversations »** (même style/carte que le menu des programmes) :
+  bouton **« + Nouvelle conversation »** puis la liste des chats mémorisés, **groupés par date**
+  (Aujourd'hui / 7 derniers jours / Plus ancien), chat actif surligné. Permet de **garder en mémoire**
+  et rouvrir les échanges précédents.
 
 ---
 
