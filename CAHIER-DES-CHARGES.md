@@ -362,35 +362,45 @@ Flux : `Visio BBB → enregistrement BBB → Notta (transcription + chapitrage +
 ## 11bis. Séances d'entraînement (pratique du coaching)
 
 Module **distinct des visios de promo** : les membres de **l'École** s'entraînent à coacher, se font
-enregistrer, et reçoivent des retours (pairs + coach + IA). Entrée de menu dédiée **« Entraînement »**.
+enregistrer, et reçoivent des retours (pairs + coach + IA).
+
+### Accès (dans le programme, pas dans la barre du haut)
+- **Pas d'entrée dans le menu du haut** (allégé). La fonctionnalité vit **dans le menu de gauche du programme**,
+  avec un **libellé contextuel** :
+  - **« Training »** dans les programmes de **l'École** → le membre **programme** ses séances.
+  - **« Coaching »** dans les programmes de **La Voie** → le membre **participe** comme coaché (sur invitation).
+- Les **invités** (qui n'ont pas forcément l'entrée dans leur menu) sont prévenus par **notification** (cloche
+  en haut + e-mail) ; chaque notification ouvre directement la séance (**page séance autonome**).
 
 ### Création d'une séance
-- **Réservée aux membres de l'École** (BTC / IC). Les membres **La Voie ne créent pas** de séances entre eux.
+- **Réservée aux membres de l'École** (BTC / IC). Les membres **La Voie ne créent pas** de séances.
 - Le créateur (= **Coach**, celui qui s'entraîne) choisit date/heure/durée ; **salle BBB créée automatiquement**,
-  **enregistrement activé** (→ transcription & chapitrage **Notta**).
-- **Invitation d'un coaché** : via l'**annuaire** (École ou **La Voie**). L'invité reçoit une **notification**
-  (accepte / refuse).
-- Rôles dans la séance : **Coach** (s'entraîne), **Coaché** (le « client », souvent un La Voie), **Observateur(s)**.
-- **Visibilité du replay** : **privée par défaut** (invités + coach/animateur), élargissable par le créateur
-  (ma promo / inter-promos). Tracée RGPD.
+  **enregistrement activé** (→ **transcription Notta** ; **pas de chapitrage ni de résumé** pour ces séances).
+- **Rôles** à désigner : **Coach** (s'entraîne) · **Coaché** (invité via l'**annuaire**, École ou La Voie) ·
+  **Coach / animateur évaluateur** (peut être d'**un autre programme** : chez ODBI, dès qu'un coach est nommé,
+  il peut donner un feedback) · **Participant supplémentaire** · **Observateur(s)**.
+- Chaque invité reçoit une **notification** (accepte / refuse).
+- **Visibilité du replay** : **privée par défaut** (invités + coach/animateur), élargissable (ma promo / inter-promos). RGPD.
 
 ### Visionnage & feedback
-- Visionnable par les participants, le **Coach/Animateur** des programmes concernés (c'est lui qui supervise —
-  **pas de rôle « Superviseur » dédié**), et selon la visibilité.
-- **Feedback humain = vidéo (Loom)** : le coach, un collègue ou un invité enregistre **écran + voix** (Loom) ;
-  la vidéo est rattachée à la séance. Plusieurs feedbacks possibles.
-- **Feedback YoDalf = écrit** : généré **depuis la transcription** (points forts / axes de progrès / suggestions,
-  verbatims horodatés).
-- Vue **« À évaluer »** pour le coach/animateur : séances de ses programmes en attente de retour.
+- **Supervision = Coach/Animateur** (pas de rôle « Superviseur » dédié).
+- **Feedback humain = vidéo (Loom)** : déposé par le **coach/animateur**, les **observateurs** et le
+  **participant supplémentaire** (écran + voix). Chaque feedback est **transcrit par Notta**.
+- **Feedback YoDalf = écrit** : généré **depuis la transcription** (points forts / axes / suggestions horodatés).
+- **Confidentialité** : les **feedbacks sont réservés aux participants de l'École**. Le **coaché (La Voie)
+  ne voit pas** les feedbacks (ni Loom, ni YoDalf).
+- **Accès de l'évaluateur** (coach d'un autre programme) : via la **notification** + une liste **« À évaluer »**
+  (la page séance étant autonome, l'appartenance au programme n'est pas requise).
 
 ### Intégrations mobilisées
-- **BigBlueButton** (salle + enregistrement), **Notta** (transcription/chapitrage/résumé), **Loom** (feedback
-  vidéo — connecteur à configurer, compte ODBI existant), **YoDalf/Claude** (feedback écrit).
+- **BigBlueButton** (salle + enregistrement), **Notta** (transcription de la séance **et des feedbacks**),
+  **Loom** (feedback vidéo — connecteur, compte ODBI existant), **YoDalf/Claude** (feedback écrit).
 
 ### Modèle de données
-- `SeanceEntrainement` : créateur, date, salle BBB, participants[] (rôle), programmes concernés, visibilité,
-  enregistrement, transcription/chapitrage/résumé.
-- `Feedback` : séance, auteur, type (**vidéo Loom** / texte), URL Loom, date — + `FeedbackYoDalf` (écrit, auto).
+- `SeanceEntrainement` : créateur, date, salle BBB, participants[] (rôle : coach / coaché / coach‑animateur /
+  participant / observateur), programmes concernés, visibilité, enregistrement, transcription.
+- `Feedback` : séance, auteur, type (**vidéo Loom** + **transcription Notta**), URL Loom, date,
+  **visible_ecole_seulement = true** — + `FeedbackYoDalf` (écrit, auto, même restriction).
 
 ---
 
