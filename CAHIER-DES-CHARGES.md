@@ -51,8 +51,8 @@ S'appuie sur le **design system ODBI** (`odbi-design-tokens.css` / `.json`).
 ### Couleurs par univers (codes repris des flyers ODBI)
 - **Programme « La Voie »** → **bleu uniquement** (bleu profond `#1F465B`).
 - **« La Voie des… » (managers, artisans)** → **bleu + vert mixés** (`#1F465B` + `#86A43F`).
-- **Born To Coach** → **vert olive + noir** (`#435B20` + noir).
-- **Intelligence Collective** → **vert forêt** (`#3F571D` / `#567030`).
+- **Born To Coach** → dégradé **noir → vert olive** (noir d'abord, `#435B20`).
+- **Intelligence Collective** → dégradé **noir → vert forêt** (noir d'abord, `#3F571D`).
 - **Série Vous En… (VEM/VEP/VAT/VEL)** → **photo (placeholder) + aplat NEUTRE gris** (gris du design system),
   volontairement sans couleur d'univers. Photos définitives à fournir.
 - L'**étiquette texte « bleu + vert »** n'est plus affichée à l'écran (identité conservée dans les tokens).
