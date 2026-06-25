@@ -512,8 +512,9 @@ Le profil affiche aussi :
 ### Livret d'accueil
 - **Intégré dans la plateforme** (page interne avec **iframe Notion**), pas un lien externe.
 - Accessible depuis le **menu de gauche**, **au-dessus des programmes**.
-- Source : Livret d'Accueil Client ODBI (Notion) — embed `https://odbi.notion.site/13d94934418a80cb843dfaebb32328ef`
-  (page publiée en accès web ; bouton « Ouvrir dans un onglet » en repli).
+- Source : Livret d'Accueil Client ODBI (Notion) — **lien d'intégration officiel** :
+  `https://odbi.notion.site/ebd//13d94934418a80cb843dfaebb32328ef` (le `/ebd/` est l'endpoint
+  d'embed Notion). Page publiée sur le web ; bouton « Ouvrir dans un onglet » en repli.
 
 ### Agenda
 - Présenté comme un **vrai calendrier** (vue mensuelle), filtré sur les promos du membre.
