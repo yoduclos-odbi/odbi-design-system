@@ -45,24 +45,23 @@ S'appuie sur le **design system ODBI** (`odbi-design-tokens.css` / `.json`).
 
 ### Logo & marque
 - Marque : **« Odbi campus »** (et non « ODBI Academy »). Logo en haut à gauche (barre + page de connexion).
-  *Maquette : **reproduction vectorielle (SVG)** du logo (O en anneau + « dbi » + barre grise + « campus »).
-  À remplacer par le **fichier logo officiel** (SVG/PNG) une fois fourni en pièce jointe — l'image collée
-  dans le chat n'est pas récupérable comme fichier.*
+  **Logo officiel intégré** : versions **foncée** (barre du haut, fond clair) et **blanche** (page de connexion,
+  fond foncé), extraites des PDF fournis (PNG transparent, recadrés, embarqués en base64).
 
 ### Couleurs par univers (codes repris des flyers ODBI)
 - **Programme « La Voie »** → **bleu uniquement** (bleu profond `#1F465B`).
 - **« La Voie des… » (managers, artisans)** → **bleu + vert mixés** (`#1F465B` + `#86A43F`).
 - **Born To Coach** → **vert olive + noir** (`#435B20` + noir).
 - **Intelligence Collective** → **vert forêt** (`#3F571D` / `#567030`).
-- **Série Vous En… (VEM/VEP/VAT/VEL)** → **photo (placeholder) + aplat couleur** comme les autres programmes :
-  VEM & VAT **bleu** (indigo-dye), VEP & VEL **vert** (asparagus). Photos définitives à fournir.
+- **Série Vous En… (VEM/VEP/VAT/VEL)** → **photo (placeholder) + aplat NEUTRE gris** (gris du design system),
+  volontairement sans couleur d'univers. Photos définitives à fournir.
 - L'**étiquette texte « bleu + vert »** n'est plus affichée à l'écran (identité conservée dans les tokens).
 
 ### Présentation des programmes (vignettes)
 - Chaque programme = **une image + un aplat couleur** selon son code couleur.
-- *Maquette : photos temporaires extraites des flyers PDF (La Voie / BTC / IC) avec aplat dégradé par univers ;
-  la série VEM utilise un aplat couleur plein (sans photo).* À remplacer par les visuels définitifs
-  (export Claude Design ou photothèque ODBI).
+- *Maquette : photos temporaires extraites des flyers PDF (La Voie / BTC / IC) avec aplat par univers ;
+  la série Vous En… utilise une photo placeholder + **aplat gris neutre**.* À remplacer par les visuels
+  définitifs (export Claude Design ou photothèque ODBI).
 
 ### Icônes
 - **Pas d'emojis dans l'interface** : types de contenu (exercice, vidéo, audio, PDF,
