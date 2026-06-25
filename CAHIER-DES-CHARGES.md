@@ -653,7 +653,7 @@ Le profil affiche aussi :
 ### Agenda
 - Présenté comme un **vrai calendrier** (vue mensuelle), filtré sur les promos du membre.
 - Événements color-codés et **cliquables** (renvoient au contenu concerné) :
-  **Visios (BBB), Présentiels, Exercices, Ressources à consulter, Quiz**.
+  **Visios (BBB), Présentiels, Exercices, Ressources à consulter, Quiz, Séances d'entraînement (Coaching/Training)**.
 
 ---
 

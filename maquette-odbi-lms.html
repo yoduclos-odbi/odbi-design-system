@@ -428,6 +428,7 @@ a.ref-item:hover{background:var(--color-background)}
 .ev.exo{background:var(--color-asparagus)}
 .ev.quiz{background:var(--color-apple-green);color:var(--color-jet)}
 .ev.res{background:var(--color-jet)}
+.ev.train{background:#625df5}
 .cal-legend{display:flex;gap:18px;margin-top:var(--space-4);font-size:12px;color:var(--color-neutral);flex-wrap:wrap}
 .cal-legend span{display:flex;align-items:center;gap:6px}
 .cal-legend i{width:12px;height:12px;border-radius:3px;display:inline-block}
@@ -977,9 +978,10 @@ a.ref-item:hover{background:var(--color-background)}
 
       <!-- Coaching (La Voie) / Training (École) : séances de pratique -->
       <div id="crs-training" class="hidden">
-        <div class="flex-between" style="margin-bottom:var(--space-4)">
-          <div><h3 style="font-size:16px">Coaching</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:4px">Séances où vous êtes <b>coaché(e)</b>, sur invitation d'un membre de l'École. <span>(Côté École, cette section s'intitule « Training » et permet de <b>programmer</b> une séance.)</span></p></div>
-          <button class="btn btn-accent" id="trainCreateBtn" onclick="toggleTrainForm()">+ Programmer une séance</button>
+        <div style="margin-bottom:var(--space-4)">
+          <h3 id="trainTitle" style="font-size:16px">Coaching</h3>
+          <p id="trainIntro" style="color:var(--color-neutral);font-size:13px;margin-top:4px">Séances où vous êtes <b>coaché(e)</b>, sur invitation d'un membre de l'École.</p>
+          <button class="btn btn-accent" id="trainCreateBtn" onclick="toggleTrainForm()" style="margin-top:12px">+ Programmer une séance</button>
         </div>
         <div id="trainForm" class="edit-card hidden" style="margin-bottom:var(--space-6)">
           <h3>Nouvelle séance — Training</h3>
@@ -1266,7 +1268,7 @@ a.ref-item:hover{background:var(--color-background)}
           <!-- Semaine 1 -->
           <div class="cal-cell"><div class="num">1</div><span class="ev exo" onclick="goTo('lesson')">📝 Exercice S1</span></div>
           <div class="cal-cell"><div class="num">2</div><span class="ev res" onclick="goTo('lesson')">🎧 Ressources S1</span></div>
-          <div class="cal-cell"><div class="num">3</div><span class="ev visio" onclick="goTo('visio')">18h · Visio La Voie</span></div>
+          <div class="cal-cell"><div class="num">3</div><span class="ev visio" onclick="goTo('visio')">18h · Visio La Voie</span><span class="ev train" onclick="goTo('train-detail')">🎓 Entraînement 18h</span></div>
           <div class="cal-cell"><div class="num">4</div><span class="ev quiz" onclick="goTo('lesson')">✅ Quiz S1</span></div>
           <div class="cal-cell"><div class="num">5</div><span class="ev visio" onclick="goTo('visio')">12h30 · BTC live</span></div>
           <div class="cal-cell"><div class="num">6</div></div>
@@ -1733,8 +1735,11 @@ var curUni='ecole';
 function applyUni(){
   var ec=curUni==='ecole';
   var t=document.getElementById('navProgTitle'),su=document.getElementById('navProgSub'),h=document.getElementById('coTitle'),ct=document.getElementById('ctLabel');
-  if(ec){if(t)t.textContent='BTC : 2ème génération';if(su)su.textContent='Promo 2026 — BTC G2';if(h)h.textContent='Born To Coach — 2ème génération';if(ct)ct.textContent='Training';}
-  else{if(t)t.textContent='La Voie des managers';if(su)su.textContent='Promo 2026 — Automne';if(h)h.textContent='La Voie des managers';if(ct)ct.textContent='Coaching';}
+  var tt=document.getElementById('trainTitle'),ti=document.getElementById('trainIntro');
+  if(ec){if(t)t.textContent='BTC : 2ème génération';if(su)su.textContent='Promo 2026 — BTC G2';if(h)h.textContent='Born To Coach — 2ème génération';if(ct)ct.textContent='Training';
+    if(tt)tt.textContent='Training';if(ti)ti.innerHTML='Programmez vos séances d\'entraînement au coaching (invitez un coaché via l\'annuaire). <span>(Côté La Voie, cette section s\'appelle « Coaching ».)</span>';}
+  else{if(t)t.textContent='La Voie des managers';if(su)su.textContent='Promo 2026 — Automne';if(h)h.textContent='La Voie des managers';if(ct)ct.textContent='Coaching';
+    if(tt)tt.textContent='Coaching';if(ti)ti.innerHTML='Séances où vous êtes <b>coaché(e)</b>, sur invitation d\'un membre de l\'École.';}
   var fb=document.getElementById('seanceFeedbacks'),lk=document.getElementById('seanceFbLock');
   if(fb)fb.classList.toggle('hidden',!ec);
   if(lk)lk.classList.toggle('hidden',ec);
