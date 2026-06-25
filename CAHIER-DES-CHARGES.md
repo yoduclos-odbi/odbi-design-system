@@ -174,23 +174,27 @@ Inspirée des LMS type Skool :
   Livret · Les programmes · Tableau de bord · Visios live · YoDalf · Progression · Agenda · Back-office.
 - **Barre contextuelle à gauche** = **un seul panneau persistant** (carte), affiché aussi bien sur l'accueil
   du programme que dans une leçon. Il remplace l'ancien double-état (sections programme / accordéon de session)
-  qui faisait « perdre » l'utilisateur. Il contient, de haut en bas :
+  qui faisait « perdre » l'utilisateur. **Sections repliables** (chevron) pour rester lisible. De haut en bas :
   1. **« Accueil du programme »** (renvoie à la page d'accueil : présentation + carte « Reprendre »).
-  2. **« Préceptes »** (segment **en accès libre / gratuit**) : liste de **vidéos fondamentales** du programme,
-     visibles par tous (inscrits ou non). Remplace l'ancienne grille « vidéos d'accueil » qui était sur la page d'accueil.
-  3. **Arbre du curriculum** (façon Skool) : **toutes les sessions du programme** en **arbre dépliant sur 3 niveaux** —
-     **Session** (S1, S2…) → **Séquence** (« 2.1 — [thématique] »…) → **Étape** (feuille : Exercice, Vidéos,
-     Ressources, Quiz, Replay). En-tête « Leçons » avec **recherche**, méta (« 4 sessions · 72% ») et **« Tout réduire »**.
-     - **Une seule session dépliée à la fois** (les autres se referment) pour éviter le mur de lignes sur les longs programmes.
+  2. **« Préceptes »** (section repliable, **accès libre / gratuit**) : vidéos fondamentales du programme,
+     visibles par tous (inscrits ou non). Items par défaut : **« Présentation du programme »** (en 1er),
+     **« Bienvenue dans La Voie »**. (Remplace l'ancienne grille « vidéos d'accueil » de la page d'accueil.)
+  3. **« Session »** (section repliable) — **regroupe tout le périmètre programme** :
+     - **Arbre du curriculum** (façon Skool) : **toutes les sessions** en **arbre dépliant sur 3 niveaux** —
+       Session (S1, S2…) → Séquence (« 2.1 — [thématique] »…) → Étape (Exercice, Vidéos, Ressources, Quiz, Replay).
+       Lien **« Tout réduire »** dans l'en-tête de section.
+     - puis **Lexique** et **Références** (au même endroit que le curriculum).
+     - **Une seule session dépliée à la fois** (les autres se referment) pour éviter le mur de lignes.
      - **Affichage allégé** : chaque étape = **case à cocher + libellé + durée** (façon Skool), **sans icône de type**
-       dans l'arbre (les icônes SVG de type restent dans la zone de contenu) — pour ne pas surcharger le menu.
+       dans l'arbre (les icônes SVG de type restent dans la zone de contenu).
      - **Cases vertes auto-cochées** une fois l'étape terminée ; pastille verte (partielle/complète) sur les
        parents séquence/session ; **cadenas** sur le contenu verrouillé.
-  4. **Infos hors curriculum**, regroupées en deux familles avec **icônes SVG** :
-     - **Programme** (asynchrone, partagé) : Lexique, Références.
-     - **Ma promotion** (synchrone) : Présentiels, Participants, WhatsApp.
-  5. **Sélecteur de promotion** (dérouleur par année) **en bas du panneau**, rattaché à « Ma promotion »
-     (et non plus dans l'en-tête de la page programme). Masqué en accès découverte (non-inscrit = sans promotion).
+  4. **« Ma promotion »** (section repliable, synchrone) : **sélecteur de promotion** (dérouleur par année, en tête
+     de la section — pas de libellé « Promotion » redondant), puis **Présentiels, Participants, WhatsApp**.
+     Sélecteur masqué en accès découverte (non-inscrit = sans promotion).
+- **Pas de recherche dans le menu** : une **seule** zone de recherche, **globale, dans la barre du haut**.
+- **Scrolls indépendants** : la colonne de gauche (menu) et la zone de contenu (centre) **défilent séparément** ;
+  cliquer un élément du menu après l'avoir fait défiler affiche le contenu **en haut** de la zone centrale.
 - **Règle de complétion d'une étape** (ce qui coche la case) : vidéo = vue ≥ 90 % · exercice = déposé ·
   ressource = ouverte · quiz = au moins 1 tentative · replay = ouvert. (Sert aussi à la progression Qualiopi/BPF.)
 - **Aucune emoji** dans l'interface : les types de contenu (exercice, vidéo, audio, PDF, quiz, visio, verrou, cloche)

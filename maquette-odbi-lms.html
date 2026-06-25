@@ -61,7 +61,7 @@ a{color:inherit;text-decoration:none}
 .logo .dot{width:14px;height:14px;background:var(--color-apple-green);border-radius:3px;display:inline-block;transform:rotate(45deg)}
 
 /* ---------- App layout ---------- */
-.app{display:none;min-height:100vh;flex-direction:column}
+.app{display:none;height:100vh;flex-direction:column;overflow:hidden}
 .app.active{display:flex}
 .topbar{background:#fff;border-bottom:1px solid rgba(74,74,74,.1);display:flex;flex-direction:column;padding:0;position:sticky;top:0;z-index:20}
 .tbrow1{display:flex;align-items:center;justify-content:space-between;padding:12px var(--space-6)}
@@ -73,7 +73,7 @@ a{color:inherit;text-decoration:none}
 .topbar-right{display:flex;align-items:center;gap:var(--space-4);flex-shrink:0}
 .search{background:var(--color-background);border-radius:var(--radius-full);padding:8px 16px;width:180px;border:none;font-family:var(--font-body)}
 .avatar{width:38px;height:38px;border-radius:50%;background:var(--color-indigo-dye);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-title);font-weight:700;cursor:pointer;flex-shrink:0}
-.shell{display:flex;flex:1;min-height:0}
+.shell{display:flex;flex:1;min-height:0;overflow:hidden}
 .ctxbar{width:300px;background:transparent;padding:var(--space-5);overflow-y:auto;flex-shrink:0}
 .ctxbar.hidden{display:none}
 .ctxbar > div{background:#fff;border:1px solid rgba(74,74,74,.12);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:var(--space-4)}
@@ -456,6 +456,15 @@ a.ref-item:hover{background:var(--color-background)}
 .section-title{font-size:14px;font-family:var(--font-title);font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--color-neutral);margin:var(--space-8) 0 var(--space-4)}
 .mb6{margin-bottom:var(--space-6)}
 .flex-between{display:flex;justify-content:space-between;align-items:center}
+/* ===== Sections repliables du menu ===== */
+.nav-sec{border-top:1px solid rgba(74,74,74,.08);margin-top:6px;padding-top:4px}
+.nav-sec-h{display:flex;align-items:center;gap:8px;padding:9px 8px;cursor:pointer;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--color-neutral);font-family:var(--font-title);font-weight:700}
+.nav-sec-h:hover{color:var(--color-jet)}
+.nav-sec-h .sc-chev{width:11px;height:11px;flex:none;transition:transform .15s}
+.nav-sec.closed .sc-chev{transform:rotate(-90deg)}
+.nav-sec-h .sc-badge{font-size:9px;color:#fff;background:var(--color-asparagus);padding:1px 7px;border-radius:99px;letter-spacing:.5px}
+.nav-sec-b{display:block}
+.nav-sec.closed .nav-sec-b{display:none}
 /* ===== Arbre de navigation (curriculum) ===== */
 .tv{padding:2px 4px 8px}
 .tv-s1{margin:1px 0}
@@ -576,18 +585,18 @@ a.ref-item:hover{background:var(--color-background)}
         <div class="tv-home cur" id="tvHome" onclick="goHome(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg> Accueil du programme</div>
 
         <!-- Préceptes (accès libre) -->
-        <div class="cnav-group" style="display:flex;align-items:center;gap:8px">Préceptes <span style="font-size:9px;color:#fff;background:var(--color-asparagus);padding:1px 7px;border-radius:99px;letter-spacing:.5px">GRATUIT</span></div>
-        <div class="cnav-item" onclick="openInfo(this,'preceptes')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Bienvenue dans La Voie</div>
-        <div class="cnav-item" onclick="openInfo(this,'preceptes')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> À qui s'adresse le parcours ?</div>
-        <div class="cnav-item" onclick="openInfo(this,'preceptes')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Fonctionnement de la plateforme</div>
-
-        <!-- En-tête curriculum -->
-        <div class="sx-head" style="margin-top:6px">
-          <div class="sx-title">Leçons</div>
-          <input class="sx-search" placeholder="Rechercher une leçon…">
-          <div class="sx-meta"><span>4 sessions · 72%</span><span class="sx-collapse" onclick="collapseTree()">Tout réduire</span></div>
+        <div class="nav-sec">
+          <div class="nav-sec-h" onclick="toggleSec(this)"><svg class="sc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg> Préceptes <span class="sc-badge">GRATUIT</span></div>
+          <div class="nav-sec-b">
+            <div class="cnav-item" onclick="openInfo(this,'preceptes')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Présentation du programme</div>
+            <div class="cnav-item" onclick="openInfo(this,'preceptes')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Bienvenue dans La Voie</div>
+          </div>
         </div>
 
+        <!-- Session : curriculum + lexique + références -->
+        <div class="nav-sec">
+          <div class="nav-sec-h" onclick="toggleSec(this)"><svg class="sc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg> Session <span style="margin-left:auto;text-transform:none;letter-spacing:0;color:var(--color-accent);font-weight:500" onclick="event.stopPropagation();collapseTree()">Tout réduire</span></div>
+          <div class="nav-sec-b">
         <div class="tv" id="tree">
           <!-- S1 terminée -->
           <div class="tv-s1" id="tv-s1">
@@ -634,27 +643,32 @@ a.ref-item:hover{background:var(--color-background)}
           </div>
         </div>
 
-        <!-- Infos programme / promotion (hors curriculum) -->
-        <div class="cnav-group">Programme</div>
-        <div class="cnav-item" onclick="openInfo(this,'lexique')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> Lexique</div>
-        <div class="cnav-item" onclick="openInfo(this,'references')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg> Références</div>
-        <div class="cnav-group">Ma promotion</div>
-        <div class="cnav-item" onclick="openInfo(this,'presentiel')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Présentiels</div>
-        <div class="cnav-item" onclick="openInfo(this,'participants')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg> Participants</div>
-        <div class="cnav-item" onclick="openInfo(this,'whatsapp')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg> WhatsApp</div>
-        <div id="promoPicker" style="padding:8px 12px 4px">
-          <label style="font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--color-neutral);font-family:var(--font-title);font-weight:700;display:block;margin-bottom:5px">Promotion</label>
-          <select class="promo-select" id="promoSelect" onchange="switchPromo(this.value)" style="width:100%">
-            <optgroup label="2027">
-              <option value="lvm-2027-pri">Promo 2027 — Printemps</option>
-              <option value="lvm-2027-ete">Promo 2027 — Été</option>
-            </optgroup>
-            <optgroup label="2026">
-              <option value="lvm-2026-aut" selected>Promo 2026 — Automne</option>
-              <option value="lvm-2026-ete">Promo 2026 — Été</option>
-              <option value="lvm-2026-pri">Promo 2026 — Printemps</option>
-            </optgroup>
-          </select>
+            <div class="cnav-item" onclick="openInfo(this,'lexique')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> Lexique</div>
+            <div class="cnav-item" onclick="openInfo(this,'references')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg> Références</div>
+          </div>
+        </div>
+
+        <!-- Ma promotion -->
+        <div class="nav-sec">
+          <div class="nav-sec-h" onclick="toggleSec(this)"><svg class="sc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg> Ma promotion</div>
+          <div class="nav-sec-b">
+            <div id="promoPicker" style="padding:6px 8px 8px">
+              <select class="promo-select" id="promoSelect" onchange="switchPromo(this.value)" style="width:100%">
+                <optgroup label="2027">
+                  <option value="lvm-2027-pri">Promo 2027 — Printemps</option>
+                  <option value="lvm-2027-ete">Promo 2027 — Été</option>
+                </optgroup>
+                <optgroup label="2026">
+                  <option value="lvm-2026-aut" selected>Promo 2026 — Automne</option>
+                  <option value="lvm-2026-ete">Promo 2026 — Été</option>
+                  <option value="lvm-2026-pri">Promo 2026 — Printemps</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="cnav-item" onclick="openInfo(this,'presentiel')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Présentiels</div>
+            <div class="cnav-item" onclick="openInfo(this,'participants')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg> Participants</div>
+            <div class="cnav-item" onclick="openInfo(this,'whatsapp')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg> WhatsApp</div>
+          </div>
         </div>
       </div>
     </aside>
@@ -758,14 +772,7 @@ a.ref-item:hover{background:var(--color-background)}
       </div>
       <div class="progress mb6" style="height:10px"><span style="width:72%"></span></div>
 
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:var(--space-4);flex-wrap:wrap">
-        <span style="font-size:12px;color:var(--color-neutral)">👁️ Aperçu (démo) :</span>
-        <button id="modeFull" class="promo-pick active" onclick="setAccess('full')">Inscrit</button>
-        <button id="modeFree" class="promo-pick" onclick="setAccess('free')">Accès gratuit (non inscrit)</button>
-      </div>
-      <div id="freeBanner" class="hidden" style="background:rgba(134,164,63,.1);border-left:4px solid var(--color-asparagus);border-radius:8px;padding:12px 16px;margin-bottom:var(--space-5);font-size:13px;display:flex;justify-content:space-between;align-items:center;gap:12px"><div><b>Accès découverte — sans promotion</b>. Vous pouvez regarder les <b>vidéos d'accueil gratuites</b> ci-dessous. Le curriculum (sessions, séquences), les visios/replays, présentiels, participants et WhatsApp dépendent d'une <b>promotion</b> et nécessitent une inscription.</div><button class="btn btn-primary" style="white-space:nowrap">Rejoindre le programme</button></div>
-
-      <!-- Accueil du programme (présentation + reprendre + vidéos gratuites) -->
+      <!-- Accueil du programme (présentation + reprendre) -->
       <div id="crs-accueil">
         <!-- Reprendre (inscrit) -->
         <div class="resume-card" id="resumeCard" onclick="goTo('lesson')" style="cursor:pointer">
@@ -789,9 +796,8 @@ a.ref-item:hover{background:var(--color-background)}
         </div>
         <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-5)">Les fondamentaux du programme, en accès gratuit — inscrit ou non.</p>
         <div class="welcome-grid">
-          <div class="wv"><div class="wv-th"><span class="fb">Gratuit</span><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="wv-b"><h4>Bienvenue dans La Voie des managers</h4><small>Yo Duclos · 4 min</small></div></div>
-          <div class="wv"><div class="wv-th"><span class="fb">Gratuit</span><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="wv-b"><h4>À qui s'adresse le parcours ?</h4><small>5 min</small></div></div>
-          <div class="wv"><div class="wv-th"><span class="fb">Gratuit</span><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="wv-b"><h4>Comment fonctionne la plateforme</h4><small>6 min</small></div></div>
+          <div class="wv"><div class="wv-th"><span class="fb">Gratuit</span><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="wv-b"><h4>Présentation du programme</h4><small>Yo Duclos · 6 min</small></div></div>
+          <div class="wv"><div class="wv-th"><span class="fb">Gratuit</span><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="wv-b"><h4>Bienvenue dans La Voie</h4><small>Yo Duclos · 4 min</small></div></div>
         </div>
       </div>
 
@@ -1321,9 +1327,8 @@ a.ref-item:hover{background:var(--color-background)}
       <!-- Préceptes (vidéos en accès libre) -->
       <div id="ec-welcome" class="hidden">
         <p style="color:var(--color-neutral);margin-bottom:var(--space-4)"><b>Préceptes</b> — vidéos en <b>accès libre / gratuit</b>, listées dans le menu de gauche du programme et visibles par tous (inscrits ou non, sans promotion). Glissez pour réordonner.</p>
-        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="Bienvenue dans La Voie des managers"><input placeholder="ID / lien Vimeo" value="vimeo.com/123456"></div></div><span class="badge" style="background:var(--color-asparagus)">Gratuit</span><button class="icon-btn">🗑️</button></div>
-        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="À qui s'adresse le parcours ?"><input placeholder="ID / lien Vimeo" value="vimeo.com/123457"></div></div><span class="badge" style="background:var(--color-asparagus)">Gratuit</span><button class="icon-btn">🗑️</button></div>
-        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="Comment fonctionne la plateforme"><input placeholder="ID / lien Vimeo" value="vimeo.com/123458"></div></div><span class="badge" style="background:var(--color-asparagus)">Gratuit</span><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="Présentation du programme"><input placeholder="ID / lien Vimeo" value="vimeo.com/123456"></div></div><span class="badge" style="background:var(--color-asparagus)">Gratuit</span><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="Bienvenue dans La Voie"><input placeholder="ID / lien Vimeo" value="vimeo.com/123457"></div></div><span class="badge" style="background:var(--color-asparagus)">Gratuit</span><button class="icon-btn">🗑️</button></div>
         <button class="add-btn">+ Ajouter un précepte</button>
         <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-4)">ℹ️ Astuce : n'importe quelle vidéo d'une séquence peut aussi être marquée « publique » dans l'éditeur de session (toggle <b>Gratuit</b>) ; elle remontera alors automatiquement dans les Préceptes, sans la téléverser deux fois.</p>
       </div>
@@ -1526,6 +1531,7 @@ function openInfo(el,t){
 function tog1(id){var el=document.getElementById(id);if(el.classList.contains('tv-muted'))return;var open=el.classList.contains('op');document.querySelectorAll('#tree .tv-s1').forEach(function(s){s.classList.remove('op')});if(!open)el.classList.add('op');}
 function tog2(id){var el=document.getElementById(id);if(el.classList.contains('tv-muted'))return;el.classList.toggle('op');}
 function collapseTree(){document.querySelectorAll('#tree .tv-s1,#tree .tv-s2').forEach(function(s){s.classList.remove('op')});}
+function toggleSec(el){el.parentNode.classList.toggle('closed');}
 const LSLABEL={ex:'Exercice',video:'Vidéos',res:'Ressources',quiz:'Quiz',replay:'Replay'};
 function showLsPanel(t){['ex','video','res','quiz','replay'].forEach(function(x){var p=document.getElementById('ls-'+x);if(p)p.classList.toggle('active',x===t)});var c=document.getElementById('lsCur');if(c)c.textContent=LSLABEL[t]||'';document.querySelector('.main').scrollTo(0,0);}
 function lsStep(el,t){showLsPanel(t);}
