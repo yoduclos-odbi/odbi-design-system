@@ -120,10 +120,12 @@ progression, promotions, groupe WhatsApp, visios propres).
 - **Freemium** : sur un cours où le participant **n'est pas inscrit**, une partie du
   contenu est **gratuite** (pour donner envie) ; le **reste est réservé aux inscrits**.
 - Sur un cours où il **est inscrit** : accès complet + progression.
-- **Accès découverte (non inscrit / accès gratuit)** : le participant n'a accès **qu'à la
-  session ouverte** (la session gratuite). **Tout le reste est réservé** : sessions suivantes
-  (verrouillées), présentiels, lexique, références, participants, WhatsApp. Un CTA
-  « Rejoindre le programme » est proposé sur les sections réservées.
+- **Accès découverte (non inscrit / accès gratuit)** : le participant n'a accès **qu'aux
+  Préceptes** (vidéos en accès libre, listées dans le menu de gauche du programme).
+  **Tout le reste est réservé** : le curriculum (sessions/séquences, verrouillé), présentiels,
+  lexique, références, participants, WhatsApp. Un CTA « Rejoindre le programme » est proposé
+  sur l'accueil et les sections réservées. (Les Préceptes remplacent l'ancienne logique
+  « 1ère session ouverte en découverte ».)
   - **Aucune promotion** : un non‑inscrit n'appartient à **aucune promo**. Le contenu gratuit
     est **asynchrone** (partagé, indépendant des promotions) ; le **synchrone** (visios/replays,
     présentiels, WhatsApp) dépend d'une promotion et nécessite l'inscription. Le sélecteur de
@@ -170,14 +172,32 @@ les accès de connexion** par e-mail (cf. §13, flux Notion → LMS).
 Inspirée des LMS type Skool :
 - **Menu principal en haut** (barre horizontale, texte sans emojis, onglet actif souligné) :
   Livret · Les programmes · Tableau de bord · Visios live · YoDalf · Progression · Agenda · Back-office.
-- **Barre contextuelle à gauche** (n'apparaît que dans un programme / une session), **présentée dans un bloc/carte** (pas collée au bord) :
-  - Dans un **programme** : ses sections avec **icônes vectorielles** (SVG, pas d'emojis), **regroupées en deux familles** :
-    - **Programme** (asynchrone, partagé entre promos) : Sessions, Lexique, Références.
-    - **Ma promotion** (synchrone, par promo) : Présentiels, Participants, WhatsApp.
-  - Dans une **session** : **accordéon** séquences → étapes, libellées **« 2.1 — [thématique] », « 2.2 — [thématique] »…** (et non « Semaine 1/2/3 »), étapes = Exercice, Vidéos, Ressources, Quiz, Replay ; en-tête avec recherche, méta (« 3 thématiques · 40% ») et « Tout réduire » ; « ← retour au programme ».
-- **Aucune emoji** dans l'interface : les types de contenu (exercice, vidéo, audio, PDF, quiz, visio, verrou, cloche) utilisent des **icônes SVG**. Seules restent les emojis d'identité explicitement validées (YoDalf, badges).
+- **Barre contextuelle à gauche** = **un seul panneau persistant** (carte), affiché aussi bien sur l'accueil
+  du programme que dans une leçon. Il remplace l'ancien double-état (sections programme / accordéon de session)
+  qui faisait « perdre » l'utilisateur. Il contient, de haut en bas :
+  1. **« Accueil du programme »** (renvoie à la page d'accueil : présentation + carte « Reprendre »).
+  2. **« Préceptes »** (segment **en accès libre / gratuit**) : liste de **vidéos fondamentales** du programme,
+     visibles par tous (inscrits ou non). Remplace l'ancienne grille « vidéos d'accueil » qui était sur la page d'accueil.
+  3. **Arbre du curriculum** (façon Skool) : **toutes les sessions du programme** en **arbre dépliant sur 3 niveaux** —
+     **Session** (S1, S2…) → **Séquence** (« 2.1 — [thématique] »…) → **Étape** (feuille : Exercice, Vidéos,
+     Ressources, Quiz, Replay). En-tête « Leçons » avec **recherche**, méta (« 4 sessions · 72% ») et **« Tout réduire »**.
+     - **Une seule session dépliée à la fois** (les autres se referment) pour éviter le mur de lignes sur les longs programmes.
+     - **Affichage allégé** : chaque étape = **case à cocher + libellé + durée** (façon Skool), **sans icône de type**
+       dans l'arbre (les icônes SVG de type restent dans la zone de contenu) — pour ne pas surcharger le menu.
+     - **Cases vertes auto-cochées** une fois l'étape terminée ; pastille verte (partielle/complète) sur les
+       parents séquence/session ; **cadenas** sur le contenu verrouillé.
+  4. **Infos hors curriculum**, regroupées en deux familles avec **icônes SVG** :
+     - **Programme** (asynchrone, partagé) : Lexique, Références.
+     - **Ma promotion** (synchrone) : Présentiels, Participants, WhatsApp.
+  5. **Sélecteur de promotion** (dérouleur par année) **en bas du panneau**, rattaché à « Ma promotion »
+     (et non plus dans l'en-tête de la page programme). Masqué en accès découverte (non-inscrit = sans promotion).
+- **Règle de complétion d'une étape** (ce qui coche la case) : vidéo = vue ≥ 90 % · exercice = déposé ·
+  ressource = ouverte · quiz = au moins 1 tentative · replay = ouvert. (Sert aussi à la progression Qualiopi/BPF.)
+- **Aucune emoji** dans l'interface : les types de contenu (exercice, vidéo, audio, PDF, quiz, visio, verrou, cloche)
+  utilisent des **icônes SVG**. Seules restent les emojis d'identité explicitement validées (YoDalf, badges).
 - **Contenu à droite** : fil d'Ariane + progression ; navigation étape par étape (Précédent/Suivant) possible.
-- Objectif : éviter le double menu (le menu global est en haut, la colonne gauche est contextuelle).
+- Objectif : une **seule colonne de navigation** persistante (menu global en haut, arbre + infos à gauche),
+  pas de double menu, pas de bascule déroutante.
 
 ---
 
@@ -393,6 +413,8 @@ Doit être **ergonomique** (rechargement manuel des contenus depuis Moodle).
 - **Déverrouillage du programme** (toggle pédagogie inversée, **par programme** — pas global)
 - Onglets d'édition (**uniquement le périmètre programme**) :
   - **Sessions** (ajout / réordonnancement / duplication / suppression)
+  - **Préceptes** (vidéos en accès libre/gratuit, listées dans le menu de gauche du programme) — chaque
+    vidéo d'une séquence peut aussi être marquée « publique/Gratuit » et remonte alors automatiquement ici.
   - **Lexique** (terme + définition)
   - **Références** (type + titre + **lien/URL**)
   - Note rappelant que **Présentiels, visios, participants et WhatsApp se gèrent par promotion**.
