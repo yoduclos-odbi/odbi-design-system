@@ -119,13 +119,17 @@ progression, promotions, groupe WhatsApp, visios propres).
 - **Tous les cours sont visibles** par tout participant connecté (pas de verrou sur les cartes).
 - **Freemium** : sur un cours où le participant **n'est pas inscrit**, une partie du
   contenu est **gratuite** (pour donner envie) ; le **reste est réservé aux inscrits**.
-- Sur un cours où il **est inscrit** : accès complet + progression.
-- **Accès découverte (non inscrit / accès gratuit)** : le participant n'a accès **qu'aux
-  Préceptes** (vidéos en accès libre, listées dans le menu de gauche du programme).
-  **Tout le reste est réservé** : le curriculum (sessions/séquences, verrouillé), présentiels,
-  lexique, références, participants, WhatsApp. Un CTA « Rejoindre le programme » est proposé
-  sur l'accueil et les sections réservées. (Les Préceptes remplacent l'ancienne logique
-  « 1ère session ouverte en découverte ».)
+- **Point d'entrée selon l'inscription** :
+  - **Inscrit** → arrive sur la **page d'accueil du programme**, **dynamique** (carte « Reprendre
+    où vous en étiez » pointant sur sa position courante).
+  - **Non‑inscrit** → arrive **directement sur les Préceptes** ; il **n'a pas accès à l'« Accueil »**
+    (l'entrée Accueil est masquée).
+- **Accès découverte (non inscrit)** : le participant n'a accès **qu'aux Préceptes** (badge **« Bonus »**,
+  et non plus « Gratuit »). Il **peut déplier les sessions** dans le menu pour voir la structure, **mais
+  le contenu reste verrouillé au centre** (panneau « Réservé aux inscrits »). De même, **Présentiels,
+  Participants, sélecteur de promotion et WhatsApp** sont visibles mais **verrouillés**. CTA
+  « Rejoindre le programme » dans l'en-tête et sur les sections réservées. (Les Préceptes remplacent
+  l'ancienne logique « 1ère session ouverte en découverte ».)
   - **Aucune promotion** : un non‑inscrit n'appartient à **aucune promo**. Le contenu gratuit
     est **asynchrone** (partagé, indépendant des promotions) ; le **synchrone** (visios/replays,
     présentiels, WhatsApp) dépend d'une promotion et nécessite l'inscription. Le sélecteur de
@@ -176,7 +180,7 @@ Inspirée des LMS type Skool :
   du programme que dans une leçon. Il remplace l'ancien double-état (sections programme / accordéon de session)
   qui faisait « perdre » l'utilisateur. **Sections repliables** (chevron) pour rester lisible. De haut en bas :
   1. **« Accueil du programme »** (renvoie à la page d'accueil : présentation + carte « Reprendre »).
-  2. **« Préceptes »** (section repliable, **accès libre / gratuit**) : vidéos fondamentales du programme,
+  2. **« Préceptes »** (section repliable, badge **« Bonus »**) : vidéos fondamentales du programme,
      visibles par tous (inscrits ou non). Items par défaut : **« Présentation du programme »** (en 1er),
      **« Bienvenue dans La Voie »**. (Remplace l'ancienne grille « vidéos d'accueil » de la page d'accueil.)
   3. **« Session »** (section repliable) — **regroupe tout le périmètre programme** :
@@ -186,7 +190,8 @@ Inspirée des LMS type Skool :
      - puis **Lexique** et **Références** (au même endroit que le curriculum).
      - **Une seule session dépliée à la fois** ET **une seule séquence dépliée à la fois** (ouvrir 2.2 referme 2.1)
        pour éviter un menu qui s'allonge à l'infini.
-     - Le **lecteur vidéo** est dimensionné pour tenir dans l'écran **sans scroll** (largeur plafonnée).
+     - **Lecteur vidéo** centré, de taille confortable (largeur plafonnée). **Sous le lecteur, centrés** :
+       le **titre de la vidéo**, une **courte description**, puis les actions (« Reprendre à … », « Marquer comme vu »).
      - **Affichage allégé** : chaque étape = **case à cocher + libellé + durée** (façon Skool), **sans icône de type**
        dans l'arbre (les icônes SVG de type restent dans la zone de contenu).
      - **Cases vertes auto-cochées** une fois l'étape terminée ; pastille verte (partielle/complète) sur les
