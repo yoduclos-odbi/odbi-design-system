@@ -136,7 +136,7 @@ progression, promotions, groupe WhatsApp, visios propres).
 ### Catalogue & modèle d'accès (freemium)
 - Menu : **« Les programmes »** (catalogue complet) placé **au-dessus du Tableau de bord**
   (le tableau de bord garde « reprendre mes programmes » → on évite le doublon).
-- Le **Livret d'accueil** est placé **au-dessus des programmes** dans le menu.
+- Le **Livret d'accueil** n'est **plus dans le menu** : c'est une **carte/lien sur le tableau de bord** qui ouvre la page Notion (cf. §18).
 - **Tous les cours sont visibles** par tout participant connecté (pas de verrou sur les cartes).
 - **Freemium** : sur un cours où le participant **n'est pas inscrit**, une partie du
   contenu est **gratuite** (pour donner envie) ; le **reste est réservé aux inscrits**.
@@ -199,7 +199,8 @@ les accès de connexion** par e-mail (cf. §13, flux Notion → LMS).
 
 Inspirée des LMS type Skool :
 - **Menu principal en haut** (barre horizontale, texte sans emojis, onglet actif souligné) :
-  Livret · Les programmes · Tableau de bord · Visios live · YoDalf · Progression · Agenda · Back-office.
+  Les programmes · Tableau de bord · Visios live · YoDalf · Progression · Agenda · Back-office.
+  (Le **Livret d'accueil** n'est plus dans le menu : lien Notion depuis le tableau de bord, cf. §18.)
 - **Barre contextuelle à gauche** = **un seul panneau persistant** (carte), affiché aussi bien sur l'accueil
   du programme que dans une leçon. Il remplace l'ancien double-état (sections programme / accordéon de session)
   qui faisait « perdre » l'utilisateur. **Sections repliables** (chevron) pour rester lisible. De haut en bas :
@@ -777,14 +778,13 @@ Le profil affiche aussi :
   défaut masqués ; prénom/nom/ville/rôle restent visibles.
 
 ### Livret d'accueil
-- **Intégré dans la plateforme** (page interne avec **iframe Notion**), pas un lien externe.
-- Accessible depuis le **menu principal (barre du haut)**, **en première position, avant « Les programmes »**.
-- Source : Livret d'Accueil Client ODBI (Notion) — **lien d'intégration officiel** :
-  `https://odbi.notion.site/ebd//13d94934418a80cb843dfaebb32328ef` (le `/ebd/` est l'endpoint
-  d'embed Notion). Page publiée sur le web ; bouton « Ouvrir dans un onglet » en repli.
-- **Limite de la maquette locale** : l'iframe Notion **ne s'affiche pas** quand le fichier est ouvert
-  en `file://` (Notion exige un hôte `https`). L'intégration **fonctionnera une fois la plateforme hébergée**
-  (Next.js sur un domaine ODBI). En attendant, la maquette affiche une note explicative + le bouton de repli.
+- **Lien externe vers Notion** (pas d'embed/iframe) : décision d'**épurer le menu** et de **ne pas dépendre
+  de l'intégration Notion**. Plus de page interne, plus de souci d'affichage `file://`/`https`.
+- Présenté comme une **carte/lien sur le tableau de bord** (titre + courte description + « Ouvrir ↗ »)
+  qui **ouvre la page Notion dans un nouvel onglet**.
+- **Retiré du menu principal (barre du haut)** → menu allégé.
+- Source : Livret d'Accueil Client ODBI (Notion), page publiée :
+  `https://odbi.notion.site/Livret-d-Accueil-Client-ODBI-13d94934418a80cb843dfaebb32328ef`.
 
 ### Agenda
 - Présenté comme un **vrai calendrier** (vue mensuelle), filtré sur les promos du membre.
