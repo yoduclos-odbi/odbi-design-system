@@ -1355,7 +1355,7 @@ a.ref-item:hover{background:var(--color-background)}
           <!-- Semaine 1 -->
           <div class="cal-cell"><div class="num">1</div><span class="ev exo" onclick="goTo('lesson')">📝 Exercice S1</span></div>
           <div class="cal-cell"><div class="num">2</div><span class="ev res" onclick="goTo('lesson')">🎧 Ressources S1</span></div>
-          <div class="cal-cell"><div class="num">3</div><span class="ev visio" onclick="goTo('visio')">18h · Visio La Voie</span><span class="ev train" onclick="goTo('train-detail')">🎓 Entraînement 18h</span></div>
+          <div class="cal-cell"><div class="num">3</div><span class="ev visio" onclick="goTo('visio')">18h · Visio La Voie</span><span class="ev train" onclick="goTo('train-detail')"><span id="calTrainLabel">Training</span> 18h</span></div>
           <div class="cal-cell"><div class="num">4</div><span class="ev quiz" onclick="goTo('lesson')">✅ Quiz S1</span></div>
           <div class="cal-cell"><div class="num">5</div><span class="ev visio" onclick="goTo('visio')">12h30 · BTC live</span></div>
           <div class="cal-cell"><div class="num">6</div></div>
@@ -2070,6 +2070,7 @@ function applyUni(){
     if(tt)tt.textContent='Training';if(ti)ti.innerHTML='Programmez vos séances d\'entraînement au coaching (invitez un coaché via l\'annuaire). <span>(Côté La Voie, cette section s\'appelle « Coaching ».)</span>';}
   else{if(t)t.textContent='La Voie des managers';if(su)su.textContent='Promo 2026 — Automne';if(h)h.textContent='La Voie des managers';if(ct)ct.textContent='Coaching';
     if(tt)tt.textContent='Coaching';if(ti)ti.innerHTML='Séances où vous êtes <b>coaché(e)</b>, sur invitation d\'un membre de l\'École.';}
+  var cal=document.getElementById('calTrainLabel');if(cal)cal.textContent=ec?'Training':'Coaching';
   var fb=document.getElementById('seanceFeedbacks'),lk=document.getElementById('seanceFbLock');
   if(fb)fb.classList.toggle('hidden',!ec);
   if(lk)lk.classList.toggle('hidden',ec);

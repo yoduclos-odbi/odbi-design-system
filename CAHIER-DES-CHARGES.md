@@ -374,6 +374,8 @@ enregistrer, et reçoivent des retours (pairs + coach + IA).
   - **« Training »** dans les programmes de **l'École** → le membre **programme** ses séances.
   - **« Coaching »** dans les programmes de **La Voie** → le membre **participe** comme coaché (sur invitation) :
     **lecture seule** — il voit « Mes séances » mais **ni « Programmer une séance » ni « À évaluer »** (réservés à l'École/coach).
+- **Libellé identique dans l'agenda** : l'événement de séance porte le **même libellé contextuel** —
+  **« Training »** pour un membre de l'**École**, **« Coaching »** pour un membre de **La Voie** (pas de terme « Entraînement »).
 - Les **invités** (qui n'ont pas forcément l'entrée dans leur menu) sont prévenus par **notification** (cloche
   en haut + e-mail) ; chaque notification ouvre directement la séance (**page séance autonome**).
 
