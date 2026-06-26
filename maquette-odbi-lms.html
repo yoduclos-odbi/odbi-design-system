@@ -579,6 +579,15 @@ a.ref-item:hover{background:var(--color-background)}
 .diploma .seal{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--color-asparagus),var(--color-indigo-dye));color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;flex:none}
 .diploma h4{font-size:14px;margin:0}
 .diploma small{color:var(--color-neutral)}
+/* éditeur de référentiel */
+.ref-bloc{border:1px solid rgba(74,74,74,.14);border-radius:var(--radius-md);padding:var(--space-3);margin-bottom:var(--space-3);background:var(--color-background)}
+.ref-bloc-h{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.ref-bloc-h input{flex:1;font-family:var(--font-title);font-weight:600;border:1px solid rgba(74,74,74,.2);border-radius:6px;padding:6px 9px}
+.ref-tag{font-size:10px;font-family:var(--font-title);font-weight:700;color:#fff;background:var(--color-indigo-dye);padding:3px 9px;border-radius:99px;white-space:nowrap}
+.ref-inds{display:flex;flex-direction:column;gap:6px;margin:0 0 8px 0;padding-left:var(--space-3)}
+.ref-ind{display:flex;align-items:center;gap:8px}
+.ref-ind::before{content:'▸';color:var(--color-asparagus);font-size:11px}
+.ref-ind input{flex:1;font-size:13px;border:1px solid rgba(74,74,74,.2);border-radius:6px;padding:5px 9px;background:#fff}
 /* ===== Arbre de navigation (curriculum) ===== */
 .tv{padding:2px 4px 8px}
 .tv-s1{margin:1px 0}
@@ -1559,13 +1568,14 @@ a.ref-item:hover{background:var(--color-background)}
 
       <div id="admin-certif" class="hidden">
         <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Paramétrez l'évaluation finale de chaque programme (référentiel, ateliers, grille, niveaux) et suivez les candidats jusqu'à la délivrance du diplôme.</p>
-        <div style="display:flex;gap:10px;margin-bottom:var(--space-5);flex-wrap:wrap">
-          <select class="promo-select" id="certifProgSel" onchange="certifAdminRender()"><option value="ecole">Born To Coach — 2e gén.</option><option value="voie">La Voie des managers</option><option value="vem">Vous En Paix</option></select>
-          <select class="promo-select"><option>Promo 2026</option><option>Promo 2027</option></select>
+        <div style="display:flex;gap:16px;margin-bottom:var(--space-5);flex-wrap:wrap">
+          <div><label style="font-size:11px;color:var(--color-neutral);font-family:var(--font-title);display:block;margin-bottom:4px">Programme (paramétrage commun)</label><select class="promo-select" id="certifProgSel" onchange="certifAdminRender()"><option value="ecole">Born To Coach — 2e gén.</option><option value="voie">La Voie des managers</option><option value="vem">Vous En Paix</option></select></div>
+          <div><label style="font-size:11px;color:var(--color-neutral);font-family:var(--font-title);display:block;margin-bottom:4px">Promotion (jury & candidats)</label><select class="promo-select"><option>Promo 2026</option><option>Promo 2027</option></select></div>
         </div>
 
         <div class="edit-card">
-          <h3>Paramétrage de la certification <span id="certifProgName" style="color:var(--color-neutral);font-weight:400">— Born To Coach</span></h3>
+          <h3>① Paramétrage du programme <span id="certifProgName" style="color:var(--color-neutral);font-weight:400">— Born To Coach</span></h3>
+          <p class="note" style="background:rgba(17,76,106,.06);border-left:4px solid var(--color-accent);border-radius:8px;padding:10px 14px;font-size:13px;margin:0 0 var(--space-4)">📌 Référentiel, ateliers et niveaux sont <b>définis une seule fois au niveau du programme</b> et <b>s'appliquent automatiquement à toutes les promotions</b>. Seuls le <b>jury</b>, les <b>dates</b> et les <b>résultats</b> sont propres à chaque promotion (bloc ② plus bas).</p>
           <div class="field"><label>Ce programme est-il certifiant ?</label>
             <select id="certifEnabled" onchange="certifEnabledToggle()"><option value="1" selected>Oui — évaluation finale certifiante</option><option value="0">Non — programme sans certification (attestation de suivi)</option></select>
           </div>
@@ -1581,7 +1591,34 @@ a.ref-item:hover{background:var(--color-background)}
             <div class="field"><label>Seuil de réussite</label><input value="≥ 60 % par atelier · mention ≥ 85 % de moyenne"></div>
           </div>
           <div class="field"><label>Référentiel de compétences (blocs + indicateurs)</label>
-            <div style="display:flex;gap:10px;align-items:center"><span style="font-size:13px;color:var(--color-neutral)">3 blocs · 7 indicateurs</span><button class="btn btn-ghost" style="padding:6px 12px">✏️ Éditer le référentiel</button><div class="upload-zone" style="padding:var(--space-2);flex:1">Importer (PDF France compétences)</div></div>
+            <p style="color:var(--color-neutral);font-size:12px;margin:0 0 var(--space-3)">Ajoutez <b>autant de blocs et d'indicateurs que nécessaire</b> (aucune limite). Ou importez le référentiel depuis un PDF France compétences.</p>
+            <div id="refBlocs">
+              <div class="ref-bloc">
+                <div class="ref-bloc-h"><span class="ref-tag">Bloc 1</span><input value="Construire la relation de coaching"><button class="icon-btn" onclick="rmBloc(this)">✕</button></div>
+                <div class="ref-inds">
+                  <div class="ref-ind"><input value="Pose le cadre déontologique et le contrat"><button class="icon-btn" onclick="rmInd(this)">✕</button></div>
+                  <div class="ref-ind"><input value="Instaure l'alliance et la confiance"><button class="icon-btn" onclick="rmInd(this)">✕</button></div>
+                </div>
+                <button class="btn btn-ghost" style="padding:5px 10px;font-size:12px" onclick="addInd(this)">+ Indicateur</button>
+              </div>
+              <div class="ref-bloc">
+                <div class="ref-bloc-h"><span class="ref-tag">Bloc 2</span><input value="Conduire le processus de coaching"><button class="icon-btn" onclick="rmBloc(this)">✕</button></div>
+                <div class="ref-inds">
+                  <div class="ref-ind"><input value="Pratique l'écoute active et la reformulation"><button class="icon-btn" onclick="rmInd(this)">✕</button></div>
+                  <div class="ref-ind"><input value="Utilise un questionnement ouvert et puissant"><button class="icon-btn" onclick="rmInd(this)">✕</button></div>
+                  <div class="ref-ind"><input value="Fait émerger les options et ancre les engagements"><button class="icon-btn" onclick="rmInd(this)">✕</button></div>
+                </div>
+                <button class="btn btn-ghost" style="padding:5px 10px;font-size:12px" onclick="addInd(this)">+ Indicateur</button>
+              </div>
+              <div class="ref-bloc">
+                <div class="ref-bloc-h"><span class="ref-tag">Bloc 3</span><input value="Posture & déontologie"><button class="icon-btn" onclick="rmBloc(this)">✕</button></div>
+                <div class="ref-inds">
+                  <div class="ref-ind"><input value="Adopte une posture éthique et respecte la confidentialité"><button class="icon-btn" onclick="rmInd(this)">✕</button></div>
+                </div>
+                <button class="btn btn-ghost" style="padding:5px 10px;font-size:12px" onclick="addInd(this)">+ Indicateur</button>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;margin-top:var(--space-3);flex-wrap:wrap"><button class="btn btn-accent" style="padding:6px 14px" onclick="addBloc()">+ Ajouter un bloc</button><div class="upload-zone" style="padding:var(--space-2);flex:1;min-width:200px">Importer (PDF France compétences)</div></div>
           </div>
 
           <div class="section-title" style="margin-top:var(--space-5)">Ateliers d'évaluation (1 à 3)</div>
@@ -1593,8 +1630,15 @@ a.ref-item:hover{background:var(--color-background)}
           </table>
           <button class="btn btn-ghost" style="margin-top:var(--space-2)">+ Ajouter un atelier (max 3)</button>
 
-          <div class="section-title" style="margin-top:var(--space-5)">Jury de certification</div>
-          <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-3)">Le <b>coach/animateur du programme nomme le jury</b> mais <b>n'en fait pas partie</b> (il a accompagné la promotion). Le jury comprend <b>au moins 2 personnes</b>, dont un·e <b>président·e</b>.</p>
+          <div style="margin-top:var(--space-4)"><button class="btn btn-primary">💾 Enregistrer le paramétrage du programme</button></div>
+        </div>
+
+        <h3 class="section-title">② Session de certification — Promo 2026 <span style="color:var(--color-neutral);font-weight:400;font-size:13px">— propre à la promotion</span></h3>
+        <p class="note" style="background:rgba(134,164,63,.08);border-left:4px solid var(--color-asparagus);border-radius:8px;padding:10px 14px;font-size:13px;margin:0 0 var(--space-5)">Le référentiel, les ateliers et les niveaux ci-dessus s'appliquent <b>tels quels</b> à cette promotion (et à toutes les autres). Ici, vous ne gérez que ce qui lui est <b>propre</b> : <b>jury, candidats, grilles, PV, diplômes</b>.</p>
+
+        <div class="edit-card">
+          <h4 style="margin-top:0;font-family:var(--font-title)">Jury de la promotion</h4>
+          <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-3)">Le <b>coach/animateur du programme nomme le jury</b> mais <b>n'en fait pas partie</b> (il a accompagné la promotion). Le jury comprend <b>au moins 2 personnes</b>, dont un·e <b>président·e</b>. Le jury peut <b>différer d'une promotion à l'autre</b>.</p>
           <table class="table">
             <tr><th>Membre du jury</th><th>Qualité</th><th>Rôle</th><th></th></tr>
             <tr><td><input value="Céline Duclos"></td><td><input value="Coach labellisée"></td><td><select><option selected>Présidente</option><option>Membre</option></select></td><td><button class="icon-btn">✕</button></td></tr>
@@ -1602,9 +1646,7 @@ a.ref-item:hover{background:var(--color-background)}
             <tr><td><input value="Isabelle Blanc"></td><td><input value="Coach labellisée"></td><td><select><option>Présidente</option><option selected>Membre</option></select></td><td><button class="icon-btn">✕</button></td></tr>
           </table>
           <button class="btn btn-ghost" style="margin-top:var(--space-2)">+ Ajouter un membre du jury (annuaire)</button>
-          <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-2)">⚠️ Le <b>coach/animateur</b> du programme est <b>exclu du jury</b>. Un seul·e président·e requis·e.</p>
-
-          <div style="margin-top:var(--space-4)"><button class="btn btn-primary">💾 Enregistrer le paramétrage</button></div>
+          <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-2)">⚠️ Le <b>coach/animateur</b> du programme est <b>exclu du jury</b>. Un·e seul·e président·e requis·e.</p>
         </div>
 
         <div class="flex-between mb6" style="flex-wrap:wrap;gap:10px"><h3 class="section-title" style="margin:0">Candidats de la promotion</h3><button class="btn btn-accent" onclick="goTo('certif-pv')">📄 Procès-verbal du jury (promotion)</button></div>
@@ -2084,6 +2126,11 @@ function gradePick(el){el.parentNode.querySelectorAll('label').forEach(function(
 function deliverDiploma(){goTo('certif-pv');var d=document.getElementById('diplomaSent');if(d)d.classList.remove('hidden');}
 function certifRsToggle(){var t=document.getElementById('certifRsType');if(!t)return;var f=document.getElementById('certifRsCodeField');if(f)f.style.visibility=(t.value==='none')?'hidden':'visible';}
 function certifEnabledToggle(){var e=document.getElementById('certifEnabled');if(!e)return;var off=e.value==='0';var n=document.getElementById('certifDisabledNote');if(n)n.classList.toggle('hidden',!off);}
+function refRenum(){var bl=document.querySelectorAll('#refBlocs .ref-bloc');bl.forEach(function(b,i){var t=b.querySelector('.ref-tag');if(t)t.textContent='Bloc '+(i+1);});}
+function rmBloc(el){var b=el.closest('.ref-bloc');if(b)b.remove();refRenum();}
+function rmInd(el){var i=el.closest('.ref-ind');if(i)i.remove();}
+function addInd(btn){var box=btn.previousElementSibling;var d=document.createElement('div');d.className='ref-ind';d.innerHTML='<input placeholder="Nouvel indicateur observable…"><button class="icon-btn" onclick="rmInd(this)">✕</button>';box.appendChild(d);d.querySelector('input').focus();}
+function addBloc(){var wrap=document.getElementById('refBlocs');var d=document.createElement('div');d.className='ref-bloc';d.innerHTML='<div class="ref-bloc-h"><span class="ref-tag">Bloc</span><input placeholder="Intitulé du bloc de compétences…"><button class="icon-btn" onclick="rmBloc(this)">✕</button></div><div class="ref-inds"><div class="ref-ind"><input placeholder="Premier indicateur observable…"><button class="icon-btn" onclick="rmInd(this)">✕</button></div></div><button class="btn btn-ghost" style="padding:5px 10px;font-size:12px" onclick="addInd(this)">+ Indicateur</button>';wrap.appendChild(d);refRenum();d.querySelector('.ref-bloc-h input').focus();}
 function certifAdminRender(){var sel=document.getElementById('certifProgSel');if(!sel)return;var v=sel.value;var nm=document.getElementById('certifProgName');var map={ecole:'— Born To Coach',voie:'— La Voie des managers',vem:'— Vous En Paix'};if(nm)nm.textContent=map[v]||'';
   var rt=document.getElementById('certifRsType'),rc=document.getElementById('certifRsCode'),lv=document.getElementById('certifLevels'),en=document.getElementById('certifEnabled');
   if(v==='ecole'){en.value='1';rt.value='rncp';rc.value='RNCP 37863 — Coach professionnel (Niveau 6)';lv.value='2';}

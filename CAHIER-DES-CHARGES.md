@@ -434,10 +434,21 @@ Un programme **peut** se terminer par une **évaluation finale** qui fait office
 - Chaque atelier porte : type, intitulé, durée, **coefficient**, et un **statut** côté candidat
   (à planifier / planifié / rendu / réussi…).
 
+### Portée : programme (partagé) vs promotion (propre)
+Même principe que l'async/synchrone (cf. §6) :
+- **Au niveau du programme — commun à TOUTES les promotions** : le fait d'être certifiant ou non,
+  l'adossement (RNCP/RS/interne), les **niveaux**, le **référentiel** (blocs + indicateurs) et les **ateliers**.
+  On les **définit une seule fois** ; ils s'appliquent automatiquement à chaque promotion.
+- **Au niveau de la promotion — propre à chaque session** : le **jury**, les **dates**, les **candidats**,
+  les **grilles** renseignées, le **procès-verbal** et la **délivrance des diplômes**.
+- Au BO, l'onglet sépare visuellement **① Paramétrage du programme** et **② Session de certification (promotion)**.
+
 ### Référentiel de compétences & indicateurs
 - Le programme expose son **référentiel** : **blocs de compétences** → **compétences** → **indicateurs**
   (critères observables évalués par le jury).
-- Importable (PDF France compétences) et **éditable** dans le BO.
+- **Éditable dans le BO** : on ajoute/supprime **autant de blocs et d'indicateurs que voulu** (aucune limite),
+  ou on **importe** depuis un PDF France compétences. (Les **ateliers** restent limités à **1 à 3**.)
+- **Défini au niveau du programme** → **identique pour toutes les promotions**.
 - Côté candidat : consultable en accordéon dans la section **Certification** du programme.
 
 ### Grille de notation & niveaux
@@ -477,11 +488,13 @@ Un programme **peut** se terminer par une **évaluation finale** qui fait office
 - Réservé aux **inscrits** (en accès découverte, la section est verrouillée).
 
 ### Back-office — onglet « Certification »
-- **Paramétrage par programme** : **certifiant oui/non**, adossement (RNCP/RS/interne) + code,
-  **nombre de niveaux** (1 / 2 → Niveau 1 / Niveau 2) + seuils, **référentiel** (blocs/indicateurs),
-  **ateliers** (1 à 3, type/intitulé/durée/coefficient), **jury** (≥ 2, dont président, coach/animateur exclu).
-- **Suivi des candidats de la promotion** : ateliers validés, moyenne, décision, **saisie des grilles**,
-  **PV par promotion**, **délivrance des diplômes**. **Synchronisé avec le suivi pédagogique** et exportable (PDF / registre Notion).
+Deux sélecteurs en tête : **Programme** (paramétrage commun) et **Promotion** (jury & candidats).
+- **① Paramétrage du programme (commun à toutes les promos)** : **certifiant oui/non**, adossement
+  (RNCP/RS/interne) + code, **nombre de niveaux** (1 / 2 → Niveau 1 / Niveau 2) + seuils,
+  **référentiel** (éditeur de blocs/indicateurs, sans limite), **ateliers** (1 à 3, type/intitulé/durée/coefficient).
+- **② Session de certification (propre à la promotion)** : **jury** (≥ 2, dont président, coach/animateur exclu),
+  **candidats**, **saisie des grilles**, **PV par promotion**, **délivrance des diplômes**.
+  **Synchronisé avec le suivi pédagogique** et exportable (PDF / registre Notion).
 - Accessible à l'**Admin** et au **Coach/Animateur** (organisateur ; le jury proprement dit reste tiers).
 
 ### Intégrations mobilisées
