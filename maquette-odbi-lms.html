@@ -1396,6 +1396,7 @@ a.ref-item:hover{background:var(--color-background)}
       </div>
       <div class="cal-legend">
         <span><i style="background:#d64545"></i> Visio live (BBB)</span>
+        <span><i style="background:#625df5"></i> <span id="calLegLabel">Training</span></span>
         <span><i style="background:var(--color-indigo-dye)"></i> Présentiel</span>
         <span><i style="background:var(--color-asparagus)"></i> Exercice</span>
         <span><i style="background:var(--color-jet)"></i> Ressources à consulter</span>
@@ -2071,6 +2072,7 @@ function applyUni(){
   else{if(t)t.textContent='La Voie des managers';if(su)su.textContent='Promo 2026 — Automne';if(h)h.textContent='La Voie des managers';if(ct)ct.textContent='Coaching';
     if(tt)tt.textContent='Coaching';if(ti)ti.innerHTML='Séances où vous êtes <b>coaché(e)</b>, sur invitation d\'un membre de l\'École.';}
   var cal=document.getElementById('calTrainLabel');if(cal)cal.textContent=ec?'Training':'Coaching';
+  var calL=document.getElementById('calLegLabel');if(calL)calL.textContent=ec?'Training':'Coaching';
   var fb=document.getElementById('seanceFeedbacks'),lk=document.getElementById('seanceFbLock');
   if(fb)fb.classList.toggle('hidden',!ec);
   if(lk)lk.classList.toggle('hidden',ec);
