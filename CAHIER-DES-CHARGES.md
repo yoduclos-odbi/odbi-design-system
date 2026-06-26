@@ -211,6 +211,8 @@ Inspirée des LMS type Skool :
   2. **« Préceptes »** (section repliable, badge **« Bonus »**) : vidéos fondamentales du programme,
      visibles par tous (inscrits ou non). Items par défaut : **« Présentation du programme »** (en 1er),
      **« Bienvenue dans La Voie »**. (Remplace l'ancienne grille « vidéos d'accueil » de la page d'accueil.)
+     **Chaque Précepte est une vidéo individuelle** : cliquer un item du menu **ou** sa carte dans la grille
+     ouvre **son propre lecteur** (vidéo 16/9, titre, auteur/durée, description) avec un lien **« Retour aux Préceptes »**.
   3. **« Session »** (section repliable) — **regroupe tout le périmètre programme** :
      - **Arbre du curriculum** (façon Skool) : **toutes les sessions** en **arbre dépliant sur 3 niveaux** —
        Session (S1, S2…) → Séquence (« 2.1 — [thématique] »…) → Étape (Exercice, Vidéos, Ressources, Quiz, Replay).

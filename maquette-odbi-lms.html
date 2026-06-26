@@ -739,8 +739,8 @@ a.ref-item:hover{background:var(--color-background)}
         <div class="nav-sec">
           <div class="nav-sec-h" onclick="toggleSec(this)"><svg class="sc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg> Préceptes <span class="sc-badge">BONUS</span></div>
           <div class="nav-sec-b">
-            <div class="cnav-item" onclick="openInfo(this,'preceptes')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Présentation du programme</div>
-            <div class="cnav-item" onclick="openInfo(this,'preceptes')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Bienvenue dans La Voie</div>
+            <div class="cnav-item" onclick="openPreceptMenu(this,0)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Présentation du programme</div>
+            <div class="cnav-item" onclick="openPreceptMenu(this,1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Bienvenue dans La Voie</div>
           </div>
         </div>
 
@@ -1008,8 +1008,22 @@ a.ref-item:hover{background:var(--color-background)}
         </div>
         <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-5)">Les fondamentaux du programme, en accès libre — inscrit ou non.</p>
         <div class="welcome-grid">
-          <div class="wv"><div class="wv-th"><span class="fb">Bonus</span><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="wv-b"><h4>Présentation du programme</h4><small>Yo Duclos · 6 min</small></div></div>
-          <div class="wv"><div class="wv-th"><span class="fb">Bonus</span><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="wv-b"><h4>Bienvenue dans La Voie</h4><small>Yo Duclos · 4 min</small></div></div>
+          <div class="wv" style="cursor:pointer" onclick="openPrecept(0)"><div class="wv-th"><span class="fb">Bonus</span><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="wv-b"><h4>Présentation du programme</h4><small>Yo Duclos · 6 min</small></div></div>
+          <div class="wv" style="cursor:pointer" onclick="openPrecept(1)"><div class="wv-th"><span class="fb">Bonus</span><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="wv-b"><h4>Bienvenue dans La Voie</h4><small>Yo Duclos · 4 min</small></div></div>
+        </div>
+      </div>
+
+      <!-- Lecteur d'un Précepte (chaque précepte = sa propre vidéo) -->
+      <div id="crs-precept" class="hidden">
+        <a onclick="backPreceptes()" style="color:var(--color-accent);cursor:pointer;font-size:13px;font-family:var(--font-title);font-weight:500">← Retour aux Préceptes</a>
+        <div class="lsvid-row" style="margin-top:var(--space-3)">
+          <div class="player">▶ Vimeo</div>
+          <div class="lsvid-info">
+            <span class="course-tag" style="color:var(--color-asparagus);background:rgba(134,164,63,.12)">Précepte · Bonus · accès libre</span>
+            <h2 id="precTitle" style="font-size:20px;margin:10px 0 4px">Présentation du programme</h2>
+            <p id="precMeta" style="color:var(--color-neutral);font-size:13px">Yo Duclos · 6 min · Vidéo Vimeo</p>
+            <p id="precDesc" style="margin-top:var(--space-3)">—</p>
+          </div>
         </div>
       </div>
 
@@ -2185,6 +2199,23 @@ function renderCertif(){
     '<div class="card" style="padding:var(--space-5);margin-top:var(--space-5);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px"><div><div style="font-family:var(--font-title);font-weight:600">Mon résultat</div><small style="color:var(--color-neutral)">Décision du jury et diplôme</small></div><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span class="cf-st ok">Admis·e — Niveau 2</span><button class="btn btn-accent" onclick="goTo(\'profile\')">'+ICN.award+' Mon diplôme</button></div></div>'+
     '<p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-4)">'+ICN.info+'Les grilles d\'évaluation, le <b>procès-verbal (établi par promotion)</b> et la <b>délivrance du diplôme</b> sont gérés par le <b>jury</b>.</p>';
 }
+// ===== Préceptes : chaque précepte = sa propre vidéo (page lecteur) =====
+var PRECEPTS=[
+  {t:'Présentation du programme',a:'Yo Duclos',d:'6 min',desc:'Découvrez les objectifs, la promesse et le déroulé du programme — en accès libre, inscrit ou non.'},
+  {t:'Bienvenue dans La Voie',a:'Yo Duclos',d:'4 min',desc:'Le mot d\'accueil de votre formateur et la posture à adopter pour bien démarrer.'}
+];
+function openPrecept(i){
+  var p=PRECEPTS[i]||PRECEPTS[0];
+  var t=document.getElementById('precTitle');if(t)t.textContent=p.t;
+  var m=document.getElementById('precMeta');if(m)m.textContent=p.a+' · '+p.d+' · Vidéo Vimeo';
+  var d=document.getElementById('precDesc');if(d)d.textContent=p.desc;
+  ['accueil','preceptes','precept','training','certif','presentiel','lexique','references','participants','whatsapp'].forEach(function(x){var el=document.getElementById('crs-'+x);if(el)el.classList.add('hidden')});
+  var lk=document.getElementById('crs-locked');if(lk)lk.classList.add('hidden');
+  var pp=document.getElementById('crs-precept');if(pp)pp.classList.remove('hidden');
+  var mn=document.querySelector('.main');if(mn)mn.scrollTo(0,0);
+}
+function openPreceptMenu(el,i){clearMenuSel();if(el)el.classList.add('active');goTo('course');openPrecept(i);}
+function backPreceptes(){courseTab(null,'preceptes');}
 function openCertifGrille(title,type){var t=document.getElementById('grilleAtTitle');if(t)t.textContent=title;var ty=document.getElementById('grilleAtType');if(ty)ty.innerHTML=atIcon(type)+' '+title;goTo('certif-grille');}
 function backCertif(){goTo('course');courseTab(null,'certif');}
 function gradePick(el){el.parentNode.querySelectorAll('label').forEach(function(x){x.classList.remove('on')});el.classList.add('on');}
@@ -2243,7 +2274,7 @@ function openInfo(el,t){
   goTo('course');courseTab(null,t);
 }
 function showLocked(){
-  ['accueil','preceptes','training','certif','presentiel','lexique','references','participants','whatsapp'].forEach(function(x){var p=document.getElementById('crs-'+x);if(p)p.classList.add('hidden')});
+  ['accueil','preceptes','precept','training','certif','presentiel','lexique','references','participants','whatsapp'].forEach(function(x){var p=document.getElementById('crs-'+x);if(p)p.classList.add('hidden')});
   var l=document.getElementById('crs-locked');if(l)l.classList.remove('hidden');
 }
 // Arbre : déplier / replier (une seule session ouverte à la fois)
@@ -2348,7 +2379,7 @@ function switchPromo(key){
 }
 function courseTab(el,t){
   if(el)el.classList.add('active');
-  ['accueil','preceptes','training','certif','presentiel','lexique','references','participants','whatsapp'].forEach(x=>document.getElementById('crs-'+x).classList.add('hidden'));
+  ['accueil','preceptes','precept','training','certif','presentiel','lexique','references','participants','whatsapp'].forEach(x=>document.getElementById('crs-'+x).classList.add('hidden'));
   var locked=document.getElementById('crs-locked');if(locked)locked.classList.add('hidden');
   var reserved=['certif','presentiel','lexique','references','participants','whatsapp'];
   if(accessMode==='free' && reserved.indexOf(t)>=0){ if(locked)locked.classList.remove('hidden'); }
