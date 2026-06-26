@@ -443,6 +443,23 @@ Même principe que l'async/synchrone (cf. §6) :
   les **grilles** renseignées, le **procès-verbal** et la **délivrance des diplômes**.
 - Au BO, l'onglet sépare visuellement **① Paramétrage du programme** et **② Session de certification (promotion)**.
 
+### Versionnement & instantané (snapshot) par promotion
+Problème : le référentiel/ateliers/paramètres sont au niveau **programme** (partagés), mais s'ils évoluent un jour,
+les **promotions déjà certifiées** ne doivent pas être impactées (le **PV doit citer le référentiel en vigueur le
+jour du jury** — exigence Qualiopi). Solution retenue :
+- **Modèle de programme versionné** : chaque enregistrement du paramétrage (référentiel/ateliers/niveaux) crée une
+  **nouvelle version** (v1, v2, v3… + date). Une **« version courante »** s'applique aux **nouvelles** promotions.
+- **Instantané (snapshot) figé par promotion** : au **lancement de la session de certification** d'une promotion,
+  le modèle est **copié et figé** sur cette promotion. Les évolutions ultérieures du programme **ne la modifient pas**.
+  C'est **cette version figée** qui est référencée dans le **procès-verbal**.
+- **Édition par promotion (dérogation)** : on peut **éditer la copie figée** d'une promotion sans toucher au modèle
+  programme (ajustement ponctuel).
+- **Copier depuis une promo précédente** : initialiser la session d'une nouvelle promotion à partir de la version
+  d'une **promotion antérieure** (plutôt que de la version courante).
+- **Resynchroniser** : optionnellement, réaligner une promotion non encore figée sur la **dernière version** du modèle.
+- Au BO (bloc ②), un encart **« Modèle d'évaluation de cette promotion »** affiche la **version figée** et propose
+  *Éditer pour cette promotion* / *Copier depuis une promo précédente* / *Resynchroniser*.
+
 ### Référentiel de compétences & indicateurs
 - Le programme expose son **référentiel** : **blocs de compétences** → **compétences** → **indicateurs**
   (critères observables évalués par le jury).
@@ -502,12 +519,14 @@ Deux sélecteurs en tête : **Programme** (paramétrage commun) et **Promotion**
 
 ### Modèle de données
 - `Certification` : programme, **certifiant (bool)**, type_adossement (rncp/rs/interne), code_titre,
-  niveaux[] (Niveau 1 / Niveau 2 + seuil), référentiel, **jury[]** (membre + rôle président/membre).
+  **version_courante**, **versions[]** (n° + date + référentiel + ateliers + niveaux + seuils figés).
+- `PromotionCertif` (instantané) : promotion, **version_figée** (copie du modèle au lancement), **jury[]**
+  (membre + rôle président/membre), dates, statut (figé / éditable / resynchronisable).
 - `Bloc` → `Competence` → `Indicateur`.
 - `Atelier` : certification, type (entretien/présentation/étude_de_cas/jeu_de_role/quiz…), intitulé, durée, coefficient.
 - `Grille` : atelier, candidat, jury[], notes[] (indicateur → niveau + observation), score, contribution_niveau.
-- `ProcesVerbal` : **promotion**, jury[], candidats[] (décision individuelle Niveau 1/2/ajourné), stats,
-  délibérations, remarques, date, lieu, signatures.
+- `ProcesVerbal` : **promotion**, **version_référentiel_figée**, jury[], candidats[] (décision individuelle
+  Niveau 1/2/ajourné), stats, délibérations, remarques, date, lieu, signatures.
 - `Diplome` / `Attestation` : candidat, certification, niveau_obtenu, date_délivrance, fichier_pdf → rattaché au **profil**.
 
 ---
