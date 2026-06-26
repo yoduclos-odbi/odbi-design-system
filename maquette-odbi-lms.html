@@ -642,6 +642,9 @@ a.ref-item:hover{background:var(--color-background)}
 .resume-card .ri small{color:var(--color-neutral);font-size:11px;font-family:var(--font-title);font-weight:500;text-transform:uppercase;letter-spacing:.4px}
 .resume-card .ri h3{font-size:16px;margin:3px 0 2px}.resume-card .ri p{color:var(--color-neutral);font-size:12px}
 .resume-card .btn{margin-left:auto}
+.resume-card.rc-visio{border-left-color:#d64545}
+.resume-card.rc-train{border-left-color:#625df5}
+.resume-card .thumb svg{width:30px;height:30px;stroke:#fff}
 
 /* ===== Vignettes programmes : photo + aplat couleur (codes flyers ODBI) ===== */
 .course-thumb{background-position:center;background-size:cover}
@@ -955,7 +958,6 @@ a.ref-item:hover{background:var(--color-background)}
           <h1 id="coTitle">La Voie des managers</h1>
           <p style="color:var(--color-neutral);margin-top:6px">4 sessions · 4h de contenu · animé par Yo Duclos</p>
         </div>
-        <button class="btn btn-accent" id="courseResumeBtn" onclick="goTo('lesson')">Reprendre ▶</button>
         <button class="btn btn-primary hidden" id="courseJoinBtn">Rejoindre le programme</button>
       </div>
       <div class="progress mb6" id="courseProg" style="height:10px"><span style="width:72%"></span></div>
@@ -971,6 +973,28 @@ a.ref-item:hover{background:var(--color-background)}
             <p>Vidéo 1/3 — reprise à 07:12 · 40 % de la séquence</p>
           </div>
           <button class="btn btn-accent">Reprendre ▶</button>
+        </div>
+
+        <!-- Prochaine visio live (si programmée) -->
+        <div class="resume-card rc-visio" id="visioNextCard" onclick="goTo('visio')" style="cursor:pointer">
+          <div class="thumb" style="background:#d64545"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m23 7-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+          <div class="ri">
+            <small>Prochaine visio live</small>
+            <h3>S2 · 2.1 — Créer l'engagement · Q&amp;R</h3>
+            <p>Mer. 3 juil. · 18h00 · BigBlueButton</p>
+          </div>
+          <button class="btn btn-accent">Rejoindre la visio</button>
+        </div>
+
+        <!-- Prochaine séance Training / Coaching (si programmée) -->
+        <div class="resume-card rc-train" id="trainNextCard" onclick="goTo('train-detail')" style="cursor:pointer">
+          <div class="thumb" style="background:#625df5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="ri">
+            <small>Prochain <span id="homeTrainLabel">Coaching</span></small>
+            <h3>Karim (coach) ↔ Marie (coachée)</h3>
+            <p>Jeu. 4 juil. · 18h00 · salle BBB</p>
+          </div>
+          <button class="btn btn-accent">Voir la séance</button>
         </div>
 
         <p style="color:var(--color-neutral);font-size:12.5px;margin-top:var(--space-5)">Le contenu du programme se parcourt depuis l'<b>arbre des leçons à gauche</b>. Les <b>Préceptes</b> (vidéos en accès libre) sont accessibles dans le menu de gauche, juste sous l'accueil.</p>
@@ -2073,6 +2097,7 @@ function applyUni(){
     if(tt)tt.textContent='Coaching';if(ti)ti.innerHTML='Séances où vous êtes <b>coaché(e)</b>, sur invitation d\'un membre de l\'École.';}
   var cal=document.getElementById('calTrainLabel');if(cal)cal.textContent=ec?'Training':'Coaching';
   var calL=document.getElementById('calLegLabel');if(calL)calL.textContent=ec?'Training':'Coaching';
+  var htl=document.getElementById('homeTrainLabel');if(htl)htl.textContent=ec?'Training':'Coaching';
   var fb=document.getElementById('seanceFeedbacks'),lk=document.getElementById('seanceFbLock');
   if(fb)fb.classList.toggle('hidden',!ec);
   if(lk)lk.classList.toggle('hidden',ec);
@@ -2182,8 +2207,9 @@ function applyAccess(){
   var free=accessMode==='free';
   var h=document.getElementById('tvHome');if(h)h.style.display=free?'none':'flex';   // pas d'accueil pour un non-inscrit
   var rc=document.getElementById('resumeCard');if(rc)rc.style.display=free?'none':'flex';
+  var vn=document.getElementById('visioNextCard');if(vn)vn.style.display=free?'none':'flex';
+  var tn=document.getElementById('trainNextCard');if(tn)tn.style.display=free?'none':'flex';
   var pp=document.getElementById('promoPicker');if(pp)pp.style.display=free?'none':'block';
-  var rb=document.getElementById('courseResumeBtn');if(rb)rb.classList.toggle('hidden',free);
   var jb=document.getElementById('courseJoinBtn');if(jb)jb.classList.toggle('hidden',!free);
   var prg=document.getElementById('courseProg');if(prg)prg.style.visibility=free?'hidden':'visible';
 }

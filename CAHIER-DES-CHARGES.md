@@ -203,7 +203,11 @@ Inspirée des LMS type Skool :
 - **Barre contextuelle à gauche** = **un seul panneau persistant** (carte), affiché aussi bien sur l'accueil
   du programme que dans une leçon. Il remplace l'ancien double-état (sections programme / accordéon de session)
   qui faisait « perdre » l'utilisateur. **Sections repliables** (chevron) pour rester lisible. De haut en bas :
-  1. **« Accueil du programme »** (renvoie à la page d'accueil : présentation + carte « Reprendre »).
+  1. **« Accueil du programme »** (page d'accueil). Elle présente **trois cartes d'action** (pas de bouton
+     « Reprendre » redondant en en-tête) : **① Reprendre où vous en étiez** (dernière leçon),
+     **② Prochaine visio live** (si une visio est programmée → bouton *Rejoindre la visio*),
+     **③ Prochaine séance Training/Coaching** (si programmée → bouton *Voir la séance*, libellé contextuel
+     selon l'univers). Ces cartes synchrones ne s'affichent **que pour les inscrits**.
   2. **« Préceptes »** (section repliable, badge **« Bonus »**) : vidéos fondamentales du programme,
      visibles par tous (inscrits ou non). Items par défaut : **« Présentation du programme »** (en 1er),
      **« Bienvenue dans La Voie »**. (Remplace l'ancienne grille « vidéos d'accueil » de la page d'accueil.)
