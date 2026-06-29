@@ -230,7 +230,7 @@ Inspirée des LMS type Skool :
        dans l'arbre (les icônes SVG de type restent dans la zone de contenu).
      - **Cases vertes auto-cochées** une fois l'étape terminée ; pastille verte (partielle/complète) sur les
        parents séquence/session ; **cadenas** sur le contenu verrouillé.
-  4. **« Ma promotion »** (section repliable, synchrone) : **sélecteur de promotion** (dérouleur par année, en tête
+  4. **« Promotion »** (section repliable, synchrone) : **sélecteur de promotion** (dérouleur par année, en tête
      de la section — pas de libellé « Promotion » redondant), puis **Coaching/Training, Présentiels, Participants, WhatsApp**.
      Sélecteur masqué en accès découverte (non-inscrit = sans promotion).
   5. **« Certification »** (section repliable **en bas du menu**, badge **RNCP / RS / interne** ; **masquée si le
@@ -259,7 +259,7 @@ Côté membre, la barre contextuelle gauche regroupe les sections en **deux fami
 2. **Lexique** — termes clés (niveau cours), avec **index alphabétique** (A–Z) pour filtrer/aller à un terme
 3. **Références** — livres, vidéos, articles recommandés (niveau cours), **avec liens cliquables**
 
-**Ma promotion** (synchrone, par promo) :
+**Promotion** (synchrone, par promo) :
 4. **Présentiels** — dates + lieux + horaires (par promotion), **affichés les uns sous les autres**,
    avec un volet **« Détails pratiques & documents »** par présentiel : accès/transport, hébergement
    (se loger), règlement intérieur, fiche de l'établissement (liens/documents)
@@ -378,7 +378,7 @@ enregistrer, et reçoivent des retours (pairs + coach + IA).
 
 ### Accès (dans le programme, pas dans la barre du haut)
 - **Pas d'entrée dans le menu du haut** (allégé). La fonctionnalité vit **dans le menu de gauche du programme**,
-  **dans la section « Ma promotion »**, avec un **libellé contextuel** :
+  **dans la section « Promotion »**, avec un **libellé contextuel** :
   - **« Training »** dans les programmes de **l'École** → le membre **programme** ses séances.
   - **« Coaching »** dans les programmes de **La Voie** → le membre **participe** comme coaché (sur invitation) :
     **lecture seule** — il voit « Mes séances » mais **ni « Programmer une séance » ni « À évaluer »** (réservés à l'École/coach).
