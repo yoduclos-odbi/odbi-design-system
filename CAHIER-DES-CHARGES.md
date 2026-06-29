@@ -209,11 +209,12 @@ Inspirée des LMS type Skool :
      **② Prochaine visio live** (si une visio est programmée → bouton *Rejoindre la visio*),
      **③ Prochaine séance Training/Coaching** (si programmée → bouton *Voir la séance*, libellé contextuel
      selon l'univers). Ces cartes synchrones ne s'affichent **que pour les inscrits**.
-  2. **« Préceptes »** (section repliable, badge **« Bonus »**) : vidéos fondamentales du programme,
-     visibles par tous (inscrits ou non). Items par défaut : **« Présentation du programme »** (en 1er),
-     **« Bienvenue dans La Voie »**. (Remplace l'ancienne grille « vidéos d'accueil » de la page d'accueil.)
-     **Chaque Précepte est une vidéo individuelle** : cliquer un item du menu **ou** sa carte dans la grille
-     ouvre **son propre lecteur** (vidéo 16/9, titre, auteur/durée, description) avec un lien **« Retour aux Préceptes »**.
+  2. **« Introduction »** (section repliable, badge **« Bonus »**, accès libre — inscrits ou non),
+     composée de **deux pages** :
+     - **« Présentation du programme »** = **une seule vidéo** (page lecteur 16/9).
+     - **« Préceptes »** = **plusieurs vidéos** bonus (grille). Chaque vidéo ouvre **son propre lecteur**
+       (16/9, titre, auteur/durée, description) avec un lien **« Retour aux Préceptes »**.
+     (Remplace l'ancienne grille « vidéos d'accueil » de la page d'accueil.)
   3. **« Session »** (section repliable) — **regroupe tout le périmètre programme** :
      - **Arbre du curriculum** (façon Skool) : **toutes les sessions** en **arbre dépliant sur 3 niveaux** —
        Session (S1, S2…) → Séquence (« 2.1 — [thématique] »…) → Étape (Exercice, Vidéos, Ressources, Quiz, Replay).
@@ -638,8 +639,9 @@ Doit être **ergonomique** (rechargement manuel des contenus depuis Moodle).
 - **Déverrouillage du programme** (toggle pédagogie inversée, **par programme** — pas global)
 - Onglets d'édition (**uniquement le périmètre programme**) :
   - **Sessions** (ajout / réordonnancement / duplication / suppression)
-  - **Préceptes** (vidéos en accès libre/gratuit, listées dans le menu de gauche du programme) — chaque
-    vidéo d'une séquence peut aussi être marquée « publique/Gratuit » et remonte alors automatiquement ici.
+  - **Introduction** (accès libre/gratuit) : **Présentation du programme** (une vidéo) + **Préceptes**
+    (plusieurs vidéos). Chaque vidéo d'une séquence peut aussi être marquée « publique/Gratuit » et remonte
+    alors automatiquement dans les Préceptes.
   - **Lexique** (terme + définition)
   - **Références** (type + titre + **lien/URL**)
   - Note rappelant que **Présentiels, visios, participants et WhatsApp se gèrent par promotion**.

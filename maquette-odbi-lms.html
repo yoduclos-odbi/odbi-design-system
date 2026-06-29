@@ -1771,7 +1771,7 @@ a.ref-item:hover{background:var(--color-background)}
 
       <div class="tabs">
         <div class="tab active" onclick="ecTab(this,'sessions')">📚 Sessions</div>
-        <div class="tab" onclick="ecTab(this,'welcome')">Préceptes</div>
+        <div class="tab" onclick="ecTab(this,'welcome')">Introduction</div>
         <div class="tab" onclick="ecTab(this,'lexique')">Lexique</div>
         <div class="tab" onclick="ecTab(this,'references')">Références</div>
       </div>
@@ -1789,9 +1789,15 @@ a.ref-item:hover{background:var(--color-background)}
 
       <!-- Préceptes (vidéos en accès libre) -->
       <div id="ec-welcome" class="hidden">
-        <p style="color:var(--color-neutral);margin-bottom:var(--space-4)"><b>Préceptes</b> — vidéos en <b>accès libre / gratuit</b>, listées dans le menu de gauche du programme et visibles par tous (inscrits ou non, sans promotion). Glissez pour réordonner.</p>
-        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="Présentation du programme"><input placeholder="ID / lien Vimeo" value="vimeo.com/123456"></div></div><span class="badge" style="background:var(--color-asparagus)">Bonus</span><button class="icon-btn">🗑️</button></div>
-        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="Bienvenue dans La Voie"><input placeholder="ID / lien Vimeo" value="vimeo.com/123457"></div></div><span class="badge" style="background:var(--color-asparagus)">Bonus</span><button class="icon-btn">🗑️</button></div>
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Section <b>Introduction</b> du programme — en <b>accès libre / gratuit</b>, visible par tous (inscrits ou non, sans promotion). Deux pages : <b>Présentation du programme</b> (une vidéo) et <b>Préceptes</b> (plusieurs vidéos).</p>
+
+        <h4 style="font-family:var(--font-title);margin:0 0 var(--space-2)">Présentation du programme <span style="color:var(--color-neutral);font-weight:400;font-size:13px">— une seule vidéo</span></h4>
+        <div class="edit-row"><div class="grow"><div class="row2"><input value="Présentation du programme"><input placeholder="ID / lien Vimeo" value="vimeo.com/123456"></div></div><span class="badge" style="background:var(--color-asparagus)">Bonus</span></div>
+
+        <h4 style="font-family:var(--font-title);margin:var(--space-6) 0 var(--space-2)">Préceptes <span style="color:var(--color-neutral);font-weight:400;font-size:13px">— plusieurs vidéos, glissez pour réordonner</span></h4>
+        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="Bienvenue dans le programme"><input placeholder="ID / lien Vimeo" value="vimeo.com/123457"></div></div><span class="badge" style="background:var(--color-asparagus)">Bonus</span><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="Les 4 piliers du management"><input placeholder="ID / lien Vimeo" value="vimeo.com/123458"></div></div><span class="badge" style="background:var(--color-asparagus)">Bonus</span><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="Adopter une posture de leader"><input placeholder="ID / lien Vimeo" value="vimeo.com/123459"></div></div><span class="badge" style="background:var(--color-asparagus)">Bonus</span><button class="icon-btn">🗑️</button></div>
         <button class="add-btn">+ Ajouter un précepte</button>
         <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-4)">ℹ️ Astuce : n'importe quelle vidéo d'une séquence peut aussi être marquée « publique » dans l'éditeur de session (toggle <b>Bonus</b>) ; elle remontera alors automatiquement dans les Préceptes, sans la téléverser deux fois.</p>
       </div>
