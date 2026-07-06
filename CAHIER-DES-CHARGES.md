@@ -250,6 +250,47 @@ Inspirée des LMS type Skool :
 
 ---
 
+## 6ter. Formats pédagogiques & types de programme
+
+Un programme porte un **type** (paramétré au BO, éditeur de programme → « Type de programme » + « Modalité ») :
+
+### 1) Parcours long
+- Structure complète : **sessions → séquences → étapes**, **promotions**, pédagogie inversée, certification, etc.
+- Ex. **La Voie des managers**, **Born To Coach**.
+
+### 2) Format court
+- **1 à 2 jours**, en **présentiel** ou **distanciel** (ou mixte), **structure allégée**.
+- Il y a du contenu, mais **pas forcément autant de sessions** : une session peut être **« plate »** (un seul
+  contenu, **sans séquences**). Ex. la **série « Vous En… » (VE)**, certains programmes de l'École.
+
+### 3) Accompagnement individuel (bilans & VAE)
+- **Bilan de compétences** et **VAE** (validation des acquis de l'expérience).
+- **Tronc commun = un programme d'accompagnement identique à La Voie, mais adapté individuellement**
+  (pas de cohorte/promo classique : suivi **1:1**, calendrier propre à la personne).
+- Distingué des parcours long/court par son type et sa **modalité individuelle**.
+
+### Structure flexible (tout est optionnel)
+Le modèle ne force rien — on n'affiche que ce qui existe :
+- **Étapes optionnelles** : une séquence peut ne pas avoir d'**exercice**, de **ressources**, de **quiz**…
+  (seules les étapes réellement remplies apparaissent).
+- **Séquences optionnelles** : si une session n'a **qu'un seul contenu**, on peut **se passer des séquences**
+  (session « plate »).
+- **Replays regroupés dans « Promotion »** : il n'y a **pas forcément un replay par session** → les replays
+  (classes/visios enregistrées) sont rassemblés dans une entrée **« Replays » de la section Promotion**,
+  plutôt que dans chaque session.
+
+### Déverrouillage du contenu **par promotion** (point structurant)
+Le contenu (asynchrone) est **partagé par toutes les promotions**, mais **quand/comment il se débloque**
+est **propre à chaque promotion** → réglé au **BO → Promotions → gestion d'une promo → onglet « Déverrouillage »** :
+- **Mode de déverrouillage** (par promo) : *séquentiel* (pédagogie inversée), *au calendrier* (ouverture datée
+  par session), *tout ouvert*, ou *manuel*.
+- **Déverrouillage total OU partiel, par session/séquence** : ex. ouvrir *les vidéos seules*, *sans l'exercice*,
+  *théorie seule*, ou *tout le contenu* — avec une **date d'ouverture** par ligne.
+- Ainsi le **même contenu** peut être **ouvert différemment** selon la promo (drip/planning par cohorte),
+  sans dupliquer le contenu. (Le déverrouillage **global par programme** de §14 reste, comme réglage par défaut.)
+
+---
+
 ## 7. Structure d'un cours
 
 Côté membre, la barre contextuelle gauche regroupe les sections en **deux familles** :
@@ -263,8 +304,10 @@ Côté membre, la barre contextuelle gauche regroupe les sections en **deux fami
 4. **Présentiels** — dates + lieux + horaires (par promotion), **affichés les uns sous les autres**,
    avec un volet **« Détails pratiques & documents »** par présentiel : accès/transport, hébergement
    (se loger), règlement intérieur, fiche de l'établissement (liens/documents)
-5. **Participants** — annuaire des membres de la promotion (photo, nom, ville)
-6. **WhatsApp** — accès au groupe WhatsApp de la promotion
+5. **Replays** — classes/visios **enregistrées de la promotion** (BBB + Notta), **regroupées ici**
+   (car pas forcément un replay par session), indépendamment des sessions
+6. **Participants** — annuaire des membres de la promotion (photo, nom, ville)
+7. **WhatsApp** — accès au groupe WhatsApp de la promotion
 
 + Badge / sélecteur de la promotion du membre (dérouleur par année).
 
@@ -665,8 +708,12 @@ Carte de gestion de la promo sélectionnée, avec sous-onglets :
 - **WhatsApp** — lien du groupe de la promotion.
 
 ### Déverrouillage du contenu
-- Le déverrouillage (ignorer la pédagogie inversée) se fait **par programme**
-  (toggle dans l'éditeur du programme), **pas globalement**.
+- **Global par programme** : toggle dans l'éditeur du programme pour ignorer la pédagogie inversée
+  (réglage **par défaut**, pas globalement à toute la plateforme).
+- **Par promotion (fin)** : onglet **« Déverrouillage »** de la gestion d'une promo — mode (séquentiel /
+  calendrier / tout ouvert / manuel) + **ouverture totale ou partielle par session** (vidéos seules, sans
+  exercice, théorie seule, tout) avec **date d'ouverture**. Même contenu, ouverture propre à chaque cohorte.
+  Voir §6ter.
 
 ---
 

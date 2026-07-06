@@ -817,6 +817,7 @@ a.ref-item:hover{background:var(--color-background)}
             </div>
             <div class="cnav-item" onclick="openInfo(this,'training')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m23 7-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg> <span id="ctLabel">Coaching</span></div>
             <div class="cnav-item" onclick="openInfo(this,'presentiel')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Présentiels</div>
+            <div class="cnav-item" onclick="openInfo(this,'replays')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg> Replays</div>
             <div class="cnav-item" onclick="openInfo(this,'participants')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg> Participants</div>
             <div class="cnav-item" onclick="openInfo(this,'whatsapp')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg> WhatsApp</div>
           </div>
@@ -913,16 +914,22 @@ a.ref-item:hover{background:var(--color-background)}
 
       <div class="section-title">La Voie des…</div>
       <div class="grid grid-3">
-        <div class="card course-card" onclick="openCourse('full','voie')"><div class="course-thumb thumb-voie"><span class="uni">Programme long</span></div><div class="course-body"><h3>La Voie des managers</h3><div class="meta">6 modules · ⏱ 4h</div><div class="progress"><span style="width:72%"></span></div></div></div>
+        <div class="card course-card" onclick="openCourse('full','voie')"><div class="course-thumb thumb-voie"><span class="uni">Programme long</span></div><div class="course-body"><h3>La Voie des managers</h3><div class="meta"><b>Parcours long</b> · 6 modules · ⏱ 4h</div><div class="progress"><span style="width:72%"></span></div></div></div>
         <div class="card course-card" onclick="openCourse('free','voie')"><div class="course-thumb thumb-voie"><span class="uni">Programme long</span></div><div class="course-body"><h3>La Voie des artisans</h3><div class="meta">6 modules · ⏱ 4h</div><div class="free-meta"><svg class="fm-ic fm-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Réservé aux inscrits<span class="fm-sep">·</span><svg class="fm-ic fm-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.5-1.3"/></svg>Bonus disponible à tous</div></div></div>
       </div>
 
       <div class="section-title">La série Vous En…</div>
       <div class="grid grid-3">
         <div class="card course-card" onclick="openCourse('free','voie')"><div class="course-thumb thumb-vem-blue"><span class="uni">VEM</span></div><div class="course-body"><h3>Vous En Mieux</h3><div class="meta">4 modules · ⏱ 2h</div><div class="free-meta"><svg class="fm-ic fm-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Réservé aux inscrits<span class="fm-sep">·</span><svg class="fm-ic fm-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.5-1.3"/></svg>Bonus disponible à tous</div></div></div>
-        <div class="card course-card" onclick="openCourse('full','voie')"><div class="course-thumb thumb-vem-green"><span class="uni">VEP</span></div><div class="course-body"><h3>Vous En Paix</h3><div class="meta">4 modules · ⏱ 2h45</div><div class="progress"><span style="width:90%"></span></div></div></div>
+        <div class="card course-card" onclick="openCourse('full','voie')"><div class="course-thumb thumb-vem-green"><span class="uni">VEP</span></div><div class="course-body"><h3>Vous En Paix</h3><div class="meta"><b>Format court</b> · 1–2 j · présentiel/distanciel</div><div class="progress"><span style="width:90%"></span></div></div></div>
         <div class="card course-card" onclick="openCourse('free','voie')"><div class="course-thumb thumb-vem-blue"><span class="uni">VAT</span></div><div class="course-body"><h3>Vous Au Top</h3><div class="meta">4 modules · ⏱ 2h</div><div class="free-meta"><svg class="fm-ic fm-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Réservé aux inscrits<span class="fm-sep">·</span><svg class="fm-ic fm-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.5-1.3"/></svg>Bonus disponible à tous</div></div></div>
-        <div class="card course-card" onclick="openCourse('free','voie')"><div class="course-thumb thumb-vem-green"><span class="uni">VEL</span></div><div class="course-body"><h3>Vous En Lien</h3><div class="meta">4 modules · ⏱ 2h</div><div class="free-meta"><svg class="fm-ic fm-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Réservé aux inscrits<span class="fm-sep">·</span><svg class="fm-ic fm-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.5-1.3"/></svg>Bonus disponible à tous</div></div></div>
+        <div class="card course-card" onclick="openCourse('free','voie')"><div class="course-thumb thumb-vem-green"><span class="uni">VEL</span></div><div class="course-body"><h3>Vous En Lien</h3><div class="meta"><b>Format court</b> · 1–2 j · présentiel/distanciel</div><div class="free-meta"><svg class="fm-ic fm-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Réservé aux inscrits<span class="fm-sep">·</span><svg class="fm-ic fm-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.5-1.3"/></svg>Bonus disponible à tous</div></div></div>
+      </div>
+
+      <div class="section-title">Bilans & VAE — accompagnement individuel</div>
+      <div class="grid grid-3">
+        <div class="card course-card" onclick="openCourse('full','voie')"><div class="course-thumb thumb-voie-blue"><span class="uni">Individuel</span></div><div class="course-body"><h3>Bilan de compétences</h3><div class="meta"><b>Accompagnement individuel</b> · sur-mesure (tronc commun La Voie)</div></div></div>
+        <div class="card course-card" onclick="openCourse('full','voie')"><div class="course-thumb thumb-voie-blue"><span class="uni">Individuel</span></div><div class="course-body"><h3>VAE — Validation des acquis</h3><div class="meta"><b>Accompagnement individuel</b> · sur-mesure (tronc commun La Voie)</div></div></div>
       </div>
       </div>
 
@@ -1037,6 +1044,18 @@ a.ref-item:hover{background:var(--color-background)}
       <div id="crs-presentiel" class="hidden">
         <p id="pres-intro" style="color:var(--color-neutral);margin-bottom:var(--space-5)"></p>
         <div id="pres-list"></div>
+      </div>
+
+      <!-- Replays (par promotion — visios/classes enregistrées) -->
+      <div id="crs-replays" class="hidden">
+        <div class="flex-between" style="margin-bottom:var(--space-4)"><h3 style="margin:0">Replays de la promotion</h3><span style="font-size:12px;color:var(--color-neutral)">Promo 2026 — Automne</span></div>
+        <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-5)">Toutes les classes / visios enregistrées de votre promotion (BBB + transcription Notta). Regroupées ici — indépendamment des sessions.</p>
+        <div class="grid grid-2">
+          <div class="card course-card" onclick="goTo('visio')" style="padding:var(--space-5)"><div class="flex-between"><span class="course-tag" style="color:#d64545;background:rgba(214,69,69,.1)">Replay · 12 mars · 58 min</span></div><h3 style="font-size:15px;margin-top:10px">Séq. 2.1 — Créer l'engagement · Q&R</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Transcription + chapitrage + résumé Notta ✓</p></div>
+          <div class="card course-card" onclick="goTo('visio')" style="padding:var(--space-5)"><div class="flex-between"><span class="course-tag" style="color:#d64545;background:rgba(214,69,69,.1)">Replay · 14 mars · 42 min</span></div><h3 style="font-size:15px;margin-top:10px">Atelier pratique — mise en situation</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Transcription + résumé Notta ✓</p></div>
+          <div class="card course-card" style="padding:var(--space-5);opacity:.6"><div class="flex-between"><span class="course-tag" style="background:rgba(74,74,74,.08);color:var(--color-neutral)">À venir · 19 mars</span></div><h3 style="font-size:15px;margin-top:10px">Le feedback en pratique</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Le replay apparaîtra ici après la visio.</p></div>
+        </div>
+        <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-4)">ℹ️ Un programme n'a pas forcément un replay par session : ils sont donc rassemblés au niveau de la <b>promotion</b> plutôt que dans chaque session.</p>
       </div>
 
       <!-- Lexique (niveau cours) -->
@@ -1529,6 +1548,7 @@ a.ref-item:hover{background:var(--color-background)}
             <div class="tab" onclick="pmTab(this,'visios')">Visios &amp; replays</div>
             <div class="tab" onclick="pmTab(this,'pres')">Présentiels</div>
             <div class="tab" onclick="pmTab(this,'wa')">WhatsApp</div>
+            <div class="tab" onclick="pmTab(this,'unlock')">Déverrouillage</div>
           </div>
 
           <div id="pm-part">
@@ -1567,6 +1587,22 @@ a.ref-item:hover{background:var(--color-background)}
           <div id="pm-wa" class="hidden">
             <div class="field" style="max-width:520px"><label>Lien du groupe WhatsApp de cette promotion</label><input value="https://chat.whatsapp.com/..."></div>
             <p style="color:var(--color-neutral);font-size:12px">Chaque promotion a son propre groupe. Les membres y accèdent depuis la page du programme.</p>
+          </div>
+
+          <div id="pm-unlock" class="hidden">
+            <div class="note" style="background:rgba(17,76,106,.06);border-left:4px solid var(--color-accent);border-radius:8px;padding:12px 16px;margin-bottom:var(--space-5);font-size:13px">Le contenu (asynchrone) est <b>partagé par toutes les promotions</b>. Ce qui change d'une promo à l'autre, c'est <b>quand et comment il se débloque</b>. Vous réglez ici l'ouverture <b>pour cette promotion uniquement</b> — <b>totale ou partielle</b>.</div>
+            <div class="field" style="max-width:560px"><label>Mode de déverrouillage (cette promotion)</label>
+              <select><option>Séquentiel — pédagogie inversée (exercice → contenu)</option><option>Au calendrier — ouverture datée par session</option><option>Tout ouvert — accès libre à tout le contenu</option><option>Manuel — j'ouvre à la main</option></select>
+            </div>
+            <table class="table">
+              <tr><th>Session / séquence</th><th>État (cette promo)</th><th>Ouverture</th><th>Déverrouillage partiel</th></tr>
+              <tr><td>S1 — Fondamentaux du leadership</td><td><span class="cf-st ok">Ouvert</span></td><td>—</td><td><select><option>Tout le contenu</option><option>Vidéos seules</option><option>Sans l'exercice</option><option>Théorie seule</option></select></td></tr>
+              <tr><td>S2 — Mobiliser une équipe</td><td><span class="cf-st plan">Ouvert le 12/03</span></td><td><input type="date" value="2026-03-12" style="border:1px solid rgba(74,74,74,.2);border-radius:6px;padding:4px 8px"></td><td><select><option>Tout le contenu</option><option selected>Vidéos seules</option><option>Sans l'exercice</option><option>Théorie seule</option></select></td></tr>
+              <tr><td>S3 — Leadership de soi</td><td><span class="cf-st todo">Verrouillé</span></td><td><input type="date" value="2026-04-02" style="border:1px solid rgba(74,74,74,.2);border-radius:6px;padding:4px 8px"></td><td><select><option selected>Tout le contenu</option><option>Vidéos seules</option><option>Sans l'exercice</option><option>Théorie seule</option></select></td></tr>
+              <tr><td>S4 — Décider en incertitude</td><td><span class="cf-st todo">Verrouillé</span></td><td><input type="date" value="2026-04-23" style="border:1px solid rgba(74,74,74,.2);border-radius:6px;padding:4px 8px"></td><td><select><option selected>Tout le contenu</option><option>Vidéos seules</option><option>Sans l'exercice</option><option>Théorie seule</option></select></td></tr>
+            </table>
+            <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-3)"><b>Déverrouillage partiel</b> : ouvrir seulement une partie d'une session (ex. les vidéos sans l'exercice) — utile pour un programme court ou une ouverture progressive. <b>Total</b> = « Tout le contenu ».</p>
+            <button class="btn btn-primary" style="margin-top:var(--space-3)">💾 Enregistrer le déverrouillage (cette promo)</button>
           </div>
         </div>
       </div>
@@ -1752,6 +1788,10 @@ a.ref-item:hover{background:var(--color-background)}
         <div class="row2">
           <div class="field"><label>Nom du cours</label><input value="La Voie des managers"></div>
           <div class="field"><label>Univers</label><select><option>La Voie (bleu + vert)</option><option>L'École (noir + vert)</option></select></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label>Type de programme</label><select><option>Parcours long — sessions/séquences, promotions</option><option>Format court — 1 à 2 jours, structure allégée</option><option>Accompagnement individuel — bilan de compétences / VAE (tronc commun La Voie)</option></select></div>
+          <div class="field"><label>Modalité</label><select><option>Distanciel</option><option>Présentiel</option><option>Mixte (présentiel + distanciel)</option></select></div>
         </div>
         <div class="row3">
           <div class="field"><label>Animateur</label><input value="Yohann Duclos"></div>
@@ -2221,7 +2261,7 @@ function fillPreceptsGrid(){
   var g=document.getElementById('preceptsGrid');if(!g)return;
   g.innerHTML=PRECEPTS.map(function(p,i){return '<div class="wv" style="cursor:pointer" onclick="openPrecept('+i+')"><div class="wv-th"><span class="fb">Bonus</span><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="wv-b"><h4>'+p.t+'</h4><small>'+p.a+' · '+p.d+'</small></div></div>';}).join('');
 }
-function hideCrs(){['accueil','presentation','preceptes','precept','training','certif','presentiel','lexique','references','participants','whatsapp'].forEach(function(x){var el=document.getElementById('crs-'+x);if(el)el.classList.add('hidden')});var lk=document.getElementById('crs-locked');if(lk)lk.classList.add('hidden');}
+function hideCrs(){['accueil','presentation','preceptes','precept','training','certif','presentiel','replays','lexique','references','participants','whatsapp'].forEach(function(x){var el=document.getElementById('crs-'+x);if(el)el.classList.add('hidden')});var lk=document.getElementById('crs-locked');if(lk)lk.classList.add('hidden');}
 function openPrecept(i){
   var p=PRECEPTS[i]||PRECEPTS[0];
   var t=document.getElementById('precTitle');if(t)t.textContent=p.t;
@@ -2291,7 +2331,7 @@ function openInfo(el,t){
   goTo('course');courseTab(null,t);
 }
 function showLocked(){
-  ['accueil','presentation','preceptes','precept','training','certif','presentiel','lexique','references','participants','whatsapp'].forEach(function(x){var p=document.getElementById('crs-'+x);if(p)p.classList.add('hidden')});
+  ['accueil','presentation','preceptes','precept','training','certif','presentiel','replays','lexique','references','participants','whatsapp'].forEach(function(x){var p=document.getElementById('crs-'+x);if(p)p.classList.add('hidden')});
   var l=document.getElementById('crs-locked');if(l)l.classList.remove('hidden');
 }
 // Arbre : déplier / replier (une seule session ouverte à la fois)
@@ -2396,9 +2436,9 @@ function switchPromo(key){
 }
 function courseTab(el,t){
   if(el)el.classList.add('active');
-  ['accueil','presentation','preceptes','precept','training','certif','presentiel','lexique','references','participants','whatsapp'].forEach(x=>document.getElementById('crs-'+x).classList.add('hidden'));
+  ['accueil','presentation','preceptes','precept','training','certif','presentiel','replays','lexique','references','participants','whatsapp'].forEach(x=>document.getElementById('crs-'+x).classList.add('hidden'));
   var locked=document.getElementById('crs-locked');if(locked)locked.classList.add('hidden');
-  var reserved=['certif','presentiel','lexique','references','participants','whatsapp'];
+  var reserved=['certif','presentiel','replays','lexique','references','participants','whatsapp'];
   if(accessMode==='free' && reserved.indexOf(t)>=0){ if(locked)locked.classList.remove('hidden'); }
   else { document.getElementById('crs-'+t).classList.remove('hidden'); }
 }
@@ -2424,7 +2464,7 @@ function setBoRole(r){
   else adminTab(document.getElementById('tab-members'),'members');
 }
 function pmTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});el.classList.add('active');
-  ['part','visios','pres','wa'].forEach(function(x){document.getElementById('pm-'+x).classList.add('hidden')});
+  ['part','visios','pres','wa','unlock'].forEach(function(x){document.getElementById('pm-'+x).classList.add('hidden')});
   document.getElementById('pm-'+t).classList.remove('hidden')}
 function suiviScope(v){
   document.getElementById('suivi-all').classList.toggle('hidden',v!=='all');
