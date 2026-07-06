@@ -280,7 +280,10 @@ compétences**, **③ VAE** (validation des acquis de l'expérience).
 - **Menu de gauche adapté au 1:1** : « Accueil du programme » → **« Mon accompagnement »** ; « Session » →
   **« Mon parcours »** ; « Promotion » → **« Mon suivi »** ; **Participants supprimé**, **promo/cohorte masqués**,
   **Présentiels masqués s'il n'y en a pas**, **WhatsApp → « Mon formateur »** (lien direct vers le formateur qui suit la personne).
-- **Certification conservée** (tronc commun → **titre RS** ; VAE → jury via le module Certification).
+- **Certification selon le programme** (principe « vide → masqué ») : **Tronc commun → titre RS** ·
+  **VAE → jury VAE** (module Certification) · **Bilan de compétences → PAS de certification** (synthèse, pas de titre)
+  → la section « Certification » **n'apparaît pas** pour le Bilan.
+- En 1:1, l'entrée **« Classes » s'appelle « Séances »** (séances individuelles, pas des classes de groupe).
 
 ### Structure flexible — principe « vide → masqué »
 Le modèle ne force rien : **une session, une séquence ou une étape sans contenu n'apparaît pas côté membre**

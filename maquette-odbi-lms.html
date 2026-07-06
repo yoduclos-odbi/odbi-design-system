@@ -2407,6 +2407,17 @@ function applyType(){
   var wl=document.getElementById('navWhatsappLabel');if(wl)wl.textContent=ind?'Mon formateur (WhatsApp)':'WhatsApp';
   var vn=document.getElementById('visioNextCard');if(vn&&ind)vn.style.display='none';
   var tn=document.getElementById('trainNextCard');if(tn&&(ind||court))tn.style.display='none';
+  // Individuel : 1:1 → « Classes » deviennent « Séances »
+  var rl=document.getElementById('navReplaysLabel');if(rl)rl.textContent=ind?'Séances':'Classes';
+  var rh=document.getElementById('replaysHeading');if(rh)rh.textContent=ind?'Mes séances (1:1)':'Classes de la promotion';
+  // Certification : principe « vide → masqué » — le Bilan de compétences n'en a pas
+  var certSec=document.getElementById('navCertifSec');
+  if(certSec){
+    var showCert = ind ? (curIndivKey!=='bilan') : !!CERTIF[curUni];
+    certSec.style.display = showCert ? '' : 'none';
+    var nb=document.getElementById('navCertifBadge');
+    if(showCert && nb && ind){ nb.textContent = (curIndivKey==='vae') ? 'VAE' : 'RS'; nb.style.background='var(--color-asparagus)'; }
+  }
 }
 function clearMenuSel(){document.querySelectorAll('#ctx-program .tv-leaf,#ctx-program .cnav-item').forEach(function(x){x.classList.remove('cur','active')});var h=document.getElementById('tvHome');if(h)h.classList.remove('cur');}
 // Catalogue : onglets Longs / Courts / Individuels
