@@ -1585,6 +1585,7 @@ a.ref-item:hover{background:var(--color-background)}
           <div class="tabs" style="margin-top:var(--space-4)">
             <div class="tab active" onclick="pmTab(this,'part')">Participants</div>
             <div class="tab" onclick="pmTab(this,'visios')">Visios &amp; replays</div>
+            <div class="tab" onclick="pmTab(this,'coaching')">Coaching / Training</div>
             <div class="tab" onclick="pmTab(this,'pres')">Présentiels</div>
             <div class="tab" onclick="pmTab(this,'wa')">WhatsApp</div>
             <div class="tab" onclick="pmTab(this,'unlock')">Déverrouillage</div>
@@ -1621,6 +1622,18 @@ a.ref-item:hover{background:var(--color-background)}
               <tr><td>2.1</td><td>Atelier pratique</td><td><input type="date" value="2026-03-14" style="border:1px solid rgba(74,74,74,.2);border-radius:6px;padding:4px 8px"></td><td>10:00</td><td>Replay ✓ + Notta</td><td><button class="icon-btn">✏️</button></td></tr>
               <tr><td>2.2</td><td>Le feedback en pratique</td><td><input type="date" value="2026-03-19" style="border:1px solid rgba(74,74,74,.2);border-radius:6px;padding:4px 8px"></td><td>18:00</td><td>À venir</td><td><button class="icon-btn">✏️</button></td></tr>
             </table>
+          </div>
+
+          <div id="pm-coaching" class="hidden">
+            <div class="flex-between mb6"><h4 style="margin:0">Séances de Coaching / Training de la promotion</h4><span style="font-size:12px;color:var(--color-neutral)">Alimenté par les séances d'entraînement (BBB + Loom)</span></div>
+            <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">Séances de pratique programmées par les membres de cette promotion (coach ↔ coaché), leurs replays et l'état des feedbacks. Pris en compte dans le <b>suivi pédagogique</b> (assiduité Qualiopi).</p>
+            <table class="table">
+              <tr><th>Date</th><th>Coach</th><th>Coaché</th><th>Coach/animateur</th><th>Statut</th><th>Replay / Feedbacks</th></tr>
+              <tr><td>3 juil. · 18h</td><td>Karim Nadir</td><td>Marie Lambert <span style="font-size:11px;color:var(--color-neutral)">(La Voie)</span></td><td>Yohann Duclos</td><td><span class="cf-st plan">À venir</span></td><td>—</td></tr>
+              <tr><td>21 juin</td><td>Karim Nadir</td><td>Thomas Petit</td><td>Yohann Duclos</td><td><span class="cf-st ok">Enregistrée</span></td><td>Replay 42 min · 3 vidéos · YoDalf ✓</td></tr>
+              <tr><td>19 juin</td><td>Léa Martin</td><td>Karim Nadir</td><td>— <span style="font-size:11px;color:var(--color-neutral)">(à affecter)</span></td><td><span class="cf-st todo">À évaluer</span></td><td>Replay 38 min · YoDalf ✓ · 0 vidéo</td></tr>
+            </table>
+            <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-3)">ℹ️ Les séances sont <b>créées par les membres de l'École</b> depuis la page programme (Promotion → Coaching/Training). Le BO offre ici la <b>vue promo</b> (suivi + affectation d'un coach/animateur évaluateur).</p>
           </div>
 
           <div id="pm-pres" class="hidden">
@@ -2540,7 +2553,7 @@ function setBoRole(r){
   else adminTab(document.getElementById('tab-members'),'members');
 }
 function pmTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});el.classList.add('active');
-  ['part','visios','pres','wa','unlock'].forEach(function(x){document.getElementById('pm-'+x).classList.add('hidden')});
+  ['part','visios','coaching','pres','wa','unlock'].forEach(function(x){document.getElementById('pm-'+x).classList.add('hidden')});
   document.getElementById('pm-'+t).classList.remove('hidden')}
 function suiviScope(v){
   document.getElementById('suivi-all').classList.toggle('hidden',v!=='all');

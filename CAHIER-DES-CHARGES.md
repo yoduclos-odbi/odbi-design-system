@@ -479,6 +479,10 @@ enregistrer, et reçoivent des retours (pairs + coach + IA).
   **visible_participants_ecole = true** (exclut les participants La Voie) — + `FeedbackYoDalf` (écrit, auto, même restriction).
 - **Suivi pédagogique (BO)** : alimenté automatiquement par les séances (séances réalisées comme coach / coaché,
   feedbacks reçus & donnés, dernier feedback) — pris en compte dans l'assiduité (Qualiopi).
+- **Vue promo (BO)** : la gestion d'une promotion (BO → Promotions → gérer) comporte un onglet
+  **« Coaching / Training »** listant les séances de la promo (date, coach ↔ coaché, coach/animateur, statut,
+  replay/feedbacks) — les séances sont **créées par les membres** côté programme ; le BO en offre le **suivi**
+  et l'**affectation d'un coach/animateur évaluateur**.
 
 ---
 
