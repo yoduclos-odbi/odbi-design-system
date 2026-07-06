@@ -288,8 +288,9 @@ Le modèle ne force rien — on n'affiche que ce qui existe :
   externe** (s'ouvre dans un nouvel onglet).
 - **Exercices à plusieurs** : un exercice peut être **individuel ou en groupe** (notamment à l'École, en
   **Intelligence Collective**) — avec **dépôt individuel ou dépôt commun** au sous-groupe et **restitution commune**.
-- **Exercice = fiche PDF et/ou vidéo de consigne** : un exercice peut porter une **fiche (PDF)** et/ou un
-  **lien vidéo** (Vimeo/YouTube) en consigne (front : bouton « 🎬 Vidéo de consigne » ; BO : champ lien dans l'éditeur d'exercice).
+- **Exercice = fiche PDF et/ou vidéo support** : un exercice peut porter une **fiche (PDF)** et/ou un
+  **lien vidéo** (Vimeo/YouTube) — une **vidéo qui peut faire l'objet de l'exercice** (front : bouton
+  « 🎬 Vidéo de l'exercice » ; BO : champ lien dans l'éditeur d'exercice).
 
 ### Déverrouillage du contenu **par promotion** (point structurant)
 Le contenu (asynchrone) est **partagé par toutes les promotions**, mais **quand/comment il se débloque**
