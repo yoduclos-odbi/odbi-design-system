@@ -261,29 +261,38 @@ Le **catalogue « Les programmes »** est organisé en **3 onglets** (façon nav
 - Ex. **La Voie des managers**, **Born To Coach**. (Onglet « Programmes longs ».)
 
 ### 2) Format court
-- **1 à 2 jours**, en **présentiel** ou **distanciel** (ou mixte), **structure allégée**.
-- Il y a du contenu, mais **pas forcément autant de sessions** : une session peut être **« plate »** (un seul
-  contenu, **sans séquences**). Ex. la **série « Vous En… » (VE)**. (Onglet « Programmes courts ».)
-- **Vue dédiée** : pas d'arbre de sessions, un **déroulé simple** (liste d'items : vidéo, atelier présentiel/distanciel,
-  exercice — parfois en groupe —, ressources dont **liens externes**, quiz).
+- **1 à 2 jours**, en **présentiel** ou **distanciel** (ou mixte). (Onglet « Programmes courts ».)
+- **Même architecture pédagogique que les programmes longs** (sessions → séquences → étapes) : **pas de vue
+  dédiée**. Ce qui le rend « court », c'est simplement que **peu de choses sont renseignées** — et **tout ce qui
+  est vide est masqué** (cf. principe « vide → masqué » ci-dessous). Ex. la **série « Vous En… » (VE)**.
 
 ### 3) Programmes individuels (onglet dédié)
 Onglet **« Programmes individuels »**, dans l'ordre : **① Tronc commun d'accompagnement**, **② Bilan de
 compétences**, **③ VAE** (validation des acquis de l'expérience).
 - **Tronc commun = le programme d'accompagnement de La Voie, adapté individuellement** ; les bilans/VAE s'appuient dessus.
+- **Même structure que les programmes longs** (sessions → séquences → étapes), **mais les « sessions » sont
+  renommées en phases** (nommage libre au BO) :
+  - **Tronc commun** : phases type La Voie (dont une phase **certification titre RS**).
+  - **Bilan de compétences** : *Phase préliminaire → Investigation → Conclusion*.
+  - **VAE** : *Recevabilité → Accompagnement → Dossier (livret 2) → Jury VAE*.
 - Ces **3 programmes sont individuels** : **pas de cohorte/promotion** → **sessions individuelles (1:1)**,
   calendrier propre à chaque personne.
+- **Menu de gauche adapté au 1:1** : « Accueil du programme » → **« Mon accompagnement »** ; « Session » →
+  **« Mon parcours »** ; « Promotion » → **« Mon suivi »** ; **Participants supprimé**, **promo/cohorte masqués**,
+  **Présentiels masqués s'il n'y en a pas**, **WhatsApp → « Mon formateur »** (lien direct vers le formateur qui suit la personne).
+- **Certification conservée** (tronc commun → **titre RS** ; VAE → jury via le module Certification).
 
-### Structure flexible (tout est optionnel)
-Le modèle ne force rien — on n'affiche que ce qui existe :
+### Structure flexible — principe « vide → masqué »
+Le modèle ne force rien : **une session, une séquence ou une étape sans contenu n'apparaît pas côté membre**
+(et une **section de menu vide non plus**). C'est ce principe qui rend un « format court » léger sans page dédiée.
 - **Étapes optionnelles** : une séquence peut ne pas avoir d'**exercice**, de **ressources**, de **quiz**…
-  (seules les étapes réellement remplies apparaissent).
-- **Séquences optionnelles** : si une session n'a **qu'un seul contenu**, on peut **se passer des séquences**
-  (session « plate »).
-- **Replays regroupés dans « Promotion »** : il n'y a **pas forcément un replay par session** → les replays
-  (classes/visios enregistrées) sont rassemblés dans l'entrée **« Replays » de la section Promotion**
-  (placée **au-dessus de Coaching/Training**), plutôt que dans chaque session. Chaque replay y donne accès
-  à **Revoir · Transcription · Chapitrage · Résumé · YoDalf**.
+- **Séquences optionnelles** : si une session n'a **qu'un seul contenu**, inutile de créer des séquences.
+- **Nommage libre (BO)** : sessions et séquences sont **nommées librement** (« Phase préliminaire », « Jour 1 »…) ;
+  la numérotation S1 / 2.1 est **facultative** (champs éditables dans l'éditeur de programme/session).
+- **Replays regroupés dans « Promotion », renommés « Classes »** (pour les programmes **longs et courts**) :
+  pas forcément un replay par session → les **classes** (visios enregistrées) sont rassemblées dans l'entrée
+  **« Classes » de la section Promotion** (placée **au-dessus de Coaching/Training**), plutôt que dans chaque
+  session. Chaque replay donne accès à **Revoir · Transcription · Chapitrage · Résumé · YoDalf**.
 - **Ressources = lien externe possible** : une ressource peut être un **fichier** (PDF, audio…) **ou un lien
   externe** (s'ouvre dans un nouvel onglet).
 - **Exercices à plusieurs** : un exercice peut être **individuel ou en groupe** (notamment à l'École, en

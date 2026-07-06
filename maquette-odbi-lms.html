@@ -742,7 +742,7 @@ a.ref-item:hover{background:var(--color-background)}
         <div class="cnav-sub" id="navProgSub">Promo 2026 — Automne</div>
 
         <!-- Accueil du programme -->
-        <div class="tv-home cur" id="tvHome" onclick="goHome(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg> Accueil du programme</div>
+        <div class="tv-home cur" id="tvHome" onclick="goHome(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg> <span id="tvHomeLabel">Accueil du programme</span></div>
 
         <!-- Introduction (accès libre) -->
         <div class="nav-sec">
@@ -755,7 +755,7 @@ a.ref-item:hover{background:var(--color-background)}
 
         <!-- Session : curriculum + lexique + références -->
         <div class="nav-sec">
-          <div class="nav-sec-h" onclick="toggleSec(this)"><svg class="sc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg> Session <span style="margin-left:auto;text-transform:none;letter-spacing:0;color:var(--color-accent);font-weight:500" onclick="event.stopPropagation();collapseTree()">Tout réduire</span></div>
+          <div class="nav-sec-h" onclick="toggleSec(this)"><svg class="sc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg> <span id="navSessionLabel">Session</span> <span style="margin-left:auto;text-transform:none;letter-spacing:0;color:var(--color-accent);font-weight:500" onclick="event.stopPropagation();collapseTree()">Tout réduire</span></div>
           <div class="nav-sec-b">
         <div class="tv" id="tree">
           <!-- S1 terminée -->
@@ -809,7 +809,7 @@ a.ref-item:hover{background:var(--color-background)}
 
         <!-- Ma promotion -->
         <div class="nav-sec">
-          <div class="nav-sec-h" onclick="toggleSec(this)"><svg class="sc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg> Promotion</div>
+          <div class="nav-sec-h" onclick="toggleSec(this)"><svg class="sc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg> <span id="navPromoLabel">Promotion</span></div>
           <div class="nav-sec-b">
             <div id="promoPicker" style="padding:6px 8px 8px">
               <select class="promo-select" id="promoSelect" onchange="switchPromo(this.value)" style="width:100%">
@@ -824,11 +824,11 @@ a.ref-item:hover{background:var(--color-background)}
                 </optgroup>
               </select>
             </div>
-            <div class="cnav-item" onclick="openInfo(this,'replays')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg> Replays</div>
-            <div class="cnav-item" onclick="openInfo(this,'training')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m23 7-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg> <span id="ctLabel">Coaching</span></div>
-            <div class="cnav-item" onclick="openInfo(this,'presentiel')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Présentiels</div>
-            <div class="cnav-item" onclick="openInfo(this,'participants')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg> Participants</div>
-            <div class="cnav-item" onclick="openInfo(this,'whatsapp')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg> WhatsApp</div>
+            <div class="cnav-item" id="navReplays" onclick="openInfo(this,'replays')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg> <span id="navReplaysLabel">Classes</span></div>
+            <div class="cnav-item" id="navTraining" onclick="openInfo(this,'training')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m23 7-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg> <span id="ctLabel">Coaching</span></div>
+            <div class="cnav-item" id="navPresentiel" onclick="openInfo(this,'presentiel')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Présentiels</div>
+            <div class="cnav-item" id="navParticipants" onclick="openInfo(this,'participants')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg> Participants</div>
+            <div class="cnav-item" id="navWhatsapp" onclick="openInfo(this,'whatsapp')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg> <span id="navWhatsappLabel">WhatsApp</span></div>
           </div>
         </div>
 
@@ -952,10 +952,10 @@ a.ref-item:hover{background:var(--color-background)}
       <div class="uni-block voie">
       <div class="universe"><div class="uni-chip voie"></div><div><h2>Série « Vous En… »</h2><div class="desc">Formats courts — 1 à 2 jours, présentiel ou distanciel</div></div></div>
       <div class="grid grid-3">
-        <div class="card course-card" onclick="openShort('vem')"><div class="course-thumb thumb-vem-blue"><span class="uni">VEM</span></div><div class="course-body"><h3>Vous En Mieux</h3><div class="meta"><b>Format court</b> · 1 j · distanciel</div><div class="free-meta"><svg class="fm-ic fm-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Réservé aux inscrits<span class="fm-sep">·</span><svg class="fm-ic fm-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.5-1.3"/></svg>Bonus disponible à tous</div></div></div>
-        <div class="card course-card" onclick="openShort('vep')"><div class="course-thumb thumb-vem-green"><span class="uni">VEP</span></div><div class="course-body"><h3>Vous En Paix</h3><div class="meta"><b>Format court</b> · 2 j · présentiel</div><div class="progress"><span style="width:90%"></span></div></div></div>
-        <div class="card course-card" onclick="openShort('vat')"><div class="course-thumb thumb-vem-blue"><span class="uni">VAT</span></div><div class="course-body"><h3>Vous Au Top</h3><div class="meta"><b>Format court</b> · 1 j · distanciel</div><div class="free-meta"><svg class="fm-ic fm-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Réservé aux inscrits<span class="fm-sep">·</span><svg class="fm-ic fm-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.5-1.3"/></svg>Bonus disponible à tous</div></div></div>
-        <div class="card course-card" onclick="openShort('vel')"><div class="course-thumb thumb-vem-green"><span class="uni">VEL</span></div><div class="course-body"><h3>Vous En Lien</h3><div class="meta"><b>Format court</b> · 2 j · présentiel</div><div class="free-meta"><svg class="fm-ic fm-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Réservé aux inscrits<span class="fm-sep">·</span><svg class="fm-ic fm-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.5-1.3"/></svg>Bonus disponible à tous</div></div></div>
+        <div class="card course-card" onclick="openCourse('full','voie','court','Vous En Mieux')"><div class="course-thumb thumb-vem-blue"><span class="uni">VEM</span></div><div class="course-body"><h3>Vous En Mieux</h3><div class="meta"><b>Format court</b> · 1 j · distanciel</div><div class="free-meta"><svg class="fm-ic fm-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Réservé aux inscrits<span class="fm-sep">·</span><svg class="fm-ic fm-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.5-1.3"/></svg>Bonus disponible à tous</div></div></div>
+        <div class="card course-card" onclick="openCourse('full','voie','court','Vous En Paix')"><div class="course-thumb thumb-vem-green"><span class="uni">VEP</span></div><div class="course-body"><h3>Vous En Paix</h3><div class="meta"><b>Format court</b> · 2 j · présentiel</div><div class="progress"><span style="width:90%"></span></div></div></div>
+        <div class="card course-card" onclick="openCourse('full','voie','court','Vous Au Top')"><div class="course-thumb thumb-vem-blue"><span class="uni">VAT</span></div><div class="course-body"><h3>Vous Au Top</h3><div class="meta"><b>Format court</b> · 1 j · distanciel</div><div class="free-meta"><svg class="fm-ic fm-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Réservé aux inscrits<span class="fm-sep">·</span><svg class="fm-ic fm-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.5-1.3"/></svg>Bonus disponible à tous</div></div></div>
+        <div class="card course-card" onclick="openCourse('full','voie','court','Vous En Lien')"><div class="course-thumb thumb-vem-green"><span class="uni">VEL</span></div><div class="course-body"><h3>Vous En Lien</h3><div class="meta"><b>Format court</b> · 2 j · présentiel</div><div class="free-meta"><svg class="fm-ic fm-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Réservé aux inscrits<span class="fm-sep">·</span><svg class="fm-ic fm-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.5-1.3"/></svg>Bonus disponible à tous</div></div></div>
       </div>
       </div>
       </div>
@@ -964,34 +964,12 @@ a.ref-item:hover{background:var(--color-background)}
       <div class="uni-block voie">
       <div class="universe"><div class="uni-chip voie"></div><div><h2>Programmes individuels</h2><div class="desc">Accompagnement 1:1 — sessions individuelles (tronc commun La Voie, adapté à la personne)</div></div></div>
       <div class="grid grid-3">
-        <div class="card course-card" onclick="openCourse('full','voie')"><div class="course-thumb thumb-voie"><span class="uni">Individuel</span></div><div class="course-body"><h3>Tronc commun d'accompagnement</h3><div class="meta"><b>Individuel</b> · sessions 1:1 · base La Voie</div></div></div>
-        <div class="card course-card" onclick="openCourse('full','voie')"><div class="course-thumb thumb-voie-blue"><span class="uni">Individuel</span></div><div class="course-body"><h3>Bilan de compétences</h3><div class="meta"><b>Individuel</b> · sessions 1:1 · sur-mesure</div></div></div>
-        <div class="card course-card" onclick="openCourse('full','voie')"><div class="course-thumb thumb-voie-blue"><span class="uni">Individuel</span></div><div class="course-body"><h3>VAE — Validation des acquis</h3><div class="meta"><b>Individuel</b> · sessions 1:1 · sur-mesure</div></div></div>
+        <div class="card course-card" onclick="openCourse('full','voie','indiv','Tronc commun d\'accompagnement','tronc')"><div class="course-thumb thumb-voie"><span class="uni">Individuel</span></div><div class="course-body"><h3>Tronc commun d'accompagnement</h3><div class="meta"><b>Individuel</b> · sessions 1:1 · base La Voie</div></div></div>
+        <div class="card course-card" onclick="openCourse('full','voie','indiv','Bilan de compétences','bilan')"><div class="course-thumb thumb-voie-blue"><span class="uni">Individuel</span></div><div class="course-body"><h3>Bilan de compétences</h3><div class="meta"><b>Individuel</b> · sessions 1:1 · sur-mesure</div></div></div>
+        <div class="card course-card" onclick="openCourse('full','voie','indiv','VAE — Validation des acquis','vae')"><div class="course-thumb thumb-voie-blue"><span class="uni">Individuel</span></div><div class="course-body"><h3>VAE — Validation des acquis</h3><div class="meta"><b>Individuel</b> · sessions 1:1 · sur-mesure</div></div></div>
       </div>
       <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-3)">ℹ️ Ces trois programmes sont <b>individuels</b> : pas de cohorte/promotion — des <b>sessions individuelles</b> (1:1) sur un calendrier propre à chaque personne. Le <b>tronc commun</b> reprend le programme d'accompagnement de La Voie, adapté individuellement.</p>
       </div>
-      </div>
-    </section>
-
-    <!-- PROGRAMME COURT (format 1–2 jours, structure allégée, sans arbre de sessions) -->
-    <section id="page-shortcourse" class="page">
-      <div class="breadcrumb" onclick="goTo('catalog')">Les programmes / Programmes courts / <b id="shortCrumb">Vous En Paix</b></div>
-      <div class="flex-between mb6">
-        <div><h1 id="shortTitle">Vous En Paix</h1><p id="shortMeta" style="color:var(--color-neutral);margin-top:6px"><b>Format court</b> · 2 jours · Présentiel</p></div>
-        <button class="btn btn-accent">S'inscrire</button>
-      </div>
-      <p id="shortDesc" style="color:var(--color-neutral);margin-bottom:var(--space-5);max-width:760px">Un format court et intensif pour retrouver de la sérénité au travail, mêlant apports, mises en pratique et échanges.</p>
-
-      <div class="note" style="background:rgba(17,76,106,.06);border-left:4px solid var(--color-accent);border-radius:8px;padding:12px 16px;margin-bottom:var(--space-6);font-size:13px">Format court : <b>pas d'arbre de sessions</b> — un <b>déroulé simple</b>. Le contenu mêle présentiel/distanciel, vidéos, exercices (parfois <b>en groupe</b>) et ressources (dont des <b>liens externes</b>).</div>
-
-      <h3 style="margin-bottom:var(--space-4)">Déroulé du programme</h3>
-      <div style="display:flex;flex-direction:column;gap:var(--space-3);max-width:820px">
-        <div class="sc-item"><svg class="sc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg><div class="sc-b"><h4>Vidéo d'introduction</h4><small>10 min · à visionner avant le présentiel</small></div><button class="btn btn-ghost" onclick="goTo('lesson')">Voir</button></div>
-        <div class="sc-item"><svg class="sc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="sc-b"><h4>Jour 1 — Atelier « Poser les bases de la sérénité » <span class="sc-tag">Présentiel</span></h4><small>ODBI Campus — Lyon · 9h–17h</small></div><button class="btn btn-ghost">Détails</button></div>
-        <div class="sc-item"><svg class="sc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><div class="sc-b"><h4>Exercice « Cartographie collective » <span class="sc-tag grp">En groupe</span></h4><small>À réaliser à plusieurs · restitution commune</small></div><button class="btn btn-ghost">Ouvrir</button></div>
-        <div class="sc-item"><svg class="sc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><div class="sc-b"><h4>Ressource — Guide pratique (PDF)</h4><small>Document à télécharger</small></div><button class="btn btn-ghost">⬇ PDF</button></div>
-        <div class="sc-item"><svg class="sc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg><div class="sc-b"><h4>Ressource — Article externe <span class="sc-tag ext">Lien externe</span></h4><small>Harvard Business Review · s'ouvre dans un nouvel onglet</small></div><a class="btn btn-ghost" href="https://hbr.org" target="_blank">Ouvrir le lien ↗</a></div>
-        <div class="sc-item"><svg class="sc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="sc-b"><h4>Jour 2 — Mises en situation + quiz final <span class="sc-tag">Présentiel</span></h4><small>ODBI Campus — Lyon · 9h–17h</small></div><button class="btn btn-ghost">Détails</button></div>
       </div>
     </section>
 
@@ -1001,7 +979,7 @@ a.ref-item:hover{background:var(--color-background)}
       <div class="flex-between mb6">
         <div>
           <h1 id="coTitle">La Voie des managers</h1>
-          <p style="color:var(--color-neutral);margin-top:6px">4 sessions · 4h de contenu · animé par Yo Duclos</p>
+          <p id="coMeta" style="color:var(--color-neutral);margin-top:6px">4 sessions · 4h de contenu · animé par Yo Duclos</p>
         </div>
         <button class="btn btn-primary hidden" id="courseJoinBtn">Rejoindre le programme</button>
       </div>
@@ -1090,8 +1068,8 @@ a.ref-item:hover{background:var(--color-background)}
 
       <!-- Replays (par promotion — visios/classes enregistrées) -->
       <div id="crs-replays" class="hidden">
-        <div class="flex-between" style="margin-bottom:var(--space-4)"><h3 style="margin:0">Replays de la promotion</h3><span style="font-size:12px;color:var(--color-neutral)">Promo 2026 — Automne</span></div>
-        <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-5)">Toutes les classes / visios enregistrées de votre promotion (BBB + Notta). Chaque replay donne accès à : <b>Revoir</b>, <b>Transcription</b>, <b>Chapitrage</b>, <b>Résumé</b> et <b>YoDalf</b>.</p>
+        <div class="flex-between" style="margin-bottom:var(--space-4)"><h3 style="margin:0" id="replaysHeading">Classes de la promotion</h3><span style="font-size:12px;color:var(--color-neutral)">Promo 2026 — Automne</span></div>
+        <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-5)">Toutes les <b>classes</b> (visios) enregistrées de votre promotion (BBB + Notta). Chaque <b>replay</b> donne accès à : <b>Revoir</b>, <b>Transcription</b>, <b>Chapitrage</b>, <b>Résumé</b> et <b>YoDalf</b>.</p>
         <div class="card" style="padding:var(--space-5);margin-bottom:var(--space-4)">
           <span class="course-tag" style="color:#d64545;background:rgba(214,69,69,.1)">Séq. 2.1 — Créer l'engagement · Q&R · 12 mars · 58 min</span>
           <div class="replay-actions" style="margin-top:12px"><button class="btn btn-accent">▶ Revoir (BBB)</button><button class="btn btn-ghost" onclick="repShow(this,'trans')">📝 Transcription</button><button class="btn btn-ghost" onclick="repShow(this,'chap')">📑 Chapitrage</button><button class="btn btn-ghost active" onclick="repShow(this,'resume')">📄 Résumé</button><button class="btn btn-ghost" onclick="goTo('ai')">🧙 YoDalf</button></div>
@@ -1837,7 +1815,14 @@ a.ref-item:hover{background:var(--color-background)}
           <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">WhatsApp</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Un groupe par programme (lien externe)</p></div><span class="badge" style="background:var(--color-primary)">8 / 13 liés</span></div><p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-4)">Chaque programme a son propre groupe WhatsApp, configuré dans l'onglet « Cours ». Les membres y accèdent depuis la page du programme.</p></div>
           <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">📝 Notta</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Transcription & traduction des visios</p></div><span class="badge" style="background:var(--color-primary)">Connecté</span></div><p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-4)">Chaque visio BigBlueButton est automatiquement transcrite et traduite par Notta. Le compte-rendu est rattaché à la leçon correspondante.</p></div>
           <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">🎥 Loom</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Feedbacks vidéo (écran + voix) sur les séances d'entraînement</p></div><span class="badge" style="background:var(--color-primary)">Connecté</span></div><div class="field" style="margin-top:var(--space-5)"><label>Compte / espace Loom</label><input value="odbi-campus"></div><p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-2)">Le coach, un collègue ou un invité enregistre un feedback vidéo Loom, rattaché à la séance d'entraînement.</p></div>
-          <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">Notion (CRM + BPF)</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">CRM membres + extraction Qualiopi / BPF</p></div><span class="badge" style="background:var(--color-primary)">Connecté</span></div><div class="field" style="margin-top:var(--space-5)"><label>Base Notion (CRM)</label><input value="CRM ODBI — Membres & prospects"></div><div class="field"><label>Base Notion (BPF / assiduité)</label><input value="Reporting Qualiopi — Assiduité & heures"></div></div>
+          <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">Notion (CRM + BPF + Livret)</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">CRM membres · extraction Qualiopi/BPF · livret d'accueil</p></div><span class="badge" id="notionBadge" style="background:var(--color-primary)">Connecté</span></div>
+            <div style="display:flex;gap:10px;align-items:center;margin-top:var(--space-5);flex-wrap:wrap"><button class="btn btn-primary" onclick="connectNotion()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>Se connecter à Notion</button><span id="notionStatus" style="font-size:12px;color:var(--color-neutral)">Connecté via OAuth · espace « ODBI » · jeton actif</span></div>
+            <div class="field" style="margin-top:var(--space-4)"><label>Espace de travail Notion</label><input value="ODBI — Espace de travail"></div>
+            <div class="field"><label>Base Notion (CRM)</label><input value="CRM ODBI — Membres & prospects"></div>
+            <div class="field"><label>Base Notion (BPF / assiduité)</label><input value="Reporting Qualiopi — Assiduité & heures"></div>
+            <div class="field"><label>Page « Livret d'accueil » (Notion)</label><input value="https://odbi.notion.site/Livret-d-Accueil-Client-ODBI-13d94934418a80cb843dfaebb32328ef"></div>
+            <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-2)">La connexion Notion alimente le CRM (inscriptions), l'export BPF/Qualiopi et le lien du livret d'accueil (tableau de bord).</p>
+          </div>
         </div>
       </div>
     </section>
@@ -1886,11 +1871,11 @@ a.ref-item:hover{background:var(--color-background)}
 
       <!-- Sessions -->
       <div id="ec-sessions">
-        <p style="color:var(--color-neutral);margin-bottom:var(--space-4)">Contenu asynchrone — partagé par toutes les promotions. Glissez pour réordonner.</p>
-        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>Session 1 — Fondamentaux du leadership</b><small><span class="i i-exo"></span> 1 exercice · <span class="i i-video"></span> 3 vidéos · <span class="i i-audio"></span> 1 audio · <span class="i i-pdf"></span> 2 PDF · <span class="i i-quiz"></span> quiz</small></div><button class="icon-btn" onclick="goTo('editsession')">✏️ Éditer</button><button class="icon-btn">⧉</button><button class="icon-btn">🗑️</button></div>
-        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>Session 2 — Mobiliser une équipe</b><small><span class="i i-exo"></span> 2 exercices · <span class="i i-video"></span> 4 vidéos · <span class="i i-audio"></span> 2 audios · <span class="i i-pdf"></span> 1 PDF · <span class="i i-quiz"></span> quiz</small></div><button class="icon-btn" onclick="goTo('editsession')">✏️ Éditer</button><button class="icon-btn">⧉</button><button class="icon-btn">🗑️</button></div>
-        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>Session 3 — Leadership de soi</b><small><span class="i i-video"></span> 3 vidéos · <span class="i i-pdf"></span> 2 PDF · <span class="i i-quiz"></span> quiz</small></div><button class="icon-btn" onclick="goTo('editsession')">✏️ Éditer</button><button class="icon-btn">⧉</button><button class="icon-btn">🗑️</button></div>
-        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>Session 4 — Décider en incertitude</b><small><span class="i i-video"></span> 2 vidéos · <span class="i i-audio"></span> 1 audio · <span class="i i-quiz"></span> quiz · <span class="i i-visio"></span> 1 visio</small></div><button class="icon-btn" onclick="goTo('editsession')">✏️ Éditer</button><button class="icon-btn">⧉</button><button class="icon-btn">🗑️</button></div>
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-4)">Contenu asynchrone — partagé par toutes les promotions. <b>Nommez librement</b> chaque session (ex. « Phase préliminaire », « Jour 1 »…) ; la numérotation S1/S2 est <b>facultative</b>. Glissez pour réordonner. <b>Une session (ou une étape) sans contenu n'apparaît pas côté membre.</b></p>
+        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><input value="Session 1 — Fondamentaux du leadership" style="width:100%;font-family:var(--font-title);font-weight:600"><small><span class="i i-exo"></span> 1 exercice · <span class="i i-video"></span> 3 vidéos · <span class="i i-audio"></span> 1 audio · <span class="i i-pdf"></span> 2 PDF · <span class="i i-quiz"></span> quiz</small></div><button class="icon-btn" onclick="goTo('editsession')">✏️ Éditer</button><button class="icon-btn">⧉</button><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><input value="Session 2 — Mobiliser une équipe" style="width:100%;font-family:var(--font-title);font-weight:600"><small><span class="i i-exo"></span> 2 exercices · <span class="i i-video"></span> 4 vidéos · <span class="i i-audio"></span> 2 audios · <span class="i i-pdf"></span> 1 PDF · <span class="i i-quiz"></span> quiz</small></div><button class="icon-btn" onclick="goTo('editsession')">✏️ Éditer</button><button class="icon-btn">⧉</button><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><input value="Session 3 — Leadership de soi" style="width:100%;font-family:var(--font-title);font-weight:600"><small><span class="i i-video"></span> 3 vidéos · <span class="i i-pdf"></span> 2 PDF · <span class="i i-quiz"></span> quiz</small></div><button class="icon-btn" onclick="goTo('editsession')">✏️ Éditer</button><button class="icon-btn">⧉</button><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><input value="Session 4 — Décider en incertitude" style="width:100%;font-family:var(--font-title);font-weight:600"><small><span class="i i-video"></span> 2 vidéos · <span class="i i-audio"></span> 1 audio · <span class="i i-quiz"></span> quiz</small></div><button class="icon-btn" onclick="goTo('editsession')">✏️ Éditer</button><button class="icon-btn">⧉</button><button class="icon-btn">🗑️</button></div>
         <button class="add-btn" onclick="goTo('editsession')">+ Ajouter une session</button>
       </div>
 
@@ -1947,10 +1932,10 @@ a.ref-item:hover{background:var(--color-background)}
       </div>
 
       <h3 class="section-title" style="margin-top:0">Séquences de la session</h3>
-      <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">Découpez la session en séquences (2.1, 2.2…). Chaque séquence a son contenu (exercice, vidéos, ressources, quiz). <b>Les visios et leurs replays se gèrent par promotion</b> (onglet Promotions → Planning des visios).</p>
-      <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>2.1 — Créer l'engagement</b><small><span class="i i-exo"></span> 1 exo · <span class="i i-video"></span> 3 vidéos · <span class="i i-audio"></span> 2 ressources · <span class="i i-quiz"></span> quiz</small></div><button class="icon-btn">✏️ Contenu</button><button class="icon-btn">🗑️</button></div>
-      <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>2.2 — Le feedback</b><small><span class="i i-exo"></span> 1 exo · <span class="i i-video"></span> 1 vidéo · <span class="i i-audio"></span> 1 ressource · <span class="i i-quiz"></span> quiz</small></div><button class="icon-btn">✏️ Contenu</button><button class="icon-btn">🗑️</button></div>
-      <div class="edit-row"><span class="handle">⠿</span><div class="grow"><b>2.3 — Gérer les tensions</b><small><span class="i i-exo"></span> 1 exo · <span class="i i-video"></span> 2 vidéos · <span class="i i-quiz"></span> quiz</small></div><button class="icon-btn">✏️ Contenu</button><button class="icon-btn">🗑️</button></div>
+      <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)"><b>Séquences facultatives</b> : si la session n'a qu'un seul contenu, inutile d'en créer. <b>Nommez-les librement</b> (ex. « Créer l'engagement », « Atelier ») ; la numérotation 2.1 / 2.2 est facultative. Chaque séquence a son contenu (exercice, vidéos, ressources, quiz) — <b>les étapes vides ne s'affichent pas côté membre</b>. <b>Les visios/replays se gèrent par promotion</b> (onglet Promotions → Visios & replays).</p>
+      <div class="edit-row"><span class="handle">⠿</span><div class="grow"><input value="2.1 — Créer l'engagement" style="width:100%;font-family:var(--font-title);font-weight:600"><small><span class="i i-exo"></span> 1 exo · <span class="i i-video"></span> 3 vidéos · <span class="i i-audio"></span> 2 ressources · <span class="i i-quiz"></span> quiz</small></div><button class="icon-btn">✏️ Contenu</button><button class="icon-btn">🗑️</button></div>
+      <div class="edit-row"><span class="handle">⠿</span><div class="grow"><input value="2.2 — Le feedback" style="width:100%;font-family:var(--font-title);font-weight:600"><small><span class="i i-exo"></span> 1 exo · <span class="i i-video"></span> 1 vidéo · <span class="i i-audio"></span> 1 ressource · <span class="i i-quiz"></span> quiz</small></div><button class="icon-btn">✏️ Contenu</button><button class="icon-btn">🗑️</button></div>
+      <div class="edit-row"><span class="handle">⠿</span><div class="grow"><input value="2.3 — Gérer les tensions" style="width:100%;font-family:var(--font-title);font-weight:600"><small><span class="i i-exo"></span> 1 exo · <span class="i i-video"></span> 2 vidéos · <span class="i i-quiz"></span> quiz</small></div><button class="icon-btn">✏️ Contenu</button><button class="icon-btn">🗑️</button></div>
       <button class="add-btn" style="margin-bottom:var(--space-8)">+ Ajouter une séquence</button>
 
       <h3 class="section-title" style="margin-top:0">Contenu de la séquence — <span style="color:var(--color-accent)">2.1 — Créer l'engagement</span></h3>
@@ -2216,7 +2201,7 @@ function goTo(page){
   var pg=document.getElementById('page-'+page);if(pg)pg.classList.add('active');
   // top nav active : page courante, ou "Les programmes" pour cours/session
   document.querySelectorAll('.topnav a').forEach(n=>n.classList.remove('active'));
-  var topKey=(page==='course'||page==='lesson'||page==='train-detail'||page==='shortcourse')?'catalog':page;
+  var topKey=(page==='course'||page==='lesson'||page==='train-detail')?'catalog':page;
   var nav=document.querySelector('.topnav a[data-page="'+topKey+'"]');if(nav)nav.classList.add('active');
   // barre contextuelle gauche : programme (arbre + infos) ou YoDalf (historique des chats)
   var bar=document.getElementById('ctxbar'),cp=document.getElementById('ctx-program'),cy=document.getElementById('ctx-yodalf');
@@ -2379,24 +2364,53 @@ function applyAccess(){
   var prg=document.getElementById('courseProg');if(prg)prg.style.visibility=free?'hidden':'visible';
 }
 // Entrée dans un programme depuis le catalogue / tableau de bord
-function openCourse(mode,uni){
-  accessMode=mode||'full';curUni=uni||'voie';applyAccess();applyUni();goTo('course');
+function openCourse(mode,uni,type,name,key){
+  accessMode=mode||'full';curUni=uni||'voie';curType=type||'long';curProgName=name||'';curIndivKey=key||'tronc';
+  applyAccess();applyUni();applyType();goTo('course');
   if(accessMode==='free'){ // le non-inscrit atterrit directement sur l'Introduction (Présentation du programme)
     var first=document.querySelector('#ctx-program .nav-sec .cnav-item');
     openPresentationMenu(first);
   } else { goHome(document.getElementById('tvHome')); }
 }
+// ===== Programme individuel (1:1) : réutilise la structure des longs, adaptée =====
+var curType='long', curProgName='', curIndivKey='tronc';
+var DEFAULT_SESS={'tv-s1':'S1 — Fondamentaux du leadership','tv-s2':'S2 — Mobiliser une équipe','tv-s3':'S3 — Leadership de soi','tv-s4':'S4 — Décider en incertitude'};
+var PHASES={
+  tronc:['Découverte','Approfondissement','Mise en pratique','Bilan & certification (titre RS)'],
+  bilan:['Phase préliminaire','Phase d\'investigation','Phase de conclusion'],
+  vae:['Recevabilité','Accompagnement','Constitution du dossier (livret 2)','Passage devant le jury VAE']
+};
+function setSessLabel(id,txt){var s=document.querySelector('#'+id+' > .h > span');if(s)s.textContent=txt;}
+function connectNotion(){var s=document.getElementById('notionStatus');if(s)s.textContent='✅ Connexion Notion établie · espace « ODBI » · jeton actif';var b=document.getElementById('notionBadge');if(b)b.textContent='Connecté';}
+function applyType(){
+  var ind=curType==='indiv', court=curType==='court';
+  var ph=ind?(PHASES[curIndivKey]||PHASES.tronc):null;
+  // Titre + méta
+  if((ind||court)&&curProgName){var h=document.getElementById('coTitle');if(h)h.textContent=curProgName;var np=document.getElementById('navProgTitle');if(np)np.textContent=curProgName;}
+  var ns=document.getElementById('navProgSub');if(ns){if(ind)ns.textContent='Accompagnement individuel';else if(court)ns.textContent='Format court';}
+  var m=document.getElementById('coMeta');if(m)m.textContent=ind?'Accompagnement individuel · suivi 1:1 · référent : Yo Duclos':(court?'Format court · 1–2 jours · présentiel/distanciel':'4 sessions · 4h de contenu · animé par Yo Duclos');
+  // Libellés menu adaptés au 1:1 (individuel)
+  var hl=document.getElementById('tvHomeLabel');if(hl)hl.textContent=ind?'Mon accompagnement':'Accueil du programme';
+  var sl=document.getElementById('navSessionLabel');if(sl)sl.textContent=ind?'Mon parcours':'Session';
+  var plb=document.getElementById('navPromoLabel');if(plb)plb.textContent=ind?'Mon suivi':'Promotion';
+  // Sessions : individuel = phases ; court = uniquement les sessions renseignées (démo : S1–S2) ; long = tout
+  ['tv-s1','tv-s2','tv-s3','tv-s4'].forEach(function(id,i){
+    var node=document.getElementById(id);if(!node)return;
+    if(ind){ if(i<ph.length){node.style.display='';setSessLabel(id,ph[i]);} else node.style.display='none'; }
+    else { setSessLabel(id,DEFAULT_SESS[id]); node.style.display=(court&&i>=2)?'none':''; }
+  });
+  // Principe « vide → masqué » : on n'affiche pas une entrée sans contenu
+  var pp=document.getElementById('promoPicker');if(pp)pp.style.display=(ind||accessMode==='free')?'none':'block';
+  var part=document.getElementById('navParticipants');if(part)part.style.display=ind?'none':'';
+  var train=document.getElementById('navTraining');if(train)train.style.display=(ind||court)?'none':'';
+  var pres=document.getElementById('navPresentiel');if(pres)pres.style.display=ind?'none':'';
+  var wl=document.getElementById('navWhatsappLabel');if(wl)wl.textContent=ind?'Mon formateur (WhatsApp)':'WhatsApp';
+  var vn=document.getElementById('visioNextCard');if(vn&&ind)vn.style.display='none';
+  var tn=document.getElementById('trainNextCard');if(tn&&(ind||court))tn.style.display='none';
+}
 function clearMenuSel(){document.querySelectorAll('#ctx-program .tv-leaf,#ctx-program .cnav-item').forEach(function(x){x.classList.remove('cur','active')});var h=document.getElementById('tvHome');if(h)h.classList.remove('cur');}
 // Catalogue : onglets Longs / Courts / Individuels
 function catTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});el.classList.add('active');['long','court','indiv'].forEach(function(x){document.getElementById('cat-'+x).classList.add('hidden')});document.getElementById('cat-'+t).classList.remove('hidden');document.querySelector('.main').scrollTo(0,0);}
-// Programme court : déroulé simple (1–2 jours)
-var SHORT={
-  vem:{t:'Vous En Mieux',m:'<b>Format court</b> · 1 jour · Distanciel',d:'Une journée à distance pour reprendre de l\'élan et retrouver de l\'énergie au quotidien.'},
-  vep:{t:'Vous En Paix',m:'<b>Format court</b> · 2 jours · Présentiel — ODBI Campus, Lyon',d:'Un format court et intensif pour retrouver de la sérénité au travail, mêlant apports, mises en pratique et échanges.'},
-  vat:{t:'Vous Au Top',m:'<b>Format court</b> · 1 jour · Distanciel',d:'Une journée pour être au meilleur de sa forme : focus, priorités et récupération.'},
-  vel:{t:'Vous En Lien',m:'<b>Format court</b> · 2 jours · Présentiel',d:'Deux jours pour renforcer la qualité de ses relations professionnelles et personnelles.'}
-};
-function openShort(k){var c=SHORT[k]||SHORT.vep;var t=document.getElementById('shortTitle');if(t)t.textContent=c.t;var cr=document.getElementById('shortCrumb');if(cr)cr.textContent=c.t;var m=document.getElementById('shortMeta');if(m)m.innerHTML=c.m;var d=document.getElementById('shortDesc');if(d)d.textContent=c.d;goTo('shortcourse');}
 // Accueil du programme (réservé aux inscrits)
 function goHome(el){
   if(accessMode==='free')return;            // un non-inscrit n'a pas accès à l'accueil
