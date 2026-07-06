@@ -773,7 +773,7 @@ a.ref-item:hover{background:var(--color-background)}
                 <div class="tv-b2">
                   <div class="tv-leaf" onclick="openStep(this,'ex')"><span class="tv-ck done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 4 4 10-11"/></svg></span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg><span class="lt"><span>Exercice</span><small>déposé</small></span></div>
                   <div class="tv-leaf cur" onclick="openStep(this,'video')"><span class="tv-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 4 4 10-11"/></svg></span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg><span class="lt"><span>Vidéos (3)</span><small>vue 40 %</small></span></div>
-                  <div class="tv-leaf" onclick="openStep(this,'res')"><span class="tv-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 4 4 10-11"/></svg></span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg><span class="lt"><span>Ressources</span><small>2 fichiers</small></span></div>
+                  <div class="tv-leaf" onclick="openStep(this,'res')"><span class="tv-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 4 4 10-11"/></svg></span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg><span class="lt"><span>Ressources</span><small>3 ressources · dont 1 lien</small></span></div>
                   <div class="tv-leaf" onclick="openStep(this,'quiz')"><span class="tv-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 4 4 10-11"/></svg></span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span class="lt"><span>Quiz</span><small>5 questions</small></span></div>
                 </div>
               </div>
@@ -1953,9 +1953,12 @@ a.ref-item:hover{background:var(--color-background)}
 
       <!-- Ressources -->
       <div id="es-res" class="hidden">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-4)">Chaque ressource est un <b>fichier</b> (audio, PDF…) <b>ou un lien externe</b> (site, article, vidéo — s'ouvre dans un nouvel onglet). Choisissez le <b>type</b> dans le menu.</p>
         <div class="upload-zone mb6"><span class="big"></span>Glisser des fichiers audio ou PDF, ou cliquer pour téléverser</div>
-        <div class="edit-row"><span style="font-size:18px">🎧</span><input class="grow" value="Méditation guidée — ancrage du leader"><span style="font-size:12px;color:var(--color-neutral)">Audio · 11 min</span><button class="icon-btn">🗑️</button></div>
-        <div class="edit-row"><span style="font-size:18px">📄</span><input class="grow" value="Fiche pratique — les 3 piliers du feedback"><span style="font-size:12px;color:var(--color-neutral)">PDF · 2 p.</span><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><select style="max-width:130px"><option>Fichier</option><option>Lien externe</option></select><input class="grow" value="Méditation guidée — ancrage du leader"><span style="font-size:12px;color:var(--color-neutral)">Audio · 11 min</span><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><select style="max-width:130px"><option>Fichier</option><option>Lien externe</option></select><input class="grow" value="Fiche pratique — les 3 piliers du feedback"><span style="font-size:12px;color:var(--color-neutral)">PDF · 2 p.</span><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><select style="max-width:130px"><option selected>Lien externe</option><option>Fichier</option></select><input class="grow" value="Article — « L'art du feedback » (HBR)"><input class="grow" placeholder="https://…" value="https://hbr.org" style="max-width:240px"><button class="icon-btn">🗑️</button></div>
+        <div style="display:flex;gap:10px;margin-top:var(--space-3);flex-wrap:wrap"><button class="add-btn">+ Ajouter un fichier</button><button class="add-btn">+ Ajouter un lien externe</button></div>
       </div>
 
       <!-- Quiz -->
