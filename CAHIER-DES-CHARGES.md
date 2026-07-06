@@ -648,18 +648,22 @@ Deux sélecteurs en tête : **Programme** (paramétrage commun) et **Promotion**
 | **E-mailing transactionnel** | Envoi automatique des accès LMS + notifications (service à choisir) |
 | **Stripe** | Paiements & abonnements |
 
-### Flux Notion (bidirectionnel)
+### Flux Notion (bidirectionnel — le LMS lit ET écrit dans Notion, et inversement)
 
-**① Notion → LMS (inscriptions)**
-- Sur Notion, une **base de données « participants »** : on inscrit un participant
-  à un cours via un **simple bouton**.
-- Cela déclenche côté LMS : **création/provisionning du compte**, **rattachement
-  au cours + à la promotion**, puis **envoi automatique des infos et des accès de
-  connexion** au participant (e-mail d'onboarding).
+**Bases Notion à connecter & mapping**
+- **« Session de formation »** ⇄ **Promotion du LMS** : une session Notion **=** une promotion.
+  Chaque promotion est **liée à une session Notion** (réglage dans la gestion de promo).
+- **« Participants session »** ⇄ **participants d'une promotion** : on **envoie des participants
+  dans une promotion** depuis Notion ; ils remontent dans la liste des participants (badge source « Notion »).
+- (Plus les bases **CRM** et **BPF/assiduité**, et la page **Livret d'accueil**.)
 
-**② LMS → Notion (CRM + reporting)**
-- Mise à jour des fiches membres (CRM)
-- Export des données **assiduité / heures / BPF** (cf. §17)
+**① Notion → LMS**
+- Depuis « Participants session », **envoyer un participant dans une promotion** (bouton) → côté LMS :
+  **création/provisionning du compte**, **rattachement au cours + à la promotion**, **envoi des accès** (e-mail d'onboarding).
+
+**② LMS → Notion**
+- **Ajout/retrait d'un participant** dans une promotion **répercuté vers Notion** ; mise à jour des fiches (CRM) ;
+  export **assiduité / heures / BPF** (cf. §17). **Sens paramétrable** : bidirectionnel / Notion→LMS / LMS→Notion.
 
 > Implique un **service d'e-mailing transactionnel** pour l'envoi des accès et
 > des notifications (bienvenue, identifiants/lien d'activation, rappels visio…).

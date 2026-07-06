@@ -1571,6 +1571,7 @@ a.ref-item:hover{background:var(--color-background)}
 
         <div id="promoMgmt" class="edit-card" style="margin-top:var(--space-8)">
           <h3>Gestion de la promotion : Promo 2026 — Automne (La Voie des managers)</h3>
+          <div class="note" style="background:rgba(17,76,106,.06);border-left:4px solid var(--color-accent);border-radius:8px;padding:10px 14px;font-size:12.5px;margin-top:var(--space-3);display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span><b>Session Notion liée</b> :</span><select class="promo-select" style="min-width:300px"><option>« La Voie des managers — Automne 2026 » (Sessions de formation)</option><option>(non liée)</option></select><span style="color:var(--color-primary)">● Sync bidirectionnelle active</span></div>
           <div class="tabs" style="margin-top:var(--space-4)">
             <div class="tab active" onclick="pmTab(this,'part')">Participants</div>
             <div class="tab" onclick="pmTab(this,'visios')">Visios &amp; replays</div>
@@ -1581,10 +1582,11 @@ a.ref-item:hover{background:var(--color-background)}
           </div>
 
           <div id="pm-part">
-            <div class="flex-between mb6"><h4 style="margin:0">42 participants</h4><button class="btn btn-primary">+ Ajouter / inscrire</button></div>
-            <table class="table"><tr><th>Participant</th><th>E-mail</th><th>Statut</th><th></th></tr>
-              <tr><td>Jean Dupont</td><td>jean.dupont@email.fr</td><td>Actif</td><td><button class="icon-btn">Retirer</button></td></tr>
-              <tr><td>Marie Lambert</td><td>marie.l@email.fr</td><td>Actif</td><td><button class="icon-btn">Retirer</button></td></tr>
+            <div class="flex-between mb6" style="flex-wrap:wrap;gap:10px"><h4 style="margin:0">42 participants</h4><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-ghost">⇄ Synchroniser depuis Notion</button><button class="btn btn-primary">+ Ajouter / inscrire</button></div></div>
+            <p style="color:var(--color-neutral);font-size:12.5px;margin-bottom:var(--space-4)">Les participants proviennent de la base Notion <b>« Participants session »</b> (on les <b>envoie dans cette promotion</b> depuis Notion). L'ajout/retrait ici est <b>répercuté vers Notion</b> (sync bidirectionnelle). <span style="color:var(--color-primary)">● Dernière synchro : il y a 5 min</span></p>
+            <table class="table"><tr><th>Participant</th><th>E-mail</th><th>Source</th><th>Statut</th><th></th></tr>
+              <tr><td>Jean Dupont</td><td>jean.dupont@email.fr</td><td><span class="badge" style="background:var(--color-jet)">Notion</span></td><td>Actif</td><td><button class="icon-btn">Retirer</button></td></tr>
+              <tr><td>Marie Lambert</td><td>marie.l@email.fr</td><td><span class="badge" style="background:var(--color-jet)">Notion</span></td><td>Actif</td><td><button class="icon-btn">Retirer</button></td></tr>
             </table>
           </div>
 
@@ -1827,13 +1829,16 @@ a.ref-item:hover{background:var(--color-background)}
           <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">WhatsApp</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Un groupe par programme (lien externe)</p></div><span class="badge" style="background:var(--color-primary)">8 / 13 liés</span></div><p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-4)">Chaque programme a son propre groupe WhatsApp, configuré dans l'onglet « Cours ». Les membres y accèdent depuis la page du programme.</p></div>
           <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">📝 Notta</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Transcription & traduction des visios</p></div><span class="badge" style="background:var(--color-primary)">Connecté</span></div><p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-4)">Chaque visio BigBlueButton est automatiquement transcrite et traduite par Notta. Le compte-rendu est rattaché à la leçon correspondante.</p></div>
           <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">🎥 Loom</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Feedbacks vidéo (écran + voix) sur les séances d'entraînement</p></div><span class="badge" style="background:var(--color-primary)">Connecté</span></div><div class="field" style="margin-top:var(--space-5)"><label>Compte / espace Loom</label><input value="odbi-campus"></div><p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-2)">Le coach, un collègue ou un invité enregistre un feedback vidéo Loom, rattaché à la séance d'entraînement.</p></div>
-          <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">Notion (CRM + BPF + Livret)</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">CRM membres · extraction Qualiopi/BPF · livret d'accueil</p></div><span class="badge" id="notionBadge" style="background:var(--color-primary)">Connecté</span></div>
+          <div class="card" style="padding:var(--space-6)"><div class="flex-between"><div><h3 style="font-size:16px">Notion (Sessions ↔ Promotions · CRM · BPF · Livret)</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:6px">Sync <b>bidirectionnelle</b> LMS ↔ Notion · CRM membres · Qualiopi/BPF · livret</p></div><span class="badge" id="notionBadge" style="background:var(--color-primary)">Connecté</span></div>
             <div style="display:flex;gap:10px;align-items:center;margin-top:var(--space-5);flex-wrap:wrap"><button class="btn btn-primary" onclick="connectNotion()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>Se connecter à Notion</button><span id="notionStatus" style="font-size:12px;color:var(--color-neutral)">Connecté via OAuth · espace « ODBI » · jeton actif</span></div>
             <div class="field" style="margin-top:var(--space-4)"><label>Espace de travail Notion</label><input value="ODBI — Espace de travail"></div>
+            <div class="field"><label>Base Notion « Session de formation » <span style="font-size:11px;color:var(--color-accent);font-family:var(--font-title)">↔ Promotions du LMS</span></label><input value="Sessions de formation — ODBI"></div>
+            <div class="field"><label>Base Notion « Participants session » <span style="font-size:11px;color:var(--color-accent);font-family:var(--font-title)">↔ Participants des promotions</span></label><input value="Participants session — ODBI"></div>
             <div class="field"><label>Base Notion (CRM)</label><input value="CRM ODBI — Membres & prospects"></div>
             <div class="field"><label>Base Notion (BPF / assiduité)</label><input value="Reporting Qualiopi — Assiduité & heures"></div>
             <div class="field"><label>Page « Livret d'accueil » (Notion)</label><input value="https://odbi.notion.site/Livret-d-Accueil-Client-ODBI-13d94934418a80cb843dfaebb32328ef"></div>
-            <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-2)">La connexion Notion alimente le CRM (inscriptions), l'export BPF/Qualiopi et le lien du livret d'accueil (tableau de bord).</p>
+            <div class="field"><label>Sens de synchronisation</label><select><option>Bidirectionnel (LMS ↔ Notion)</option><option>Notion → LMS (import)</option><option>LMS → Notion (export)</option></select></div>
+            <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-2)"><b>Mapping :</b> une <b>« Session de formation » Notion = une Promotion LMS</b> ; les <b>« Participants session »</b> alimentent les <b>participants de la promotion</b> (et inversement). Sync <b>bidirectionnelle</b> : le LMS <b>lit et écrit</b> dans Notion, et Notion pousse vers le LMS.</p>
           </div>
         </div>
       </div>
