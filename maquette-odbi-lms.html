@@ -1710,7 +1710,8 @@ a.ref-item:hover{background:var(--color-background)}
       </div>
 
       <div id="admin-certif" class="hidden">
-        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Paramétrez l'évaluation finale de chaque programme (référentiel, ateliers, grille, niveaux) et suivez les candidats jusqu'à la délivrance du diplôme.</p>
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-3)">Paramétrez l'évaluation finale de chaque programme (référentiel, ateliers, grille, niveaux) et suivez les candidats jusqu'à la délivrance du diplôme.</p>
+        <p class="note" style="background:rgba(134,164,63,.08);border-left:4px solid var(--color-asparagus);border-radius:8px;padding:10px 14px;font-size:12.5px;margin-bottom:var(--space-5)">Pour un programme <b>individuel</b> dont la sanction est <b>« Documents &amp; livrables »</b> (Bilan / VAE), c'est ici que se configurent le <b>jury / la commission</b> et que se déposent le <b>rapport / procès-verbal</b> et les <b>livrables</b> ; ils alimentent la section « Documents &amp; livrables » côté bénéficiaire.</p>
         <div style="display:flex;gap:16px;margin-bottom:var(--space-5);flex-wrap:wrap">
           <div><label style="font-size:11px;color:var(--color-neutral);font-family:var(--font-title);display:block;margin-bottom:4px">Programme (paramétrage commun)</label><select class="promo-select" id="certifProgSel" onchange="certifAdminRender()"><option value="ecole">Born To Coach — 2e gén.</option><option value="voie">La Voie des managers</option><option value="vem">Vous En Paix</option></select></div>
           <div><label style="font-size:11px;color:var(--color-neutral);font-family:var(--font-title);display:block;margin-bottom:4px">Promotion (jury & candidats)</label><select class="promo-select"><option>Promo 2026</option><option>Promo 2027</option></select></div>
@@ -1853,9 +1854,14 @@ a.ref-item:hover{background:var(--color-background)}
           <div class="field"><label>Univers</label><select><option>La Voie (bleu + vert)</option><option>L'École (noir + vert)</option></select></div>
         </div>
         <div class="row2">
-          <div class="field"><label>Type de programme</label><select><option>Parcours long — sessions/séquences, promotions</option><option>Format court — 1 à 2 jours, structure allégée</option><option>Accompagnement individuel — bilan de compétences / VAE (tronc commun La Voie)</option></select></div>
+          <div class="field"><label>Type de programme</label><select><option>Parcours long — sessions/séquences, promotions</option><option>Format court — 1 à 2 jours (mêmes briques, moins de contenu)</option><option>Individuel — Tronc commun (titre RS)</option><option>Individuel — Bilan de compétences</option><option>Individuel — VAE</option></select></div>
           <div class="field"><label>Modalité</label><select><option>Distanciel</option><option>Présentiel</option><option>Mixte (présentiel + distanciel)</option></select></div>
         </div>
+        <div class="row2">
+          <div class="field"><label>Sanction / clôture du programme</label><select><option>Certification — titre RS / RNCP (section « Certification »)</option><option>Documents &amp; livrables — bilan / VAE (jury, rapport, livrables)</option><option>Attestation de suivi</option><option>Aucune</option></select></div>
+          <div class="field"><label>Formateur / référent (individuel)</label><input placeholder="Ex. Yohann Duclos" value="Yohann Duclos"></div>
+        </div>
+        <p class="note" style="background:rgba(17,76,106,.06);border-left:4px solid var(--color-accent);border-radius:8px;padding:10px 14px;font-size:12.5px;margin:0 0 var(--space-4)">La <b>sanction</b> pilote la section en bas du menu côté membre : <b>Certification</b> (tronc commun/long/court certifiant) <b>ou</b> <b>Documents &amp; livrables</b> (bilan/VAE) <b>ou</b> rien (attestation). Le <b>référent</b> n'apparaît que pour les programmes individuels (remplace « animé par »). <b>Principe : tout élément non renseigné n'apparaît pas côté membre.</b></p>
         <div class="row3">
           <div class="field"><label>Animateur</label><input value="Yohann Duclos"></div>
           <div class="field"><label>Statut</label><select><option>Publié</option><option>Brouillon</option></select></div>

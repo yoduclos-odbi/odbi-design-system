@@ -252,7 +252,10 @@ Inspirée des LMS type Skool :
 
 ## 6ter. Formats pédagogiques & types de programme
 
-Un programme porte un **type** (paramétré au BO, éditeur de programme → « Type de programme » + « Modalité »).
+Un programme porte un **type** (BO → éditeur → **« Type de programme »** : Parcours long · Format court ·
+Individuel — Tronc commun / Bilan / VAE) + une **« Modalité »** (distanciel/présentiel/mixte) + une
+**« Sanction / clôture »** (*Certification titre RS/RNCP* · *Documents & livrables (bilan/VAE)* · *Attestation* · *Aucune*)
+qui **pilote la section du bas de menu** côté membre, et un **référent** (individuel uniquement).
 Le **catalogue « Les programmes »** est organisé en **3 onglets** (façon navigateur) :
 **Programmes longs · Programmes courts · Programmes individuels**.
 
