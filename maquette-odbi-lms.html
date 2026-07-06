@@ -839,6 +839,14 @@ a.ref-item:hover{background:var(--color-background)}
             <div class="cnav-item" onclick="openInfo(this,'certif')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg> Mon parcours de certification</div>
           </div>
         </div>
+
+        <!-- Documents & livrables (individuel : Bilan / VAE — remplace la Certification) -->
+        <div class="nav-sec hidden" id="navDocsSec">
+          <div class="nav-sec-h" onclick="toggleSec(this)"><svg class="sc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg> Documents & livrables</div>
+          <div class="nav-sec-b">
+            <div class="cnav-item" onclick="openInfo(this,'documents')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Mes documents & livrables</div>
+          </div>
+        </div>
       </div>
 
       <!-- Panneau YoDalf : historique des conversations (même style que le menu programme) -->
@@ -1193,6 +1201,9 @@ a.ref-item:hover{background:var(--color-background)}
 
       <!-- CERTIFICATION — évaluation finale (contenu généré par renderCertif) -->
       <div id="crs-certif" class="hidden"></div>
+
+      <!-- DOCUMENTS & LIVRABLES (individuel : Bilan / VAE — contenu généré par renderDocs) -->
+      <div id="crs-documents" class="hidden"></div>
 
       <!-- Panneau verrouillé (accès gratuit) -->
       <div id="crs-locked" class="hidden">
@@ -2323,7 +2334,7 @@ function fillPreceptsGrid(){
   var g=document.getElementById('preceptsGrid');if(!g)return;
   g.innerHTML=PRECEPTS.map(function(p,i){return '<div class="wv" style="cursor:pointer" onclick="openPrecept('+i+')"><div class="wv-th"><span class="fb">Bonus</span><div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="wv-b"><h4>'+p.t+'</h4><small>'+p.a+' · '+p.d+'</small></div></div>';}).join('');
 }
-function hideCrs(){['accueil','presentation','preceptes','precept','training','certif','presentiel','replays','lexique','references','participants','whatsapp'].forEach(function(x){var el=document.getElementById('crs-'+x);if(el)el.classList.add('hidden')});var lk=document.getElementById('crs-locked');if(lk)lk.classList.add('hidden');}
+function hideCrs(){['accueil','presentation','preceptes','precept','training','certif','documents','presentiel','replays','lexique','references','participants','whatsapp'].forEach(function(x){var el=document.getElementById('crs-'+x);if(el)el.classList.add('hidden')});var lk=document.getElementById('crs-locked');if(lk)lk.classList.add('hidden');}
 function openPrecept(i){
   var p=PRECEPTS[i]||PRECEPTS[0];
   var t=document.getElementById('precTitle');if(t)t.textContent=p.t;
@@ -2410,14 +2421,35 @@ function applyType(){
   // Individuel : 1:1 → « Classes » deviennent « Séances »
   var rl=document.getElementById('navReplaysLabel');if(rl)rl.textContent=ind?'Séances':'Classes';
   var rh=document.getElementById('replaysHeading');if(rh)rh.textContent=ind?'Mes séances (1:1)':'Classes de la promotion';
-  // Certification : principe « vide → masqué » — le Bilan de compétences n'en a pas
-  var certSec=document.getElementById('navCertifSec');
-  if(certSec){
-    var showCert = ind ? (curIndivKey!=='bilan') : !!CERTIF[curUni];
-    certSec.style.display = showCert ? '' : 'none';
-    var nb=document.getElementById('navCertifBadge');
-    if(showCert && nb && ind){ nb.textContent = (curIndivKey==='vae') ? 'VAE' : 'RS'; nb.style.background='var(--color-asparagus)'; }
-  }
+  // Certification vs Documents & livrables (principe « vide → masqué ») :
+  //  - Tronc commun → Certification (titre RS) · Bilan & VAE → Documents & livrables (jury, rapport/PV, livrables)
+  var isDocs = ind && (curIndivKey==='bilan' || curIndivKey==='vae');
+  var showCert = ind ? (curIndivKey==='tronc') : !!CERTIF[curUni];
+  var certSec=document.getElementById('navCertifSec');if(certSec)certSec.style.display=showCert?'':'none';
+  var nb=document.getElementById('navCertifBadge');if(showCert&&nb&&ind){nb.textContent='RS';nb.style.background='var(--color-asparagus)';}
+  var docsSec=document.getElementById('navDocsSec');if(docsSec)docsSec.classList.toggle('hidden',!isDocs);
+  if(isDocs)renderDocs();
+}
+// Documents & livrables (individuel : Bilan / VAE) — jury, rapport/PV, livrables
+var DOCS={
+  bilan:{sub:'Bilan de compétences',juryLabel:'Commission de restitution',membres:'Yo Duclos (consultant référent)',date:'12 déc. 2026',jury:false,
+    rapports:[['Document de synthèse du bilan','Livrable final remis au bénéficiaire (confidentiel)','à venir'],['Compte-rendu de l\'entretien de conclusion','Phase de conclusion','ok']],
+    livrables:[['Convention tripartite','Signée','ok'],['Consentement & confidentialité','Signé','ok']]},
+  vae:{sub:'VAE — Validation des acquis',juryLabel:'Jury VAE',membres:'Céline Duclos (présidente) · Thierry Faye · Isabelle Blanc',date:'12 sept. 2026',jury:true,
+    rapports:[['Procès-verbal du jury VAE','Décision : validation totale / partielle','à venir'],['Rapport d\'accompagnement (remis au jury)','Phase dossier','ok']],
+    livrables:[['Dossier de recevabilité (livret 1)','Recevabilité','ok'],['Dossier VAE (livret 2)','En cours de constitution','à venir']]}
+};
+function renderDocs(){
+  var box=document.getElementById('crs-documents');if(!box)return;
+  var d=DOCS[curIndivKey]||DOCS.bilan;
+  var row=function(a){var todo=a[2]==='à venir';return '<div class="res-item"><div class="res-ic pdf"><span class="i-pdf-w"></span></div><div class="t"><b>'+a[0]+'</b><small>'+a[1]+'</small></div><span class="cf-st '+(todo?'plan':'ok')+'">'+(todo?'À venir':'Disponible ⬇')+'</span></div>';};
+  box.innerHTML=
+    '<div class="cf-hero"><h3>Documents & livrables</h3><p>'+d.sub+' — le jury, le rapport/procès-verbal et les livrables de votre accompagnement individuel.</p></div>'+
+    '<div class="cf-sec-t">'+ICN.users+' '+d.juryLabel+'</div>'+
+    '<div class="card" style="padding:var(--space-5)"><div class="pv-row"><span class="lbl">Membres</span><span>'+d.membres+'</span></div><div class="pv-row" style="border-bottom:none"><span class="lbl">Date de passage</span><span>'+d.date+'</span></div></div>'+
+    '<div class="cf-sec-t">'+ICN.doc+' Rapport & procès-verbal</div>'+d.rapports.map(row).join('')+
+    '<div class="cf-sec-t">'+ICN.book+' Livrables & pièces</div>'+d.livrables.map(row).join('')+
+    '<p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-4)">'+ICN.info+'Documents confidentiels — partagés entre le bénéficiaire, le formateur/référent'+(d.jury?' et le jury VAE':'')+'.</p>';
 }
 function clearMenuSel(){document.querySelectorAll('#ctx-program .tv-leaf,#ctx-program .cnav-item').forEach(function(x){x.classList.remove('cur','active')});var h=document.getElementById('tvHome');if(h)h.classList.remove('cur');}
 // Catalogue : onglets Longs / Courts / Individuels
@@ -2443,7 +2475,7 @@ function openInfo(el,t){
   goTo('course');courseTab(null,t);
 }
 function showLocked(){
-  ['accueil','presentation','preceptes','precept','training','certif','presentiel','replays','lexique','references','participants','whatsapp'].forEach(function(x){var p=document.getElementById('crs-'+x);if(p)p.classList.add('hidden')});
+  ['accueil','presentation','preceptes','precept','training','certif','documents','presentiel','replays','lexique','references','participants','whatsapp'].forEach(function(x){var p=document.getElementById('crs-'+x);if(p)p.classList.add('hidden')});
   var l=document.getElementById('crs-locked');if(l)l.classList.remove('hidden');
 }
 // Arbre : déplier / replier (une seule session ouverte à la fois)
@@ -2548,9 +2580,9 @@ function switchPromo(key){
 }
 function courseTab(el,t){
   if(el)el.classList.add('active');
-  ['accueil','presentation','preceptes','precept','training','certif','presentiel','replays','lexique','references','participants','whatsapp'].forEach(x=>document.getElementById('crs-'+x).classList.add('hidden'));
+  ['accueil','presentation','preceptes','precept','training','certif','documents','presentiel','replays','lexique','references','participants','whatsapp'].forEach(x=>document.getElementById('crs-'+x).classList.add('hidden'));
   var locked=document.getElementById('crs-locked');if(locked)locked.classList.add('hidden');
-  var reserved=['certif','presentiel','replays','lexique','references','participants','whatsapp'];
+  var reserved=['certif','documents','presentiel','replays','lexique','references','participants','whatsapp'];
   if(accessMode==='free' && reserved.indexOf(t)>=0){ if(locked)locked.classList.remove('hidden'); }
   else { document.getElementById('crs-'+t).classList.remove('hidden');
     if(t==='replays'){document.querySelectorAll('#crs-replays .replay-actions .btn.active').forEach(function(b){repShow(b,'resume');});}
