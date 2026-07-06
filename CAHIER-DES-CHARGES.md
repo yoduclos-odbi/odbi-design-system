@@ -418,6 +418,33 @@ et peut **s'étaler sur plusieurs semaines** (adaptation pédagogique).
 - Badges / accomplissements (obtenus + verrouillés)
 - Série de jours (streak)
 
+### Tout se règle au BO (éditeur de programme → « Règles de progression » + « Points, badges & niveaux »)
+**Toute la progression est administrable depuis le BO** :
+- **Règles de complétion — par type de contenu** : ce qui marque une étape « faite » (vidéo ≥ X %, exercice
+  déposé / validé, ressource ouverte / non requise, quiz : 1 tentative ou score ≥ X %, classe ouverte / non requise)
+  + **si l'étape compte dans la progression** (toggle par type).
+- **Calcul de la progression** (% d'étapes / pondéré) · **séquencement par défaut** (séquentiel/libre) ·
+  **étapes prises en compte** (toutes / obligatoires) · **prérequis pour la sanction** (ex. ≥ 100 % + exercices déposés).
+- **Gamification** : **points par action** (activables), **niveaux** (nom + seuil), **badges** (nom + condition,
+  activables, ajout possible). Alimente la page « Progression » et le profil.
+- Rappel : l'**ouverture datée / drip** reste **par promotion** (Déverrouillage) ; ici ce sont les **règles de complétion**.
+
+---
+
+## 10bis. Notifications (gérées au BO — onglet « Notifications »)
+
+Chaque notification est **activable/désactivable par canal**, avec **destinataires** paramétrables, et on peut
+**en ajouter** de nouvelles (événement + destinataires + canaux + modèle de message).
+- **Canaux** : **cloche (in-app)** · **e-mail** (service transactionnel) · **WhatsApp** (connecteur, si activé).
+  Une notification **désactivée n'est ni affichée ni envoyée**.
+- **Destinataires** : participant concerné · toute la promotion · coach/animateur · admin.
+- **Notifications définies par défaut** : Bienvenue/accès (onboarding) · Nouvelle session / contenu débloqué ·
+  Rappel de visio/classe (1h avant) · Replay disponible · Exercice à rendre / relance · Invitation séance
+  Coaching/Training · Feedback disponible · Rappel de présentiel · Diplôme/attestation délivré · Badge/niveau
+  atteint (gamification) · Annonce de l'animateur.
+- **Ajout** : bouton « + Ajouter une notification » (événement déclencheur, destinataires, canaux, message-modèle).
+- Réservé à l'**Admin** (onglet masqué en vue coach).
+
 ---
 
 ## 11. Visios live & replays (BigBlueButton + Notta)
