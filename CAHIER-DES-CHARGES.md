@@ -442,7 +442,11 @@ Chaque notification est **activable/désactivable par canal**, avec **destinatai
   Rappel de visio/classe (1h avant) · Replay disponible · Exercice à rendre / relance · Invitation séance
   Coaching/Training · Feedback disponible · Rappel de présentiel · Diplôme/attestation délivré · Badge/niveau
   atteint (gamification) · Annonce de l'animateur.
-- **Ajout** : bouton « + Ajouter une notification » (événement déclencheur, destinataires, canaux, message-modèle).
+- **Ajout** : bouton « + Ajouter une notification ». Le formulaire demande un **déclencheur (événement système
+  choisi dans une liste** : inscription, contenu débloqué, visio programmée, replay, exercice non rendu, quiz
+  complété, séance créée, feedback/document déposé, présentiel, diplôme, badge, annonce… ou **personnalisé**), un
+  **moment d'envoi** (immédiat / 1 h avant / 24 h avant / le jour même / 1-3-7 jours après pour les relances),
+  un **intitulé interne**, les **destinataires**, les **canaux** et un **message-modèle**.
 - Réservé à l'**Admin** (onglet masqué en vue coach).
 
 ---

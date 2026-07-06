@@ -1830,7 +1830,14 @@ a.ref-item:hover{background:var(--color-background)}
         <div id="notifForm" class="edit-card hidden" style="margin-bottom:var(--space-5)">
           <h4 style="margin-top:0;font-family:var(--font-title)">Nouvelle notification</h4>
           <div class="row2">
-            <div class="field"><label>Événement déclencheur</label><input placeholder="Ex. Nouveau document déposé"></div>
+            <div class="field"><label>Déclencheur — événement</label>
+              <select onchange="notifTrigCustom(this)"><option>Inscription / accès créé</option><option>Session ou contenu débloqué</option><option>Visio / classe programmée</option><option>Replay disponible</option><option>Exercice non rendu</option><option>Quiz complété</option><option>Séance Coaching/Training créée</option><option>Feedback déposé</option><option>Document / livrable déposé</option><option>Présentiel à venir</option><option>Diplôme / attestation délivré</option><option>Badge / niveau atteint</option><option>Annonce manuelle de l'animateur</option><option value="custom">Autre (personnalisé)…</option></select>
+            </div>
+            <div class="field"><label>Moment d'envoi</label><select><option>Immédiat (au déclenchement)</option><option>1 h avant</option><option>24 h avant</option><option>Le jour même</option><option>1 jour après</option><option>3 jours après (relance)</option><option>7 jours après (relance)</option></select></div>
+          </div>
+          <div class="field hidden" id="notifCustomField"><label>Événement personnalisé</label><input placeholder="Décrivez l'événement déclencheur (ex. « Nouveau lien externe ajouté »)"></div>
+          <div class="row2">
+            <div class="field"><label>Intitulé (interne)</label><input placeholder="Ex. Relance exercice non rendu"></div>
             <div class="field"><label>Destinataires</label><select><option>Participant concerné</option><option>Toute la promotion</option><option>Coach / animateur</option><option>Admin</option></select></div>
           </div>
           <div class="field"><label>Canaux</label><div style="display:flex;gap:18px;flex-wrap:wrap"><label style="display:flex;align-items:center;gap:8px"><input type="checkbox" checked> Cloche (in-app)</label><label style="display:flex;align-items:center;gap:8px"><input type="checkbox"> E-mail</label><label style="display:flex;align-items:center;gap:8px"><input type="checkbox"> WhatsApp</label></div></div>
@@ -2490,6 +2497,7 @@ var PHASES={
 };
 function setSessLabel(id,txt){var s=document.querySelector('#'+id+' > .h > span');if(s)s.textContent=txt;}
 function connectNotion(){var s=document.getElementById('notionStatus');if(s)s.textContent='✅ Connexion Notion établie · espace « ODBI » · jeton actif';var b=document.getElementById('notionBadge');if(b)b.textContent='Connecté';}
+function notifTrigCustom(sel){var f=document.getElementById('notifCustomField');if(f)f.classList.toggle('hidden',sel.value!=='custom');}
 function applyType(){
   var ind=curType==='indiv', court=curType==='court';
   var ph=ind?(PHASES[curIndivKey]||PHASES.tronc):null;
