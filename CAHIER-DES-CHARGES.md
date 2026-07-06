@@ -252,22 +252,27 @@ Inspirée des LMS type Skool :
 
 ## 6ter. Formats pédagogiques & types de programme
 
-Un programme porte un **type** (paramétré au BO, éditeur de programme → « Type de programme » + « Modalité ») :
+Un programme porte un **type** (paramétré au BO, éditeur de programme → « Type de programme » + « Modalité »).
+Le **catalogue « Les programmes »** est organisé en **3 onglets** (façon navigateur) :
+**Programmes longs · Programmes courts · Programmes individuels**.
 
 ### 1) Parcours long
 - Structure complète : **sessions → séquences → étapes**, **promotions**, pédagogie inversée, certification, etc.
-- Ex. **La Voie des managers**, **Born To Coach**.
+- Ex. **La Voie des managers**, **Born To Coach**. (Onglet « Programmes longs ».)
 
 ### 2) Format court
 - **1 à 2 jours**, en **présentiel** ou **distanciel** (ou mixte), **structure allégée**.
 - Il y a du contenu, mais **pas forcément autant de sessions** : une session peut être **« plate »** (un seul
-  contenu, **sans séquences**). Ex. la **série « Vous En… » (VE)**, certains programmes de l'École.
+  contenu, **sans séquences**). Ex. la **série « Vous En… » (VE)**. (Onglet « Programmes courts ».)
+- **Vue dédiée** : pas d'arbre de sessions, un **déroulé simple** (liste d'items : vidéo, atelier présentiel/distanciel,
+  exercice — parfois en groupe —, ressources dont **liens externes**, quiz).
 
-### 3) Accompagnement individuel (bilans & VAE)
-- **Bilan de compétences** et **VAE** (validation des acquis de l'expérience).
-- **Tronc commun = un programme d'accompagnement identique à La Voie, mais adapté individuellement**
-  (pas de cohorte/promo classique : suivi **1:1**, calendrier propre à la personne).
-- Distingué des parcours long/court par son type et sa **modalité individuelle**.
+### 3) Programmes individuels (onglet dédié)
+Onglet **« Programmes individuels »**, dans l'ordre : **① Tronc commun d'accompagnement**, **② Bilan de
+compétences**, **③ VAE** (validation des acquis de l'expérience).
+- **Tronc commun = le programme d'accompagnement de La Voie, adapté individuellement** ; les bilans/VAE s'appuient dessus.
+- Ces **3 programmes sont individuels** : **pas de cohorte/promotion** → **sessions individuelles (1:1)**,
+  calendrier propre à chaque personne.
 
 ### Structure flexible (tout est optionnel)
 Le modèle ne force rien — on n'affiche que ce qui existe :
@@ -276,8 +281,13 @@ Le modèle ne force rien — on n'affiche que ce qui existe :
 - **Séquences optionnelles** : si une session n'a **qu'un seul contenu**, on peut **se passer des séquences**
   (session « plate »).
 - **Replays regroupés dans « Promotion »** : il n'y a **pas forcément un replay par session** → les replays
-  (classes/visios enregistrées) sont rassemblés dans une entrée **« Replays » de la section Promotion**,
-  plutôt que dans chaque session.
+  (classes/visios enregistrées) sont rassemblés dans l'entrée **« Replays » de la section Promotion**
+  (placée **au-dessus de Coaching/Training**), plutôt que dans chaque session. Chaque replay y donne accès
+  à **Revoir · Transcription · Chapitrage · Résumé · YoDalf**.
+- **Ressources = lien externe possible** : une ressource peut être un **fichier** (PDF, audio…) **ou un lien
+  externe** (s'ouvre dans un nouvel onglet).
+- **Exercices à plusieurs** : un exercice peut être **individuel ou en groupe** (notamment à l'École, en
+  **Intelligence Collective**) — avec **dépôt individuel ou dépôt commun** au sous-groupe et **restitution commune**.
 
 ### Déverrouillage du contenu **par promotion** (point structurant)
 Le contenu (asynchrone) est **partagé par toutes les promotions**, mais **quand/comment il se débloque**
