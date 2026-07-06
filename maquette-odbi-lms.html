@@ -1257,7 +1257,7 @@ a.ref-item:hover{background:var(--color-background)}
       <div id="ls-ex" class="ls-panel">
         <h2 style="font-size:20px;margin-bottom:4px"><span class="i i-exo"></span> Exercice préparatoire</h2>
         <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">2.1 · pédagogie inversée — à faire avant la vidéo</p>
-        <div class="exo"><h4>Diagnostic de votre posture managériale <span class="sc-tag grp">En groupe</span></h4><p>Observez votre dernière réunion : qu'avez-vous délégué / gardé ? Notez 3 situations. <b>Exercice réalisable à plusieurs</b> (ex. sous-groupe d'Intelligence Collective) avec une <b>restitution commune</b>.</p><button class="btn btn-ghost">📄 Fiche d'exercice</button></div>
+        <div class="exo"><h4>Diagnostic de votre posture managériale <span class="sc-tag grp">En groupe</span></h4><p>Observez votre dernière réunion : qu'avez-vous délégué / gardé ? Notez 3 situations. <b>Exercice réalisable à plusieurs</b> (ex. sous-groupe d'Intelligence Collective) avec une <b>restitution commune</b>.</p><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-ghost">📄 Fiche d'exercice</button><a class="btn btn-ghost" href="https://vimeo.com" target="_blank">🎬 Vidéo de consigne</a></div></div>
         <div class="field" style="max-width:420px;margin:var(--space-3) 0"><label>Dépôt de l'exercice</label><select><option>Individuel — chacun dépose le sien</option><option>En groupe — un dépôt commun pour le sous-groupe</option></select></div>
         <div class="upload-zone" style="margin:var(--space-3) 0"><span class="big"></span>Déposer l'exercice réalisé — visible par l'animateur</div>
         <div style="margin-top:var(--space-6);display:flex;justify-content:flex-end"><button class="btn btn-accent" onclick="lsNext('video')">Suivant · Vidéos ▶</button></div>
@@ -1599,8 +1599,23 @@ a.ref-item:hover{background:var(--color-background)}
           </div>
 
           <div id="pm-visios" class="hidden">
-            <div class="flex-between mb6"><h4 style="margin:0">Visios de la promotion</h4><button class="btn btn-primary">+ Programmer une visio</button></div>
-            <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">Rattachée à une séquence du cours. Salle BBB créée automatiquement ; le replay (BBB + Notta) apparaît ici après la visio.</p>
+            <div class="flex-between mb6"><h4 style="margin:0">Visios de la promotion</h4><button class="btn btn-primary" onclick="document.getElementById('visioForm').classList.toggle('hidden')">+ Programmer une visio</button></div>
+            <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">C'est ici (BO → Promotions → gérer une promo → <b>Visios & replays</b>) que vous <b>programmez les visios</b>. Chacune est rattachée à une séquence ; la salle BBB est créée automatiquement et le replay (BBB + Notta) apparaît ensuite dans <b>Promotion → Replays</b>.</p>
+            <div id="visioForm" class="edit-card hidden" style="margin-bottom:var(--space-4)">
+              <h4 style="margin-top:0;font-family:var(--font-title)">Nouvelle visio</h4>
+              <div class="row3">
+                <div class="field"><label>Séquence rattachée</label><select><option>2.1 — Créer l'engagement</option><option>2.2 — Le feedback</option><option>Hors séquence</option></select></div>
+                <div class="field"><label>Titre</label><input placeholder="ex. Q&amp;R de la semaine"></div>
+                <div class="field"><label>Durée</label><select><option>1h</option><option>45 min</option><option>1h30</option></select></div>
+              </div>
+              <div class="row3">
+                <div class="field"><label>Date</label><input type="date" value="2026-03-26"></div>
+                <div class="field"><label>Heure</label><input type="time" value="18:00"></div>
+                <div class="field"><label>Récurrence</label><select><option>Aucune</option><option>Hebdomadaire</option><option>Toutes les 2 semaines</option></select></div>
+              </div>
+              <p style="color:var(--color-neutral);font-size:12px">La <b>salle BigBlueButton</b> est créée automatiquement et l'<b>enregistrement</b> (replay + transcription Notta) est activé. Les participants de la promo sont notifiés et la visio apparaît dans leur agenda.</p>
+              <div style="display:flex;gap:10px"><button class="btn btn-primary">Créer la visio (salle BBB)</button><button class="btn btn-ghost" onclick="document.getElementById('visioForm').classList.add('hidden')">Annuler</button></div>
+            </div>
             <table class="table"><tr><th>Séquence</th><th>Titre</th><th>Date</th><th>Heure</th><th>Salle / Replay</th><th></th></tr>
               <tr><td>2.1</td><td>Créer l'engagement — Q&R</td><td><input type="date" value="2026-03-12" style="border:1px solid rgba(74,74,74,.2);border-radius:6px;padding:4px 8px"></td><td>18:00</td><td>Replay ✓ + Notta</td><td><button class="icon-btn">✏️</button></td></tr>
               <tr><td>2.1</td><td>Atelier pratique</td><td><input type="date" value="2026-03-14" style="border:1px solid rgba(74,74,74,.2);border-radius:6px;padding:4px 8px"></td><td>10:00</td><td>Replay ✓ + Notta</td><td><button class="icon-btn">✏️</button></td></tr>
@@ -1938,7 +1953,14 @@ a.ref-item:hover{background:var(--color-background)}
         <div class="edit-card">
           <div class="field"><label>Exercice 1 — Titre</label><input value="Diagnostic de votre posture managériale"></div>
           <div class="field"><label>Consigne</label><textarea rows="3">Observez votre dernière réunion : qu'avez-vous délégué / gardé ? Notez 3 situations.</textarea></div>
-          <div class="field"><label>Fiche d'exercice (PDF)</label><div class="upload-zone"><span class="big">📄</span>Téléverser la fiche</div></div>
+          <div class="row2">
+            <div class="field"><label>Fiche d'exercice (PDF)</label><div class="upload-zone"><span class="big">📄</span>Téléverser la fiche</div></div>
+            <div class="field"><label>Vidéo de consigne (lien Vimeo / YouTube)</label><input placeholder="https://vimeo.com/…" value="https://vimeo.com/901234570"></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label>Réalisation</label><select><option>Individuel</option><option>En groupe (sous-groupe / Intelligence Collective)</option></select></div>
+            <div class="field"><label>Dépôt</label><select><option>Individuel — chacun le sien</option><option>Commun — un dépôt par sous-groupe</option></select></div>
+          </div>
         </div>
         <button class="add-btn">+ Ajouter un exercice</button>
       </div>

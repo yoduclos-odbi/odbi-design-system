@@ -288,6 +288,8 @@ Le modèle ne force rien — on n'affiche que ce qui existe :
   externe** (s'ouvre dans un nouvel onglet).
 - **Exercices à plusieurs** : un exercice peut être **individuel ou en groupe** (notamment à l'École, en
   **Intelligence Collective**) — avec **dépôt individuel ou dépôt commun** au sous-groupe et **restitution commune**.
+- **Exercice = fiche PDF et/ou vidéo de consigne** : un exercice peut porter une **fiche (PDF)** et/ou un
+  **lien vidéo** (Vimeo/YouTube) en consigne (front : bouton « 🎬 Vidéo de consigne » ; BO : champ lien dans l'éditeur d'exercice).
 
 ### Déverrouillage du contenu **par promotion** (point structurant)
 Le contenu (asynchrone) est **partagé par toutes les promotions**, mais **quand/comment il se débloque**
@@ -402,6 +404,10 @@ et peut **s'étaler sur plusieurs semaines** (adaptation pédagogique).
 ## 11. Visios live & replays (BigBlueButton + Notta)
 
 ### Visios
+- **Où on les programme** : **BO → Promotions → gérer une promo → onglet « Visios & replays »** → bouton
+  **« + Programmer une visio »** (formulaire : séquence rattachée, titre, date/heure, durée, récurrence).
+  La **salle BBB** est créée automatiquement, l'**enregistrement** activé (replay + Notta) ; la visio remonte
+  ensuite dans **Promotion → Replays** côté membre + dans son agenda.
 - Classes **synchrones** d'une promotion, via **BigBlueButton**
 - Chaque participant voit **uniquement les visios de son cours ET de sa promo** (croisement inscription × cours × promo)
 - **Pas d'inscription** aux visios : accès **automatique** via l'appartenance à la promo
