@@ -1065,7 +1065,8 @@ le contenu doit **exister localement** d'une manière ou d'une autre. La bonne a
 ### Point 2 — mobile-first (implémenté dans la maquette)
 Le responsive est intégré à la maquette (breakpoints tablette ≤ 1024px / mobile ≤ 640px) :
 - **Barre du haut** → menu **burger** déroulant sur mobile.
-- **Sidebar programme** (arbre du cours) → **tiroir off-canvas** (bouton flottant + fond assombri).
+- **Sidebar programme** (arbre du cours) → **tiroir off-canvas** (fond assombri), ouvert par un bouton
+  **« Programme »** placé **dans la barre du haut, à droite du logo** (visible seulement en vue cours).
 - **Grilles** de cartes en **1 colonne**, bannières empilées, **tableaux du BO défilables** horizontalement.
 - Cibles tactiles agrandies, aucun débordement horizontal.
 La **PWA** (installation, notifications push, cache hors-ligne du point 10) reste à implémenter au développement.
