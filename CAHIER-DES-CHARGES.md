@@ -427,8 +427,10 @@ et peut **s'étaler sur plusieurs semaines** (adaptation pédagogique).
 - Badges / accomplissements (obtenus + verrouillés)
 - Série de jours (streak)
 
-### Tout se règle au BO (éditeur de programme → « Règles de progression » + « Points, badges & niveaux »)
-**Toute la progression est administrable depuis le BO** :
+### Tout se règle au BO — onglet dédié « Progression »
+**Toute la progression est administrable depuis le BO**, dans un **onglet dédié « Progression »**
+(entre « Suivi pédagogique » et « Certification »), de façon **globale** (plateforme). L'**éditeur de
+programme** renvoie vers cet onglet et permettra une **surcharge propre au programme**. Contenu :
 - **Règles de complétion — par type de contenu** : ce qui marque une étape « faite » (vidéo ≥ X %, exercice
   déposé / validé, ressource ouverte / non requise, quiz : 1 tentative ou score ≥ X %, classe ouverte / non requise)
   + **si l'étape compte dans la progression** (toggle par type).
@@ -791,6 +793,7 @@ Aujourd'hui sur **Tally → Google Sheet anonyme** ; **à internaliser dans le L
 | Section BO | Admin | Animateur |
 |---|---|---|
 | **Suivi pédagogique** | tout | ✅ ses programmes uniquement |
+| **Progression** (règles de complétion + gamification — cf. §10) | tout | ❌ (réglage plateforme) |
 | **Certification** (paramétrage, grilles, PV, diplômes — cf. §11ter) | tout | ❌ |
 | **Promotions** (membres promo, planning visios) | tout | ✅ promos de ses programmes |
 | **Programmes** (contenu, sessions, visios) | tout | ✅ ses programmes (édition) |
