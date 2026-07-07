@@ -821,6 +821,9 @@ Onglets :
   **« Toutes les séquences »** donnant des **stats agrégées par participant au niveau
   du programme** (progression, exercices rendus, score quiz moyen, vidéos vues,
   assiduité visios), **actualisées en temps réel**. Export CSV + Notion (BPF).
+  - **Détection des décrocheurs / apprenants « à risque »** : le suivi met en avant les participants
+    **inactifs** (ex. 14 j sans connexion) ou **bloqués** dans leur progression, pour déclencher une
+    **relance** (notification/e-mail). Vue « entonnoir de complétion » par session pour repérer où ça coince.
 - **Certification** — paramétrage par programme (adossement RNCP/RS/interne, niveaux, référentiel,
   ateliers 1 à 3), suivi des candidats, **saisie des grilles**, **procès-verbal** et **délivrance des diplômes** (cf. §11ter).
 - **Intégrations** — config BBB, Notta, YoDalf, **Loom**, WhatsApp, Notion, Stripe
@@ -956,6 +959,19 @@ formation/promotion, etc. (volet financier = à coupler avec Stripe).
 - Réutilise l'intégration **Notion** existante (déjà CRM) — Notion devient aussi
   le réceptacle des données de reporting BPF/Qualiopi.
 
+### Satisfaction (à chaud / à froid) — géré sur Notion
+- Les **questionnaires de satisfaction** (à chaud en fin de session, à froid à J+3 mois) et leurs
+  relances sont **gérés sur Notion via des automatisations** (comme l'évaluation coach, cf. §10ter),
+  **pas** re-développés dans le LMS.
+- Le **LMS extrait les données de connexion / d'assiduité** vers Notion (cf. ci-dessus) ; les
+  **résultats agrégés** (taux de satisfaction, NPS) peuvent ensuite être **rapatriés/affichés** dans
+  le BO au même titre que les résultats d'évaluation coach.
+
+### Émargement & attestations — géré sur Notion
+- **Émargement** (présence visios via entrée/sortie BBB, présentiels) et **génération des
+  attestations / certificats de réalisation** : orchestrés par **automatisations Notion** à partir
+  des **données de connexion/assiduité extraites du LMS** (extraction déjà prévue au BO).
+
 ---
 
 ## 18. Espace membre — Profil & annuaire
@@ -998,6 +1014,9 @@ Le profil affiche aussi :
 - Présenté comme un **vrai calendrier** (vue mensuelle), filtré sur les promos du membre.
 - Événements color-codés et **cliquables** (renvoient au contenu concerné) :
   **Visios (BBB), Présentiels, Exercices, Ressources à consulter, Quiz, Séances d'entraînement (Coaching/Training)**.
+- **Export / abonnement calendrier** (retenu) : lien **iCal (.ics)** + **« Ajouter à Google Calendar »** pour
+  synchroniser visios et séances Training/Coaching dans l'agenda personnel du membre (abonnement mis à jour
+  automatiquement), en plus du bouton « Mon agenda » ponctuel.
 
 ---
 
@@ -1009,6 +1028,47 @@ Le profil affiche aussi :
 - [x] Sens de la synchro Notion : **bidirectionnel** — Notion→LMS (inscriptions + envoi des accès), LMS→Notion (CRM + BPF)
 - [ ] Service d'**e-mailing transactionnel** à choisir (envoi des accès, notifications)
 - [ ] **Plan Vimeo** adapté (Pro/Business+) requis pour Player SDK + confidentialité par domaine
+
+---
+
+## 20. Arbitrage des améliorations (juillet 2026)
+
+Suite à la revue de propositions d'améliorations, décisions prises :
+
+| # | Proposition | Décision | Où c'est traité |
+|---|---|---|---|
+| 1 | **Communauté intégrée** (feed, commentaires par leçon, entraide) | **v2 / plus tard** | §21 (Évolutions v2) |
+| 2 | **Mobile-first / PWA** | **Retenu** — principe **décidé maintenant**, **implémenté au dev** | §15 + Backlog UX (chantier prioritaire) |
+| 3 | **Reprise de lecture vidéo** | **Déjà prévu** | §8, §11, §15 (Vimeo Player SDK) |
+| 4 | **Satisfaction à chaud / à froid** | **Géré sur Notion** (automatisations) ; résultats rapatriables au BO | §17 |
+| 5 | **Émargement & attestations** | **Géré sur Notion** (automatisations) à partir des données de connexion extraites | §17 |
+| 6 | **Détection des décrocheurs / à risque** | **Retenu** — dans le **BO → Suivi pédagogique** | §14 |
+| 7 | **Recherche globale** | **Retenu** | Backlog UX |
+| 8 | **Export / abonnement agenda (iCal, Google Cal)** | **Retenu** | §18 (Agenda) |
+| 9 | **Onboarding 1ʳᵉ connexion** (visite guidée) | **Retenu (déjà listé)** | Backlog UX, §14 |
+| 10 | **Consultation hors-ligne** | **Retenu** sous forme de **cache temporaire chiffré** (voir ci-dessous) ; **pas** de téléchargement de fichiers bruts | ci-dessous |
+| 11 | **YoDalf proactif** (relances, révisions, répétition espacée) | **v2 / plus tard** | §21 (Évolutions v2) |
+| 12 | **Architecture de production** | **Confié à un développeur** (qui pourra s'appuyer sur Claude) ; la maquette sert de référence UX | §15 |
+
+### Point 10 — consulter sans connexion (réponse technique)
+Visionner **sans téléchargement de fichier** que l'utilisateur conserverait n'est pas possible : pour lire hors-ligne,
+le contenu doit **exister localement** d'une manière ou d'une autre. La bonne approche (type Netflix/Spotify) :
+- **Cache temporaire géré par l'application** (via une **PWA / app mobile**) : le contenu récemment consulté (ou
+  explicitement « mis de côté ») est **stocké de façon chiffrée**, **non exportable**, et **expire** automatiquement.
+- L'utilisateur ne récupère **pas** un fichier vidéo réutilisable → la **protection du contenu (RGPD/Vimeo)** est préservée.
+- Ce mécanisme **dépend de la PWA** (point 2) : à cadrer au développement, pas indispensable à la V1.
+
+---
+
+## 21. Évolutions v2 (à étudier plus tard)
+
+Pistes conservées pour une **version ultérieure**, non incluses dans le périmètre courant :
+
+- **Communauté intégrée (« esprit Skool »)** : fil de discussion par promotion, **commentaires sous chaque
+  leçon / replay**, entraide entre pairs, posts épinglés des coachs — pour garder les échanges **dans** le LMS
+  (aujourd'hui via WhatsApp externe) et enrichir la donnée pédagogique.
+- **YoDalf proactif** : au-delà du chat, un mentor IA qui **relance** (contenus non terminés), génère des
+  **fiches de révision** et applique la **répétition espacée** sur les concepts clés — dans la posture « coaching » d'ODBI.
 - [ ] Contenu exact de l'**e-mail d'onboarding** (identifiants vs lien magique d'activation ?)
 - [ ] Coach : peut-il **éditer le contenu** de ses programmes, ou **lecture seule** (suivi + visios) ?
 - [ ] Profil : répartition exacte des champs **Notion (synchro)** vs **LMS (éditable)**
