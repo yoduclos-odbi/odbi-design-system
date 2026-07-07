@@ -456,9 +456,13 @@ Chaque notification est **activable/désactivable par canal**, avec **destinatai
   Une notification **désactivée n'est ni affichée ni envoyée**.
 - **Destinataires** : participant concerné · toute la promotion · coach/animateur · admin.
 - **Notifications définies par défaut** : Bienvenue/accès (onboarding) · Nouvelle session / contenu débloqué ·
-  Rappel de visio/classe (1h avant) · Replay disponible · Exercice à rendre / relance · Invitation séance
-  Coaching/Training · Feedback disponible · Rappel de présentiel · Diplôme/attestation délivré · Badge/niveau
-  atteint (gamification) · Annonce de l'animateur.
+  Rappel de visio/classe (1h avant) · Replay disponible · Exercice à rendre / relance ·
+  **Exercice déposé par un membre → animateur** (prévient l'animateur du programme qu'un dépôt est arrivé) ·
+  Invitation séance Coaching/Training · Feedback disponible · Rappel de présentiel · Diplôme/attestation délivré ·
+  Badge/niveau atteint (gamification) · Annonce de l'animateur.
+- **Centre de notifications côté membre** : une page **« Toutes mes notifications »** (accessible depuis la
+  **cloche** → « Voir toutes ») liste l'historique, distingue **non lues / lues** et permet **« Tout marquer
+  comme lu »** ; un **état vide** (« Vous êtes à jour ») s'affiche quand il n'y a plus de non-lues.
 - **Ajout** : bouton « + Ajouter une notification ». Le formulaire demande un **déclencheur (événement système
   choisi dans une liste** : inscription, contenu débloqué, visio programmée, replay, exercice non rendu, quiz
   complété, séance créée, feedback/document déposé, présentiel, diplôme, badge, annonce… ou **personnalisé**), un
@@ -800,7 +804,15 @@ Aujourd'hui sur **Tally → Google Sheet anonyme** ; **à internaliser dans le L
 > Colonne « Animateur » = animateur d'un ou plusieurs programmes (**vue animateur** restreinte).
 > Un **coach** (hors animation) **n'accède pas au back-office** — **sauf s'il est aussi Animateur**
 > (rôles cumulables, cf. §4), auquel cas il entre en **vue animateur** avec le périmètre correspondant.
-> Le sélecteur de vue BO ne propose donc que **Admin** et **Animateur** (aucune entrée « Coach »).
+> Le sélecteur de vue BO propose **Admin**, **Animateur** et **Jury**.
+>
+> **Accès « Jury » (tiers)** : vue **ultra-restreinte** réservée aux membres du jury de certification
+> (président + ≥ 2 membres, indépendants du coach/animateur). Elle donne accès **uniquement** à la
+> **saisie des grilles de notation** et au **procès-verbal** de la promotion à évaluer — **rien d'autre**
+> (ni contenu, ni membres, ni promotions, ni intégrations). Cf. §11ter.
+>
+> **Recherche / filtres** : les tableaux du BO (Membres, Promotions, Suivi…) disposent d'une **recherche
+> plein-texte** + **filtres** (ex. par rôle) ; **tri de colonnes** et **pagination** à finaliser au dev.
 
 | Section BO | Admin | Animateur |
 |---|---|---|
@@ -995,6 +1007,8 @@ formation/promotion, etc. (volet financier = à coupler avec Stripe).
 - **Émargement** (présence visios via entrée/sortie BBB, présentiels) et **génération des
   attestations / certificats de réalisation** : orchestrés par **automatisations Notion** à partir
   des **données de connexion/assiduité extraites du LMS** (extraction déjà prévue au BO).
+- **Pas de téléchargement en self-service** de l'attestation d'assiduité côté membre : l'attestation est
+  **envoyée depuis Notion** (automatisation), pas générée à la demande par le participant dans le LMS.
 
 ---
 
@@ -1140,6 +1154,21 @@ pop-up central). Navigation **Suivant / Passer**, indicateur d'étape. Les 9 ét
 
 > Sur mobile (menu replié), les étapes dont la cible n'est pas visible s'affichent **centrées**.
 > La visite est **rejouable** (au dev : depuis le profil / l'aide).
+
+---
+
+## 23. Améliorations — 2ᵉ vague (arbitrées)
+
+| # | Amélioration | Décision | Où |
+|---|---|---|---|
+| 1 | **Accessibilité (RGAA/WCAG)** | **Retenu** — focus visibles, navigation clavier, ARIA sur contrôles custom, **contrastes conformes** (cible RGAA AA à finaliser au dev). Amorcé dans la maquette (focus-visible, cloche/liens au clavier). | transverse |
+| 2 | **Recherche / filtres / tri / pagination des tableaux BO** | **Retenu** — barre de recherche + filtre par rôle + compteur (démo : Membres) ; **tri & pagination** au dev. | §14 |
+| 3 | **Accès « jury » à la certification** | **Retenu** — vue BO **Jury** (tiers), restreinte à la **saisie des grilles + PV** d'une promo ; aucun autre accès BO. | §11ter, §14 |
+| 4 | **Feedback sur exercice** | **Écarté** (pas de correction). **À la place** : **notification à l'animateur** quand un membre **dépose un exercice**. | §10bis |
+| 5 | **États vides & chargement** | **Retenu** — composant *empty-state* (démo : centre de notifications, filtre « Non lues ») ; squelettes de chargement au dev. | transverse |
+| 6 | **Centre de notifications (membre)** | **Retenu** — page **« Toutes mes notifications »** (liste, non lues, *tout marquer comme lu*), accessible depuis la **cloche**. | §10bis |
+| 7 | **Attestation d'assiduité (membre)** | **Écarté en self-service** — l'attestation est **envoyée depuis Notion** (automatisation), pas téléchargeable en autonomie. | §17 |
+| 8 | **Recherche globale — raccourci clavier** | **Retenu** — **Ctrl / ⌘ + K** ouvre la recherche. | §6bis |
 
 ---
 
