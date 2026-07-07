@@ -451,6 +451,25 @@ Chaque notification est **activable/désactivable par canal**, avec **destinatai
 
 ---
 
+## 10ter. Évaluation interne des coachs (résultats internalisés depuis Notion)
+
+Retour **interne et anonyme** : les **participants notent les coachs de l'École** (sur les **présentiels** et
+les **trainings/coaching**). **≠ évaluation Qualiopi de la formation** (obligations légales) — c'est un outil
+d'amélioration de la posture des coachs.
+- **Le questionnaire reste sur Notion** (la saisie ne se fait **pas** dans le LMS ; les questions **évolueront**).
+- **Ce qui est internalisé = les résultats** : le LMS **lit la base Notion des réponses** et affiche un
+  **tableau de bord** (remplace la Google Sheet). BO → onglet **« Éval. coachs »** (admin).
+- **Note /10** : calculée à partir des réponses (**règle de calcul paramétrable** : méthode — moyenne pondérée
+  ramenée sur 10 / somme de points / NPS — et barème des réponses Oui-Non), affichée en **graphique** (barres,
+  note /10 par coach) + **tableau détaillé** (nb de réponses, % écouté, % recommandé).
+- **Anonyme** (aucune réponse reliée à un évaluateur).
+- **Coachs « anciens »** : des coachs ayant **terminé le parcours de l'École** continuent de venir aux
+  présentiels/trainings et **restent évalués** (statut « Ancien »).
+- Filtres : **contexte** (présentiels / trainings-coaching) et **période**. Export CSV. Le mapping colonnes
+  Notion → questions se règle au BO (les nouvelles questions Notion remontent automatiquement).
+
+---
+
 ## 11. Visios live & replays (BigBlueButton + Notta)
 
 ### Visios

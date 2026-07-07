@@ -655,6 +655,12 @@ a.ref-item:hover{background:var(--color-background)}
 .sc-tag{font-size:10px;font-family:var(--font-title);font-weight:700;padding:2px 8px;border-radius:99px;background:rgba(17,76,106,.1);color:var(--color-accent)}
 .sc-tag.grp{background:rgba(98,93,245,.12);color:#625df5}
 .sc-tag.ext{background:rgba(134,164,63,.15);color:var(--color-asparagus)}
+/* mini bar-chart (note /10) */
+.bc-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.bc-name{width:190px;flex:none;font-size:13px;font-family:var(--font-title);font-weight:500;text-align:right;color:var(--color-jet)}
+.bc-track{flex:1;background:var(--color-background);border-radius:99px;height:22px;overflow:hidden;border:1px solid rgba(74,74,74,.08)}
+.bc-bar{height:100%;background:linear-gradient(90deg,var(--color-asparagus),var(--color-apple-green));border-radius:99px}
+.bc-val{width:58px;flex:none;font-family:var(--font-title);font-weight:700;color:var(--color-primary)}
 
 /* ===== Vignettes programmes : photo + aplat couleur (codes flyers ODBI) ===== */
 .course-thumb{background-position:center;background-size:cover}
@@ -1847,40 +1853,6 @@ a.ref-item:hover{background:var(--color-background)}
         <div style="display:flex;gap:10px;margin-top:var(--space-5);flex-wrap:wrap"><button class="btn btn-accent" onclick="deliverDiploma()">🎓 Délivrer les diplômes (promotion)</button><button class="btn btn-ghost">⬇ Exporter le PV (PDF)</button><button class="btn btn-ghost">Vers Notion (registre certifications)</button></div>
       </div>
 
-      <div id="admin-evalcoach" class="hidden">
-        <p style="color:var(--color-neutral);margin-bottom:var(--space-3)"><b>Évaluation interne des coachs de l'École</b> par les participants — sur les <b>présentiels</b> et les <b>trainings/coaching</b>. <b>Strictement interne et anonyme.</b></p>
-        <div class="note" style="background:rgba(214,69,69,.06);border-left:4px solid #d64545;border-radius:8px;padding:10px 14px;font-size:12.5px;margin-bottom:var(--space-5)">⚠️ À ne pas confondre avec l'<b>évaluation Qualiopi de la formation</b> (obligations légales) : ceci est un <b>retour interne, anonyme</b>, sur la posture des coachs, pour les faire progresser.</div>
-
-        <div class="row2">
-          <div class="field"><label>Source du questionnaire</label><select><option>Interne LMS (internalisé)</option><option>Tally (actuel)</option><option>Notion (à venir)</option></select></div>
-          <div class="field"><label>S'applique à</label><div style="display:flex;gap:18px;flex-wrap:wrap;padding-top:6px"><label style="display:flex;align-items:center;gap:8px"><input type="checkbox" checked> Présentiels</label><label style="display:flex;align-items:center;gap:8px"><input type="checkbox" checked> Trainings / Coaching</label></div></div>
-        </div>
-        <p class="note" style="background:rgba(17,76,106,.06);border-left:4px solid var(--color-accent);border-radius:8px;padding:10px 14px;font-size:12.5px;margin-bottom:var(--space-5)">Les questions sont <b>éditables</b> ici et pourront être <b>synchronisées depuis Notion</b> (elles évolueront). Réponses <b>anonymes</b> → agrégées ci-dessous (remplace la Google Sheet actuelle).</p>
-
-        <div class="section-title" style="margin-top:0">Questions du questionnaire</div>
-        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="Le coach a instauré un climat de confiance"><select style="max-width:200px"><option>Note /5</option><option>Échelle 1–10</option><option>Oui / Non</option><option>Texte libre</option></select></div></div><button class="icon-btn">🗑️</button></div>
-        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="Qualité de l'écoute et de la présence"><select style="max-width:200px"><option>Note /5</option><option>Échelle 1–10</option><option>Oui / Non</option><option>Texte libre</option></select></div></div><button class="icon-btn">🗑️</button></div>
-        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="Pertinence du questionnement et des feedbacks"><select style="max-width:200px"><option>Note /5</option><option>Échelle 1–10</option><option>Oui / Non</option><option>Texte libre</option></select></div></div><button class="icon-btn">🗑️</button></div>
-        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="Posture, bienveillance et cadre"><select style="max-width:200px"><option>Note /5</option><option>Échelle 1–10</option><option>Oui / Non</option><option>Texte libre</option></select></div></div><button class="icon-btn">🗑️</button></div>
-        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="Recommanderiez-vous ce coach ?"><select style="max-width:200px"><option selected>Oui / Non</option><option>Note /5</option><option>Échelle 1–10</option><option>Texte libre</option></select></div></div><button class="icon-btn">🗑️</button></div>
-        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="Un point fort / un axe d'amélioration"><select style="max-width:200px"><option selected>Texte libre</option><option>Note /5</option><option>Échelle 1–10</option><option>Oui / Non</option></select></div></div><button class="icon-btn">🗑️</button></div>
-        <div style="display:flex;gap:10px;margin-top:var(--space-2)"><button class="add-btn">+ Ajouter une question</button><button class="btn btn-ghost" style="padding:6px 12px">⟳ Importer depuis Notion</button></div>
-
-        <h3 class="section-title">Résultats (anonymes)</h3>
-        <div style="display:flex;gap:10px;margin-bottom:var(--space-4);flex-wrap:wrap">
-          <select class="promo-select"><option>Tous les coachs</option><option>Yohann Duclos</option><option>Céline Duclos</option><option>Thierry Faye (ancien — hors promo)</option></select>
-          <select class="promo-select"><option>Toutes sources</option><option>Présentiels</option><option>Trainings / Coaching</option></select>
-        </div>
-        <table class="table">
-          <tr><th>Coach</th><th>Statut</th><th>Réponses</th><th>Confiance</th><th>Écoute</th><th>Questionnement</th><th>Posture</th><th>Recommandé</th></tr>
-          <tr><td>Yohann Duclos</td><td><span class="role coach" style="font-size:10px">Coach École</span></td><td>18</td><td><b>4,7</b>/5</td><td><b>4,8</b>/5</td><td><b>4,5</b>/5</td><td><b>4,9</b>/5</td><td>100 %</td></tr>
-          <tr><td>Céline Duclos</td><td><span class="role coach" style="font-size:10px">Coach École</span></td><td>15</td><td><b>4,6</b>/5</td><td><b>4,5</b>/5</td><td><b>4,4</b>/5</td><td><b>4,7</b>/5</td><td>93 %</td></tr>
-          <tr><td>Thierry Faye</td><td><span class="role member" style="font-size:10px">Ancien — présentiels</span></td><td>9</td><td><b>4,3</b>/5</td><td><b>4,4</b>/5</td><td><b>4,2</b>/5</td><td><b>4,5</b>/5</td><td>89 %</td></tr>
-        </table>
-        <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-2)">ℹ️ <b>Anonyme</b> : aucune réponse n'est reliée à un participant. Les <b>coachs ayant terminé le parcours de l'École</b> mais qui continuent d'animer/être évalués aux présentiels apparaissent avec le statut « Ancien ».</p>
-        <div style="display:flex;gap:10px;margin-top:var(--space-4);flex-wrap:wrap"><button class="btn btn-ghost">⬇ Exporter (CSV)</button><button class="btn btn-ghost">Voir les verbatims (texte libre)</button></div>
-      </div>
-
       <div id="admin-notif" class="hidden">
         <p style="color:var(--color-neutral);margin-bottom:var(--space-3)">Définissez les notifications de la plateforme : <b>activez/désactivez</b> chaque canal, choisissez les <b>destinataires</b>, et <b>ajoutez</b> vos propres notifications. Canaux : <b>cloche (in-app)</b>, <b>e-mail</b>, <b>WhatsApp</b>.</p>
         <div class="note" style="background:rgba(17,76,106,.06);border-left:4px solid var(--color-accent);border-radius:8px;padding:10px 14px;font-size:12.5px;margin-bottom:var(--space-5)">L'envoi e-mail passe par le <b>service transactionnel</b> ; le WhatsApp par le connecteur (si activé). Une notification désactivée n'est <b>ni affichée ni envoyée</b>.</p>
@@ -1919,6 +1891,49 @@ a.ref-item:hover{background:var(--color-background)}
           <tr><td><b>Annonce de l'animateur</b></td><td>Promotion</td><td><div class="toggle"></div></td><td><div class="toggle"></div></td><td><div class="toggle off"></div></td><td><div class="toggle"></div></td></tr>
         </table>
         <div style="margin-top:var(--space-4)"><button class="btn btn-primary">💾 Enregistrer les notifications</button></div>
+      </div>
+      </div>
+
+      <div id="admin-evalcoach" class="hidden">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-3)"><b>Évaluation des coachs</b> — <b>interne et anonyme</b> : les <b>participants notent les coachs de l'École</b> (présentiels et trainings/coaching). <b>Ce n'est pas</b> l'évaluation Qualiopi de la formation.</p>
+        <div class="note" style="background:rgba(17,76,106,.06);border-left:4px solid var(--color-accent);border-radius:8px;padding:10px 14px;font-size:12.5px;margin-bottom:var(--space-5)">Le <b>questionnaire reste sur Notion</b> (la saisie ne se fait pas dans le LMS). Le LMS <b>récupère les réponses depuis la base Notion</b> et affiche ici les <b>résultats agrégés</b> (remplace la Google Sheet). <span style="color:var(--color-primary)">● Source Notion connectée</span></div>
+
+        <div style="display:flex;gap:16px;margin-bottom:var(--space-5);flex-wrap:wrap;align-items:flex-end">
+          <div><label style="font-size:11px;color:var(--color-neutral);font-family:var(--font-title);display:block;margin-bottom:4px">Base Notion (réponses)</label><input class="promo-select" value="Réponses — Évaluation coachs" style="min-width:260px"></div>
+          <div><label style="font-size:11px;color:var(--color-neutral);font-family:var(--font-title);display:block;margin-bottom:4px">Contexte</label><select class="promo-select"><option>Tout</option><option>Présentiels</option><option>Trainings / Coaching</option></select></div>
+          <div><label style="font-size:11px;color:var(--color-neutral);font-family:var(--font-title);display:block;margin-bottom:4px">Période</label><select class="promo-select"><option>12 derniers mois</option><option>Cette promo</option><option>Tout l'historique</option></select></div>
+        </div>
+
+        <div class="edit-card">
+          <h3>Règle de calcul de la note /10</h3>
+          <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-3)">La <b>note sur 10</b> est calculée à partir des réponses (comme dans la Google Sheet). Réglez la formule ; elle s'applique au graphique et au tableau ci-dessous.</p>
+          <div class="row2">
+            <div class="field"><label>Méthode</label><select><option>Moyenne pondérée des questions notées → ramenée sur 10</option><option>Somme des points / total possible × 10</option><option>NPS converti (recommandation) → sur 10</option></select></div>
+            <div class="field"><label>Réponses « Oui / Non » comptent pour</label><input value="Oui = 10 · En attente = 5 · Non = 0"></div>
+          </div>
+          <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-2)">ℹ️ Les questions et la pondération pourront <b>évoluer</b> ; le mapping des colonnes Notion → questions se règle ici (les <b>nouvelles questions Notion</b> remontent automatiquement).</p>
+        </div>
+
+        <h3 class="section-title">Note moyenne par coach (/10) — anonyme</h3>
+        <div class="card" style="padding:var(--space-6)">
+          <div class="bc-row"><div class="bc-name">Céline Duclos</div><div class="bc-track"><div class="bc-bar" style="width:91%"></div></div><div class="bc-val">9,1</div></div>
+          <div class="bc-row"><div class="bc-name">Yohann Duclos</div><div class="bc-track"><div class="bc-bar" style="width:87%"></div></div><div class="bc-val">8,7</div></div>
+          <div class="bc-row"><div class="bc-name">Isabelle Blanc</div><div class="bc-track"><div class="bc-bar" style="width:84%"></div></div><div class="bc-val">8,4</div></div>
+          <div class="bc-row"><div class="bc-name">Thierry Faye</div><div class="bc-track"><div class="bc-bar" style="width:79%"></div></div><div class="bc-val">7,9</div></div>
+          <div class="bc-row" style="margin-bottom:0"><div class="bc-name">Karim Nadir <span style="font-size:10px;color:var(--color-neutral)">(ancien)</span></div><div class="bc-track"><div class="bc-bar" style="width:72%"></div></div><div class="bc-val">7,2</div></div>
+        </div>
+
+        <h3 class="section-title">Détail par coach</h3>
+        <table class="table">
+          <tr><th>Coach</th><th>Note /10</th><th>Réponses</th><th>Écouté·e (oui)</th><th>Recommandé</th><th>Statut</th></tr>
+          <tr><td>Céline Duclos</td><td><b>9,1</b></td><td>28</td><td>96 %</td><td>96 %</td><td><span class="cf-st ok">Coach École</span></td></tr>
+          <tr><td>Yohann Duclos</td><td><b>8,7</b></td><td>34</td><td>94 %</td><td>91 %</td><td><span class="cf-st ok">Coach École</span></td></tr>
+          <tr><td>Isabelle Blanc</td><td><b>8,4</b></td><td>22</td><td>91 %</td><td>88 %</td><td><span class="cf-st ok">Coach École</span></td></tr>
+          <tr><td>Thierry Faye</td><td><b>7,9</b></td><td>19</td><td>84 %</td><td>82 %</td><td><span class="cf-st ok">Coach École</span></td></tr>
+          <tr><td>Karim Nadir</td><td><b>7,2</b></td><td>12</td><td>80 %</td><td>75 %</td><td><span class="cf-st plan">Ancien · vient aux présentiels</span></td></tr>
+        </table>
+        <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-3)">Des coachs <b>ayant terminé le parcours de l'École</b> continuent de venir aux présentiels/trainings et restent <b>évalués</b> (statut « Ancien »). Réponses <b>anonymes</b> (aucune identité d'évaluateur).</p>
+        <div style="display:flex;gap:10px;margin-top:var(--space-4);flex-wrap:wrap"><button class="btn btn-ghost">⟳ Rafraîchir depuis Notion</button><button class="btn btn-ghost">⬇ Exporter (CSV)</button><a class="btn btn-ghost" href="https://notion.so" target="_blank">Ouvrir le questionnaire Notion ↗</a></div>
       </div>
 
       <div id="admin-integ" class="hidden">
@@ -2776,6 +2791,7 @@ function setBoRole(r){
   document.getElementById('tab-members').style.display=coachHidden?'none':'';
   document.getElementById('tab-integ').style.display=coachHidden?'none':'';
   document.getElementById('tab-notif').style.display=coachHidden?'none':'';
+  document.getElementById('tab-evalcoach').style.display=coachHidden?'none':'';
   if(coachHidden) adminTab(document.getElementById('tab-suivi'),'suivi');
   else adminTab(document.getElementById('tab-members'),'members');
 }
