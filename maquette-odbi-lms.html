@@ -721,10 +721,12 @@ a.ref-item:hover{background:var(--color-background)}
   .ctxbar.open{transform:translateX(0)}
   .ctxbar.hidden{display:none}
   #ctxbar:not(.hidden) ~ .ctxbar-toggle{display:inline-flex;align-items:center;gap:8px;position:fixed;
-    left:14px;bottom:16px;z-index:55;background:var(--color-primary);color:#fff;border:none;cursor:pointer;
-    border-radius:var(--radius-full);padding:11px 16px;font-family:var(--font-title);font-weight:600;
+    left:12px;top:60px;z-index:45;background:var(--color-primary);color:#fff;border:none;cursor:pointer;
+    border-radius:var(--radius-full);padding:9px 15px;font-family:var(--font-title);font-weight:600;
     font-size:13px;box-shadow:var(--shadow-md)}
-  #ctxbar:not(.hidden) ~ .ctxbar-toggle svg{width:18px;height:18px}
+  #ctxbar:not(.hidden) ~ .ctxbar-toggle svg{width:17px;height:17px}
+  /* réserve l'espace en haut du contenu pour le bouton (au-dessus du fil d'ariane) */
+  #ctxbar:not(.hidden) ~ .main{padding-top:56px}
   .scrim.show{display:block;position:fixed;inset:0;background:rgba(0,0,0,.42);z-index:50}
 
   /* Contenu */
@@ -738,19 +740,31 @@ a.ref-item:hover{background:var(--color-background)}
   .table{min-width:600px}
 }
 
-/* ============ ONBOARDING ============ */
-.onb-overlay{position:fixed;inset:0;background:rgba(26,26,26,.55);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px}
-.onb-overlay.hidden{display:none}
-.onb-card{background:#fff;border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);max-width:440px;width:100%;padding:var(--space-7) var(--space-6) var(--space-6);text-align:center}
-.onb-illus{width:64px;height:64px;margin:0 auto var(--space-4);border-radius:50%;background:rgba(134,164,63,.12);display:flex;align-items:center;justify-content:center}
-.onb-illus svg{width:30px;height:30px;color:var(--color-primary);stroke-width:1.8}
-.onb-step-num{font-family:var(--font-title);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--color-primary);margin-bottom:6px}
-.onb-card h2{font-size:20px;margin-bottom:8px}
-.onb-card p{color:var(--color-neutral);font-size:14px;line-height:1.55}
-.onb-dots{display:flex;gap:7px;justify-content:center;margin:var(--space-5) 0}
-.onb-dots span{width:8px;height:8px;border-radius:50%;background:rgba(74,74,74,.2)}
-.onb-dots span.on{background:var(--color-primary);width:22px;border-radius:4px}
-.onb-actions{display:flex;justify-content:space-between;gap:12px}
+/* ============ ONBOARDING — visite guidée ancrée ============ */
+.tour.hidden{display:none}
+.tour-mask{position:fixed;inset:0;z-index:200;background:transparent}
+.tour-mask.dim{background:rgba(26,26,26,.55)}
+.tour-spot{position:fixed;z-index:201;border-radius:12px;pointer-events:none;
+  box-shadow:0 0 0 3px var(--color-primary),0 0 0 9999px rgba(26,26,26,.55);transition:all .2s ease}
+.tour-spot.hidden{display:none}
+.tour-bubble{position:fixed;z-index:202;width:330px;max-width:92vw;background:#fff;border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-lg);padding:var(--space-5) var(--space-5) var(--space-4)}
+.tour-bubble .tour-num{font-family:var(--font-title);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--color-primary);margin-bottom:6px}
+.tour-bubble h3{font-size:17px;margin-bottom:6px}
+.tour-bubble p{color:var(--color-neutral);font-size:13.5px;line-height:1.55}
+.tour-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:var(--space-4)}
+.tour-btns{display:flex;gap:8px}
+.tour-btns .btn{padding:8px 14px}
+.tour-dots{display:flex;gap:6px;flex-wrap:wrap}
+.tour-dots span{width:7px;height:7px;border-radius:50%;background:rgba(74,74,74,.2)}
+.tour-dots span.on{background:var(--color-primary);width:18px;border-radius:4px}
+.tour-arrow{position:absolute;width:14px;height:14px;background:#fff;transform:rotate(45deg)}
+.tour-arrow.hidden{display:none}
+/* Modale générique (relance) */
+.modal-overlay{position:fixed;inset:0;z-index:210;background:rgba(26,26,26,.55);display:flex;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.hidden{display:none}
+.modal-card{background:#fff;border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);max-width:460px;width:100%;padding:var(--space-6)}
+.modal-card h3{font-size:18px}
 </style>
 </head>
 <body>
@@ -977,7 +991,7 @@ a.ref-item:hover{background:var(--color-background)}
           <h2>Bienvenue, Jean </h2>
           <p>Vous avez 2 sessions en cours et une visio « La Voie des managers » aujourd'hui à 18h.</p>
         </div>
-        <button class="btn" style="background:#fff;color:var(--color-accent)" onclick="goTo('visio')">Rejoindre la visio</button>
+        <button id="dashVisioBtn" class="btn" style="background:#fff;color:var(--color-accent)" onclick="goTo('visio')">Rejoindre la visio</button>
       </div>
       <div class="grid grid-4 mb6">
         <div class="stat"><div class="num green">68%</div><div class="lbl">Progression globale</div></div>
@@ -2544,17 +2558,48 @@ a.ref-item:hover{background:var(--color-background)}
   </div>
 </div>
 
-<!-- ============ ONBOARDING (visite guidée 1ʳᵉ connexion) ============ -->
-<div id="onboarding" class="onb-overlay hidden">
-  <div class="onb-card">
-    <div class="onb-illus" id="onbIllus"></div>
-    <div class="onb-step-num" id="onbCount"></div>
-    <h2 id="onbTitle"></h2>
-    <p id="onbText"></p>
-    <div class="onb-dots" id="onbDots"></div>
-    <div class="onb-actions">
-      <button class="btn btn-ghost" onclick="onbEnd()">Passer</button>
-      <button class="btn btn-primary" id="onbNext" onclick="onbNextStep()">Suivant</button>
+<!-- ============ ONBOARDING (visite guidée ancrée) ============ -->
+<div id="tour" class="tour hidden">
+  <div class="tour-mask" id="tourMask"></div>
+  <div class="tour-spot" id="tourSpot"></div>
+  <div class="tour-bubble" id="tourBubble">
+    <div class="tour-arrow" id="tourArrow"></div>
+    <div class="tour-num" id="tourNum"></div>
+    <h3 id="tourTitle"></h3>
+    <p id="tourText"></p>
+    <div class="tour-foot">
+      <span class="tour-dots" id="tourDots"></span>
+      <div class="tour-btns">
+        <button class="btn btn-ghost" onclick="tourEnd()">Passer</button>
+        <button class="btn btn-primary" id="tourNext" onclick="tourNext()">Suivant</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ RELANCE (décrocheurs) ============ -->
+<div id="relanceModal" class="modal-overlay hidden">
+  <div class="modal-card">
+    <h3 style="margin-bottom:6px">Relancer <span id="relTarget"></span></h3>
+    <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">La relance part via le <b>moteur de notifications ODBI</b>. Le message et les canaux par défaut se règlent au back-office (onglet <b>Notifications</b>).</p>
+    <div id="relForm">
+      <label style="display:block;font-family:var(--font-title);font-size:12px;font-weight:600;margin-bottom:8px">Canaux d'envoi</label>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:var(--space-4)">
+        <label style="display:flex;align-items:center;gap:9px;font-size:14px"><input type="checkbox" checked> 🔔 Notification in-app (cloche + tableau de bord)</label>
+        <label style="display:flex;align-items:center;gap:9px;font-size:14px"><input type="checkbox" checked> ✉️ E-mail</label>
+        <label style="display:flex;align-items:center;gap:9px;font-size:14px"><input type="checkbox"> 💬 WhatsApp (groupe de la promo)</label>
+      </div>
+      <label style="display:block;font-family:var(--font-title);font-size:12px;font-weight:600;margin-bottom:6px">Message</label>
+      <textarea id="relMsg" rows="4" style="width:100%;padding:11px 13px;border:1px solid rgba(74,74,74,.2);border-radius:var(--radius-md);font-family:var(--font-body);font-size:14px;resize:vertical"></textarea>
+      <div class="modal-actions" style="display:flex;justify-content:flex-end;gap:10px;margin-top:var(--space-4)">
+        <button class="btn btn-ghost" onclick="relClose()">Annuler</button>
+        <button class="btn btn-primary" onclick="relSend()">Envoyer la relance</button>
+      </div>
+    </div>
+    <div id="relDone" class="hidden" style="text-align:center;padding:var(--space-4) 0">
+      <div style="width:52px;height:52px;border-radius:50%;background:rgba(134,164,63,.14);display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-3)"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--color-asparagus)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <p id="relDoneMsg" style="font-size:14px"></p>
+      <button class="btn btn-primary" style="margin-top:var(--space-4)" onclick="relClose()">Fermer</button>
     </div>
   </div>
 </div>
@@ -2562,7 +2607,7 @@ a.ref-item:hover{background:var(--color-background)}
 <script>
 function showForgot(){document.getElementById('login-view').classList.add('hidden');document.getElementById('forgot-view').classList.remove('hidden')}
 function showLogin(){var f=document.getElementById('forgot-view');if(f)f.classList.add('hidden');document.getElementById('login-view').classList.remove('hidden')}
-function enterApp(){document.getElementById('auth').style.display='none';document.getElementById('app').classList.add('active');onbMaybeStart();}
+function enterApp(){document.getElementById('auth').style.display='none';document.getElementById('app').classList.add('active');tourMaybeStart();}
 function logout(){document.getElementById('app').classList.remove('active');document.getElementById('auth').style.display='flex';showLogin()}
 function goTo(page){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -2634,30 +2679,70 @@ function calSubscribe(kind){
 }
 
 // ---- Relance décrocheurs ----
+var relWho='';
 function relancer(qui){
-  alert('Relance envoyée à '+qui+' (notification in-app + e-mail). Dans la version réelle, le message et le canal sont paramétrables dans les Notifications du back-office.');
+  relWho=qui;
+  document.getElementById('relTarget').textContent=qui;
+  document.getElementById('relMsg').value='Bonjour, nous avons remarqué que vous n\'avez pas avancé récemment sur votre parcours. Un blocage, une question ? Votre coach reste disponible — reprenez quand vous voulez, une étape à la fois. 💪';
+  document.getElementById('relForm').classList.remove('hidden');
+  document.getElementById('relDone').classList.add('hidden');
+  document.getElementById('relanceModal').classList.remove('hidden');
+}
+function relClose(){document.getElementById('relanceModal').classList.add('hidden');}
+function relSend(){
+  document.getElementById('relForm').classList.add('hidden');
+  document.getElementById('relDoneMsg').innerHTML='<b>Relance envoyée à '+relWho+'.</b><br>Le participant reçoit une <b>notification in-app</b> (cloche + tableau de bord) et un <b>e-mail</b>. L\'action est journalisée dans le suivi.';
+  document.getElementById('relDone').classList.remove('hidden');
 }
 
-// ---- Onboarding (visite guidée) ----
-var ONB_STEPS=[
-  {ic:'<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/>',t:'Bienvenue sur Odbi campus 👋',x:'Votre espace de formation : cours structurés, visios en direct et suivi de progression. Voici l\'essentiel en 4 étapes.'},
-  {ic:'<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',t:'Vos rendez-vous',x:'Dans « Visios live » et « Agenda », retrouvez vos visioconférences et séances Training/Coaching. Vous pouvez les synchroniser dans votre agenda personnel (iCal / Google).'},
-  {ic:'<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>',t:'YoDalf, votre mentor IA',x:'Une question sur un cours ? YoDalf s\'appuie sur le contenu ODBI pour vous répondre à tout moment, depuis le menu ou une session.'},
-  {ic:'<circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>',t:'Progressez & gagnez des badges',x:'Chaque leçon terminée fait avancer votre progression. Points, niveaux et badges récompensent votre assiduité. Bonne formation !'}
+// ---- Onboarding : visite guidée ancrée (bulles + flèches) ----
+var TOUR_STEPS=[
+  {sel:null, t:'Bienvenue sur Odbi campus 👋', x:'Votre espace de formation ODBI. Laissez-vous guider : on vous montre les endroits clés de la plateforme en quelques secondes.'},
+  {sel:'.topnav a[data-page="dash"]', t:'Votre tableau de bord', x:'Le point de départ : accès direct à vos programmes en cours, votre progression et vos raccourcis du jour.', place:'bottom'},
+  {sel:'#dashQuickCards a', t:'Votre livret d\'accueil', x:'Toutes les infos pratiques ODBI réunies, à portée de clic (s\'ouvre dans Notion).', place:'bottom'},
+  {sel:'.topnav a[data-page="agenda"]', t:'Votre agenda', x:'Vos visios, présentiels et échéances au même endroit — synchronisables dans votre agenda perso (iCal / Google Calendar).', place:'bottom'},
+  {sel:'#dashVisioBtn', t:'Votre visio du jour', x:'Quand une session est en direct, rejoignez la salle en un seul clic depuis ici.', place:'bottom'},
+  {sel:'.topnav a[data-page="ai"]', t:'YoDalf, votre mentor IA', x:'Une question sur un cours ? YoDalf répond 24/7 en s\'appuyant sur le contenu ODBI.', place:'bottom'},
+  {sel:'.topnav a[data-page="game"]', t:'Votre progression', x:'Points, niveaux et badges récompensent votre assiduité et vos leçons terminées.', place:'bottom'},
+  {sel:'.topnav a[data-page="catalog"]', t:'Les programmes', x:'Tout le catalogue ODBI — avec des bonus gratuits pour découvrir, même sans être inscrit.', place:'bottom'},
+  {sel:'.topbar-right .avatar', t:'Votre espace personnel', x:'Profil, certifications obtenues et déconnexion : tout est ici. Bonne formation !', place:'bottom'}
 ];
-var onbI=0,onbSeen=false;
-function onbMaybeStart(){ if(onbSeen)return; onbSeen=true; onbI=0; document.getElementById('onboarding').classList.remove('hidden'); onbRender(); }
-function onbRender(){
-  var s=ONB_STEPS[onbI];
-  document.getElementById('onbIllus').innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">'+s.ic+'</svg>';
-  document.getElementById('onbCount').textContent='Étape '+(onbI+1)+' / '+ONB_STEPS.length;
-  document.getElementById('onbTitle').textContent=s.t;
-  document.getElementById('onbText').textContent=s.x;
-  document.getElementById('onbDots').innerHTML=ONB_STEPS.map(function(_,i){return '<span class="'+(i===onbI?'on':'')+'"></span>';}).join('');
-  document.getElementById('onbNext').textContent=(onbI===ONB_STEPS.length-1)?'Commencer':'Suivant';
+var tourI=0,tourSeen=false;
+function tourMaybeStart(){ if(tourSeen)return; tourSeen=true; tourStart(); }
+function tourStart(){ tourI=0; goTo('dash'); document.getElementById('tour').classList.remove('hidden'); tourRender(); }
+function tourRender(){
+  var s=TOUR_STEPS[tourI];
+  document.getElementById('tourNum').textContent='Étape '+(tourI+1)+' / '+TOUR_STEPS.length;
+  document.getElementById('tourTitle').textContent=s.t;
+  document.getElementById('tourText').textContent=s.x;
+  document.getElementById('tourDots').innerHTML=TOUR_STEPS.map(function(_,i){return '<span class="'+(i===tourI?'on':'')+'"></span>';}).join('');
+  document.getElementById('tourNext').textContent=(tourI===TOUR_STEPS.length-1)?'Terminer':'Suivant';
+  var mask=document.getElementById('tourMask'),spot=document.getElementById('tourSpot'),bub=document.getElementById('tourBubble'),arr=document.getElementById('tourArrow');
+  var el=s.sel?document.querySelector(s.sel):null;
+  var vis=el&&el.getClientRects().length>0;
+  if(!vis){ // étape centrée (accueil, ou cible masquée en mobile)
+    mask.classList.add('dim'); spot.classList.add('hidden'); arr.classList.add('hidden');
+    bub.style.left=Math.max(12,(window.innerWidth-bub.offsetWidth)/2)+'px';
+    bub.style.top=Math.max(12,(window.innerHeight-bub.offsetHeight)/2)+'px';
+    return;
+  }
+  mask.classList.remove('dim'); spot.classList.remove('hidden'); arr.classList.remove('hidden');
+  var r=el.getBoundingClientRect(),pad=6;
+  spot.style.left=(r.left-pad)+'px'; spot.style.top=(r.top-pad)+'px';
+  spot.style.width=(r.width+pad*2)+'px'; spot.style.height=(r.height+pad*2)+'px';
+  var bw=bub.offsetWidth,bh=bub.offsetHeight,gap=16;
+  var below=(r.bottom+bh+gap)<window.innerHeight;
+  var top=below?(r.bottom+gap):(r.top-bh-gap);
+  var left=Math.min(Math.max(r.left+r.width/2-bw/2,12),window.innerWidth-bw-12);
+  bub.style.left=left+'px'; bub.style.top=top+'px';
+  // flèche pointant vers la cible
+  var ax=Math.min(Math.max(r.left+r.width/2-left-7,14),bw-28);
+  arr.style.left=ax+'px';
+  if(below){arr.style.top='-7px';arr.style.bottom='auto';}else{arr.style.top='auto';arr.style.bottom='-7px';}
 }
-function onbNextStep(){ if(onbI<ONB_STEPS.length-1){onbI++;onbRender();}else{onbEnd();} }
-function onbEnd(){ document.getElementById('onboarding').classList.add('hidden'); }
+function tourNext(){ if(tourI<TOUR_STEPS.length-1){tourI++;tourRender();}else{tourEnd();} }
+function tourEnd(){ document.getElementById('tour').classList.add('hidden'); }
+window.addEventListener('resize',function(){ if(!document.getElementById('tour').classList.contains('hidden'))tourRender(); });
 function pickChat(el){document.querySelectorAll('#ctx-yodalf .cnav-item').forEach(function(x){x.classList.remove('active')});if(el)el.classList.add('active');}
 function newChat(){document.querySelectorAll('#ctx-yodalf .cnav-item').forEach(function(x){x.classList.remove('active')});}
 // Mode d'accès au programme : 'full' (inscrit) ou 'free' (non inscrit / découverte)
