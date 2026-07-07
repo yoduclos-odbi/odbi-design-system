@@ -1,4 +1,4 @@
-# Cahier des charges — ODBI Academy (plateforme LMS)
+# Cahier des charges — Odbi campus (plateforme LMS)
 
 > Document de travail vivant — mis à jour au fil des décisions.
 > Sert de référence pour le développement technique du projet réel.
@@ -117,30 +117,40 @@ Accès **éditable** : un admin peut définir qui a accès à quel programme / p
 ## 5. Arborescence du catalogue
 
 ```
-ODBI Academy
+Odbi campus
 ├── Univers LA VOIE (bleu + vert)
 │   ├── La Voie                    (programme)
-│   ├── La Voie des managers       (programme long)
-│   ├── La Voie des artisans       (programme long)
-│   └── Série « Vous En… »
+│   ├── La Voie des managers       (parcours long)
+│   ├── La Voie des artisans       (parcours long)
+│   └── Série « Vous En… »         (formats courts)
 │       ├── Vous En Mieux (VEM)
 │       ├── Vous En Paix  (VEP)
 │       ├── Vous Au Top   (VAT)
 │       └── Vous En Lien  (VEL)
 │
-└── Univers L'ÉCOLE (noir + vert)
-    ├── Born To Coach (BTC)
-    │   ├── BTC : 1ère génération
-    │   ├── BTC : 2ème génération
-    │   └── BTC : 3ème génération
-    └── Intelligence Collective (IC)
-        ├── IC : Cohésion de groupe
-        ├── IC : Coaching d'équipe
-        └── IC : Transformation des organisations
+├── Univers L'ÉCOLE (noir + vert)
+│   ├── Born To Coach (BTC)        (parcours long)
+│   │   ├── BTC : 1ère génération
+│   │   ├── BTC : 2ème génération
+│   │   └── BTC : 3ème génération
+│   └── Intelligence Collective (IC)
+│       ├── IC : Cohésion de groupe
+│       ├── IC : Coaching d'équipe
+│       └── IC : Transformation des organisations
+│
+└── Programmes individuels (accompagnements 1:1)      [cf. §6ter]
+    ├── Tronc commun               (individuel · titre RS · certifiant)
+    ├── Bilan de compétences       (individuel · Documents & livrables)
+    └── VAE                        (individuel · Documents & livrables)
 ```
 
-Chaque **formation/programme** est un cours autonome (modules/sessions,
+Chaque **formation/programme** est un cours autonome (modules/sessions ou **phases** pour l'individuel,
 progression, promotions, groupe WhatsApp, visios propres).
+
+> **Formats pédagogiques (cf. §6ter)** — le catalogue est présenté en **3 onglets** :
+> **Programmes longs** · **Programmes courts** (même architecture, moins de contenu — principe « vide → masqué ») ·
+> **Programmes individuels** (Tronc commun / Bilan / VAE — sessions renommées **phases**, suivi 1:1).
+> Un même programme peut donc être *long* ou *court* ; les trois programmes **individuels** forment la 3ᵉ catégorie.
 
 ### Catalogue & modèle d'accès (freemium)
 - Menu : **« Les programmes »** (catalogue complet) placé **au-dessus du Tableau de bord**
@@ -152,13 +162,14 @@ progression, promotions, groupe WhatsApp, visios propres).
 - **Point d'entrée selon l'inscription** :
   - **Inscrit** → arrive sur la **page d'accueil du programme**, **dynamique** (carte « Reprendre
     où vous en étiez » pointant sur sa position courante).
-  - **Non‑inscrit** → arrive **directement sur les Préceptes** ; il **n'a pas accès à l'« Accueil »**
-    (l'entrée Accueil est masquée).
-- **Accès découverte (non inscrit)** : le participant n'a accès **qu'aux Préceptes** (badge **« Bonus »**,
+  - **Non‑inscrit** → arrive **directement sur l'« Introduction »** (Présentation du programme + Préceptes) ;
+    il **n'a pas accès à l'« Accueil »** (l'entrée Accueil est masquée).
+- **Accès découverte (non inscrit)** : le participant n'a accès **qu'à l'« Introduction »** (Présentation +
+  Préceptes — badge **« Bonus »**,
   et non plus « Gratuit »). Il **peut déplier les sessions** dans le menu pour voir la structure, **mais
   le contenu reste verrouillé au centre** (panneau « Réservé aux inscrits »). De même, **Présentiels,
   Participants, sélecteur de promotion et WhatsApp** sont visibles mais **verrouillés**. CTA
-  « Rejoindre le programme » dans l'en-tête et sur les sections réservées. (Les Préceptes remplacent
+  « Rejoindre le programme » dans l'en-tête et sur les sections réservées. (L'**Introduction** remplace
   l'ancienne logique « 1ère session ouverte en découverte ».)
   - **Aucune promotion** : un non‑inscrit n'appartient à **aucune promo**. Le contenu gratuit
     est **asynchrone** (partagé, indépendant des promotions) ; le **synchrone** (visios/replays,
