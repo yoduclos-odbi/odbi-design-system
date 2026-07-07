@@ -712,27 +712,19 @@ Deux sélecteurs en tête : **Programme** (paramétrage commun) et **Promotion**
 
 ---
 
-## 11quater. Évaluation interne des coachs (anonyme) — à internaliser
+## 11quater. Évaluation interne des coachs — alumni, compte rendu & données
 
-Questionnaire par lequel **les participants évaluent les coachs de l'École**, sur les **présentiels** et les
-**trainings/coaching**. **Strictement interne et anonyme** — **≠ l'évaluation Qualiopi de la formation**.
-Aujourd'hui sur **Tally → Google Sheet anonyme** ; **à internaliser dans le LMS**.
+> **Mécanisme complet en §10ter.** Le **questionnaire reste sur Notion** (ex-Tally) : la **saisie se fait
+> hors LMS**, de façon **anonyme** ; le LMS **internalise uniquement les résultats** (note /10, graphe,
+> tableau — remplace la Google Sheet). Cette section détaille l'accès à la saisie, l'ancrage **alumni**,
+> le **compte rendu** côté coach et le **modèle de données**.
 
-### Côté participant (front)
-- Bouton **« Évaluer le coach (anonyme) »** sur un **présentiel** et sur une **séance Training/Coaching**.
-- Formulaire **anonyme** (notes /5, échelle, oui/non, texte libre) → écran de remerciement. Aucune réponse
-  n'est reliée à un participant.
-
-### Côté BO (onglet « Éval. coachs »)
-- **Questionnaire éditable** (questions + type : Note /5, Échelle 1–10, Oui/Non, Texte libre ; réordonnables,
-  ajout/suppression). **Source** : Interne LMS / Tally (actuel) / **Notion (à venir)** — les questions
-  **évolueront** et seront **synchronisables depuis Notion** (« Importer depuis Notion »).
-- **Périmètre** : s'applique aux **Présentiels** et/ou **Trainings/Coaching** (toggles).
-- **Résultats anonymes agrégés** (remplace la Google Sheet) : moyennes par question **par coach**, nb de réponses,
-  % recommandé, filtres (coach / source), **export CSV** + verbatims.
-- **Coachs « anciens »** : ceux ayant **terminé le parcours de l'École** mais qui **continuent d'animer / d'être
-  évalués aux présentiels** apparaissent avec un statut « Ancien ». Ils sont rattachés à la promotion
-  permanente **Alumni / Coachs École** (cf. ci-dessous).
+### Accès à la saisie (front)
+- Depuis un **présentiel** ou une **séance Training/Coaching**, un **lien « Évaluer le coach (anonyme) »**
+  renvoie vers le **questionnaire Notion**. Aucune réponse n'est reliée à un participant.
+- **Coachs « anciens »** : ceux ayant **terminé le parcours de l'École** mais qui **continuent d'intervenir /
+  d'être évalués** apparaissent avec un statut « Ancien » et sont rattachés à la promotion permanente
+  **Alumni / Coachs École** (ci-dessous).
 
 ### Promotion « Alumni / Coachs École »
 - Promotion **permanente** (sans date de fin) rattachée au programme **École**, servant de **point d'ancrage**
@@ -862,8 +854,8 @@ Onglets :
     **programmes et sessions de son choix** (ex. 1ère session en découverte gratuite).
   - **Déverrouillage par programme** : option dans l'éditeur du programme pour **ignorer
     la pédagogie inversée** sur ce programme (accès direct vidéos/ressources) — pas globalement.
-- **Cours** — création/édition des cours, sessions, contenus, WhatsApp par cours
-- **Promotions** — cohortes par programme, membres, dates, classes, présentiels
+- **Programmes** — création/édition des cours, sessions, contenus, WhatsApp par cours
+- **Promotions** — cohortes par programme, membres, dates, classes, présentiels, **déverrouillage** (drip / manuel)
 - **Suivi pédagogique (animateur)** — accès aux **restitutions des participants** :
   exercices rendus (fichiers téléchargeables), **résultats de quiz** (score, tentatives),
   vidéos vues, statut. Filtrable par programme / promo / séquence — avec option
@@ -877,9 +869,14 @@ Onglets :
     **moteur de notifications ODBI** : **notification in-app** (cloche + tableau de bord) et/ou **e-mail**
     (et WhatsApp en option). **Message et canaux paramétrables** au back-office (onglet Notifications) ;
     l'envoi est **journalisé** dans le suivi (traçabilité).
+- **Progression** — **règles de complétion** (par type de contenu, y compris séances Coaching/Training &
+  présentiel) + **gamification** (points, niveaux, badges), gérées **globalement** (cf. §10). *(Admin only)*
 - **Certification** — paramétrage par programme (adossement RNCP/RS/interne, niveaux, référentiel,
-  ateliers 1 à 3), suivi des candidats, **saisie des grilles**, **procès-verbal** et **délivrance des diplômes** (cf. §11ter).
-- **Intégrations** — config BBB, Notta, YoDalf, **Loom**, WhatsApp, Notion, Stripe
+  ateliers 1 à 3), suivi des candidats, **saisie des grilles**, **procès-verbal** et **délivrance des diplômes** (cf. §11ter). *(Admin ; accès Jury restreint à la saisie des grilles + PV)*
+- **Notifications** — activation/désactivation par canal, destinataires, ajout, déclencheurs & timing (cf. §10bis). *(Admin only)*
+- **Éval. coachs** — tableau de bord des résultats d'évaluation des coachs (note /10, graphe), **alimenté depuis
+  Notion** (cf. §10ter). *(Admin ; l'Animateur y accède, filtré sur son périmètre)*
+- **Intégrations** — config BBB, Notta, YoDalf, **Loom**, WhatsApp, Notion, Stripe. *(Admin only)*
 
 ### Éditeur de cours (back-office)
 Doit être **ergonomique** (rechargement manuel des contenus depuis Moodle).
