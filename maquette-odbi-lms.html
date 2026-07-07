@@ -2849,7 +2849,8 @@ function setBoRole(r){
   document.getElementById('tab-members').style.display=coachHidden?'none':'';
   document.getElementById('tab-integ').style.display=coachHidden?'none':'';
   document.getElementById('tab-notif').style.display=coachHidden?'none':'';
-  document.getElementById('tab-evalcoach').style.display=coachHidden?'none':'';
+  // L'animateur garde l'accès aux évaluations (filtrées sur son périmètre)
+  document.getElementById('tab-evalcoach').style.display='';
   if(coachHidden) adminTab(document.getElementById('tab-suivi'),'suivi');
   else adminTab(document.getElementById('tab-members'),'members');
 }

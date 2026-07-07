@@ -92,7 +92,7 @@ S'appuie sur le **design system ODBI** (`odbi-design-tokens.css` / `.json`).
 - **Participant** : accès **uniquement à sa promo** (programmes où il est inscrit).
 - **Coach (hors animation)** : **pas de périmètre d'animation** ; intervient aux **présentiels / trainings**,
   **est évalué** (§12ter), et peut être rattaché à la promotion permanente **Alumni / Coachs École**
-  une fois son parcours terminé. Pas d'accès au back-office par défaut.
+  une fois son parcours terminé. **Aucun accès au back-office** — *sauf* s'il est **aussi Animateur** (cumul).
 - **Animateur** : **affecté à un ou plusieurs programmes** (table d'association *animateur ↔ programmes animés*).
   Il a accès à **toutes les promos de ces programmes** (suivi pédagogique, visios, présentiels) et
   **à rien** sur les programmes qu'il n'anime pas. Son back-office est en **« vue animateur »** (restreinte).
@@ -778,7 +778,9 @@ Aujourd'hui sur **Tally → Google Sheet anonyme** ; **à internaliser dans le L
 
 ### Accès au back-office par rôle
 > Colonne « Animateur » = animateur d'un ou plusieurs programmes (**vue animateur** restreinte).
-> Un **coach** sans périmètre d'animation n'a **pas d'accès BO** par défaut.
+> Un **coach** (hors animation) **n'accède pas au back-office** — **sauf s'il est aussi Animateur**
+> (rôles cumulables, cf. §4), auquel cas il entre en **vue animateur** avec le périmètre correspondant.
+> Le sélecteur de vue BO ne propose donc que **Admin** et **Animateur** (aucune entrée « Coach »).
 
 | Section BO | Admin | Animateur |
 |---|---|---|
@@ -786,12 +788,17 @@ Aujourd'hui sur **Tally → Google Sheet anonyme** ; **à internaliser dans le L
 | **Certification** (paramétrage, grilles, PV, diplômes — cf. §11ter) | tout | ✅ jury de ses programmes |
 | **Promotions** (membres promo, planning visios) | tout | ✅ promos de ses programmes |
 | **Programmes** (contenu, sessions, visios) | tout | ✅ ses programmes (édition) |
+| **Évaluation des coachs** (résultats §12ter) | tout | ✅ coachs de son périmètre |
 | **Membres & accès** (global, rôles, comptes) | ✅ | ❌ |
+| **Notifications** (paramétrage §10bis) | ✅ | ❌ |
 | **Intégrations** (BBB, Notta, Notion, Stripe…) | ✅ | ❌ |
 | Créer / supprimer un programme | ✅ | ❌ |
 
-- Le coach ne voit dans le BO **que** : Programmes (les siens), Promotions (les siennes),
-  Suivi pédagogique (les siens). Les onglets Membres & Intégrations lui sont masqués.
+- L'animateur voit dans le BO : Programmes (les siens), Promotions (les siennes),
+  Suivi pédagogique (les siens), **Évaluation des coachs** (résultats des coachs intervenant
+  sur son périmètre). Les onglets **Membres & accès**, **Notifications** et **Intégrations** lui sont masqués.
+- L'accès à l'**évaluation des coachs** permet à l'animateur de suivre la qualité de l'accompagnement
+  sur ses présentiels / trainings ; les résultats affichés sont **filtrés sur son périmètre** (anonymat conservé).
 - Toutes les données sont **filtrées sur son périmètre d'animation** (cf. §4).
 - Filtrage à appliquer **côté serveur** (sécurité), pas seulement masquage UI.
 - *(À valider : le coach peut-il éditer le contenu de ses programmes, ou lecture seule ?)*
