@@ -249,7 +249,8 @@ Inspirée des LMS type Skool :
      (Remplace l'ancienne grille « vidéos d'accueil » de la page d'accueil.)
   3. **« Session »** (section repliable) — **regroupe tout le périmètre programme** :
      - **Arbre du curriculum** (façon Skool) : **toutes les sessions** en **arbre dépliant sur 3 niveaux** —
-       Session (S1, S2…) → Séquence (« 2.1 — [thématique] »…) → Étape (Exercice, Vidéos, Ressources, Quiz, Replay).
+       Session (S1, S2…) → Séquence (« 2.1 — [thématique] »…) → Étape (Exercice, Vidéos, Ressources, Quiz).
+       *(Les **Classes/replays** ne sont plus une étape de session : elles sont dans « Promotion » → « Classes ».)*
        Lien **« Tout réduire »** dans l'en-tête de section.
      - puis **Lexique** et **Références** (au même endroit que le curriculum).
      - **Une seule session dépliée à la fois** ET **une seule séquence dépliée à la fois** (ouvrir 2.2 referme 2.1)
@@ -371,8 +372,8 @@ Côté membre, la barre contextuelle gauche regroupe les sections en **deux fami
 4. **Présentiels** — dates + lieux + horaires (par promotion), **affichés les uns sous les autres**,
    avec un volet **« Détails pratiques & documents »** par présentiel : accès/transport, hébergement
    (se loger), règlement intérieur, fiche de l'établissement (liens/documents)
-5. **Replays** — classes/visios **enregistrées de la promotion** (BBB + Notta), **regroupées ici**
-   (car pas forcément un replay par session), indépendamment des sessions
+5. **Classes** (replays) — visios **enregistrées de la promotion** (BBB + Notta), **regroupées ici**
+   (car pas forcément un replay par session), indépendamment des sessions. *(« Séances » en individuel.)*
 6. **Participants** — annuaire des membres de la promotion (photo, nom, ville)
 7. **WhatsApp** — accès au groupe WhatsApp de la promotion
 
@@ -422,16 +423,17 @@ et peut **s'étaler sur plusieurs semaines** (adaptation pédagogique).
   (Vimeo Player SDK, position par membre × vidéo, multi-appareils) ; alimente
   progression + assiduité.
 
-### Quiz & replays — multiples par session
-- **Plusieurs quiz** par session (au moins un par séquence).
-- **Plusieurs replays** par session (≈ 1 visio/semaine) — chacun avec son
-  enregistrement BBB + transcription/chapitrage/résumé Notta.
-- Voir §9 pour les formes de quiz.
+### Quiz — multiples par session
+- **Plusieurs quiz** par session (au moins un par séquence). Voir §9 pour les formes de quiz.
 
-### Replay de la classe (visio live)
-- La visio live de la session est accessible **dans la session** (bloc « Classe en direct / Replay »),
-  **propre à la promo** : enregistrement BBB + transcription/**chapitrage**/**résumé** Notta + « Questions à YoDalf ».
-- Rythme : **~1 visio / semaine par cours** ; programmes de **3 à 12 mois** (volume important).
+### Classes (replays) — regroupées dans « Promotion », PAS dans la session
+- **Décision (évolution)** : les replays des visios — renommés **« Classes »** — **ne sont plus rangés dans
+  chaque session**. Ils sont **regroupés dans la section « Promotion »** du menu (entrée **« Classes »**,
+  renommée **« Séances »** en individuel), car il n'y a **pas forcément un replay par session** (≈ 1 visio/semaine,
+  volume important). Cf. §6ter (navigation) et §11 (visios & replays).
+- Chaque classe = enregistrement **BBB** + transcription / **chapitrage** / **résumé** Notta + « Questions à YoDalf »,
+  **propre à la promo**.
+- Rythme : **~1 visio / semaine par cours** ; programmes de **3 à 12 mois**.
 
 ---
 
@@ -537,7 +539,9 @@ d'amélioration de la posture des coachs.
 Flux : `Visio BBB → enregistrement BBB → Notta (transcription + chapitrage + résumé, multi-langues) → objet Replay rattaché à la promo`
 
 - **Accès réservé aux membres de la promotion** concernée 🔒
-- Les replays sont rangés **dans chaque session du cours** (onglet « 🎥 Replay »), pas dans une liste globale (volume important)
+- Les replays — renommés **« Classes »** — sont regroupés **dans la section « Promotion »** du menu (entrée
+  **« Classes »**, au-dessus de Coaching/Training), **pas dans chaque session** ni dans une liste globale.
+  *(En individuel : renommés « Séances ».)*
 - Actions par replay (boutons qui **affichent le contenu dessous**) : ▶ Revoir (BBB) · 📝 Transcription (Notta) · 📑 **Chapitrage** (Vimeo/Notta) · 📄 Résumé (Notta) · 🧙 Questions à YoDalf
 - **Résumé = fait par Notta** (transcription + chapitrage + résumé proposé)
 
