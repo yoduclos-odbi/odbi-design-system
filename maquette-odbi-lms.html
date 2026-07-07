@@ -981,6 +981,26 @@ a.ref-item:hover{background:var(--color-background)}
       </div>
     </section>
 
+    <!-- ÉVALUATION D'UN COACH (interne, anonyme) — présentiels & trainings -->
+    <section id="page-evalcoach" class="page">
+      <div class="page-head">
+        <a onclick="backEval()" style="color:var(--color-accent);cursor:pointer;font-size:13px;font-family:var(--font-title);font-weight:500">← Retour</a>
+        <h1 style="margin-top:6px">Évaluation du coach <span class="badge" style="background:var(--color-jet)">Anonyme · interne</span></h1>
+        <p>Votre retour est <b>strictement anonyme et interne</b> — il aide le coach à progresser. (Ce n'est <b>pas</b> l'évaluation Qualiopi de la formation.)</p>
+      </div>
+      <div class="card" style="padding:var(--space-5);margin-bottom:var(--space-5)">Coach évalué : <b id="evalCoachName">Yohann Duclos</b> · <span id="evalCoachCtx" style="color:var(--color-neutral)">Présentiel du 14 nov.</span></div>
+      <div id="evalForm">
+        <div class="card" style="padding:var(--space-5);margin-bottom:var(--space-3)"><b>Le coach a instauré un climat de confiance</b><div class="scale" style="margin-top:10px"><label onclick="gradePick(this)">1</label><label onclick="gradePick(this)">2</label><label onclick="gradePick(this)">3</label><label onclick="gradePick(this)">4</label><label class="on" onclick="gradePick(this)">5</label></div></div>
+        <div class="card" style="padding:var(--space-5);margin-bottom:var(--space-3)"><b>Qualité de l'écoute et de la présence</b><div class="scale" style="margin-top:10px"><label onclick="gradePick(this)">1</label><label onclick="gradePick(this)">2</label><label onclick="gradePick(this)">3</label><label class="on" onclick="gradePick(this)">4</label><label onclick="gradePick(this)">5</label></div></div>
+        <div class="card" style="padding:var(--space-5);margin-bottom:var(--space-3)"><b>Pertinence du questionnement et des feedbacks</b><div class="scale" style="margin-top:10px"><label onclick="gradePick(this)">1</label><label onclick="gradePick(this)">2</label><label onclick="gradePick(this)">3</label><label class="on" onclick="gradePick(this)">4</label><label onclick="gradePick(this)">5</label></div></div>
+        <div class="card" style="padding:var(--space-5);margin-bottom:var(--space-3)"><b>Posture, bienveillance et cadre</b><div class="scale" style="margin-top:10px"><label onclick="gradePick(this)">1</label><label onclick="gradePick(this)">2</label><label onclick="gradePick(this)">3</label><label onclick="gradePick(this)">4</label><label class="on" onclick="gradePick(this)">5</label></div></div>
+        <div class="card" style="padding:var(--space-5);margin-bottom:var(--space-3)"><b>Recommanderiez-vous ce coach ?</b><div class="scale" style="margin-top:10px"><label class="on" onclick="gradePick(this)">Oui</label><label onclick="gradePick(this)">Non</label></div></div>
+        <div class="card" style="padding:var(--space-5);margin-bottom:var(--space-3)"><b>Un point fort / un axe d'amélioration</b><textarea rows="3" style="width:100%;margin-top:10px;border:1px solid rgba(74,74,74,.2);border-radius:8px;padding:8px" placeholder="Votre commentaire (anonyme)…"></textarea></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-primary" onclick="submitEval()">Envoyer mon évaluation (anonyme)</button><button class="btn btn-ghost" onclick="backEval()">Annuler</button></div>
+      </div>
+      <div id="evalDone" class="hidden" style="text-align:center;padding:var(--space-8)"><div style="width:60px;height:60px;border-radius:50%;background:rgba(134,164,63,.15);display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-4)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--color-asparagus)" stroke-width="2.5" style="width:30px;height:30px"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Merci !</h3><p style="color:var(--color-neutral)">Votre évaluation anonyme a été enregistrée. Elle sera agrégée avec les autres retours pour aider le coach à progresser.</p><button class="btn btn-ghost" style="margin-top:var(--space-4)" onclick="backEval()">← Retour</button></div>
+    </section>
+
     <!-- COURSE DETAIL -->
     <section id="page-course" class="page">
       <div class="breadcrumb" onclick="goTo('catalog')">Mes programmes / La Voie / <b>La Voie des managers</b></div>
@@ -1071,6 +1091,7 @@ a.ref-item:hover{background:var(--color-background)}
       <!-- Présentiels (par promotion, pilotés par le dérouleur) -->
       <div id="crs-presentiel" class="hidden">
         <p id="pres-intro" style="color:var(--color-neutral);margin-bottom:var(--space-5)"></p>
+        <div class="card" style="padding:var(--space-4) var(--space-5);margin-bottom:var(--space-5);display:flex;align-items:center;gap:14px;flex-wrap:wrap"><div style="flex:1"><b>Évaluer le coach du présentiel</b><div style="font-size:12px;color:var(--color-neutral)">Retour anonyme et interne sur la posture du coach — n'est pas l'évaluation Qualiopi.</div></div><button class="btn btn-accent" onclick="openEvalCoach('Yohann Duclos','Présentiel — Séminaire d\'intégration','presentiel')">Évaluer le coach (anonyme)</button></div>
         <div id="pres-list"></div>
       </div>
 
@@ -1306,9 +1327,12 @@ a.ref-item:hover{background:var(--color-background)}
     <!-- ENTRAÎNEMENT — détail d'une séance -->
     <section id="page-train-detail" class="page">
       <div class="breadcrumb" onclick="backCoaching()">Programme / Coaching / <b>Karim ↔ Thomas</b></div>
-      <div class="mb6">
-        <h1 style="font-size:24px">Séance d'entraînement</h1>
-        <p style="color:var(--color-neutral);margin-top:6px">21 juin · 42 min · <b>Karim Nadir</b> (coach · BTC 2) ↔ <b>Thomas Petit</b> (coaché · La Voie) · Coach/animateur : Yohann · Participant : Léa · Observatrice : Sophie · <span style="color:var(--color-neutral)">privée</span></p>
+      <div class="flex-between mb6" style="flex-wrap:wrap;gap:12px">
+        <div>
+          <h1 style="font-size:24px">Séance d'entraînement</h1>
+          <p style="color:var(--color-neutral);margin-top:6px">21 juin · 42 min · <b>Karim Nadir</b> (coach · BTC 2) ↔ <b>Thomas Petit</b> (coaché · La Voie) · Coach/animateur : Yohann · Participant : Léa · Observatrice : Sophie · <span style="color:var(--color-neutral)">privée</span></p>
+        </div>
+        <button class="btn btn-accent" onclick="openEvalCoach('Karim Nadir','Training / Coaching — séance du 21 juin','train')">Évaluer le coach (anonyme)</button>
       </div>
 
       <div class="card" style="padding:var(--space-5);margin-bottom:var(--space-6)">
@@ -1512,6 +1536,7 @@ a.ref-item:hover{background:var(--color-background)}
         <div class="tab" id="tab-suivi" onclick="adminTab(this,'suivi')">Suivi pédagogique</div>
         <div class="tab" id="tab-certif" onclick="adminTab(this,'certif')">Certification</div>
         <div class="tab" id="tab-notif" onclick="adminTab(this,'notif')">Notifications</div>
+        <div class="tab" id="tab-evalcoach" onclick="adminTab(this,'evalcoach')">Éval. coachs</div>
         <div class="tab" id="tab-integ" onclick="adminTab(this,'integ')">Intégrations</div>
       </div>
 
@@ -1820,6 +1845,40 @@ a.ref-item:hover{background:var(--color-background)}
           <tr><td><span class="pmini" style="background:#888">TP</span> Thomas Petit</td><td>1 / 3</td><td>—</td><td><span class="cf-st todo">À planifier</span></td><td>—</td><td>—</td></tr>
         </table>
         <div style="display:flex;gap:10px;margin-top:var(--space-5);flex-wrap:wrap"><button class="btn btn-accent" onclick="deliverDiploma()">🎓 Délivrer les diplômes (promotion)</button><button class="btn btn-ghost">⬇ Exporter le PV (PDF)</button><button class="btn btn-ghost">Vers Notion (registre certifications)</button></div>
+      </div>
+
+      <div id="admin-evalcoach" class="hidden">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-3)"><b>Évaluation interne des coachs de l'École</b> par les participants — sur les <b>présentiels</b> et les <b>trainings/coaching</b>. <b>Strictement interne et anonyme.</b></p>
+        <div class="note" style="background:rgba(214,69,69,.06);border-left:4px solid #d64545;border-radius:8px;padding:10px 14px;font-size:12.5px;margin-bottom:var(--space-5)">⚠️ À ne pas confondre avec l'<b>évaluation Qualiopi de la formation</b> (obligations légales) : ceci est un <b>retour interne, anonyme</b>, sur la posture des coachs, pour les faire progresser.</div>
+
+        <div class="row2">
+          <div class="field"><label>Source du questionnaire</label><select><option>Interne LMS (internalisé)</option><option>Tally (actuel)</option><option>Notion (à venir)</option></select></div>
+          <div class="field"><label>S'applique à</label><div style="display:flex;gap:18px;flex-wrap:wrap;padding-top:6px"><label style="display:flex;align-items:center;gap:8px"><input type="checkbox" checked> Présentiels</label><label style="display:flex;align-items:center;gap:8px"><input type="checkbox" checked> Trainings / Coaching</label></div></div>
+        </div>
+        <p class="note" style="background:rgba(17,76,106,.06);border-left:4px solid var(--color-accent);border-radius:8px;padding:10px 14px;font-size:12.5px;margin-bottom:var(--space-5)">Les questions sont <b>éditables</b> ici et pourront être <b>synchronisées depuis Notion</b> (elles évolueront). Réponses <b>anonymes</b> → agrégées ci-dessous (remplace la Google Sheet actuelle).</p>
+
+        <div class="section-title" style="margin-top:0">Questions du questionnaire</div>
+        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="Le coach a instauré un climat de confiance"><select style="max-width:200px"><option>Note /5</option><option>Échelle 1–10</option><option>Oui / Non</option><option>Texte libre</option></select></div></div><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="Qualité de l'écoute et de la présence"><select style="max-width:200px"><option>Note /5</option><option>Échelle 1–10</option><option>Oui / Non</option><option>Texte libre</option></select></div></div><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="Pertinence du questionnement et des feedbacks"><select style="max-width:200px"><option>Note /5</option><option>Échelle 1–10</option><option>Oui / Non</option><option>Texte libre</option></select></div></div><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="Posture, bienveillance et cadre"><select style="max-width:200px"><option>Note /5</option><option>Échelle 1–10</option><option>Oui / Non</option><option>Texte libre</option></select></div></div><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="Recommanderiez-vous ce coach ?"><select style="max-width:200px"><option selected>Oui / Non</option><option>Note /5</option><option>Échelle 1–10</option><option>Texte libre</option></select></div></div><button class="icon-btn">🗑️</button></div>
+        <div class="edit-row"><span class="handle">⠿</span><div class="grow"><div class="row2"><input value="Un point fort / un axe d'amélioration"><select style="max-width:200px"><option selected>Texte libre</option><option>Note /5</option><option>Échelle 1–10</option><option>Oui / Non</option></select></div></div><button class="icon-btn">🗑️</button></div>
+        <div style="display:flex;gap:10px;margin-top:var(--space-2)"><button class="add-btn">+ Ajouter une question</button><button class="btn btn-ghost" style="padding:6px 12px">⟳ Importer depuis Notion</button></div>
+
+        <h3 class="section-title">Résultats (anonymes)</h3>
+        <div style="display:flex;gap:10px;margin-bottom:var(--space-4);flex-wrap:wrap">
+          <select class="promo-select"><option>Tous les coachs</option><option>Yohann Duclos</option><option>Céline Duclos</option><option>Thierry Faye (ancien — hors promo)</option></select>
+          <select class="promo-select"><option>Toutes sources</option><option>Présentiels</option><option>Trainings / Coaching</option></select>
+        </div>
+        <table class="table">
+          <tr><th>Coach</th><th>Statut</th><th>Réponses</th><th>Confiance</th><th>Écoute</th><th>Questionnement</th><th>Posture</th><th>Recommandé</th></tr>
+          <tr><td>Yohann Duclos</td><td><span class="role coach" style="font-size:10px">Coach École</span></td><td>18</td><td><b>4,7</b>/5</td><td><b>4,8</b>/5</td><td><b>4,5</b>/5</td><td><b>4,9</b>/5</td><td>100 %</td></tr>
+          <tr><td>Céline Duclos</td><td><span class="role coach" style="font-size:10px">Coach École</span></td><td>15</td><td><b>4,6</b>/5</td><td><b>4,5</b>/5</td><td><b>4,4</b>/5</td><td><b>4,7</b>/5</td><td>93 %</td></tr>
+          <tr><td>Thierry Faye</td><td><span class="role member" style="font-size:10px">Ancien — présentiels</span></td><td>9</td><td><b>4,3</b>/5</td><td><b>4,4</b>/5</td><td><b>4,2</b>/5</td><td><b>4,5</b>/5</td><td>89 %</td></tr>
+        </table>
+        <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-2)">ℹ️ <b>Anonyme</b> : aucune réponse n'est reliée à un participant. Les <b>coachs ayant terminé le parcours de l'École</b> mais qui continuent d'animer/être évalués aux présentiels apparaissent avec le statut « Ancien ».</p>
+        <div style="display:flex;gap:10px;margin-top:var(--space-4);flex-wrap:wrap"><button class="btn btn-ghost">⬇ Exporter (CSV)</button><button class="btn btn-ghost">Voir les verbatims (texte libre)</button></div>
       </div>
 
       <div id="admin-notif" class="hidden">
@@ -2498,6 +2557,11 @@ var PHASES={
 function setSessLabel(id,txt){var s=document.querySelector('#'+id+' > .h > span');if(s)s.textContent=txt;}
 function connectNotion(){var s=document.getElementById('notionStatus');if(s)s.textContent='✅ Connexion Notion établie · espace « ODBI » · jeton actif';var b=document.getElementById('notionBadge');if(b)b.textContent='Connecté';}
 function notifTrigCustom(sel){var f=document.getElementById('notifCustomField');if(f)f.classList.toggle('hidden',sel.value!=='custom');}
+// Évaluation coach (interne, anonyme)
+var evalBackPage='course';
+function openEvalCoach(name,ctx,back){var n=document.getElementById('evalCoachName');if(n)n.textContent=name;var c=document.getElementById('evalCoachCtx');if(c)c.textContent=ctx;evalBackPage=back||'course';var f=document.getElementById('evalForm');if(f)f.classList.remove('hidden');var d=document.getElementById('evalDone');if(d)d.classList.add('hidden');goTo('evalcoach');}
+function backEval(){if(evalBackPage==='train'){goTo('train-detail');}else{goTo('course');courseTab(null,'presentiel');}}
+function submitEval(){document.getElementById('evalForm').classList.add('hidden');document.getElementById('evalDone').classList.remove('hidden');var m=document.querySelector('.main');if(m)m.scrollTo(0,0);}
 function applyType(){
   var ind=curType==='indiv', court=curType==='court';
   var ph=ind?(PHASES[curIndivKey]||PHASES.tronc):null;
@@ -2635,7 +2699,7 @@ function toggleNotif(){var m=document.getElementById('notifMenu');if(m)m.classLi
 function backCoaching(){goTo('course');courseTab(null,'training');}
 (function(){var rc=document.getElementById('rep-content');if(rc)rc.innerHTML=REP.resume;var sr=document.getElementById('seance-rep');if(sr)sr.innerHTML=REP.trans;renderVidChap('1/3');})();
 function adminTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
-  ['members','courses','promos','suivi','certif','notif','integ'].forEach(x=>document.getElementById('admin-'+x).classList.add('hidden'));
+  ['members','courses','promos','suivi','certif','notif','evalcoach','integ'].forEach(x=>document.getElementById('admin-'+x).classList.add('hidden'));
   document.getElementById('admin-'+t).classList.remove('hidden')}
 function toggleSeq(el){
   var seq=el.parentNode; seq.classList.toggle('open');

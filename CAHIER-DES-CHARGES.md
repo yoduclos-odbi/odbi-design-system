@@ -654,6 +654,33 @@ Deux sélecteurs en tête : **Programme** (paramétrage commun) et **Promotion**
 
 ---
 
+## 11quater. Évaluation interne des coachs (anonyme) — à internaliser
+
+Questionnaire par lequel **les participants évaluent les coachs de l'École**, sur les **présentiels** et les
+**trainings/coaching**. **Strictement interne et anonyme** — **≠ l'évaluation Qualiopi de la formation**.
+Aujourd'hui sur **Tally → Google Sheet anonyme** ; **à internaliser dans le LMS**.
+
+### Côté participant (front)
+- Bouton **« Évaluer le coach (anonyme) »** sur un **présentiel** et sur une **séance Training/Coaching**.
+- Formulaire **anonyme** (notes /5, échelle, oui/non, texte libre) → écran de remerciement. Aucune réponse
+  n'est reliée à un participant.
+
+### Côté BO (onglet « Éval. coachs »)
+- **Questionnaire éditable** (questions + type : Note /5, Échelle 1–10, Oui/Non, Texte libre ; réordonnables,
+  ajout/suppression). **Source** : Interne LMS / Tally (actuel) / **Notion (à venir)** — les questions
+  **évolueront** et seront **synchronisables depuis Notion** (« Importer depuis Notion »).
+- **Périmètre** : s'applique aux **Présentiels** et/ou **Trainings/Coaching** (toggles).
+- **Résultats anonymes agrégés** (remplace la Google Sheet) : moyennes par question **par coach**, nb de réponses,
+  % recommandé, filtres (coach / source), **export CSV** + verbatims.
+- **Coachs « anciens »** : ceux ayant **terminé le parcours de l'École** mais qui **continuent d'animer / d'être
+  évalués aux présentiels** apparaissent avec un statut « Ancien ».
+
+### Modèle de données
+- `QuestionnaireCoach` : questions[] (intitulé + type), source (interne/tally/notion), périmètre (présentiel/training).
+- `EvaluationCoach` : coach, source (présentiel/training), **anonyme (pas de lien participant)**, réponses[], date.
+
+---
+
 ## 12. Assistant IA — « YoDalf »
 
 - Mentor IA basé sur **Claude (API Anthropic)**
