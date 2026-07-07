@@ -1811,9 +1811,9 @@ a.ref-item:hover{background:var(--color-background)}
               <tr><td>S1 — Fondamentaux du leadership</td><td><span class="cf-st ok">Ouvert</span></td><td>—</td><td><select><option>Tout le contenu</option><option>Vidéos seules</option><option>Sans l'exercice</option><option>Théorie seule</option></select></td></tr>
               <tr><td>S2 — Mobiliser une équipe</td><td><span class="cf-st plan">Ouvert le 12/03</span></td><td><input type="date" value="2026-03-12" style="border:1px solid rgba(74,74,74,.2);border-radius:6px;padding:4px 8px"></td><td><select><option>Tout le contenu</option><option selected>Vidéos seules</option><option>Sans l'exercice</option><option>Théorie seule</option></select></td></tr>
               <tr><td>S3 — Leadership de soi</td><td><span class="cf-st todo">Verrouillé</span></td><td><input type="date" value="2026-04-02" style="border:1px solid rgba(74,74,74,.2);border-radius:6px;padding:4px 8px"></td><td><select><option selected>Tout le contenu</option><option>Vidéos seules</option><option>Sans l'exercice</option><option>Théorie seule</option></select></td></tr>
-              <tr><td>S4 — Décider en incertitude</td><td><span class="cf-st todo">Verrouillé</span></td><td><input type="date" value="2026-04-23" style="border:1px solid rgba(74,74,74,.2);border-radius:6px;padding:4px 8px"></td><td><select><option selected>Tout le contenu</option><option>Vidéos seules</option><option>Sans l'exercice</option><option>Théorie seule</option></select></td></tr>
+              <tr><td>S4 — Décider en incertitude</td><td><span class="cf-st todo">Verrouillé (manuel)</span></td><td><button class="btn btn-ghost" style="padding:5px 12px" onclick="this.textContent='✅ Débloquée';this.closest('tr').querySelector('.cf-st').className='cf-st ok';this.closest('tr').querySelector('.cf-st').textContent='Ouvert'">🔓 Débloquer maintenant</button></td><td><select><option selected>Tout le contenu</option><option>Vidéos seules</option><option>Sans l'exercice</option><option>Théorie seule</option></select></td></tr>
             </table>
-            <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-3)"><b>Déverrouillage partiel</b> : ouvrir seulement une partie d'une session (ex. les vidéos sans l'exercice) — utile pour un programme court ou une ouverture progressive. <b>Total</b> = « Tout le contenu ».</p>
+            <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-3)"><b>Ouverture</b> : une date (drip au calendrier) <b>ou</b> une session laissée <b>verrouillée à débloquer manuellement</b> (bouton « 🔓 Débloquer maintenant » — ex. S4). <b>Déverrouillage partiel</b> : ouvrir seulement une partie d'une session (ex. vidéos sans l'exercice). <b>Total</b> = « Tout le contenu ».</p>
             <button class="btn btn-primary" style="margin-top:var(--space-3)">💾 Enregistrer le déverrouillage (cette promo)</button>
           </div>
         </div>
@@ -2259,7 +2259,7 @@ a.ref-item:hover{background:var(--color-background)}
       <div class="edit-card">
         <div class="row2">
           <div class="field"><label>Titre de la session</label><input value="Session 2 — Mobiliser une équipe"></div>
-          <div class="field"><label>Accès</label><select><option>Déverrouillée</option><option>Verrouillée jusqu'à la session précédente</option></select></div>
+          <div class="field"><label>Accès</label><select><option>Déverrouillée</option><option>Verrouillée jusqu'à la session précédente</option><option>Verrouillée — déblocage manuel (par l'animateur)</option><option>Verrouillée jusqu'à une date</option></select></div>
         </div>
         <div class="gate-toggle">
           <div class="toggle"></div>
