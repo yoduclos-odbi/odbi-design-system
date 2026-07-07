@@ -133,10 +133,13 @@ Odbi campus
 │   │   ├── BTC : 1ère génération
 │   │   ├── BTC : 2ème génération
 │   │   └── BTC : 3ème génération
-│   └── Intelligence Collective (IC)
-│       ├── IC : Cohésion de groupe
-│       ├── IC : Coaching d'équipe
-│       └── IC : Transformation des organisations
+│   ├── Intelligence Collective (IC)
+│   │   ├── IC : Cohésion de groupe
+│   │   ├── IC : Coaching d'équipe
+│   │   └── IC : Transformation des organisations
+│   └── Formats courts École        (masterclass, ateliers — 1 à 2 j)
+│
+├── Autres formats courts           (webinaires, ateliers thématiques, ponctuels)
 │
 └── Programmes individuels (accompagnements 1:1)      [cf. §6ter]
     ├── Tronc commun               (individuel · titre RS · certifiant)
@@ -148,9 +151,12 @@ Chaque **formation/programme** est un cours autonome (modules/sessions ou **phas
 progression, promotions, groupe WhatsApp, visios propres).
 
 > **Formats pédagogiques (cf. §6ter)** — le catalogue est présenté en **3 onglets** :
-> **Programmes longs** · **Programmes courts** (même architecture, moins de contenu — principe « vide → masqué ») ·
-> **Programmes individuels** (Tronc commun / Bilan / VAE — sessions renommées **phases**, suivi 1:1).
-> Un même programme peut donc être *long* ou *court* ; les trois programmes **individuels** forment la 3ᵉ catégorie.
+> **Programmes longs** · **Programmes courts** · **Programmes individuels**.
+> - **Court = un format transverse**, pas une famille : on trouve des programmes courts **dans La Voie**
+>   (série « Vous En… »), **dans L'École** (masterclass, ateliers) **et hors univers** (webinaires, ateliers
+>   thématiques, formations ponctuelles). Même architecture que le long, moins de contenu (principe « vide → masqué »).
+> - **Individuel** = les 3 accompagnements 1:1 (Tronc commun / Bilan / VAE), sessions renommées **phases**.
+> Un même programme peut donc être *long* ou *court* selon son paramétrage (BO → éditeur → « Type de programme »).
 
 ### Catalogue & modèle d'accès (freemium)
 - Menu : **« Les programmes »** (catalogue complet) placé **au-dessus du Tableau de bord**
