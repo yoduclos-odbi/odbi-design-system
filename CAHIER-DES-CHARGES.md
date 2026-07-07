@@ -663,7 +663,8 @@ Deux sélecteurs en tête : **Programme** (paramétrage commun) et **Promotion**
 - **② Session de certification (propre à la promotion)** : **jury** (≥ 2, dont président, coach/animateur exclu),
   **candidats**, **saisie des grilles**, **PV par promotion**, **délivrance des diplômes**.
   **Synchronisé avec le suivi pédagogique** et exportable (PDF / registre Notion).
-- Accessible à l'**Admin** et au **Coach/Animateur** (organisateur ; le jury proprement dit reste tiers).
+- **Réservé à l'Admin** dans le back-office (paramétrage du référentiel, ateliers, jury, grilles, PV, diplômes).
+  L'**Animateur n'y a pas accès** ; le jury proprement dit reste **tiers** (président + ≥ 2 membres, coach/animateur exclu).
 
 ### Intégrations mobilisées
 - **Notion** (registre des certifications, BPF), **génération PDF** (PV + diplôme + attestations), suivi pédagogique (assiduité Qualiopi).
@@ -785,7 +786,7 @@ Aujourd'hui sur **Tally → Google Sheet anonyme** ; **à internaliser dans le L
 | Section BO | Admin | Animateur |
 |---|---|---|
 | **Suivi pédagogique** | tout | ✅ ses programmes uniquement |
-| **Certification** (paramétrage, grilles, PV, diplômes — cf. §11ter) | tout | ✅ jury de ses programmes |
+| **Certification** (paramétrage, grilles, PV, diplômes — cf. §11ter) | tout | ❌ |
 | **Promotions** (membres promo, planning visios) | tout | ✅ promos de ses programmes |
 | **Programmes** (contenu, sessions, visios) | tout | ✅ ses programmes (édition) |
 | **Évaluation des coachs** (résultats §12ter) | tout | ✅ coachs de son périmètre |
@@ -796,7 +797,8 @@ Aujourd'hui sur **Tally → Google Sheet anonyme** ; **à internaliser dans le L
 
 - L'animateur voit dans le BO : Programmes (les siens), Promotions (les siennes),
   Suivi pédagogique (les siens), **Évaluation des coachs** (résultats des coachs intervenant
-  sur son périmètre). Les onglets **Membres & accès**, **Notifications** et **Intégrations** lui sont masqués.
+  sur son périmètre). Les onglets **Certification**, **Membres & accès**, **Notifications** et
+  **Intégrations** lui sont masqués (la certification — jury, PV, diplômes — reste **réservée à l'admin**).
 - L'accès à l'**évaluation des coachs** permet à l'animateur de suivre la qualité de l'accompagnement
   sur ses présentiels / trainings ; les résultats affichés sont **filtrés sur son périmètre** (anonymat conservé).
 - Toutes les données sont **filtrées sur son périmètre d'animation** (cf. §4).
