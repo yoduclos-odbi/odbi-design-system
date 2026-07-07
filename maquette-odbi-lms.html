@@ -904,6 +904,12 @@ a.ref-item:hover{background:var(--color-background)}
         <div style="flex:1"><h3 style="font-size:15px;margin:0">Livret d'accueil</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:2px">Toutes les informations pratiques ODBI — s'ouvre dans Notion</p></div>
         <span style="color:var(--color-accent);font-family:var(--font-title);font-weight:600;font-size:13px;white-space:nowrap">Ouvrir ↗</span>
       </a>
+      <!-- Carte visible uniquement pour un coach évalué -->
+      <div class="card" id="dashCoachEvalCard" onclick="goTo('mycoacheval')" style="display:flex;align-items:center;gap:14px;padding:var(--space-4) var(--space-5);margin-bottom:var(--space-6);cursor:pointer;border-left:4px solid var(--color-asparagus)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-asparagus)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px;flex:none"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+        <div style="flex:1"><h3 style="font-size:15px;margin:0">Mon évaluation coach</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:2px">Retours <b>anonymes</b> des participants sur vos coachings — note actuelle <b>8,7/10</b></p></div>
+        <span style="color:var(--color-accent);font-family:var(--font-title);font-weight:600;font-size:13px;white-space:nowrap">Voir →</span>
+      </div>
       <h3 style="margin-bottom:var(--space-4)">Reprendre où vous en étiez</h3>
       <div class="grid grid-3">
         <div class="card course-card" onclick="openCourse('full','voie')">
@@ -2374,6 +2380,50 @@ a.ref-item:hover{background:var(--color-background)}
         <button class="btn btn-ghost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Télécharger le PV (PDF)</button>
       </div>
       <p id="diplomaSent" class="hidden" style="color:var(--color-asparagus);font-family:var(--font-title);font-weight:600;margin-top:var(--space-4);max-width:820px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;vertical-align:-3px;margin-right:5px"><polyline points="20 6 9 17 4 12"/></svg>Diplômes délivrés par le jury et déposés dans le profil de chaque candidat admis (onglet « Mes certifications »). Notification + e-mail envoyés. Une <b>attestation</b> est générée pour les candidats ajournés.</p>
+    </section>
+
+    <!-- MON ÉVALUATION COACH (compte rendu personnel du coach, anonyme) -->
+    <section id="page-mycoacheval" class="page">
+      <div class="page-head" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
+        <div>
+          <a onclick="goTo('dash')" style="color:var(--color-accent);cursor:pointer;font-size:13px;font-family:var(--font-title);font-weight:500">← Tableau de bord</a>
+          <h1 style="margin-top:6px">Mon évaluation coach</h1>
+          <p>Retours des participants sur vos coachings — <b>interne</b> et <b>anonyme</b></p>
+        </div>
+        <span class="cf-st ok">Interne · anonyme</span>
+      </div>
+
+      <div class="note" style="background:rgba(134,164,63,.08);border-left:4px solid var(--color-asparagus);border-radius:8px;padding:10px 14px;font-size:12.5px;margin-bottom:var(--space-5)">Vous voyez <b>uniquement vos propres retours</b> (jamais ceux des autres coachs). Objectif : faire progresser votre posture d'accompagnant. Source : questionnaire Notion (réponses anonymes).</div>
+
+      <div class="grid grid-3 mb6">
+        <div class="stat"><div class="num green">8,7</div><div class="lbl">Note globale / 10</div></div>
+        <div class="stat"><div class="num">34</div><div class="lbl">Réponses reçues</div></div>
+        <div class="stat"><div class="num">91%</div><div class="lbl">Vous recommandent</div></div>
+      </div>
+
+      <h3 class="section-title" style="margin-top:0">Évolution de ma note (/10)</h3>
+      <div class="card" style="padding:var(--space-6)">
+        <div class="bc-row"><div class="bc-name">Promo 2025 — Automne</div><div class="bc-track"><div class="bc-bar" style="width:82%"></div></div><div class="bc-val">8,2</div></div>
+        <div class="bc-row"><div class="bc-name">Promo 2026 — Printemps</div><div class="bc-track"><div class="bc-bar" style="width:85%"></div></div><div class="bc-val">8,5</div></div>
+        <div class="bc-row" style="margin-bottom:0"><div class="bc-name">Promo 2026 — Automne</div><div class="bc-track"><div class="bc-bar" style="width:87%"></div></div><div class="bc-val">8,7</div></div>
+      </div>
+
+      <h3 class="section-title">Détail par critère</h3>
+      <div class="card" style="padding:var(--space-6)">
+        <div class="bc-row"><div class="bc-name">Climat de confiance</div><div class="bc-track"><div class="bc-bar" style="width:94%"></div></div><div class="bc-val">9,4</div></div>
+        <div class="bc-row"><div class="bc-name">Écoute & présence</div><div class="bc-track"><div class="bc-bar" style="width:96%"></div></div><div class="bc-val">9,6</div></div>
+        <div class="bc-row"><div class="bc-name">Questionnement & feedback</div><div class="bc-track"><div class="bc-bar" style="width:83%"></div></div><div class="bc-val">8,3</div></div>
+        <div class="bc-row" style="margin-bottom:0"><div class="bc-name">Posture & cadre</div><div class="bc-track"><div class="bc-bar" style="width:89%"></div></div><div class="bc-val">8,9</div></div>
+      </div>
+
+      <h3 class="section-title">Commentaires anonymes des participants</h3>
+      <div class="grid grid-2">
+        <div class="card" style="padding:var(--space-5)"><p style="font-size:14px;font-style:italic">« Beaucoup d'écoute et de bienveillance, je me suis senti·e en confiance dès le départ. »</p><small style="color:var(--color-neutral)">Présentiel · nov. 2026</small></div>
+        <div class="card" style="padding:var(--space-5)"><p style="font-size:14px;font-style:italic">« Pertinent sur le fond ; j'aurais aimé des questions plus ouvertes par moments. »</p><small style="color:var(--color-neutral)">Training · oct. 2026</small></div>
+        <div class="card" style="padding:var(--space-5)"><p style="font-size:14px;font-style:italic">« Un vrai déclic pendant la séance, merci pour le cadre posé. »</p><small style="color:var(--color-neutral)">Présentiel · sept. 2026</small></div>
+        <div class="card" style="padding:var(--space-5)"><p style="font-size:14px;font-style:italic">« Très à l'écoute ; continuer à reformuler pour valider la compréhension. »</p><small style="color:var(--color-neutral)">Training · sept. 2026</small></div>
+      </div>
+      <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-4)">Les commentaires sont <b>anonymes</b> et ne sont visibles que par vous et l'administration. La note /10 est calculée à partir des réponses (barème réglé au back-office).</p>
     </section>
 
   </main>
