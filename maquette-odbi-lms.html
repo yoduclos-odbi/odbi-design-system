@@ -739,6 +739,30 @@ a.ref-item:hover{background:var(--color-background)}
   .table{min-width:600px}
 }
 
+/* ============ ACCESSIBILITÉ ============ */
+:focus-visible{outline:2px solid var(--color-accent);outline-offset:2px;border-radius:4px}
+.tab:focus-visible,.cnav-item:focus-visible,.toggle:focus-visible,.promo-pick:focus-visible{outline:2px solid var(--color-accent);outline-offset:2px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+
+/* ============ Centre de notifications + états vides + filtres ============ */
+.notif-all{padding:11px 14px;text-align:center;font-family:var(--font-title);font-weight:600;font-size:13px;color:var(--color-accent);cursor:pointer;border-top:1px solid rgba(74,74,74,.1)}
+.notif-all:hover{background:var(--color-background)}
+.n-item{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid rgba(74,74,74,.1);border-radius:var(--radius-lg);padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow-sm)}
+.n-item.unread{border-left:4px solid var(--color-primary)}
+.n-item .n-ic{width:38px;height:38px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;background:rgba(134,164,63,.12)}
+.n-item .n-ic svg{width:18px;height:18px;stroke:var(--color-primary)}
+.n-item h4{font-size:14px;margin:0 0 2px}
+.n-item p{font-size:13px;color:var(--color-neutral);margin:0}
+.n-item .n-time{font-size:11px;color:var(--color-french-grey);margin-top:4px}
+.n-dot{width:9px;height:9px;border-radius:50%;background:var(--color-primary);flex:none;margin-top:6px}
+.empty-state{text-align:center;padding:var(--space-8) var(--space-5);color:var(--color-neutral)}
+.empty-state .es-ic{width:64px;height:64px;border-radius:50%;background:var(--color-background);display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-4)}
+.empty-state .es-ic svg{width:30px;height:30px;stroke:var(--color-french-grey)}
+.empty-state h3{font-size:16px;margin-bottom:6px}
+.bo-filter{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:var(--space-4)}
+.bo-filter input,.bo-filter select{padding:9px 13px;border:1px solid rgba(74,74,74,.2);border-radius:var(--radius-md);font-family:var(--font-body);font-size:14px;background:#fff}
+.bo-filter .bo-count{font-size:12px;color:var(--color-neutral);margin-left:auto}
+
 /* ============ ONBOARDING — visite guidée ancrée ============ */
 .tour.hidden{display:none}
 .tour-mask{position:fixed;inset:0;z-index:200;background:transparent}
@@ -814,13 +838,14 @@ a.ref-item:hover{background:var(--color-background)}
           <input class="search" id="globalSearch" placeholder="Rechercher…" autocomplete="off" oninput="doSearch(this.value)" onfocus="doSearch(this.value)">
           <div id="searchResults" class="search-results hidden"></div>
         </div>
-        <div class="bell-wrap" style="position:relative"><span class="i i-bell" onclick="toggleNotif()"></span><span class="notif-dot"></span>
+        <div class="bell-wrap" style="position:relative"><span class="i i-bell" onclick="toggleNotif()" role="button" tabindex="0" aria-label="Notifications" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleNotif()}"></span><span class="notif-dot"></span>
           <div id="notifMenu" class="notif-menu hidden">
             <div class="notif-head">Notifications</div>
             <div class="notif-item" onclick="goTo('train-detail');toggleNotif()"><b>Invitation — séance d'entraînement</b><span>Karim Nadir vous invite comme <b>coaché</b> · 3 juil. à 18h</span><span class="na">Accepter · Refuser</span></div>
             <div class="notif-item" onclick="goTo('train-detail');toggleNotif()"><b>Feedback demandé</b><span>Séance Karim ↔ Thomas · en tant qu'observatrice</span></div>
             <div class="notif-item" onclick="goTo('train-detail');toggleNotif()"><b>Replay disponible</b><span>Votre séance du 21 juin est prête à être visionnée</span></div>
             <div class="notif-item" onclick="goTo('visio');toggleNotif()"><b>Visio dans 1h</b><span>« La Voie des managers » — Promo 2026</span></div>
+            <div class="notif-all" onclick="goTo('notifs');toggleNotif()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'){goTo('notifs');toggleNotif()}">Voir toutes les notifications →</div>
           </div>
         </div>
         <div class="avatar" onclick="goTo('profile')" title="Mon profil">JD</div>
@@ -1651,8 +1676,10 @@ a.ref-item:hover{background:var(--color-background)}
         <span style="font-size:12px;color:var(--color-neutral)">👁️ Vue (démo) :</span>
         <button id="boAdmin" class="promo-pick active" onclick="setBoRole('admin')">Admin</button>
         <button id="boCoach" class="promo-pick" onclick="setBoRole('coach')">Animateur</button>
+        <button id="boJury" class="promo-pick" onclick="setBoRole('jury')">Jury</button>
       </div>
       <div id="boCoachNote" class="hidden note" style="background:rgba(134,164,63,.08);border-left:4px solid var(--color-asparagus);border-radius:8px;padding:12px 16px;margin-bottom:var(--space-5);font-size:13px">👤 <b>Vue animateur</b> — limitée aux programmes que vous animez (La Voie des managers, Vous En Paix). Données filtrées sur vos promos. Pas d'accès à la gestion globale des membres, ni aux intégrations, ni à la création de programmes.</div>
+      <div id="boJuryNote" class="hidden note" style="background:rgba(17,76,106,.06);border-left:4px solid var(--color-accent);border-radius:8px;padding:12px 16px;margin-bottom:var(--space-5);font-size:13px">⚖️ <b>Accès jury (tiers)</b> — accès restreint à la <b>saisie des grilles de notation</b> et au <b>procès-verbal</b> de la promotion à évaluer, <b>uniquement</b>. Aucun accès au reste du back-office (contenu, membres, promotions, intégrations). Le jury est <b>indépendant</b> du coach/animateur.</div>
       <div class="tabs">
         <div class="tab active" id="tab-members" onclick="adminTab(this,'members')">Membres & accès</div>
         <div class="tab" id="tab-courses" onclick="adminTab(this,'courses')">Programmes</div>
@@ -1677,7 +1704,13 @@ a.ref-item:hover{background:var(--color-background)}
           <button class="btn btn-primary">Créer & envoyer les accès</button>
         </div>
         <div class="note" style="background:rgba(134,164,63,.08);border-left:4px solid var(--color-asparagus);border-radius:8px;padding:12px 16px;margin-bottom:var(--space-5);font-size:13px"><b>Droits d'accès</b> — <b>Participant</b> : uniquement sa promo. <b>Coach</b> (hors animation) : coache aux présentiels/trainings, <b>pas de périmètre d'animation</b>, <b>est évalué</b> (peut être un alumni). <b>Animateur</b> : toutes les promos des <b>seuls programmes qu'il anime</b> (périmètre) — peut aussi être coach. <b>Admin</b> : tout.</div>
-        <table class="table">
+        <div class="bo-filter">
+          <label class="sr-only" for="memSearch">Rechercher un membre</label>
+          <input id="memSearch" placeholder="🔎 Rechercher un membre (nom, e-mail…)" oninput="boFilter('memSearch','memRole','membersTable','memCount')" style="min-width:240px">
+          <select id="memRole" onchange="boFilter('memSearch','memRole','membersTable','memCount')"><option value="">Tous les rôles</option><option>Membre</option><option>Coach</option><option>Animateur</option><option>Admin</option></select>
+          <span class="bo-count" id="memCount"></span>
+        </div>
+        <table class="table" id="membersTable">
           <tr><th>Membre</th><th>E-mail</th><th>Rôle(s)</th><th>Périmètre d'accès</th><th>Actif</th></tr>
           <tr><td>Jean Dupont</td><td>membre@odbi.fr</td><td><span class="role member">Membre</span></td><td>3 programmes (ses promos)</td><td><div class="toggle"></div></td></tr>
           <tr><td>Marie Lambert</td><td>marie@odbi.fr</td><td><span class="role animateur">Animateur</span> <span class="role coach">Coach</span></td><td>Anime : La Voie des managers, Vous En Paix <button class="icon-btn" style="margin-left:6px">Périmètre</button></td><td><div class="toggle"></div></td></tr>
@@ -2080,6 +2113,7 @@ a.ref-item:hover{background:var(--color-background)}
           <tr><td><b>Rappel de visio / classe</b><div style="font-size:12px;color:var(--color-neutral)">1h avant</div></td><td>Promotion</td><td><div class="toggle"></div></td><td><div class="toggle"></div></td><td><div class="toggle"></div></td><td><div class="toggle"></div></td></tr>
           <tr><td><b>Replay disponible</b></td><td>Promotion</td><td><div class="toggle"></div></td><td><div class="toggle off"></div></td><td><div class="toggle off"></div></td><td><div class="toggle"></div></td></tr>
           <tr><td><b>Exercice à rendre / relance</b></td><td>Participant</td><td><div class="toggle"></div></td><td><div class="toggle"></div></td><td><div class="toggle off"></div></td><td><div class="toggle"></div></td></tr>
+          <tr style="background:rgba(134,164,63,.05)"><td><b>Exercice déposé par un membre</b><div style="font-size:12px;color:var(--color-neutral)">Prévient l'animateur du programme</div></td><td>Animateur</td><td><div class="toggle"></div></td><td><div class="toggle"></div></td><td><div class="toggle off"></div></td><td><div class="toggle"></div></td></tr>
           <tr><td><b>Invitation séance Coaching/Training</b></td><td>Invités</td><td><div class="toggle"></div></td><td><div class="toggle"></div></td><td><div class="toggle off"></div></td><td><div class="toggle"></div></td></tr>
           <tr><td><b>Feedback disponible</b><div style="font-size:12px;color:var(--color-neutral)">Séance d'entraînement</div></td><td>Participants École</td><td><div class="toggle"></div></td><td><div class="toggle off"></div></td><td><div class="toggle off"></div></td><td><div class="toggle"></div></td></tr>
           <tr><td><b>Rappel de présentiel</b></td><td>Promotion</td><td><div class="toggle"></div></td><td><div class="toggle"></div></td><td><div class="toggle off"></div></td><td><div class="toggle"></div></td></tr>
@@ -2562,6 +2596,30 @@ a.ref-item:hover{background:var(--color-background)}
         <div class="card" style="padding:var(--space-5)"><p style="font-size:14px;font-style:italic">« Très à l'écoute ; continuer à reformuler pour valider la compréhension. »</p><small style="color:var(--color-neutral)">Training · sept. 2026</small></div>
       </div>
       <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-4)">Les commentaires sont <b>anonymes</b> et ne sont visibles que par vous et l'administration. La note /10 est calculée à partir des réponses (barème réglé au back-office).</p>
+    </section>
+
+    <!-- CENTRE DE NOTIFICATIONS (page « Toutes mes notifications ») -->
+    <section id="page-notifs" class="page">
+      <div class="page-head" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
+        <div><h1>Notifications</h1><p>Toutes vos notifications, les plus récentes en premier</p></div>
+        <button class="btn btn-ghost" id="notifsMarkBtn" onclick="notifsMarkAllRead()">Tout marquer comme lu</button>
+      </div>
+      <div class="bo-filter">
+        <button class="promo-pick active" id="nfAll" onclick="notifsFilter('all')">Toutes</button>
+        <button class="promo-pick" id="nfUnread" onclick="notifsFilter('unread')">Non lues</button>
+      </div>
+      <div id="notifsList">
+        <div class="n-item unread" onclick="goTo('train-detail')" role="button" tabindex="0"><div class="n-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div style="flex:1"><h4>Invitation — séance d'entraînement</h4><p>Karim Nadir vous invite comme <b>coaché</b>.</p><div class="n-time">3 juil. · 18h00</div></div><span class="n-dot"></span></div>
+        <div class="n-item unread" onclick="goTo('train-detail')" role="button" tabindex="0"><div class="n-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div style="flex:1"><h4>Feedback demandé</h4><p>Séance Karim ↔ Thomas — en tant qu'observatrice.</p><div class="n-time">2 juil. · 09h12</div></div><span class="n-dot"></span></div>
+        <div class="n-item unread" onclick="goTo('course')" role="button" tabindex="0"><div class="n-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><div style="flex:1"><h4>Replay disponible</h4><p>Votre séance du 21 juin est prête à être visionnée.</p><div class="n-time">1 juil. · 20h05</div></div><span class="n-dot"></span></div>
+        <div class="n-item" onclick="goTo('visio')" role="button" tabindex="0"><div class="n-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m23 7-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><div style="flex:1"><h4>Visio « La Voie des managers »</h4><p>Rappel : votre visio de promo a lieu aujourd'hui à 18h.</p><div class="n-time">28 juin · 08h00</div></div></div>
+        <div class="n-item" onclick="goTo('game')" role="button" tabindex="0"><div class="n-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div><div style="flex:1"><h4>Nouveau badge : « Régularité »</h4><p>7 jours d'affilée — bravo, continuez !</p><div class="n-time">25 juin · 07h30</div></div></div>
+      </div>
+      <div id="notifsEmpty" class="empty-state hidden">
+        <div class="es-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <h3>Vous êtes à jour</h3>
+        <p>Aucune notification non lue.</p>
+      </div>
     </section>
 
   </main>
@@ -3139,18 +3197,25 @@ function lexFilter(l,el){
   });
 }
 function setBoRole(r){
-  document.getElementById('boAdmin').classList.toggle('active',r==='admin');
-  document.getElementById('boCoach').classList.toggle('active',r==='coach');
-  document.getElementById('boCoachNote').classList.toggle('hidden',r!=='coach');
-  var coachHidden=r==='coach';
-  document.getElementById('tab-members').style.display=coachHidden?'none':'';
-  document.getElementById('tab-integ').style.display=coachHidden?'none':'';
-  document.getElementById('tab-notif').style.display=coachHidden?'none':'';
-  document.getElementById('tab-certif').style.display=coachHidden?'none':'';
-  document.getElementById('tab-progress').style.display=coachHidden?'none':'';
-  // L'animateur garde l'accès aux évaluations (filtrées sur son périmètre)
-  document.getElementById('tab-evalcoach').style.display='';
-  if(coachHidden) adminTab(document.getElementById('tab-suivi'),'suivi');
+  var admin=r==='admin', coach=r==='coach', jury=r==='jury';
+  document.getElementById('boAdmin').classList.toggle('active',admin);
+  document.getElementById('boCoach').classList.toggle('active',coach);
+  var jb=document.getElementById('boJury');if(jb)jb.classList.toggle('active',jury);
+  document.getElementById('boCoachNote').classList.toggle('hidden',!coach);
+  var jn=document.getElementById('boJuryNote');if(jn)jn.classList.toggle('hidden',!jury);
+  function show(id,on){var e=document.getElementById(id);if(e)e.style.display=on?'':'none';}
+  // Admin : tout · Animateur : pas Membres/Intégrations/Notif/Certif/Progression · Jury : Certification uniquement
+  show('tab-members', admin);
+  show('tab-courses', admin||coach);
+  show('tab-promos', admin||coach);
+  show('tab-suivi', admin||coach);
+  show('tab-progress', admin);
+  show('tab-certif', admin||jury);
+  show('tab-notif', admin);
+  show('tab-evalcoach', admin||coach);
+  show('tab-integ', admin);
+  if(jury) adminTab(document.getElementById('tab-certif'),'certif');
+  else if(coach) adminTab(document.getElementById('tab-suivi'),'suivi');
   else adminTab(document.getElementById('tab-members'),'members');
 }
 function pmTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});el.classList.add('active');
@@ -3208,6 +3273,42 @@ document.querySelectorAll('table.table').forEach(function(t){
 });
 (function(){var b=document.getElementById('ctxbar');if(b)b.addEventListener('click',function(e){
   if(e.target.closest('.cnav-item, .tv-home, .cnav-back'))closeCtxbar();});})();
+
+// ---- BO : recherche / filtre sur les tableaux ----
+function boFilter(searchId,roleId,tableId,countId){
+  var q=(document.getElementById(searchId).value||'').trim().toLowerCase();
+  var role=roleId?(document.getElementById(roleId).value||''):'';
+  var rows=document.querySelectorAll('#'+tableId+' tr');var shown=0,total=0;
+  rows.forEach(function(tr,i){ if(i===0)return; // en-tête
+    total++;
+    var txt=tr.innerText.toLowerCase();
+    var okText=!q||txt.indexOf(q)>=0;
+    var okRole=!role||(tr.querySelector('.role')&&[].some.call(tr.querySelectorAll('.role'),function(r){return r.textContent.trim()===role;}));
+    var ok=okText&&okRole; tr.style.display=ok?'':'none'; if(ok)shown++;
+  });
+  var c=document.getElementById(countId);if(c)c.textContent=shown+' / '+total+(shown<=1?' membre':' membres');
+}
+
+// ---- Centre de notifications ----
+function notifsFilter(mode){
+  document.getElementById('nfAll').classList.toggle('active',mode==='all');
+  document.getElementById('nfUnread').classList.toggle('active',mode==='unread');
+  var items=document.querySelectorAll('#notifsList .n-item');var vis=0;
+  items.forEach(function(it){var show=(mode==='all')||it.classList.contains('unread');it.style.display=show?'':'none';if(show)vis++;});
+  document.getElementById('notifsEmpty').classList.toggle('hidden',!(mode==='unread'&&vis===0));
+}
+function notifsMarkAllRead(){
+  document.querySelectorAll('#notifsList .n-item.unread').forEach(function(it){it.classList.remove('unread');var d=it.querySelector('.n-dot');if(d)d.remove();});
+  var dot=document.querySelector('.notif-dot');if(dot)dot.style.display='none';
+  var btn=document.getElementById('notifsMarkBtn');if(btn){btn.textContent='✓ Tout est lu';btn.disabled=true;btn.style.opacity='.6';}
+  if(document.getElementById('nfUnread').classList.contains('active'))notifsFilter('unread');
+}
+
+// ---- Recherche globale : raccourci Ctrl/Cmd+K ----
+document.addEventListener('keydown',function(e){
+  if((e.metaKey||e.ctrlKey)&&(e.key==='k'||e.key==='K')){e.preventDefault();var s=document.getElementById('globalSearch');if(s){s.focus();s.select();}}
+});
+var gs=document.getElementById('globalSearch');if(gs)gs.setAttribute('placeholder','Rechercher…  (Ctrl/⌘K)');
 </script>
 </body>
 </html>
