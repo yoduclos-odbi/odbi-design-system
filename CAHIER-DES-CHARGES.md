@@ -78,18 +78,27 @@ S'appuie sur le **design system ODBI** (`odbi-design-tokens.css` / `.json`).
 
 | Rôle | Description |
 |------|-------------|
-| **Membre** | Suit les cours, participe aux visios/présentiels de sa promo |
-| **Coach / Animateur** | Anime les visios, suit les promotions des programmes qu'il anime |
+| **Membre / Participant** | Suit les cours, participe aux visios/présentiels de sa promo |
+| **Coach** (hors animation) | Coache aux présentiels / trainings ; **est évalué** par les participants ; **n'anime pas** de programme ; peut être **alumni** de l'École |
+| **Animateur** (périmètre) | **Anime** les visios/promotions d'un ou plusieurs programmes ; peut **aussi être coach** (cumul des deux rôles) |
 | **Admin** | Gère contenu, membres, accès, promotions, intégrations |
+
+> Le rôle historique « Coach / Animateur » est **scindé** en deux rôles distincts et **cumulables** :
+> **Coach** (posture d'accompagnement, sans périmètre d'animation, soumis à l'évaluation interne §12ter) et
+> **Animateur** (périmètre = programmes animés). Un même membre peut porter les deux badges
+> (ex. *Marie Lambert* = Animateur + Coach).
 
 ### Modèle de droits (rôle × périmètre)
 - **Participant** : accès **uniquement à sa promo** (programmes où il est inscrit).
-- **Coach / Animateur** : **affecté à un ou plusieurs programmes** (table d'association
-  *animateur ↔ programmes animés*). Il a accès à **toutes les promos de ces programmes**
-  (suivi pédagogique, visios, présentiels) et **à rien** sur les programmes qu'il n'anime pas.
+- **Coach (hors animation)** : **pas de périmètre d'animation** ; intervient aux **présentiels / trainings**,
+  **est évalué** (§12ter), et peut être rattaché à la promotion permanente **Alumni / Coachs École**
+  une fois son parcours terminé. Pas d'accès au back-office par défaut.
+- **Animateur** : **affecté à un ou plusieurs programmes** (table d'association *animateur ↔ programmes animés*).
+  Il a accès à **toutes les promos de ces programmes** (suivi pédagogique, visios, présentiels) et
+  **à rien** sur les programmes qu'il n'anime pas. Son back-office est en **« vue animateur »** (restreinte).
 - **Admin** : accès à **tout**.
-- Le **périmètre d'animation** d'un coach se gère dans le back-office (Membres → Périmètre :
-  cases à cocher des programmes animés). Les vues du coach (Suivi, Promotions, Planning visios)
+- Le **périmètre d'animation** se gère dans le back-office (Membres → Périmètre :
+  cases à cocher des programmes animés). Les vues de l'animateur (Suivi, Promotions, Planning visios)
   sont **filtrées** sur ses programmes.
 
 Accès **éditable** : un admin peut définir qui a accès à quel programme / promotion.
@@ -692,7 +701,25 @@ Aujourd'hui sur **Tally → Google Sheet anonyme** ; **à internaliser dans le L
 - **Résultats anonymes agrégés** (remplace la Google Sheet) : moyennes par question **par coach**, nb de réponses,
   % recommandé, filtres (coach / source), **export CSV** + verbatims.
 - **Coachs « anciens »** : ceux ayant **terminé le parcours de l'École** mais qui **continuent d'animer / d'être
-  évalués aux présentiels** apparaissent avec un statut « Ancien ».
+  évalués aux présentiels** apparaissent avec un statut « Ancien ». Ils sont rattachés à la promotion
+  permanente **Alumni / Coachs École** (cf. ci-dessous).
+
+### Promotion « Alumni / Coachs École »
+- Promotion **permanente** (sans date de fin) rattachée au programme **École**, servant de **point d'ancrage**
+  pour les coachs sortis des promos en cours mais toujours actifs aux présentiels / trainings.
+- Créable/administrable par l'admin comme toute promotion (onglet **Promotions** du BO) ; présente dans la
+  maquette à titre d'exemple (18 membres, statut *Permanente*, présentiels *Continu*).
+- Permet de continuer à **collecter et rattacher** leur évaluation coach une fois qu'ils ne sont plus dans
+  une promotion active.
+
+### Compte rendu personnel du coach (front)
+- Chaque **coach évalué** dispose de son propre **compte rendu** de son évaluation, accessible :
+  1. depuis une **carte dédiée du tableau de bord** (« Mon évaluation coach » — note actuelle),
+  2. depuis un **lien dans le menu de gauche** de la section **Promotion** du cours (« Mon évaluation coach »).
+- La page dédiée (`page-mycoacheval`) affiche **uniquement ses propres retours** (jamais ceux des autres
+  coachs) : **note globale /10**, nb de réponses, % recommandé, **évolution de la note par promo** (graphe barres),
+  **détail par critère** (graphe barres) et **verbatims anonymes** des participants (présentiel / training).
+- Source : réponses **anonymes** du questionnaire **Notion**. Objectif : faire progresser la posture d'accompagnant.
 
 ### Modèle de données
 - `QuestionnaireCoach` : questions[] (intitulé + type), source (interne/tally/notion), périmètre (présentiel/training).
@@ -750,7 +777,10 @@ Aujourd'hui sur **Tally → Google Sheet anonyme** ; **à internaliser dans le L
 ## 14. Back-office d'administration
 
 ### Accès au back-office par rôle
-| Section BO | Admin | Coach / Animateur |
+> Colonne « Animateur » = animateur d'un ou plusieurs programmes (**vue animateur** restreinte).
+> Un **coach** sans périmètre d'animation n'a **pas d'accès BO** par défaut.
+
+| Section BO | Admin | Animateur |
 |---|---|---|
 | **Suivi pédagogique** | tout | ✅ ses programmes uniquement |
 | **Certification** (paramétrage, grilles, PV, diplômes — cf. §11ter) | tout | ✅ jury de ses programmes |
