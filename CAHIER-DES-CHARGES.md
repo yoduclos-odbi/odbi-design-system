@@ -729,10 +729,16 @@ Aujourd'hui sur **Tally → Google Sheet anonyme** ; **à internaliser dans le L
   1. depuis une **carte dédiée du tableau de bord** (« Évaluation » — note actuelle),
   2. depuis un **lien dans le menu de gauche** de la section **Promotion** du cours (« Évaluation »).
 - La page dédiée (`page-mycoacheval`) affiche **uniquement ses propres retours** (jamais ceux des autres
-  coachs) : **note globale /10**, nb de réponses, % recommandé, **évolution de la note par période**
-  (graphe barres — **par période/saison, pas par promo** : un coach évalué n'est **pas** rattaché à une
-  promotion, il intervient aux présentiels/trainings dans le temps), **détail par critère** (graphe barres)
-  et **verbatims anonymes** des participants (présentiel / training).
+  coachs) : **note globale /10**, nb de réponses, % recommandé, **évolution de la note par période**,
+  **détail par critère** et **verbatims anonymes** des participants (présentiel / training).
+- **Évolution de la note — sélection de périodes** : le coach choisit les **périodes à comparer**, **5 max**.
+  Une **période = une date de mise à jour** des résultats (un **snapshot** créé à chaque **import Notion**),
+  **pas** une promotion (un coach évalué n'est pas rattaché à une promo, il intervient aux présentiels/trainings
+  dans le temps). Au-delà de 5 sélections, les autres périodes sont désactivées.
+- **Détail par critère = axes du questionnaire Notion** : les critères (ex. climat de confiance, écoute &
+  présence, questionnement & feedback, posture & cadre) **reprennent les axes du questionnaire Notion** et sont
+  donc **dynamiques** — si le questionnaire change, les critères suivent. Chaque critère = moyenne des questions
+  Notion rattachées.
 - Source : réponses **anonymes** du questionnaire **Notion**. Objectif : faire progresser la posture d'accompagnant.
 
 ### Modèle de données
