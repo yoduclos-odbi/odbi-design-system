@@ -1038,14 +1038,14 @@ Suite à la revue de propositions d'améliorations, décisions prises :
 | # | Proposition | Décision | Où c'est traité |
 |---|---|---|---|
 | 1 | **Communauté intégrée** (feed, commentaires par leçon, entraide) | **v2 / plus tard** | §21 (Évolutions v2) |
-| 2 | **Mobile-first / PWA** | **Retenu** — principe **décidé maintenant**, **implémenté au dev** | §15 + Backlog UX (chantier prioritaire) |
+| 2 | **Mobile-first / PWA** | **Fait (responsive) dans la maquette** — principe décidé maintenant ; **PWA au dev** | §15 + Backlog UX |
 | 3 | **Reprise de lecture vidéo** | **Déjà prévu** | §8, §11, §15 (Vimeo Player SDK) |
 | 4 | **Satisfaction à chaud / à froid** | **Géré sur Notion** (automatisations) ; résultats rapatriables au BO | §17 |
 | 5 | **Émargement & attestations** | **Géré sur Notion** (automatisations) à partir des données de connexion extraites | §17 |
-| 6 | **Détection des décrocheurs / à risque** | **Retenu** — dans le **BO → Suivi pédagogique** | §14 |
-| 7 | **Recherche globale** | **Retenu** | Backlog UX |
-| 8 | **Export / abonnement agenda (iCal, Google Cal)** | **Retenu** | §18 (Agenda) |
-| 9 | **Onboarding 1ʳᵉ connexion** (visite guidée) | **Retenu (déjà listé)** | Backlog UX, §14 |
+| 6 | **Détection des décrocheurs / à risque** | **✅ Intégré maquette** — BO → Suivi pédagogique (carte + statut « À risque » + Relancer) | §14 |
+| 7 | **Recherche globale** | **✅ Intégré maquette** — barre du haut + panneau de résultats groupés | Backlog UX |
+| 8 | **Export / abonnement agenda (iCal, Google Cal)** | **✅ Intégré maquette** — page Agenda | §18 (Agenda) |
+| 9 | **Onboarding 1ʳᵉ connexion** (visite guidée) | **✅ Intégré maquette** — 4 étapes au 1ᵉʳ login | Backlog UX, §14 |
 | 10 | **Consultation hors-ligne** | **Retenu** sous forme de **cache temporaire chiffré** (voir ci-dessous) ; **pas** de téléchargement de fichiers bruts | ci-dessous |
 | 11 | **YoDalf proactif** (relances, révisions, répétition espacée) | **v2 / plus tard** | §21 (Évolutions v2) |
 | 12 | **Architecture de production** | **Confié à un développeur** (qui pourra s'appuyer sur Claude) ; la maquette sert de référence UX | §15 |
@@ -1057,6 +1057,14 @@ le contenu doit **exister localement** d'une manière ou d'une autre. La bonne a
   explicitement « mis de côté ») est **stocké de façon chiffrée**, **non exportable**, et **expire** automatiquement.
 - L'utilisateur ne récupère **pas** un fichier vidéo réutilisable → la **protection du contenu (RGPD/Vimeo)** est préservée.
 - Ce mécanisme **dépend de la PWA** (point 2) : à cadrer au développement, pas indispensable à la V1.
+
+### Point 2 — mobile-first (implémenté dans la maquette)
+Le responsive est intégré à la maquette (breakpoints tablette ≤ 1024px / mobile ≤ 640px) :
+- **Barre du haut** → menu **burger** déroulant sur mobile.
+- **Sidebar programme** (arbre du cours) → **tiroir off-canvas** (bouton flottant + fond assombri).
+- **Grilles** de cartes en **1 colonne**, bannières empilées, **tableaux du BO défilables** horizontalement.
+- Cibles tactiles agrandies, aucun débordement horizontal.
+La **PWA** (installation, notifications push, cache hors-ligne du point 10) reste à implémenter au développement.
 
 ---
 
