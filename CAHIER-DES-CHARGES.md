@@ -822,8 +822,12 @@ Onglets :
   du programme** (progression, exercices rendus, score quiz moyen, vidéos vues,
   assiduité visios), **actualisées en temps réel**. Export CSV + Notion (BPF).
   - **Détection des décrocheurs / apprenants « à risque »** : le suivi met en avant les participants
-    **inactifs** (ex. 14 j sans connexion) ou **bloqués** dans leur progression, pour déclencher une
-    **relance** (notification/e-mail). Vue « entonnoir de complétion » par session pour repérer où ça coince.
+    **inactifs** (ex. 14 j sans connexion) ou **bloqués** dans leur progression. Vue « entonnoir de
+    complétion » par session pour repérer où ça coince.
+  - **Relance** : depuis la fiche à risque, bouton **« Relancer »** → la relance part via le
+    **moteur de notifications ODBI** : **notification in-app** (cloche + tableau de bord) et/ou **e-mail**
+    (et WhatsApp en option). **Message et canaux paramétrables** au back-office (onglet Notifications) ;
+    l'envoi est **journalisé** dans le suivi (traçabilité).
 - **Certification** — paramétrage par programme (adossement RNCP/RS/interne, niveaux, référentiel,
   ateliers 1 à 3), suivi des candidats, **saisie des grilles**, **procès-verbal** et **délivrance des diplômes** (cf. §11ter).
 - **Intégrations** — config BBB, Notta, YoDalf, **Loom**, WhatsApp, Notion, Stripe
@@ -1045,7 +1049,7 @@ Suite à la revue de propositions d'améliorations, décisions prises :
 | 6 | **Détection des décrocheurs / à risque** | **✅ Intégré maquette** — BO → Suivi pédagogique (carte + statut « À risque » + Relancer) | §14 |
 | 7 | **Recherche globale** | **✅ Intégré maquette** — barre du haut + panneau de résultats groupés | Backlog UX |
 | 8 | **Export / abonnement agenda (iCal, Google Cal)** | **✅ Intégré maquette** — page Agenda | §18 (Agenda) |
-| 9 | **Onboarding 1ʳᵉ connexion** (visite guidée) | **✅ Intégré maquette** — 4 étapes au 1ᵉʳ login | Backlog UX, §14 |
+| 9 | **Onboarding 1ʳᵉ connexion** (visite guidée) | **✅ Intégré maquette** — visite guidée en **bulles ancrées** (spotlight + flèche), 9 étapes | §22 |
 | 10 | **Consultation hors-ligne** | **Retenu** sous forme de **cache temporaire chiffré** (voir ci-dessous) ; **pas** de téléchargement de fichiers bruts | ci-dessous |
 | 11 | **YoDalf proactif** (relances, révisions, répétition espacée) | **v2 / plus tard** | §21 (Évolutions v2) |
 | 12 | **Architecture de production** | **Confié à un développeur** (qui pourra s'appuyer sur Claude) ; la maquette sert de référence UX | §15 |
@@ -1087,6 +1091,27 @@ Pistes conservées pour une **version ultérieure**, non incluses dans le périm
 - [x] Migration contenus Moodle : **non** — rechargement manuel par ODBI (back-office d'upload à soigner)
 - [ ] BPF/Qualiopi : **champs exacts** à exporter vers Notion + durée de conservation des traces
 - [ ] Émargement : signature électronique requise, ou trace de connexion suffisante ?
+
+---
+
+## 22. Onboarding — visite guidée ancrée (1ʳᵉ connexion)
+
+Au premier login, une **visite guidée** se lance : des **bulles ancrées** (surbrillance de la zone
+concernée + flèche) pointent successivement vers les endroits clés de la plateforme (au lieu d'un simple
+pop-up central). Navigation **Suivant / Passer**, indicateur d'étape. Les 9 étapes :
+
+1. **Pop-up de bienvenue** (centré) — introduction.
+2. **Votre tableau de bord** — accès direct aux programmes en cours, progression, raccourcis du jour.
+3. **Votre livret d'accueil** — infos pratiques ODBI (carte du dashboard, ouvre Notion).
+4. **Votre agenda** — visios, présentiels, échéances ; synchronisables (iCal / Google Calendar).
+5. **Votre visio du jour** — rejoindre la salle en un clic quand une session est en direct.
+6. **YoDalf** — mentor IA disponible 24/7 sur le contenu ODBI.
+7. **Votre progression** — points, niveaux et badges.
+8. **Les programmes** — catalogue complet avec **bonus gratuits** pour découvrir.
+9. **Votre espace personnel** — profil, certifications, déconnexion.
+
+> Sur mobile (menu replié), les étapes dont la cible n'est pas visible s'affichent **centrées**.
+> La visite est **rejouable** (au dev : depuis le profil / l'aide).
 
 ---
 
