@@ -934,7 +934,8 @@ a.ref-item:hover{background:var(--color-background)}
             <div class="cnav-item" id="navPresentiel" onclick="openInfo(this,'presentiel')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Présentiels</div>
             <div class="cnav-item" id="navParticipants" onclick="openInfo(this,'participants')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg> Participants</div>
             <div class="cnav-item" id="navWhatsapp" onclick="openInfo(this,'whatsapp')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg> <span id="navWhatsappLabel">WhatsApp</span></div>
-            <div class="cnav-item" id="navMyCoachEval" onclick="goTo('mycoacheval')" title="Réservé aux coachs évalués"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Évaluation</div>
+            <!-- Réservé aux coachs de l'École (seuls évalués) — masqué pour les membres La Voie -->
+            <div class="cnav-item" id="navMyCoachEval" onclick="goTo('mycoacheval')" title="Réservé aux coachs de l'École (seuls évalués)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Évaluation</div>
           </div>
         </div>
 
@@ -1007,7 +1008,7 @@ a.ref-item:hover{background:var(--color-background)}
           <div style="flex:1"><h3 style="font-size:15px;margin:0">Livret d'accueil</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:2px">Infos pratiques ODBI — s'ouvre dans Notion</p></div>
           <span style="color:var(--color-accent);font-family:var(--font-title);font-weight:600;font-size:13px;white-space:nowrap">Ouvrir ↗</span>
         </a>
-        <!-- Carte visible uniquement pour un coach évalué -->
+        <!-- Carte visible uniquement pour un coach ÉVALUÉ = coach de l'École (les membres La Voie ne sont pas évalués et ne voient pas cette carte) -->
         <div class="card" id="dashCoachEvalCard" onclick="goTo('mycoacheval')" style="display:flex;align-items:center;gap:14px;padding:var(--space-4) var(--space-5);cursor:pointer;border-left:4px solid var(--color-asparagus)">
           <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-asparagus)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px;flex:none"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
           <div style="flex:1"><h3 style="font-size:15px;margin:0">Évaluation</h3><p style="color:var(--color-neutral);font-size:13px;margin-top:2px">Retours <b>anonymes</b> — note actuelle <b>8,7/10</b></p></div>

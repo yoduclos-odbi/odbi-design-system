@@ -714,9 +714,12 @@ Aujourd'hui sur **Tally → Google Sheet anonyme** ; **à internaliser dans le L
   une promotion active.
 
 ### Compte rendu personnel du coach (front)
-- Chaque **coach évalué** dispose de son propre **compte rendu** de son évaluation, accessible :
-  1. depuis une **carte dédiée du tableau de bord** (« Mon évaluation coach » — note actuelle),
-  2. depuis un **lien dans le menu de gauche** de la section **Promotion** du cours (« Mon évaluation coach »).
+> **Réservé aux coachs de l'École** (participants/coachs de l'École, y compris **alumni**). Seuls les coachs
+> École sont évalués (aux présentiels / trainings) → la carte et le lien **n'apparaissent pas** pour les
+> membres **La Voie** ni pour un participant non-coach.
+- Chaque **coach évalué** (donc de l'École) dispose de son propre **compte rendu** de son évaluation, accessible :
+  1. depuis une **carte dédiée du tableau de bord** (« Évaluation » — note actuelle),
+  2. depuis un **lien dans le menu de gauche** de la section **Promotion** du cours (« Évaluation »).
 - La page dédiée (`page-mycoacheval`) affiche **uniquement ses propres retours** (jamais ceux des autres
   coachs) : **note globale /10**, nb de réponses, % recommandé, **évolution de la note par promo** (graphe barres),
   **détail par critère** (graphe barres) et **verbatims anonymes** des participants (présentiel / training).
