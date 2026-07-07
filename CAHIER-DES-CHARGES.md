@@ -84,14 +84,20 @@ S'appuie sur le **design system ODBI** (`odbi-design-tokens.css` / `.json`).
 | **Admin** | Gère contenu, membres, accès, promotions, intégrations |
 
 > Le rôle historique « Coach / Animateur » est **scindé** en deux rôles distincts et **cumulables** :
-> **Coach** (posture d'accompagnement, sans périmètre d'animation, soumis à l'évaluation interne §12ter) et
+> **Coach** (posture d'accompagnement, sans périmètre d'animation, soumis à l'évaluation interne §10ter) et
 > **Animateur** (périmètre = programmes animés). Un même membre peut porter les deux badges
 > (ex. *Marie Lambert* = Animateur + Coach).
+>
+> **Le « Jury » n'est PAS un rôle permanent.** C'est un **accès temporaire et ciblé** accordé aux personnes
+> **nommées comme jury d'une promotion** (président + ≥ 2 membres, **indépendants** du coach/animateur,
+> éventuellement **externes**). Il se limite à la **saisie des grilles + PV** de cette promotion et **expire**
+> une fois le jury passé / la promo figée (cf. §11ter, §14). Les rôles permanents restent :
+> **Participant · Coach · Animateur · Admin**.
 
 ### Modèle de droits (rôle × périmètre)
 - **Participant** : accès **uniquement à sa promo** (programmes où il est inscrit).
 - **Coach (hors animation)** : **pas de périmètre d'animation** ; intervient aux **présentiels / trainings**,
-  **est évalué** (§12ter), et peut être rattaché à la promotion permanente **Alumni / Coachs École**
+  **est évalué** (§10ter), et peut être rattaché à la promotion permanente **Alumni / Coachs École**
   une fois son parcours terminé. **Aucun accès au back-office** — *sauf* s'il est **aussi Animateur** (cumul).
 - **Animateur** : **affecté à un ou plusieurs programmes** (table d'association *animateur ↔ programmes animés*).
   Il a accès à **toutes les promos de ces programmes** (suivi pédagogique, visios, présentiels) et
@@ -830,7 +836,7 @@ Deux sélecteurs en tête : **Programme** (paramétrage commun) et **Promotion**
 | **Certification** (paramétrage, grilles, PV, diplômes — cf. §11ter) | tout | ❌ |
 | **Promotions** (membres promo, planning visios) | tout | ✅ promos de ses programmes |
 | **Programmes** (contenu, sessions, visios) | tout | ✅ ses programmes (édition) |
-| **Évaluation des coachs** (résultats §12ter) | tout | ✅ coachs de son périmètre |
+| **Évaluation des coachs** (résultats §10ter) | tout | ✅ coachs de son périmètre |
 | **Membres & accès** (global, rôles, comptes) | ✅ | ❌ |
 | **Notifications** (paramétrage §10bis) | ✅ | ❌ |
 | **Intégrations** (BBB, Notta, Notion, Stripe…) | ✅ | ❌ |
