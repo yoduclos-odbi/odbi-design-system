@@ -326,6 +326,10 @@ est **propre à chaque promotion** → réglé au **BO → Promotions → gestio
   par session), *tout ouvert*, ou *manuel*.
 - **Déverrouillage total OU partiel, par session/séquence** : ex. ouvrir *les vidéos seules*, *sans l'exercice*,
   *théorie seule*, ou *tout le contenu* — avec une **date d'ouverture** par ligne.
+- **Ouverture par ligne** : soit une **date** (drip au calendrier), soit une session **laissée verrouillée
+  à débloquer manuellement** (bouton **« 🔓 Débloquer maintenant »**). Idem au niveau programme :
+  l'éditeur de session propose *Déverrouillée / Verrouillée jusqu'à la session précédente /
+  **Verrouillée — déblocage manuel** / Verrouillée jusqu'à une date*.
 - Ainsi le **même contenu** peut être **ouvert différemment** selon la promo (drip/planning par cohorte),
   sans dupliquer le contenu. (Le déverrouillage **global par programme** de §14 reste, comme réglage par défaut.)
 
@@ -432,11 +436,13 @@ et peut **s'étaler sur plusieurs semaines** (adaptation pédagogique).
 (entre « Suivi pédagogique » et « Certification »), de façon **globale** (plateforme). L'**éditeur de
 programme** renvoie vers cet onglet et permettra une **surcharge propre au programme**. Contenu :
 - **Règles de complétion — par type de contenu** : ce qui marque une étape « faite » (vidéo ≥ X %, exercice
-  déposé / validé, ressource ouverte / non requise, quiz : 1 tentative ou score ≥ X %, classe ouverte / non requise)
+  déposé / validé, ressource ouverte / non requise, quiz : 1 tentative ou score ≥ X %, classe ouverte / non requise,
+  **séance Coaching / Training** : réalisée / + feedback reçu / non requise, **présentiel** : émargé / non requise)
   + **si l'étape compte dans la progression** (toggle par type).
 - **Calcul de la progression** (% d'étapes / pondéré) · **séquencement par défaut** (séquentiel/libre) ·
   **étapes prises en compte** (toutes / obligatoires) · **prérequis pour la sanction** (ex. ≥ 100 % + exercices déposés).
-- **Gamification** : **points par action** (activables), **niveaux** (nom + seuil), **badges** (nom + condition,
+- **Gamification** : **points par action** (activables : vidéo, exercice, quiz, visio/classe, **séance
+  Coaching/Training**, **présentiel émargé**, streak…), **niveaux** (nom + seuil), **badges** (nom + condition,
   activables, ajout possible). Alimente la page « Progression » et le profil.
 - Rappel : l'**ouverture datée / drip** reste **par promotion** (Déverrouillage) ; ici ce sont les **règles de complétion**.
 
