@@ -721,8 +721,10 @@ Aujourd'hui sur **Tally → Google Sheet anonyme** ; **à internaliser dans le L
   1. depuis une **carte dédiée du tableau de bord** (« Évaluation » — note actuelle),
   2. depuis un **lien dans le menu de gauche** de la section **Promotion** du cours (« Évaluation »).
 - La page dédiée (`page-mycoacheval`) affiche **uniquement ses propres retours** (jamais ceux des autres
-  coachs) : **note globale /10**, nb de réponses, % recommandé, **évolution de la note par promo** (graphe barres),
-  **détail par critère** (graphe barres) et **verbatims anonymes** des participants (présentiel / training).
+  coachs) : **note globale /10**, nb de réponses, % recommandé, **évolution de la note par période**
+  (graphe barres — **par période/saison, pas par promo** : un coach évalué n'est **pas** rattaché à une
+  promotion, il intervient aux présentiels/trainings dans le temps), **détail par critère** (graphe barres)
+  et **verbatims anonymes** des participants (présentiel / training).
 - Source : réponses **anonymes** du questionnaire **Notion**. Objectif : faire progresser la posture d'accompagnant.
 
 ### Modèle de données
@@ -994,10 +996,17 @@ Champs :
 > sont éditables sur le LMS.
 
 Le profil affiche aussi :
-- **Points & badges acquis** (total points, niveau, badges, série) + lien vers la progression
+- **Résumé compact** points/niveau/badges + **lien « Voir ma progression »** (le **détail** vit sur la page
+  Progression — pas de doublon).
 - **« Mes certifications & diplômes »** — diplômes **délivrés** par le jury (intitulé, niveau/mention,
   programme, date, **code RNCP/RS**, **PDF téléchargeable**) et certifications **en cours / non encore délivrées** (cf. §11ter).
-- **Les cours auxquels le membre est inscrit** + sa **progression** — **cartes cliquables** (ouvrent le cours)
+- **Préférences RGPD** (opt-in annuaire).
+
+> **Répartition des rôles (anti-doublon, décision)** — chaque page a un périmètre distinct :
+> - **Tableau de bord** = cockpit du jour (visio du jour, « Reprendre », prochaines échéances, raccourcis) ;
+> - **Espace perso (Profil)** = **identité & compte** (infos perso, **certifications/diplômes**, préférences) ;
+> - **Progression** = détail gamification (points, niveaux, badges, historique).
+> La **liste des cours** et le **détail points/badges** ne sont **plus dupliqués** dans le profil.
 
 ### Annuaire des participants
 - **Onglet « Participants »** de la page cours (au même niveau que Lexique/Références)
