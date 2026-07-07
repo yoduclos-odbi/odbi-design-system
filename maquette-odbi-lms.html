@@ -1658,6 +1658,7 @@ a.ref-item:hover{background:var(--color-background)}
         <div class="tab" id="tab-courses" onclick="adminTab(this,'courses')">Programmes</div>
         <div class="tab" id="tab-promos" onclick="adminTab(this,'promos')">Promotions</div>
         <div class="tab" id="tab-suivi" onclick="adminTab(this,'suivi')">Suivi pédagogique</div>
+        <div class="tab" id="tab-progress" onclick="adminTab(this,'progress')">Progression</div>
         <div class="tab" id="tab-certif" onclick="adminTab(this,'certif')">Certification</div>
         <div class="tab" id="tab-notif" onclick="adminTab(this,'notif')">Notifications</div>
         <div class="tab" id="tab-evalcoach" onclick="adminTab(this,'evalcoach')">Éval. coachs</div>
@@ -1877,6 +1878,62 @@ a.ref-item:hover{background:var(--color-background)}
         </div>
 
         <div style="display:flex;gap:10px;margin-top:var(--space-5)"><button class="btn btn-ghost">⬇ Exporter (CSV)</button><button class="btn btn-ghost">Vers Notion (BPF)</button></div>
+      </div>
+
+      <div id="admin-progress" class="hidden">
+        <p style="color:var(--color-neutral);margin-bottom:var(--space-5)">Règles de progression et gamification, gérées ici de façon <b>globale</b> (plateforme). <span style="color:var(--color-primary)">● Une surcharge par programme reste possible dans l'éditeur de programme.</span></p>
+
+        <div class="edit-card">
+          <h3>Règles de progression</h3>
+          <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">Définissez ce qui marque une étape comme « faite » et comment se calcule la progression du membre. Sert aussi au <b>reporting Qualiopi/BPF</b> (assiduité).</p>
+          <div class="section-title" style="margin-top:0">Conditions de complétion — par type de contenu</div>
+          <table class="table">
+            <tr><th>Type de contenu</th><th>Condition « fait »</th><th>Compte dans la progression</th></tr>
+            <tr><td><span class="i i-video"></span> Vidéo</td><td>Vue à ≥ <input value="90" style="width:56px;text-align:center"> %</td><td><div class="toggle"></div></td></tr>
+            <tr><td><span class="i i-exo"></span> Exercice</td><td><select style="max-width:280px"><option>Déposé</option><option>Déposé + validé par l'animateur</option></select></td><td><div class="toggle"></div></td></tr>
+            <tr><td><span class="i i-audio"></span> Ressource</td><td><select style="max-width:280px"><option>Ouverte</option><option>Non requise</option></select></td><td><div class="toggle off"></div></td></tr>
+            <tr><td><span class="i i-quiz"></span> Quiz</td><td><select style="max-width:280px"><option>Au moins 1 tentative</option><option>Score ≥ 60 %</option><option>Score ≥ 80 %</option></select></td><td><div class="toggle"></div></td></tr>
+            <tr><td><span class="i i-visio"></span> Classe (replay)</td><td><select style="max-width:280px"><option>Ouverte</option><option>Non requise</option></select></td><td><div class="toggle off"></div></td></tr>
+          </table>
+          <div class="row2" style="margin-top:var(--space-4)">
+            <div class="field"><label>Calcul de la progression</label><select><option>% d'étapes complétées</option><option>Pondéré par type (coefficients)</option></select></div>
+            <div class="field"><label>Séquencement par défaut</label><select><option>Séquentiel — pédagogie inversée (exercice → contenu)</option><option>Libre — tout accessible</option></select></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label>Étapes prises en compte</label><select><option>Toutes les étapes</option><option>Seulement les étapes marquées « obligatoire »</option></select></div>
+            <div class="field"><label>Prérequis pour la sanction (certification / documents & livrables)</label><input value="Progression ≥ 100 % + exercices déposés"></div>
+          </div>
+          <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-2)">ℹ️ L'<b>ouverture datée / le drip</b> (quand une session se débloque) se règle <b>par promotion</b> (onglet Promotions → Déverrouillage) ; ici, ce sont les <b>règles de complétion</b>.</p>
+          <button class="btn btn-primary" style="margin-top:var(--space-3)">💾 Enregistrer les règles</button>
+        </div>
+
+        <div class="edit-card">
+          <h3>Points, badges & niveaux (gamification)</h3>
+          <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">Réglez comment le membre gagne des points, les <b>niveaux</b> et les <b>badges</b> — affichés sur la page « Progression » et le profil.</p>
+          <div class="section-title" style="margin-top:0">Points par action</div>
+          <table class="table">
+            <tr><th>Action</th><th>Points</th><th>Actif</th></tr>
+            <tr><td>Vidéo vue</td><td><input value="10" style="width:56px;text-align:center"></td><td><div class="toggle"></div></td></tr>
+            <tr><td>Exercice déposé</td><td><input value="25" style="width:56px;text-align:center"></td><td><div class="toggle"></div></td></tr>
+            <tr><td>Quiz réussi</td><td><input value="20" style="width:56px;text-align:center"></td><td><div class="toggle"></div></td></tr>
+            <tr><td>Visio / classe suivie (live)</td><td><input value="30" style="width:56px;text-align:center"></td><td><div class="toggle"></div></td></tr>
+            <tr><td>Jour de série (streak)</td><td><input value="5" style="width:56px;text-align:center"></td><td><div class="toggle"></div></td></tr>
+          </table>
+          <div class="section-title">Niveaux (seuils de points)</div>
+          <table class="table">
+            <tr><th>Niveau</th><th>Nom</th><th>À partir de</th><th></th></tr>
+            <tr><td>1</td><td><input value="Débutant"></td><td><input value="0" style="width:70px"> pts</td><td><button class="icon-btn">🗑️</button></td></tr>
+            <tr><td>4</td><td><input value="Manager en action"></td><td><input value="500" style="width:70px"> pts</td><td><button class="icon-btn">🗑️</button></td></tr>
+            <tr><td>7</td><td><input value="Stratège confirmé"></td><td><input value="1200" style="width:70px"> pts</td><td><button class="icon-btn">🗑️</button></td></tr>
+          </table>
+          <button class="add-btn">+ Ajouter un niveau</button>
+          <div class="section-title">Badges</div>
+          <div class="edit-row"><span style="font-size:18px">🚀</span><div class="grow"><div class="row2"><input value="Premiers pas"><input value="1ʳᵉ vidéo vue"></div></div><div class="toggle"></div><button class="icon-btn">🗑️</button></div>
+          <div class="edit-row"><span style="font-size:18px">🔥</span><div class="grow"><div class="row2"><input value="Régularité"><input value="7 jours de série"></div></div><div class="toggle"></div><button class="icon-btn">🗑️</button></div>
+          <div class="edit-row"><span style="font-size:18px">🎤</span><div class="grow"><div class="row2"><input value="Présent en live"><input value="Participer à une visio"></div></div><div class="toggle"></div><button class="icon-btn">🗑️</button></div>
+          <button class="add-btn">+ Ajouter un badge</button>
+          <div style="margin-top:var(--space-4)"><button class="btn btn-primary">💾 Enregistrer la gamification</button></div>
+        </div>
       </div>
 
       <div id="admin-certif" class="hidden">
@@ -2134,56 +2191,10 @@ a.ref-item:hover{background:var(--color-background)}
         </div>
       </div>
 
-      <div class="edit-card">
-        <h3>Règles de progression</h3>
-        <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">Définissez ce qui marque une étape comme « faite » et comment se calcule la progression du membre. Sert aussi au <b>reporting Qualiopi/BPF</b> (assiduité). <span style="color:var(--color-neutral)">Réglable au niveau du programme (surcharge possible par session).</span></p>
-        <div class="section-title" style="margin-top:0">Conditions de complétion — par type de contenu</div>
-        <table class="table">
-          <tr><th>Type de contenu</th><th>Condition « fait »</th><th>Compte dans la progression</th></tr>
-          <tr><td><span class="i i-video"></span> Vidéo</td><td>Vue à ≥ <input value="90" style="width:56px;text-align:center"> %</td><td><div class="toggle"></div></td></tr>
-          <tr><td><span class="i i-exo"></span> Exercice</td><td><select style="max-width:280px"><option>Déposé</option><option>Déposé + validé par l'animateur</option></select></td><td><div class="toggle"></div></td></tr>
-          <tr><td><span class="i i-audio"></span> Ressource</td><td><select style="max-width:280px"><option>Ouverte</option><option>Non requise</option></select></td><td><div class="toggle off"></div></td></tr>
-          <tr><td><span class="i i-quiz"></span> Quiz</td><td><select style="max-width:280px"><option>Au moins 1 tentative</option><option>Score ≥ 60 %</option><option>Score ≥ 80 %</option></select></td><td><div class="toggle"></div></td></tr>
-          <tr><td><span class="i i-visio"></span> Classe (replay)</td><td><select style="max-width:280px"><option>Ouverte</option><option>Non requise</option></select></td><td><div class="toggle off"></div></td></tr>
-        </table>
-        <div class="row2" style="margin-top:var(--space-4)">
-          <div class="field"><label>Calcul de la progression</label><select><option>% d'étapes complétées</option><option>Pondéré par type (coefficients)</option></select></div>
-          <div class="field"><label>Séquencement par défaut</label><select><option>Séquentiel — pédagogie inversée (exercice → contenu)</option><option>Libre — tout accessible</option></select></div>
-        </div>
-        <div class="row2">
-          <div class="field"><label>Étapes prises en compte</label><select><option>Toutes les étapes</option><option>Seulement les étapes marquées « obligatoire »</option></select></div>
-          <div class="field"><label>Prérequis pour la sanction (certification / documents & livrables)</label><input value="Progression ≥ 100 % + exercices déposés"></div>
-        </div>
-        <p style="color:var(--color-neutral);font-size:12px;margin-top:var(--space-2)">ℹ️ L'<b>ouverture datée / le drip</b> (quand une session se débloque) se règle <b>par promotion</b> (onglet Promotions → Déverrouillage) ; ici, ce sont les <b>règles de complétion</b>, communes au programme.</p>
-        <button class="btn btn-primary" style="margin-top:var(--space-3)">💾 Enregistrer les règles</button>
-      </div>
-
-      <div class="edit-card">
-        <h3>Points, badges & niveaux (gamification)</h3>
-        <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">Réglez comment le membre gagne des points, les <b>niveaux</b> et les <b>badges</b> — affichés sur la page « Progression » et le profil.</p>
-        <div class="section-title" style="margin-top:0">Points par action</div>
-        <table class="table">
-          <tr><th>Action</th><th>Points</th><th>Actif</th></tr>
-          <tr><td>Vidéo vue</td><td><input value="10" style="width:56px;text-align:center"></td><td><div class="toggle"></div></td></tr>
-          <tr><td>Exercice déposé</td><td><input value="25" style="width:56px;text-align:center"></td><td><div class="toggle"></div></td></tr>
-          <tr><td>Quiz réussi</td><td><input value="20" style="width:56px;text-align:center"></td><td><div class="toggle"></div></td></tr>
-          <tr><td>Visio / classe suivie (live)</td><td><input value="30" style="width:56px;text-align:center"></td><td><div class="toggle"></div></td></tr>
-          <tr><td>Jour de série (streak)</td><td><input value="5" style="width:56px;text-align:center"></td><td><div class="toggle"></div></td></tr>
-        </table>
-        <div class="section-title">Niveaux (seuils de points)</div>
-        <table class="table">
-          <tr><th>Niveau</th><th>Nom</th><th>À partir de</th><th></th></tr>
-          <tr><td>1</td><td><input value="Débutant"></td><td><input value="0" style="width:70px"> pts</td><td><button class="icon-btn">🗑️</button></td></tr>
-          <tr><td>4</td><td><input value="Manager en action"></td><td><input value="500" style="width:70px"> pts</td><td><button class="icon-btn">🗑️</button></td></tr>
-          <tr><td>7</td><td><input value="Stratège confirmé"></td><td><input value="1200" style="width:70px"> pts</td><td><button class="icon-btn">🗑️</button></td></tr>
-        </table>
-        <button class="add-btn">+ Ajouter un niveau</button>
-        <div class="section-title">Badges</div>
-        <div class="edit-row"><span style="font-size:18px">🚀</span><div class="grow"><div class="row2"><input value="Premiers pas"><input value="1ʳᵉ vidéo vue"></div></div><div class="toggle"></div><button class="icon-btn">🗑️</button></div>
-        <div class="edit-row"><span style="font-size:18px">🔥</span><div class="grow"><div class="row2"><input value="Régularité"><input value="7 jours de série"></div></div><div class="toggle"></div><button class="icon-btn">🗑️</button></div>
-        <div class="edit-row"><span style="font-size:18px">🎤</span><div class="grow"><div class="row2"><input value="Présent en live"><input value="Participer à une visio"></div></div><div class="toggle"></div><button class="icon-btn">🗑️</button></div>
-        <button class="add-btn">+ Ajouter un badge</button>
-        <div style="margin-top:var(--space-4)"><button class="btn btn-primary">💾 Enregistrer la gamification</button></div>
+      <div class="edit-card" style="border-left:4px solid var(--color-asparagus)">
+        <h3>Progression & gamification</h3>
+        <p style="color:var(--color-neutral);font-size:13px;margin-bottom:var(--space-4)">Les <b>règles de progression</b> (conditions de complétion, calcul) et la <b>gamification</b> (points, niveaux, badges) se règlent de façon <b>globale</b> dans <b>Back-office → Progression</b>. Vous pouvez y définir une <b>surcharge propre à ce programme</b> si besoin.</p>
+        <button class="btn btn-ghost" onclick="goTo('admin');adminTab(document.getElementById('tab-progress'),'progress')">Ouvrir les réglages de progression →</button>
       </div>
 
       <div class="tabs">
@@ -3050,7 +3061,7 @@ function toggleNotif(){var m=document.getElementById('notifMenu');if(m)m.classLi
 function backCoaching(){goTo('course');courseTab(null,'training');}
 (function(){var rc=document.getElementById('rep-content');if(rc)rc.innerHTML=REP.resume;var sr=document.getElementById('seance-rep');if(sr)sr.innerHTML=REP.trans;renderVidChap('1/3');})();
 function adminTab(el,t){el.parentNode.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');
-  ['members','courses','promos','suivi','certif','notif','evalcoach','integ'].forEach(x=>document.getElementById('admin-'+x).classList.add('hidden'));
+  ['members','courses','promos','suivi','progress','certif','notif','evalcoach','integ'].forEach(x=>document.getElementById('admin-'+x).classList.add('hidden'));
   document.getElementById('admin-'+t).classList.remove('hidden')}
 function toggleSeq(el){
   var seq=el.parentNode; seq.classList.toggle('open');
@@ -3128,6 +3139,7 @@ function setBoRole(r){
   document.getElementById('tab-integ').style.display=coachHidden?'none':'';
   document.getElementById('tab-notif').style.display=coachHidden?'none':'';
   document.getElementById('tab-certif').style.display=coachHidden?'none':'';
+  document.getElementById('tab-progress').style.display=coachHidden?'none':'';
   // L'animateur garde l'accès aux évaluations (filtrées sur son périmètre)
   document.getElementById('tab-evalcoach').style.display='';
   if(coachHidden) adminTab(document.getElementById('tab-suivi'),'suivi');
