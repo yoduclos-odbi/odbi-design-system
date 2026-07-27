@@ -793,7 +793,6 @@ Deux sélecteurs en tête : **Programme** (paramétrage commun) et **Promotion**
 | **WhatsApp** | Groupe communautaire **par promotion** (lien externe) |
 | **Notion** | **CRM** + **source des inscriptions** + **extraction Qualiopi / BPF** |
 | **E-mailing transactionnel** | Envoi automatique des accès LMS + notifications (service à choisir) |
-| **Stripe** | Paiements & abonnements |
 
 ### Flux Notion (bidirectionnel — le LMS lit ET écrit dans Notion, et inversement)
 
@@ -843,7 +842,7 @@ Deux sélecteurs en tête : **Programme** (paramétrage commun) et **Promotion**
 | **Évaluation des coachs** (résultats §10ter) | tout | ✅ coachs de son périmètre |
 | **Membres & accès** (global, rôles, comptes) | ✅ | ❌ |
 | **Notifications** (paramétrage §10bis) | ✅ | ❌ |
-| **Intégrations** (BBB, Notta, Notion, Stripe…) | ✅ | ❌ |
+| **Intégrations** (BBB, Notta, Notion…) | ✅ | ❌ |
 | Créer / supprimer un programme | ✅ | ❌ |
 
 - L'animateur voit dans le BO : Programmes (les siens), Promotions (les siennes),
@@ -886,7 +885,7 @@ Onglets :
 - **Notifications** — activation/désactivation par canal, destinataires, ajout, déclencheurs & timing (cf. §10bis). *(Admin only)*
 - **Éval. coachs** — tableau de bord des résultats d'évaluation des coachs (note /10, graphe), **alimenté depuis
   Notion** (cf. §10ter). *(Admin ; l'Animateur y accède, filtré sur son périmètre)*
-- **Intégrations** — config BBB, Notta, YoDalf, **Loom**, WhatsApp, Notion, Stripe. *(Admin only)*
+- **Intégrations** — config BBB, Notta, YoDalf, **Loom**, WhatsApp, Notion. *(Admin only)*
 
 ### Éditeur de cours (back-office)
 Doit être **ergonomique** (rechargement manuel des contenus depuis Moodle).
@@ -946,7 +945,6 @@ Carte de gestion de la promo sélectionnée, avec sous-onglets :
 - **Vidéo** : **Vimeo** (hébergement/streaming) + **Player SDK** (reprise de lecture, suivi de progression)
 - **Visio** : BigBlueButton (API)
 - **IA** : API Claude (Anthropic)
-- **Paiement** : Stripe
 - **E-mailing transactionnel** : à choisir (ex. Resend, Postmark, Brevo…) — envoi des accès + notifications
 - **CRM / inscriptions / reporting** : Notion (via API)
 - À confirmer au démarrage du projet réel.
@@ -1011,7 +1009,7 @@ les statistiques du **BPF**.
 
 ### BPF — Bilan Pédagogique et Financier (annuel)
 Données à pouvoir produire : nombre de stagiaires, **heures réalisées** par
-formation/promotion, etc. (volet financier = à coupler avec Stripe).
+formation/promotion, etc. *(Le volet financier/facturation est géré hors LMS — voir §19.)*
 
 ### Extraction / export
 - **Extraction vers une base de données Notion** avec les **champs souhaités**
@@ -1151,7 +1149,7 @@ Pistes conservées pour une **version ultérieure**, non incluses dans le périm
 - [ ] Coach : peut-il **éditer le contenu** de ses programmes, ou **lecture seule** (suivi + visios) ?
 - [ ] Profil : répartition exacte des champs **Notion (synchro)** vs **LMS (éditable)**
 - [x] Annuaire RGPD : **opt-in** — e-mail & WhatsApp visibles seulement si le membre consent
-- [ ] Modèle d'abonnement / tarification (Stripe) : à définir
+- [x] **Paiement / facturation : hors périmètre LMS** — l'encaissement se fait via le process existant (inscriptions Notion / manuel par l'admin). Pas de Stripe ni de module de paiement dans le LMS.
 - [ ] Langues de l'interface (FR seul, ou multilingue ?)
 - [ ] BBB : mode **redirection** (reco) ou **embarqué (iframe)** dans la plateforme ?
 - [x] Migration contenus Moodle : **non** — rechargement manuel par ODBI (back-office d'upload à soigner)
