@@ -957,6 +957,10 @@ Carte de gestion de la promo sélectionnée, avec sous-onglets :
 - BBB **auto-hébergé chez OVH** (serveur **TURN** pour la traversée NAT/firewall)
 - Domaine : **https://www.classe-virtuelle.com/**
 - Intégré aujourd'hui à **Moodle** (plugin BBB Moodle)
+- **Les enregistrements (replays) sont déjà stockés sur ce serveur** → **rien à héberger côté vidéo
+  de visio** : la nouvelle plateforme se contente de **lister/lire** les enregistrements existants via
+  l'**API BBB** (`getRecordings`). Pas de nouveau stockage/CDN à prévoir pour les replays (le stockage
+  Vimeo du §15 ne concerne que les **vidéos pédagogiques asynchrones**, pas les replays de visios).
 
 ### Approche d'intégration dans la nouvelle plateforme
 La maquette montre une visio « intégrée » (tuiles dans la page). En réalité,
