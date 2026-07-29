@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ODBI — Modèle A : 3 façons d'éviter le double menu</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--asparagus:#86A43F;--apple:#B1BC4B;--indigo:#114C6A;--jet:#4D4D4D;--grey:#A4A4A7;--alabaster:#F0EEE6;--ft:'Roboto',sans-serif;--fb:'Roboto Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--fb);background:var(--alabaster);color:var(--jet);font-size:14px;padding:32px 20px}
+.wrap{max-width:1040px;margin:0 auto}
+h1,h2,h3,h4{font-family:var(--ft)}
+.intro{text-align:center;margin-bottom:36px}
+.intro h1{font-size:24px;margin-bottom:8px}.intro p{color:var(--grey)}
+.model{background:#fff;border-radius:16px;box-shadow:0 4px 14px rgba(0,0,0,.07);padding:24px;margin-bottom:34px}
+.tag{display:inline-block;font-family:var(--ft);font-weight:700;font-size:12px;color:#fff;background:var(--asparagus);padding:5px 12px;border-radius:999px;margin-bottom:10px}
+.model h2{font-size:19px;margin-bottom:6px}.model .desc{color:var(--grey);font-size:13px;margin-bottom:18px}
+/* mini app frame */
+.frame{border:1px solid rgba(74,74,74,.16);border-radius:12px;overflow:hidden}
+.top{height:46px;background:#fff;border-bottom:1px solid rgba(74,74,74,.1);display:flex;align-items:center;gap:10px;padding:0 14px}
+.logo{font-family:var(--ft);font-weight:700;font-size:14px;display:flex;align-items:center;gap:8px}
+.logo .d{width:11px;height:11px;background:var(--apple);transform:rotate(45deg)}
+.body{display:flex;min-height:330px}
+/* global nav full */
+.nav{width:170px;background:#fff;border-right:1px solid rgba(74,74,74,.1);padding:12px 8px}
+.nav .it{font-family:var(--ft);font-weight:500;font-size:12px;padding:8px 10px;border-radius:7px;color:var(--jet);display:flex;gap:8px;margin-bottom:2px}
+.nav .it.on{background:var(--asparagus);color:#fff}
+/* global nav rail (icons) */
+.rail{width:54px;background:#fff;border-right:1px solid rgba(74,74,74,.1);padding:12px 0;display:flex;flex-direction:column;align-items:center;gap:6px}
+.rail .ri{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.rail .ri.on{background:var(--asparagus)}
+/* curriculum panel */
+.cur{width:215px;background:#fbfbf9;border-right:1px solid rgba(74,74,74,.1);padding:14px}
+.cur.right{border-right:none;border-left:1px solid rgba(74,74,74,.1);background:#fbfbf9}
+.cur .ttl{font-family:var(--ft);font-weight:700;font-size:12px;margin-bottom:3px}
+.cur .sub{font-size:10px;color:var(--grey);margin-bottom:12px}
+.cur .back{font-size:11px;color:var(--indigo);font-family:var(--ft);font-weight:500;margin-bottom:12px;display:block}
+.cur .wk{font-family:var(--ft);font-weight:500;font-size:12px;background:var(--alabaster);padding:7px 9px;border-radius:6px;margin-bottom:6px}
+.cur .st{display:flex;gap:8px;font-size:12px;padding:6px 9px 6px 14px;border-radius:6px;color:var(--jet)}
+.cur .st.on{background:rgba(17,76,106,.1);color:var(--indigo);font-family:var(--ft);font-weight:500}
+.cur .st .ck{margin-left:auto;font-size:11px;color:var(--asparagus)}
+/* content */
+.main{flex:1;padding:20px;background:var(--alabaster)}
+.main .bc{font-size:11px;color:var(--grey);margin-bottom:10px}
+.main h3{font-size:16px;margin-bottom:10px}
+.scr{background:#000;border-radius:8px;aspect-ratio:16/9;max-width:340px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px}
+.note{font-size:12px;color:var(--asparagus);font-family:var(--ft);font-weight:500;margin-top:14px}
+.pick{text-align:center;color:var(--grey);font-size:13px;margin-top:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="intro">
+    <h1>Modèle A — 3 façons d'éviter le double menu</h1>
+    <p>Le sommaire de session (semaines → étapes) sans entrer en conflit avec le menu principal à gauche.</p>
+  </div>
+
+  <!-- Variante 1 : sommaire à droite -->
+  <div class="model">
+    <span class="tag">Variante A1</span>
+    <h2>Sommaire à droite</h2>
+    <div class="desc">Le menu principal reste à gauche, le sommaire de la session passe à droite. Contenu au centre.</div>
+    <div class="frame">
+      <div class="top"><div class="logo"><span class="d"></span> ODBI ACADEMY</div></div>
+      <div class="body">
+        <div class="nav">
+          <div class="it">📒 Livret</div><div class="it on">📚 Programmes</div><div class="it">🏠 Tableau de bord</div><div class="it">🎥 Visios</div><div class="it">🧙 YoDalf</div>
+        </div>
+        <div class="main">
+          <div class="bc">La Voie des managers / Session 2 / Semaine 1</div>
+          <h3>🎬 Créer l'engagement collectif</h3>
+          <div class="scr">▶ Vidéo 1/3 — Vimeo</div>
+        </div>
+        <div class="cur right">
+          <div class="ttl">Session 2</div><div class="sub">3 semaines</div>
+          <div class="wk">Semaine 1 ▾</div>
+          <div class="st">📝 Exercice <span class="ck">✓</span></div>
+          <div class="st on">🎬 Vidéos ▶</div>
+          <div class="st">🎧 Ressources</div>
+          <div class="st">✅ Quiz</div>
+          <div class="st">🎥 Replay</div>
+          <div class="wk" style="margin-top:8px">Semaine 2 ▸</div>
+        </div>
+      </div>
+    </div>
+    <div class="note">✅ Aucun changement du menu principal · le plus simple</div>
+  </div>
+
+  <!-- Variante 2 : menu réduit en icônes -->
+  <div class="model">
+    <span class="tag">Variante A2</span>
+    <h2>Menu principal réduit en icônes</h2>
+    <div class="desc">Quand on entre dans une session, le menu principal se réduit à une barre d'icônes ; le sommaire de session prend sa place à gauche.</div>
+    <div class="frame">
+      <div class="top"><div class="logo"><span class="d"></span> ODBI ACADEMY</div></div>
+      <div class="body">
+        <div class="rail">
+          <div class="ri">📒</div><div class="ri on">📚</div><div class="ri">🏠</div><div class="ri">🎥</div><div class="ri">🧙</div>
+        </div>
+        <div class="cur">
+          <div class="ttl">Session 2</div><div class="sub">3 semaines · La Voie des managers</div>
+          <div class="wk">Semaine 1 ▾</div>
+          <div class="st">📝 Exercice <span class="ck">✓</span></div>
+          <div class="st on">🎬 Vidéos ▶</div>
+          <div class="st">🎧 Ressources</div>
+          <div class="st">✅ Quiz</div>
+          <div class="st">🎥 Replay</div>
+          <div class="wk" style="margin-top:8px">Semaine 2 ▸</div>
+        </div>
+        <div class="main">
+          <div class="bc">Semaine 1 · Vidéos</div>
+          <h3>🎬 Créer l'engagement collectif</h3>
+          <div class="scr">▶ Vidéo 1/3 — Vimeo</div>
+        </div>
+      </div>
+    </div>
+    <div class="note">✅ On garde l'accès au menu principal (icônes) + sommaire bien à gauche</div>
+  </div>
+
+  <!-- Variante 3 : sommaire contextuel -->
+  <div class="model">
+    <span class="tag">Variante A3</span>
+    <h2>Le menu gauche devient le sommaire (contextuel)</h2>
+    <div class="desc">En entrant dans une session, le menu de gauche se transforme en sommaire de session, avec un « ← Retour » pour revenir au menu principal. Une seule colonne.</div>
+    <div class="frame">
+      <div class="top"><div class="logo"><span class="d"></span> ODBI ACADEMY</div></div>
+      <div class="body">
+        <div class="cur">
+          <span class="back">← Retour aux programmes</span>
+          <div class="ttl">Session 2 — Mobiliser une équipe</div><div class="sub">3 semaines</div>
+          <div class="wk">Semaine 1 ▾</div>
+          <div class="st">📝 Exercice <span class="ck">✓</span></div>
+          <div class="st on">🎬 Vidéos ▶</div>
+          <div class="st">🎧 Ressources</div>
+          <div class="st">✅ Quiz</div>
+          <div class="st">🎥 Replay</div>
+          <div class="wk" style="margin-top:8px">Semaine 2 ▸</div>
+          <div class="wk" style="opacity:.55">Semaine 3 🔒</div>
+        </div>
+        <div class="main">
+          <div class="bc">Semaine 1 · Vidéos</div>
+          <h3>🎬 Créer l'engagement collectif</h3>
+          <div class="scr">▶ Vidéo 1/3 — Vimeo</div>
+        </div>
+      </div>
+    </div>
+    <div class="note">✅ Une seule colonne, pas de doublon · immersif (focus sur la session)</div>
+  </div>
+
+  <div class="pick">A1 (sommaire à droite) · A2 (menu en icônes) · A3 (sommaire contextuel) — ta préférence ?</div>
+</div>
+</body>
+</html>

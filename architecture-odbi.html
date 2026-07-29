@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ODBI Academy — Architecture & organisation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --asparagus:#86A43F;--apple:#B1BC4B;--indigo:#114C6A;--jet:#4D4D4D;--black:#1A1A1A;
+  --grey:#A4A4A7;--alabaster:#F0EEE6;
+  --font-title:'Roboto',sans-serif;--font-body:'Roboto Mono',monospace;--font-cap:'Raleway',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-body);background:var(--alabaster);color:var(--jet);font-size:14px;line-height:1.5;padding:40px 24px}
+.wrap{max-width:1100px;margin:0 auto}
+h1,h2,h3,h4{font-family:var(--font-title)}
+.head{text-align:center;margin-bottom:48px}
+.logo{font-family:var(--font-title);font-weight:700;font-size:22px;letter-spacing:1px;display:inline-flex;align-items:center;gap:10px;margin-bottom:14px}
+.logo .dot{width:14px;height:14px;background:var(--apple);border-radius:3px;transform:rotate(45deg)}
+.head h1{font-size:30px;margin-bottom:8px}
+.head p{font-family:var(--font-cap);font-weight:300;color:var(--jet);font-size:16px}
+.block{background:#fff;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,.07);padding:32px;margin-bottom:28px}
+.block > h2{font-size:20px;margin-bottom:6px}
+.block > .sub{color:var(--grey);font-size:13px;margin-bottom:24px}
+.step{font-family:var(--font-title);font-weight:700;font-size:12px;color:#fff;background:var(--indigo);width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-right:10px}
+
+/* Tree */
+.tree{display:flex;flex-direction:column;gap:14px}
+.node{border-radius:12px;padding:14px 18px;color:#fff}
+.node.uni-voie{background:linear-gradient(135deg,var(--indigo),var(--asparagus))}
+.node.uni-ecole{background:linear-gradient(135deg,var(--black),var(--asparagus))}
+.node h3{font-size:16px;display:flex;align-items:center;gap:10px}
+.node .tag{font-size:11px;background:rgba(255,255,255,.22);padding:3px 10px;border-radius:999px;font-weight:500}
+.children{margin:14px 0 2px 28px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.leaf{background:rgba(255,255,255,.16);border-radius:8px;padding:9px 13px;font-size:13px;font-family:var(--font-title);font-weight:500}
+.leaf small{display:block;font-family:var(--font-body);font-weight:400;opacity:.85;font-size:11px;margin-top:2px}
+
+/* Generic boxes */
+.cols{display:grid;gap:18px}
+.cols.c2{grid-template-columns:1fr 1fr}
+.cols.c3{grid-template-columns:repeat(3,1fr)}
+.card{border:1px solid rgba(74,74,74,.15);border-radius:12px;padding:18px}
+.card h4{font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.card ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.card li{font-size:13px;padding-left:18px;position:relative}
+.card li::before{content:"›";position:absolute;left:0;color:var(--asparagus);font-weight:700}
+.pill{display:inline-block;font-size:11px;font-family:var(--font-title);font-weight:700;padding:4px 11px;border-radius:999px;color:#fff;letter-spacing:.5px}
+.pill.async{background:var(--asparagus)}.pill.sync{background:var(--indigo)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.split .card.async{border-color:var(--asparagus);border-width:2px}
+.split .card.sync{border-color:var(--indigo);border-width:2px}
+
+/* Flow */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.fstep{flex:1;min-width:170px;background:var(--alabaster);border-radius:12px;padding:16px;position:relative}
+.fstep h4{font-size:14px;margin-bottom:6px}
+.fstep p{font-size:12px;color:var(--jet)}
+.farrow{display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--grey);padding:0 6px}
+.note{background:rgba(134,164,63,.1);border-left:4px solid var(--asparagus);border-radius:8px;padding:12px 16px;font-size:13px;margin-top:18px}
+
+/* Nav map */
+.navmap{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.navmap .card h4{justify-content:space-between}
+.menu-item{font-family:var(--font-title);font-weight:500;font-size:13px;padding:8px 12px;background:var(--alabaster);border-radius:8px;margin-bottom:7px;display:flex;gap:10px}
+
+/* Integrations */
+.integ{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.itile{border:1px solid rgba(74,74,74,.15);border-radius:12px;padding:16px;text-align:center}
+.itile .ic{font-size:26px}
+.itile b{display:block;font-family:var(--font-title);font-size:14px;margin:8px 0 4px}
+.itile small{color:var(--grey);font-size:12px}
+.foot{text-align:center;color:var(--grey);font-size:12px;margin-top:24px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="head">
+    <div class="logo"><span class="dot"></span> ODBI ACADEMY</div>
+    <h1>Comment la plateforme s'organise</h1>
+    <p>Plan d'ensemble — à lire à côté de la maquette interactive</p>
+  </div>
+
+  <!-- 1. Arborescence du contenu -->
+  <div class="block">
+    <h2><span class="step">1</span>L'arborescence du catalogue</h2>
+    <div class="sub">Deux univers, chacun avec son identité couleur et ses programmes.</div>
+    <div class="tree">
+      <div class="node uni-voie">
+        <h3>🟦🟩 LA VOIE <span class="tag">bleu + vert</span></h3>
+        <div class="children">
+          <div class="leaf">La Voie<small>programme</small></div>
+          <div class="leaf">La Voie des managers<small>programme long</small></div>
+          <div class="leaf">La Voie des artisans<small>programme long</small></div>
+          <div class="leaf">Vous En Mieux (VEM)<small>série Vous En…</small></div>
+          <div class="leaf">Vous En Paix (VEP)<small>série Vous En…</small></div>
+          <div class="leaf">Vous Au Top (VAT)<small>série Vous En…</small></div>
+          <div class="leaf">Vous En Lien (VEL)<small>série Vous En…</small></div>
+        </div>
+      </div>
+      <div class="node uni-ecole">
+        <h3>⬛🟩 L'ÉCOLE <span class="tag">noir + vert</span></h3>
+        <div class="children">
+          <div class="leaf">BTC : 1ère génération<small>Born To Coach</small></div>
+          <div class="leaf">BTC : 2ème génération<small>Born To Coach</small></div>
+          <div class="leaf">BTC : 3ème génération<small>Born To Coach</small></div>
+          <div class="leaf">IC : Cohésion de groupe<small>Intelligence Collective</small></div>
+          <div class="leaf">IC : Coaching d'équipe<small>Intelligence Collective</small></div>
+          <div class="leaf">IC : Transformation des orgas<small>Intelligence Collective</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Le cœur : programme → promotions -->
+  <div class="block">
+    <h2><span class="step">2</span>Un programme se décline en promotions</h2>
+    <div class="sub">C'est ici que se joue le partage async / synchrone — le point clé de l'organisation.</div>
+    <div class="split">
+      <div class="card async">
+        <span class="pill async">ASYNCHRONE — PARTAGÉ</span>
+        <h4 style="margin-top:12px">📦 Le contenu du cours</h4>
+        <p style="font-size:13px;color:var(--jet);margin-bottom:10px">Identique pour <b>toutes les promotions</b>. Ça ne bouge pas.</p>
+        <ul>
+          <li>Sessions (vidéos, audios, PDF, quiz)</li>
+          <li>Lexique du cours</li>
+          <li>Références du cours</li>
+        </ul>
+      </div>
+      <div class="card sync">
+        <span class="pill sync">SYNCHRONE — PAR PROMOTION</span>
+        <h4 style="margin-top:12px">👥 La vie de la promotion</h4>
+        <p style="font-size:13px;color:var(--jet);margin-bottom:10px">Propre à <b>chaque promotion</b> (sa cohorte, son calendrier).</p>
+        <ul>
+          <li>Classes / visios live (BBB)</li>
+          <li>Replays + transcriptions Notta</li>
+          <li>Présentiels (dates + lieux)</li>
+          <li>Groupe WhatsApp de la promo</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">📌 <b>Exemple :</b> « La Voie des managers » a un seul contenu de cours, mais 2 promotions — <i>Promo 2026 Automne</i> et <i>Promo 2026 Printemps</i> — qui ont chacune leurs propres visios, replays, présentiels et groupe WhatsApp.</div>
+  </div>
+
+  <!-- 3. Anatomie cours / session -->
+  <div class="block">
+    <h2><span class="step">3</span>Anatomie d'un cours et d'une session</h2>
+    <div class="sub">Ce que le membre voit en ouvrant un cours, puis une session.</div>
+    <div class="cols c2">
+      <div class="card">
+        <h4>📘 Page d'un cours</h4>
+        <p style="font-size:12px;color:var(--grey);margin-bottom:12px">4 onglets</p>
+        <ul>
+          <li><b>Sessions</b> — la liste des sessions (async)</li>
+          <li><b>Présentiels</b> — dates + lieux (par promo)</li>
+          <li><b>Lexique</b> — termes clés du cours</li>
+          <li><b>Références</b> — livres, vidéos, articles</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>🎬 Page d'une session</h4>
+        <p style="font-size:12px;color:var(--grey);margin-bottom:12px">5 onglets</p>
+        <ul>
+          <li><b>Exercices</b> — pédagogie inversée : à cocher pour débloquer le contenu (non obligatoire)</li>
+          <li><b>Vidéos</b> — plusieurs vidéos (playlist) · Vimeo · reprise de lecture (par membre)</li>
+          <li><b>Ressources</b> — audios + PDF (écoute / téléchargement)</li>
+          <li><b>Quiz</b> — plusieurs formes, score mémorisé, refaisable sans seuil</li>
+          <li><b>Replay</b> — visio BBB de la session (par promo) + transcription/chapitrage/résumé Notta</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Flux replay -->
+  <div class="block">
+    <h2><span class="step">4</span>Le parcours d'une visio live → replay</h2>
+    <div class="sub">De la classe en direct jusqu'au replay retrouvé par le membre.</div>
+    <div class="flow">
+      <div class="fstep"><h4>🎥 Visio live</h4><p>Classe en direct d'une promotion, via BigBlueButton.</p></div>
+      <div class="farrow">→</div>
+      <div class="fstep"><h4>⏺ Enregistrement</h4><p>BBB produit le replay vidéo.</p></div>
+      <div class="farrow">→</div>
+      <div class="fstep"><h4>📝 Notta</h4><p>Transcription + chapitrage + résumé proposé (multi-langues).</p></div>
+      <div class="farrow">→</div>
+      <div class="fstep"><h4>👥 Replay de la promo</h4><p>Rattaché à la promotion. Visible uniquement par ses membres.</p></div>
+    </div>
+    <div class="note">🔒 <b>Accès :</b> un replay n'est visible que par les membres de <b>sa</b> promotion. Le membre les retrouve dans « Visios live → Replays », filtrés par promo, avec ▶ Revoir (BBB), 📝 Transcription et 📄 Résumé (Notta).</div>
+  </div>
+
+  <!-- 5. Navigation -->
+  <div class="block">
+    <h2><span class="step">5</span>La navigation</h2>
+    <div class="sub">Côté membre et côté administration.</div>
+    <div class="navmap">
+      <div class="card">
+        <h4>👤 Espace membre</h4>
+        <div class="menu-item">🏠 Tableau de bord</div>
+        <div class="menu-item">📚 Mes programmes</div>
+        <div class="menu-item">🎥 Visios live <span style="color:var(--grey);font-weight:400">(+ visios du jour en accès rapide)</span></div>
+        <div class="menu-item">🧙 YoDalf (assistant IA)</div>
+        <div class="menu-item">🏆 Progression (gamification)</div>
+        <div class="menu-item">📅 Agenda</div>
+      </div>
+      <div class="card">
+        <h4>⚙️ Back-office admin</h4>
+        <div class="menu-item">👥 Membres & accès</div>
+        <div class="menu-item">📚 Cours (sessions, contenu)</div>
+        <div class="menu-item">🎓 Promotions (cohortes, classes)</div>
+        <div class="menu-item">🔌 Intégrations</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Intégrations -->
+  <div class="block">
+    <h2><span class="step">6</span>Les intégrations externes</h2>
+    <div class="sub">Les services connectés à la plateforme.</div>
+    <div class="integ">
+      <div class="itile"><div class="ic">🎥</div><b>BigBlueButton</b><small>Visios live + enregistrement · auto-hébergé OVH (TURN) · classe-virtuelle.com</small></div>
+      <div class="itile"><div class="ic">📝</div><b>Notta</b><small>Transcription, chapitrage, résumé</small></div>
+      <div class="itile"><div class="ic">🧙</div><b>YoDalf (Claude)</b><small>Assistant IA sur les cours</small></div>
+      <div class="itile"><div class="ic">💬</div><b>WhatsApp</b><small>Groupe par promotion</small></div>
+      <div class="itile"><div class="ic">🗂️</div><b>Notion</b><small>CRM + inscriptions (→ envoi des accès LMS) + extraction Qualiopi / BPF</small></div>
+      <div class="itile"><div class="ic">💳</div><b>Stripe</b><small>Paiements & abonnements</small></div>
+    </div>
+  </div>
+
+  <div class="foot">ODBI Academy — document de travail interne · plan d'architecture</div>
+</div>
+</body>
+</html>
